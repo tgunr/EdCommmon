@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLTagProcessorProtocol.h created by erik
-//  @(#)$Id: EDMLTagProcessorProtocol.h,v 2.2 2003-04-08 16:51:34 znek Exp $
+//  @(#)$Id: EDMLTagProcessorProtocol.h,v 2.3 2003-05-26 19:35:50 erik Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -25,7 +25,7 @@
 
 #include "EDCommonDefines.h"
 
-@class EDObjectPair;
+@class EDObjectPair, EDMLParser;
 
 /*" Used to classify elements. See #{typeOfElementForTag:attributeList:} for details. "*/
 typedef enum
@@ -37,15 +37,23 @@ typedef enum
 
 
 @protocol EDMLTagProcessor < NSObject >
-- (id)documentForElements:(NSArray *)elementList;
 - (NSString *)defaultNamespace;
 - (BOOL)spaceIsString;
-- (EDMLElementType)typeOfElementForTag:(EDObjectPair *)tagName attributeList:(NSArray *)attrList;
-- (id)elementForTag:(EDObjectPair *)tagName attributeList:(NSArray *)attrList;
-- (id)elementForTag:(EDObjectPair *)tagName attributeList:(NSArray *)attrList containedElements:(NSArray *)containedElements;
+- (id)documentForElements:(NSArray *)elementList;
+- (EDMLElementType)typeOfElementForTag:(EDObjectPair *)tagNamePair attributeList:(NSArray *)attrList;
+- (id)elementForTag:(EDObjectPair *)tagNamePair attributeList:(NSArray *)attrList;
+- (id)elementForTag:(EDObjectPair *)tagNamePair attributeList:(NSArray *)attrList containedElements:(NSArray *)containedElements;
 - (id)objectForText:(NSString *)string;
 - (id)objectForSpace:(NSString *)string;
 @end
 
 
+@interface NSObject(EDMLTagProcessorOptionalMethods)
+- (void)parserWillBeginParsing:(EDMLParser *)aParser;
+- (void)parserDidFinishParsing:(EDMLParser *)aParser;
+@end
+
+
 #endif	/* __EDMLTagProcessorProtocol_h_INCLUDE */
+
+

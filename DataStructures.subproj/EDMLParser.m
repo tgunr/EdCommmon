@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 2.12 2003-05-20 12:42:47 znek Exp $
+//  @(#)$Id: EDMLParser.m,v 2.13 2003-05-26 19:35:50 erik Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -31,6 +31,7 @@
 
 @interface EDMLParser(PrivateAPI)
 + (void)_initializeCharacterSets;
+- (id)_parseString:(NSString *)aString createDocument:(BOOL)docFlag;
 - (void)_parserLoop;
 - (EDMLToken *)_nextToken;
 - (EDMLToken *)_peekedToken;
@@ -83,9 +84,9 @@ enum
     @implementation EDMLParser
 //---------------------------------------------------------------------------------------
 
-/*" This parser was implemented before the widespread adoption of XML and today's abundance of corresponding parsers but it remains useful, especially in conjunction with the #EDAOMTagProcessor. It is probably even more useful today as more and more applications have to deal with XML files. Moreover, the parser can deal with fairly bad markup, as often found in HTML documents, but also handles more complex constructs such as XML namespaces. It is implemented as a shift/reduce parser which makes it efficient but not tolerant to missing end tags.
+/*" This parser was implemented before the widespread adoption of XML and today's abundance of corresponding parsers but it remains useful. It is probably even more useful today as more and more applications have to deal with XML files. Moreover, the parser can deal with fairly bad markup, as often found in HTML documents, but also handles more complex constructs such as XML namespaces. It is implemented as a shift/reduce parser which makes it efficient but not tolerant to missing end tags.
 
-The parser needs a tag processor that implements the #EDMLTagProcessorProtocol and uses the callback methods at events during the parsing of a string/document. (Some few methods deal with configuration.) This mode of operation is very similar to the SAX API and provides great flexibility. Most applications, however, will use the AOM tag processor which transforms the document into a tree in which the nodes are represented by objects. This is very DOM like with one significant exception: Unlike typical DOM parsers #EDAOMTagProcessor uses node classes created by the application developer. This means, of course, that the resulting tree is directly meaningful in the application and the node classes can contain application specific behaviour. See the implementations in the EDSLProcessor framework for an example.
+The parser needs a tag processor that implements the #EDMLTagProcessorProtocol and uses the callback methods at events during the parsing of a string/document. (Some few methods deal with configuration.) This mode of operation is very similar to the SAX API and provides great flexibility. Most applications, however, will use either the #{EDXMLDOMTagProcessor} or the #{EDAOMTagProcessor}. The former creates a DOM representation of the document using #{EDXMLNode} and derived classes. The latter also transforms the document into a tree in which the nodes are represented by objects but with one significant exception: #EDAOMTagProcessor uses node classes created by the application developer. This means, of course, that the resulting tree is directly meaningful in the application and the node classes can contain application specific behaviour. See the implementations in the EDSLProcessor framework for an example.
 
 Typically, a parser with a custom tag processor is used as follows: !{
     
@@ -97,6 +98,16 @@ Typically, a parser with a custom tag processor is used as follows: !{
     parser = [EDMLParser parserWithTagProcessor:myTagProcessor];
     documentObject = [parser parseDocument:myDocument];
 }
+
+
+#EDXMLDocument and #EDXMLDocumentFragment provide convenience methods to initialise a parser with an XMLDOM processor, parse the input and return the corresponding object. For example:  !{
+
+    NSData			*myDocumentData;  // assume this exists
+    EDXMLDocument   *documentObject;
+    
+    documentObject = [EDXMLDocument documentWithData:myDocumentData];
+}
+
 
 #EDAOMTagProcessor provides a convenience method to initialise a parser with the AOM processor as follows: (See the class description of EDAOMTagProcessor for an explanation of the "tag definitions" dictionary.) !{
     
@@ -227,7 +238,7 @@ NSCharacterSet *colonNSCharset;
 //	ACCESSOR METHODS
 //---------------------------------------------------------------------------------------
 
-/*" Sets the tag processor to %aTagProcessor. The parser retains its tag processor. Note that it is probably not wise to change tag processors while parsing a string. "*/
+/*" Sets the tag processor to %aTagProcessor. The parser retains its tag processor. Note that it is probably not wise to change tag processors while parsing. "*/
 
 - (void)setTagProcessor:(id <EDMLTagProcessor>)aTagProcessor
 {
@@ -247,7 +258,7 @@ NSCharacterSet *colonNSCharset;
 
 /*" Controls whitespace handling. If set to YES, the parser will pass the exact whitespace sequence to its tag processor. If set to NO, it converts it to a simple !{@" "}. The default is not to preserve whitespace.
 
-Note that the tag processor can specify that whitespace within text, i.e. between tags, should be treated %as text. "*/
+Note that the tag processor can specify that whitespace within text, i.e. between tags, should be treated as text. "*/
 
 - (void)setPreservesWhitespace:(BOOL)flag
 {
@@ -314,7 +325,7 @@ Note that if you use the #{parseXML...} methods the standard XML entity table is
 
 /*" Determines the string encoding of the %xmlData, converts it into a string and calls #{parseDocument:}. The class of the returned object depends on the tag processor.
 
-Note that this method automatically loads the standard XML entity table if no entity table is set. "*/
+This method automatically loads the standard XML entity table if no entity table is set. "*/
 
 - (id)parseXMLDocument:(NSData *)xmlData
 {
@@ -326,7 +337,9 @@ Note that this method automatically loads the standard XML entity table if no en
 
 /*" Parses the XML fragment (which has to be passed as a string) and returns an array of all top-level elements found in the string.
 
-Note that this method automatically loads the standard XML entity table if no entity table is set. "*/
+Note that when you are using the EDXMLDOMTagProcessor this method does #{not} return an #{EDXMLDocumentFragment} but an array of #{EDXMLNode}s. Please use #{appendChildrenFromString:} in #{EDXMLDocumentFragment} for convenient construction of DOM document fragments.
+
+This method automatically loads the standard XML entity table if no entity table is set. "*/
 
 - (NSArray *)parseXMLFragment:(NSString *)xmlString
 {
@@ -344,18 +357,31 @@ Note that this method automatically loads the standard XML entity table if no en
 
 - (id)parseDocument:(NSString *)aString
 {
-    return [tagProcessor documentForElements:[self parseString:aString]];
+    return [self _parseString:aString createDocument:YES];
 }
 
 
-/*" Parses, or tries to parse, the text contained in %aString. During the process methods from the #EDTagProcessorProtocol are sent to the current tag processor. #{parseString:} returns an array of all top-level elements found in the string as created by the tag processor. Exceptions are raised when syntax errors or mismatched container tags are encountered. (If the tag processor raises any exception, the parser shuts down properly, and re-raises it.) "*/
+/*" Parses, or tries to parse, the text contained in %aString. During the process methods from the #EDTagProcessorProtocol are sent to the current tag processor. #{parseString:} returns an array of all top-level elements found in the string as created by the tag processor. Exceptions are raised when syntax errors or mismatched container tags are encountered. (If the tag processor raises an exception, the parser shuts down properly, and re-raises it.) "*/
 
 - (NSArray *)parseString:(NSString *)aString
+{
+    return [self _parseString:aString createDocument:NO];
+}
+
+
+//---------------------------------------------------------------------------------------
+//	MAIN PARSER 
+//---------------------------------------------------------------------------------------
+
+- (id)_parseString:(NSString *)aString createDocument:(BOOL)docFlag
 {
     unsigned int 	length;
     id				result;
     NSException		*parserException;
 
+    if([tagProcessor respondsToSelector:@selector(parserWillBeginParsing:)])
+        [(id)tagProcessor parserWillBeginParsing:self];
+    
     if(textCharset == NULL)
         [[self class] _initializeCharacterSets];
     
@@ -376,6 +402,8 @@ Note that this method automatically loads the standard XML entity table if no en
     if([stack count] > 1)
         [NSException raise:EDMLParserException format:@"Unexpected end of source."];
     result = [[[[stack lastObject] value] retain] autorelease];
+    if(docFlag)
+        result = [tagProcessor documentForElements:result];
 
     NS_HANDLER
         parserException = [[localException retain] autorelease];
@@ -388,16 +416,15 @@ Note that this method automatically loads the standard XML entity table if no en
     [peekedToken release];
     peekedToken = nil;
 
+    if([tagProcessor respondsToSelector:@selector(parserDidFinishParsing:)])
+        [(id)tagProcessor parserDidFinishParsing:self];
+
     if(parserException != nil)
         [parserException raise];
 
     return result;
 }
 
-
-//---------------------------------------------------------------------------------------
-//	PARSER LOOP
-//---------------------------------------------------------------------------------------
 
 - (void)_parserLoop
 {
@@ -1022,7 +1049,7 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
         prefix = [name substringToIndex:colonPos.location];
         if(((namespace = [[namespaceStack lastObject] objectForKey:prefix]) == nil) && ([prefix isEqualToString:@"xmlns"] == NO))
             [NSException raise:EDMLParserException format:@"Syntax error; found undefined namespace prefix `%@'", prefix];
-        name = [name substringFromIndex:NSMaxRange(colonPos)];
+        // name = [name substringFromIndex:NSMaxRange(colonPos)];
         }
     else
         {

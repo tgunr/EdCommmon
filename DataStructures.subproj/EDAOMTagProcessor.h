@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDAOMTagProcessor.h created by erik
-//  @(#)$Id: EDAOMTagProcessor.h,v 2.3 2003-04-08 16:51:33 znek Exp $
+//  @(#)$Id: EDAOMTagProcessor.h,v 2.4 2003-05-26 19:35:50 erik Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -50,7 +50,7 @@ struct _EDATPFlags
     NSSet				*rootElementClasses;			/*" "*/
 }
 
-/*" Creating default tag processors "*/
+/*" Creating AOM tag processors "*/
 - (id)initWithTagDefinitions:(NSDictionary *)someTagDefinitions;
 
 /*" Configuring the tag processor "*/
@@ -73,8 +73,6 @@ struct _EDATPFlags
 
 @interface EDMLParser(AOMProcessorFactory)
 + (id)parserWithTagDefinitions:(NSDictionary *)someTagDefinitions;
-- (void)setAcceptsUnknownAttributes:(BOOL)flag;
-- (BOOL)acceptsUnknownAttributes;
 @end
 
 

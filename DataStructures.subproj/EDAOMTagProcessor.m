@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDAOMTagProcessor.m created by erik
-//  @(#)$Id: EDAOMTagProcessor.m,v 2.5 2003-04-08 16:51:33 znek Exp $
+//  @(#)$Id: EDAOMTagProcessor.m,v 2.6 2003-05-26 19:35:50 erik Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -26,15 +26,52 @@
 #include "EDAOMTagProcessor.h"
 
 
+@interface EDObjectPair(EDAOMTagProcessorHelper)
+- (NSString *)namespace;
+- (NSString *)qualifiedName;
+- (NSString *)value;
+@end
+
+@implementation EDObjectPair(EDAOMTagProcessorHelper)
+
+- (NSString *)namespace
+{
+    return [[self firstObject] firstObject];
+}
+
+- (NSString *)qualifiedName
+{
+    return [[self firstObject] secondObject];
+}
+
+- (NSString *)value
+{
+    return [self secondObject];
+}
+
+@end
+
+
+static NSString *EDAOMLocalNameFromQualifiedName(NSString *qname)
+{
+    NSRange		r;
+
+    r = [qname rangeOfString:@":"];
+    if(r.location == NSNotFound)
+        return qname;
+    return [qname substringFromIndex:NSMaxRange(r)];
+}
+
+
 //=======================================================================================
     @implementation EDAOMTagProcessor
 //=======================================================================================
 
-/*" Application Object Model tag processor. (For use with the EDMLParser.) This tag processor creates an object model of the original document in which the node classes are application specific. A "tag definition dictionary" describes the mapping.
+/*" Application Object Model tag processor. (For use with the EDMLParser.) This tag processor creates instances of application specific classes to represent the nodes in the document. A "tag definition dictionary" describes the mapping between elements and classes representing these elements in the application. Elements with different names, ie. tag names, can be mapped to different classes. Attributes are not represented as classes but provided to the element objects as simple strings.    
 
 The tag definition dictionary contains the elements' namespace (optional), the classes to be used for the document (optional), for text and for whitespace (optional) as well as the ones to be used for elements.
 
-Text objects must implement the #{setText:} method while Space objects may implement it to get the exact space string. (This also requires to set #preservesWhitespace in the parser as otherwise the space string will always be !{@" "}.) All elements must implement #{takeValue:forAttribute:} which is called once for each attribute and all container elements must implement #{setContainedObjects:} which will be called after #{takeValue:forAttribute:} to set the elements, and text/space objects, that were found between the start and end tags. The array is !{nil} if the element was empty.
+Text objects must implement the #{setText:} method while Space objects may implement it to get the exact space string. (This also requires to set #preservesWhitespace in the parser as otherwise the space string will always be !{@" "}.) All elements must implement #{takeValue:forAttribute:} which is called once for each attribute. All container elements must implement #{setContainedObjects:} which will be called after #{takeValue:forAttribute:} to set the elements, and text/space objects, that were found between the start and end tags. The array is !{nil} if the element was empty.
 
 Note that if #acceptsUnknownTags is YES and multiple namespaces occur in the document #{takeValue:forAttribute:} will be called for %all attributes without indiciation of the attribute's namespace. Note also that if this is the case and additionally no namespace is defined for the elements, they will be asked to take values for attributes that correspond to the namespace definition, e.g. for the tag !{<mytag xmlns:t="...">} the element representing !{mytag} will be asked to take a value for the attribute t. The obvious workaround is to define a namespace for your elements; not a bad idea anyway when dealing with XML.
 
@@ -91,15 +128,15 @@ Note that this results in !{takeValue:@"\012" forAttribute:@"text"} being called
 
 The processor implements the #EDTagProcessorProtocol as follows: It returns the namespace defined in the tag definition dictionary, or !{nil} if there is none, as #{defaultNamespace}. If a space object was defined it returns NO in #spaceIsString, otherwise it returns YES which will make the parser treat all space between tags as text. The remaining four methods to create text and space objects as well as elements simply instantiate a corresponding object, set all properties and return it to the parser.
 
-A convenience method is provided to use the EDMLParser with this processor. This reduces the code required to set up a parser to: !{  
+A convenience method is provided to use the EDMLParser with this processor. This reduces the code required to set up and use a parser to: !{  
 
 NSDictionary 	*myTagDefinitions; // assume this exists
-NSString		*myDocument;  // assume this exists
+NSString		*myDocumentString; // assume this exists
 EDMLParser		*parser;
-NSArray			*toplevelElements;
+id				*documentObject;
 
 parser = [EDMLParser parserWithTagDefinitions:myTagDefinitions];
-toplevelElements = [parser parseString:myDocument];
+documentObject = [parser parseDocument:myDocumentString];
 }
 
 "*/
@@ -307,32 +344,38 @@ The default is not to accept unknown attributes. "*/
 }
 
 
-- (EDMLElementType)typeOfElementForTag:(EDObjectPair *)tagName attributeList:(NSArray *)attrList
+- (EDMLElementType)typeOfElementForTag:(EDObjectPair *)tagNamePair attributeList:(NSArray *)attrList
 {
+    NSString	 *tagName, *namespace;
     NSDictionary *tagDef;
 
+    // we don't care about prefixes
+    tagName = EDAOMLocalNameFromQualifiedName([tagNamePair secondObject]);
+    namespace = [tagNamePair firstObject];
+
     // test this way to make sure that a *nil* defaultNamespace works as expected
-    if(([tagName firstObject] != [self defaultNamespace]) && ([[tagName firstObject] isEqualToString:[self defaultNamespace]] == NO))
+    if((namespace != [self defaultNamespace]) && ([namespace isEqualToString:[self defaultNamespace]] == NO))
         {
         if(flags.ignoresUnknownNamespaces || flags.ignoresUnknownTags)
             return EDMLUnknownTag;
-        [NSException raise:EDMLParserException format:@"Unknown namespace %@", [tagName firstObject]];
+        [NSException raise:EDMLParserException format:@"Unknown namespace %@", namespace];
         }
 
-    if((tagDef = [tagDefinitions objectForKey:[tagName secondObject]]) == nil)
+    if((tagDef = [tagDefinitions objectForKey:tagName]) == nil)
         {
         if(flags.ignoresUnknownTags)
             return EDMLUnknownTag;
-        [NSException raise:EDMLParserException format:@"Unknown tag %@", [tagName secondObject]];
+        [NSException raise:EDMLParserException format:@"Unknown tag %@", tagName];
         }
 
     return ([[tagDef objectForKey:@"container"] boolValue] ? EDMLContainerElement : EDMLSingleElement);
 }
 
 
-- (id)elementForTag:(EDObjectPair *)tagName attributeList:(NSArray *)parsedAttrList
+- (id)elementForTag:(EDObjectPair *)tagNamePair attributeList:(NSArray *)parsedAttrList
+
 {
-    NSString 			*className, *attrName, *attrNamespace;
+    NSString 			*tagName, *namespace, *className, *attrName, *attrNamespace;
     NSDictionary		*tagDef, *attrDef;
     NSArray				*attrList;
     NSMutableSet		*requiredAttributes;
@@ -341,12 +384,16 @@ The default is not to accept unknown attributes. "*/
     EDObjectPair		*attr;
     id <EDAOMElement> 	element;
 
-    tagDef = [tagDefinitions objectForKey:[tagName secondObject]];
-    NSAssert1(tagDef != nil, @"No definition for tag %@", [tagName secondObject]);
+    // we don't care about prefixes
+    tagName = EDAOMLocalNameFromQualifiedName([tagNamePair secondObject]);
+    namespace = [tagNamePair firstObject];
+    
+    tagDef = [tagDefinitions objectForKey:tagName];
+    NSAssert1(tagDef != nil, @"No definition for tag %@", tagName);
     className = [tagDef objectForKey:@"class"];
-    NSAssert1(className != nil, @"Class entry missing for tag <%@>", [tagName secondObject]);
+    NSAssert1(className != nil, @"Class entry missing for tag <%@>", tagName);
     element = [[[NSClassFromString(className) allocWithZone:[self zone]] init] autorelease];
-    NSAssert1(element != nil, @"Cannot instantiate element for tag <%@>", [tagName secondObject]);
+    NSAssert1(element != nil, @"Cannot instantiate element for tag <%@>", tagName);
 
     // feed implicit attribute values
     if((attrList = [tagDef objectForKey:@"implicit"]) != nil)
@@ -377,8 +424,8 @@ The default is not to accept unknown attributes. "*/
     attrEnum = [parsedAttrList objectEnumerator];
     while((attr = [attrEnum nextObject]) != nil)
         {
-        attrNamespace = [[attr firstObject] firstObject];
-        attrName = [[attr firstObject] secondObject];
+        attrNamespace = [attr namespace];
+        attrName = EDAOMLocalNameFromQualifiedName([attr qualifiedName]);
 
         // If we have a namespace, we can detect and ignore xmlns attributes
         if(([self defaultNamespace] != nil) && (attrNamespace == nil))
@@ -389,31 +436,31 @@ The default is not to accept unknown attributes. "*/
             {
             if(flags.ignoresUnknownNamespaces)
                 continue;
-            [NSException raise:EDMLParserException format:@"Invalid attribute \"%@\" for tag <%@>.", attrName, [tagName secondObject]];
+            [NSException raise:EDMLParserException format:@"Invalid attribute \"%@\" for tag <%@>.", attrName, tagName];
             }
         // Check name, raise or ignore if unknown
         if(([knownAttributes containsObject:attrName] == NO) && (flags.acceptsUnknownAttributes == NO))
             {
             if(flags.ignoresUnknownAttributes)
                 continue;
-            [NSException raise:EDMLParserException format:@"Invalid attribute \"%@\" for tag <%@>.", attrName, [tagName secondObject]];
+            [NSException raise:EDMLParserException format:@"Invalid attribute \"%@\" for tag <%@>.", attrName, tagName];
             }
-        [element takeValue:[attr secondObject] forAttribute:attrName];
+        [element takeValue:[attr value] forAttribute:attrName];
         [requiredAttributes removeObject:attrName];
         }
 
     if((requiredAttributes != nil) && ([requiredAttributes count] > 0))
-        [NSException raise:EDMLParserException format:@"Required attribute(s) \"%@\" missing in tag <%@>", [[requiredAttributes allObjects] componentsJoinedByString:@", "], [tagName secondObject]];
+        [NSException raise:EDMLParserException format:@"Required attribute(s) \"%@\" missing in tag <%@>", [[requiredAttributes allObjects] componentsJoinedByString:@", "], tagName];
 
     return element;
 }
 
 
-- (id)elementForTag:(EDObjectPair *)tagName attributeList:(NSArray *)parsedAttrList containedElements:(NSArray *)containedElements
+- (id)elementForTag:(EDObjectPair *)tagNamePair attributeList:(NSArray *)attrList containedElements:(NSArray *)containedElements;
 {
     id element;
 
-    element = [self elementForTag:tagName attributeList:parsedAttrList];
+    element = [self elementForTag:tagNamePair attributeList:attrList];
     [element setContainedElements:containedElements];
 
     return element;
