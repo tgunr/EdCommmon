@@ -41,7 +41,8 @@ PUBLIC_HEADERS = EDApplication.h NSPasteboard+Extensions.h\
                  NSWindow+Extensions.h NSApplication+Extensions.h\
                  NSTableColumn+Extensions.h NSTableView+Extensions.h\
                  NSAttributedString+AppKitExtensions.h\
-                 NSMatrix+Extensions.h NSWorkspace+Extensions.h
+                 NSMatrix+Extensions.h NSWorkspace+Extensions.h\
+                 EDToolbarDefinition.h
 
 
 

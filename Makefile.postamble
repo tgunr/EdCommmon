@@ -130,6 +130,7 @@ endif
 
 precompile-headers:
 ifeq "$(OS)" "NEXTSTEP"
+PUBLIC_PRECOMPILED_HEADERS_CFLAGS += -DEDCOMMON_OSXSBUILD
 ifneq "" "$(PUBLIC_PRECOMPILED_HEADERS)"
 	$(SILENT) ( \
 	  $(ECHO) "Precompiling public headers... (non-apple extension)"; \
@@ -143,6 +144,4 @@ ifneq "" "$(PUBLIC_PRECOMPILED_HEADERS)"
 	  )
 endif
 endif
-
-
 

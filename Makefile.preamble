@@ -156,6 +156,10 @@ BUILD_WO_VERSION =
 
 
 # Postprocessing to set variables derived from above settings. 
+ifneq "$(OS)" "MACOS"
+OTHER_CFLAGS += -DEDCOMMON_OSXSBUILD
+endif
+
 ifeq "$(BUILD_WO_VERSION)" "YES"
 OTHER_CFLAGS += -DEDCOMMON_WOBUILD
 
