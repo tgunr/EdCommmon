@@ -21,19 +21,20 @@ CLASSES = EDIPSocket.m EDSocket.m EDStream.m EDTCPSocket.m\
           NSFileHandle+Extensions.m NSHost+Extensions.m\
           NSInvocation+Extensions.m NSObject+Extensions.m\
           NSProcessInfo+Extensions.m NSSet+Extensions.m\
-          NSScanner+Extensions.m NSString+Extensions.m
+          NSScanner+Extensions.m NSString+Extensions.m\
+          NSBundle+Extensions.m
 
 HFILES = EDIPSocket.h EDSocket.h EDStream.h EDUDPSocket.h\
-         EDTCPSocket.h functions.h NSArray+Extensions.h\
-         NSAttributedString+Extensions.h NSData+Extensions.h\
-         NSDate+Extensions.h NSDictionary+Extensions.h\
-         NSFileHandle+Extensions.h NSHost+Extensions.h\
-         NSInvocation+Extensions.h NSObject+Extensions.h\
-         NSProcessInfo+Extensions.h NSSet+Extensions.h\
-         NSScanner+Extensions.h NSString+Extensions.h\
-         CollectionMapping.h
+         EDTCPSocket.h functions.h deallocnotif.h CollectionMapping.h\
+         NSArray+Extensions.h NSAttributedString+Extensions.h\
+         NSData+Extensions.h NSDate+Extensions.h\
+         NSDictionary+Extensions.h NSFileHandle+Extensions.h\
+         NSHost+Extensions.h NSInvocation+Extensions.h\
+         NSObject+Extensions.h NSProcessInfo+Extensions.h\
+         NSSet+Extensions.h NSScanner+Extensions.h NSString+Extensions.h\
+         NSBundle+Extensions.h
 
-MFILES = functions.m
+MFILES = functions.m deallocnotif.m deallocnotif-next.m
 
 OTHERSRCS = Makefile.preamble Makefile Makefile.postamble
 
@@ -56,10 +57,12 @@ PUBLIC_HEADERS = NSArray+Extensions.h NSDate+Extensions.h\
                  NSProcessInfo+Extensions.h NSSet+Extensions.h\
                  NSInvocation+Extensions.h EDIPSocket.h EDSocket.h\
                  EDStream.h EDUDPSocket.h EDTCPSocket.h functions.h\
-                 NSHost+Extensions.h NSFileHandle+Extensions.h
+                 NSHost+Extensions.h NSFileHandle+Extensions.h\
+                 NSBundle+Extensions.h deallocnotif.h
 
 PROJECT_HEADERS = CollectionMapping.h NSString+Extensions.h\
-                  NSAttributedString+Extensions.h NSSet+Extensions.h
+                  NSAttributedString+Extensions.h NSSet+Extensions.h\
+                  NSBundle+Extensions.h deallocnotif.h
 
 
 

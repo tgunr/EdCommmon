@@ -1,13 +1,13 @@
 {
-    DYNAMIC_CODE_GEN = YES; 
-    English_RESOURCES = {}; 
+    "DYNAMIC_CODE_GEN" = YES; 
+    "English_RESOURCES" = {}; 
     FILESTABLE = {
         CLASSES = (
-            EDIPSocket.m, 
-            EDSocket.m, 
-            EDStream.m, 
-            EDTCPSocket.m, 
-            EDUDPSocket.m, 
+            "EDIPSocket.m", 
+            "EDSocket.m", 
+            "EDStream.m", 
+            "EDTCPSocket.m", 
+            "EDUDPSocket.m", 
             "NSArray+Extensions.m", 
             "NSAttributedString+Extensions.m", 
             "NSData+Extensions.m", 
@@ -20,16 +20,19 @@
             "NSProcessInfo+Extensions.m", 
             "NSSet+Extensions.m", 
             "NSScanner+Extensions.m", 
-            "NSString+Extensions.m"
+            "NSString+Extensions.m", 
+            "NSBundle+Extensions.m"
         ); 
         FRAMEWORKSEARCH = (); 
-        H_FILES = (
-            EDIPSocket.h, 
-            EDSocket.h, 
-            EDStream.h, 
-            EDUDPSocket.h, 
-            EDTCPSocket.h, 
-            functions.h, 
+        "H_FILES" = (
+            "EDIPSocket.h", 
+            "EDSocket.h", 
+            "EDStream.h", 
+            "EDUDPSocket.h", 
+            "EDTCPSocket.h", 
+            "functions.h", 
+            "deallocnotif.h", 
+            "CollectionMapping.h", 
             "NSArray+Extensions.h", 
             "NSAttributedString+Extensions.h", 
             "NSData+Extensions.h", 
@@ -43,56 +46,60 @@
             "NSSet+Extensions.h", 
             "NSScanner+Extensions.h", 
             "NSString+Extensions.h", 
-            CollectionMapping.h
+            "NSBundle+Extensions.h"
         ); 
-        OTHER_LINKED = (functions.m); 
-        OTHER_RESOURCES = (MIME.plist); 
-        OTHER_SOURCES = (Makefile.preamble, Makefile, Makefile.postamble); 
-        PRECOMPILED_HEADERS = (); 
-        PROJECT_HEADERS = (
-            CollectionMapping.h, 
+        "OTHER_LINKED" = ("functions.m", "deallocnotif.m", "deallocnotif-next.m"); 
+        "OTHER_RESOURCES" = ("MIME.plist"); 
+        "OTHER_SOURCES" = ("Makefile.preamble", Makefile, "Makefile.postamble"); 
+        "PRECOMPILED_HEADERS" = (); 
+        "PROJECT_HEADERS" = (
+            "CollectionMapping.h", 
             "NSString+Extensions.h", 
             "NSAttributedString+Extensions.h", 
-            "NSSet+Extensions.h"
+            "NSSet+Extensions.h", 
+            "NSBundle+Extensions.h", 
+            "deallocnotif.h"
         ); 
-        PUBLIC_HEADERS = (
+        "PUBLIC_HEADERS" = (
             "NSArray+Extensions.h", 
             "NSDate+Extensions.h", 
             "NSObject+Extensions.h", 
             "NSScanner+Extensions.h", 
             "NSString+Extensions.h", 
-            CollectionMapping.h, 
+            "CollectionMapping.h", 
             "NSDictionary+Extensions.h", 
             "NSAttributedString+Extensions.h", 
             "NSData+Extensions.h", 
             "NSProcessInfo+Extensions.h", 
             "NSSet+Extensions.h", 
             "NSInvocation+Extensions.h", 
-            EDIPSocket.h, 
-            EDSocket.h, 
-            EDStream.h, 
-            EDUDPSocket.h, 
-            EDTCPSocket.h, 
-            functions.h, 
+            "EDIPSocket.h", 
+            "EDSocket.h", 
+            "EDStream.h", 
+            "EDUDPSocket.h", 
+            "EDTCPSocket.h", 
+            "functions.h", 
             "NSHost+Extensions.h", 
-            "NSFileHandle+Extensions.h"
+            "NSFileHandle+Extensions.h", 
+            "NSBundle+Extensions.h", 
+            "deallocnotif.h"
         ); 
         SUBPROJECTS = (); 
     }; 
     LANGUAGE = English; 
     MAKEFILEDIR = "$(MAKEFILEPATH)/pb_makefiles"; 
-    NEXTSTEP_BUILDTOOL = /usr/bin/gnumake; 
-    NEXTSTEP_INSTALLDIR = "$(LOCAL_LIBRARY_DIR)/Frameworks"; 
-    NEXTSTEP_JAVA_COMPILER = /usr/bin/javac; 
-    NEXTSTEP_OBJCPLUS_COMPILER = /usr/bin/cc; 
-    PDO_UNIX_BUILDTOOL = $NEXT_ROOT/Developer/bin/make; 
-    PDO_UNIX_JAVA_COMPILER = "$(JDKBINDIR)/javac"; 
-    PDO_UNIX_OBJCPLUS_COMPILER = "$(NEXTDEV_BIN)/gcc"; 
+    "NEXTSTEP_BUILDTOOL" = "/usr/bin/gnumake"; 
+    "NEXTSTEP_INSTALLDIR" = "$(LOCAL_LIBRARY_DIR)/Frameworks"; 
+    "NEXTSTEP_JAVA_COMPILER" = "/usr/bin/javac"; 
+    "NEXTSTEP_OBJCPLUS_COMPILER" = "/usr/bin/cc"; 
+    "PDO_UNIX_BUILDTOOL" = "$NEXT_ROOT/Developer/bin/make"; 
+    "PDO_UNIX_JAVA_COMPILER" = "$(JDKBINDIR)/javac"; 
+    "PDO_UNIX_OBJCPLUS_COMPILER" = "$(NEXTDEV_BIN)/gcc"; 
     PROJECTNAME = FoundationExtensions; 
     PROJECTTYPE = Component; 
-    PROJECTVERSION = 2.8; 
-    WINDOWS_BUILDTOOL = $NEXT_ROOT/Developer/Executables/make; 
-    WINDOWS_INSTALLDIR = "$(NEXT_ROOT)$(LOCAL_LIBRARY_DIR)/Frameworks"; 
-    WINDOWS_JAVA_COMPILER = "$(JDKBINDIR)/javac.exe"; 
-    WINDOWS_OBJCPLUS_COMPILER = "$(DEVDIR)/gcc"; 
+    PROJECTVERSION = "2.8"; 
+    "WINDOWS_BUILDTOOL" = "$NEXT_ROOT/Developer/Executables/make"; 
+    "WINDOWS_INSTALLDIR" = "$(NEXT_ROOT)$(LOCAL_LIBRARY_DIR)/Frameworks"; 
+    "WINDOWS_JAVA_COMPILER" = "$(JDKBINDIR)/javac.exe"; 
+    "WINDOWS_OBJCPLUS_COMPILER" = "$(DEVDIR)/gcc"; 
 }
