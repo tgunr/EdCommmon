@@ -19,8 +19,6 @@ MFILES = useful.m framework.m
 SUBPROJECTS = FoundationExtensions.subproj DataStructures.subproj\
               AppKitExtensions.subproj Widgets.subproj
 
-TOOLS = mvcompose.tproj
-
 OTHERSRCS = Makefile.preamble Makefile Makefile.postamble h.template\
             m.template
 

@@ -170,10 +170,6 @@ FULL_SUBPROJECTS := $(SUBPROJECTS)
 SUBPROJECTS := $(filter-out $(FILTER), $(FULL_SUBPROJECTS))
 endif
 
-ifneq "$(OS)" "NEXTSTEP"
-TOOLS =
-endif
-
 
 # Additional targets to fix/precompile headers
 AFTER_INSTALLHDRS = fix-headers

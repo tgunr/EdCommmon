@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSWorkspace+Extensions.h created by erik on Mon 19-Feb-2001
-//  $Id: NSWorkspace+Extensions.h,v 1.2 2001-03-11 21:54:59 znek Exp $
+//  $Id: NSWorkspace+Extensions.h,v 1.3 2001-04-25 20:40:06 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -23,7 +23,10 @@
 
 @interface NSWorkspace(EDExtensions)
 
+#ifdef EDCOMMON_OSXSBUILD
 - (void)openURL:(NSString *)url;
+#endif
+
 - (void)composeMailWithSubject:(NSString *)subject recipients:(NSString *)recipients body:(NSString *)body;
 
 @end

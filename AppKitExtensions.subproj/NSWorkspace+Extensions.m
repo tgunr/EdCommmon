@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSWorkspace+Extensions.m created by erik on Mon 19-Feb-2001
-//  $Id: NSWorkspace+Extensions.m,v 1.1 2001-03-11 03:04:45 erik Exp $
+//  $Id: NSWorkspace+Extensions.m,v 1.2 2001-04-25 20:40:06 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,10 +19,6 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#ifndef EDCOMMON_OSXSBUILD
-#import <CoreFoundation/CoreFoundation.h>
-#import <HIToolbox/InternetConfig.h>
-#endif
 #import "NSWorkspace+Extensions.h"
 
 
@@ -30,32 +26,9 @@
     @implementation NSWorkspace(EDExtensions)
 //---------------------------------------------------------------------------------------
 
+#ifdef EDCOMMON_OSXSBUILD
+
 - (void)openURL:(NSString *)url
-
-#ifndef EDCOMMON_OSXSBUILD
-
-#warning * I guess we can get this from [[NSBundle mainBundle] infoDictionary], right?!
-#define MY_APPLICATION_SIGNATURE FOUR_CHAR_CODE('ALX3')
-{
-    ICInstance 	anInstance;
-    const char 	*urlCString;
-    long 		start, length;
-    OSStatus 	error;
-
-    if(ICStart(&anInstance, MY_APPLICATION_SIGNATURE) != noErr)
-        [NSException raise:NSGenericException format:@"Failed to get internet config. Error code %d", error];
-
-    urlCString = [url UTF8String];
-    start = 0;
-    length = strlen(urlCString);
-    error = ICLaunchURL(anInstance, NULL, (Ptr)urlCString, length, &start, &length);
-    if(error != noErr)
-        [NSException raise:NSGenericException format:@"Failed to launch a URL. Error code %d", error];
-
-    ICStop(anInstance);
-}
-
-#else
 {
    NSPasteboard 	*pboard;
    NSString 		*sname;
@@ -74,26 +47,13 @@
 
 - (void)composeMailWithSubject:(NSString *)subject recipients:(NSString *)recipients body:(NSString *)body
 {
-    NSMutableArray	*arguments;
-    NSBundle		*myBundle;
-    NSString		*toolPath;
-
-    myBundle = [NSBundle bundleForClass:NSClassFromString(@"EDCommonFramework")];
-    toolPath = [myBundle pathForResource:@"mvcompose" ofType:@""];
-    arguments = [NSMutableArray array];
-    if(subject != nil)
-        {
-        [arguments addObject:@"-subject"];
-        [arguments addObject:subject];
-        }
-    if(recipients != nil)
-        {
-        [arguments addObject:@"-to"];
-        [arguments addObject:recipients];
-        }
-#warning * pass body to tool
-    [NSTask launchedTaskWithLaunchPath:toolPath arguments:arguments];
+#ifndef EDCOMMON_OSXSBUILD
+    [self openURL:[NSURL URLWithString:@"mailto:erik@x101.net"]];
+#else
+    [NSException raise:NSGenericException format:@"Cannot compose e-mails on Mac OS X Server"];
+#endif    
 }
+
 
 //---------------------------------------------------------------------------------------
     @end

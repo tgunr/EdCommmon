@@ -16,8 +16,7 @@
             FoundationExtensions.subproj, 
             DataStructures.subproj, 
             AppKitExtensions.subproj, 
-            Widgets.subproj, 
-            mvcompose.tproj
+            Widgets.subproj
         ); 
     }; 
     LANGUAGE = English; 
