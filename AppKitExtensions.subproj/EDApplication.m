@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDApplication.m created by erik on Sun 19-Jul-1998
-//  @(#)$Id: EDApplication.m,v 2.0 2002-08-16 18:12:44 erik Exp $
+//  @(#)$Id: EDApplication.m,v 2.1 2002-09-01 16:55:09 erik Exp $
 //
 //  Copyright (c) 1998 by Erik Doernenburg. All rights reserved.
 //
@@ -21,6 +21,10 @@
 #import <AppKit/AppKit.h>
 #import "NSApplication+Extensions.h"
 #import "EDApplication.h"
+
+@interface EDApplication(PrivateAPI)
++ (void)reportException:(NSException *)theException;
+@end
 
 void EDUncaughtExceptionHandler(NSException *exception);
 
@@ -61,8 +65,14 @@ Setting of the factory defaults uses the #registerFactoryDefaults method and hap
 
 - (void)reportException:(NSException *)theException
 {
+    [[self class] reportException:theException];
+}
+
+
++ (void)reportException:(NSException *)theException
+{
     NSLog(@"%@: %@", [theException name], [theException reason]);
-    NSRunAlertPanel(nil, LS_TOPLEVEL_EXCEPTION([self name], [theException name], [theException reason]), LS_OK, nil, nil);
+    NSRunAlertPanel(nil, LS_TOPLEVEL_EXCEPTION([[NSProcessInfo processInfo] processName], [theException name], [theException reason]), LS_OK, nil, nil);
 }
 
 
@@ -78,6 +88,6 @@ Setting of the factory defaults uses the #registerFactoryDefaults method and hap
 
 void EDUncaughtExceptionHandler(NSException *exception)
 {
-    [[NSApplication sharedApplication] reportException:exception];
+    [EDApplication reportException:exception];
 }
 
