@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 1.7 2001-07-26 23:18:11 erik Exp $
+//  @(#)$Id: EDMLParser.m,v 1.8 2001-07-31 20:51:25 znek Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -258,7 +258,7 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
             }
         else if(*charp == '>')
             {
-            [NSException raise:EDMLParserException format:@"Syntax Error; found stray `>'.", (int)*charp];
+            [NSException raise:EDMLParserException format:@"Syntax Error at pos. %d; found stray `>'.", (charp - source)];
             }
         else if(EDBitmapCharsetContainsCharacter(spaceCharset, *charp))
             {
@@ -271,7 +271,7 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
             while(EDBitmapCharsetContainsCharacter(textCharset, *charp))
                 charp = nextchar(charp, NO);
             if(start == charp) // not at end and neither a text nor a switch char
-                [NSException raise:EDMLParserException format:@"Found invalid character \\u%x.", (int)*charp];
+                [NSException raise:EDMLParserException format:@"Found invalid character \\u%x at pos %d.", (int)*charp, (charp - source)];
             token = [EDMLToken tokenWithType:EDMLPT_STRING];
             [token setValue:[NSString stringWithCharacters:start length:(charp - start)]];
             }
@@ -295,7 +295,7 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
             charp = nextchar(charp, YES);
         if(*charp == '<')
             {
-            [NSException raise:EDMLParserException format:@"Syntax Error; found `<' in a tag.", (int)*charp];
+            [NSException raise:EDMLParserException format:@"Syntax Error at pos. %d; found `<' in a tag.", (charp - source)];
             }
         else if(*charp == '>')
             {
@@ -339,7 +339,7 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
                 while((EDBitmapCharsetContainsCharacter(idCharset, *charp)))
                     charp = nextchar(charp, YES);
                 if(charp == start)
-                    [NSException raise:EDMLParserException format:@"Syntax error; expected either `>' or a tag attribute/value. (Note that tag attribute values must be quoted if they contain anything other than alphanumeric characters.)"];
+                    [NSException raise:EDMLParserException format:@"Syntax error at pos. %d; expected either `>' or a tag attribute/value. (Note that tag attribute values must be quoted if they contain anything other than alphanumeric characters.)", (charp - source)];
                 tvalue = [NSString stringWithCharacters:start length:(charp - start)];
                 }
             token = [EDMLToken tokenWithType:EDMLPT_TSTRING];
