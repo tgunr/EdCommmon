@@ -22,16 +22,17 @@ CLASSES = EDIPSocket.m EDSocket.m EDStream.m EDTCPSocket.m\
           NSInvocation+Extensions.m NSObject+Extensions.m\
           NSProcessInfo+Extensions.m NSSet+Extensions.m\
           NSScanner+Extensions.m NSString+Extensions.m\
-          NSBundle+Extensions.m
+          NSBundle+Extensions.m EDStringWriter.m
 
-HFILES = EDIPSocket.h EDSocket.h EDStream.h EDUDPSocket.h\
-         EDTCPSocket.h functions.h deallocnotif.h CollectionMapping.h\
-         NSArray+Extensions.h NSAttributedString+Extensions.h\
-         NSData+Extensions.h NSDate+Extensions.h\
-         NSDictionary+Extensions.h NSFileHandle+Extensions.h\
-         NSHost+Extensions.h NSInvocation+Extensions.h\
-         NSObject+Extensions.h NSProcessInfo+Extensions.h\
-         NSSet+Extensions.h NSScanner+Extensions.h NSString+Extensions.h\
+HFILES = EDIPSocket.h EDSocket.h EDStream.h EDTextWriter.h\
+         EDStringWriter.h EDUDPSocket.h EDTCPSocket.h functions.h\
+         deallocnotif.h CollectionMapping.h NSArray+Extensions.h\
+         NSAttributedString+Extensions.h NSData+Extensions.h\
+         NSDate+Extensions.h NSDictionary+Extensions.h\
+         NSFileHandle+Extensions.h NSHost+Extensions.h\
+         NSInvocation+Extensions.h NSObject+Extensions.h\
+         NSProcessInfo+Extensions.h NSSet+Extensions.h\
+         NSScanner+Extensions.h NSString+Extensions.h\
          NSBundle+Extensions.h
 
 MFILES = functions.m deallocnotif.m deallocnotif-next.m
@@ -58,7 +59,8 @@ PUBLIC_HEADERS = NSArray+Extensions.h NSDate+Extensions.h\
                  NSInvocation+Extensions.h EDIPSocket.h EDSocket.h\
                  EDStream.h EDUDPSocket.h EDTCPSocket.h functions.h\
                  NSHost+Extensions.h NSFileHandle+Extensions.h\
-                 NSBundle+Extensions.h deallocnotif.h
+                 NSBundle+Extensions.h deallocnotif.h EDStringWriter.h\
+                 EDTextWriter.h
 
 PROJECT_HEADERS = CollectionMapping.h NSString+Extensions.h\
                   NSAttributedString+Extensions.h NSSet+Extensions.h\

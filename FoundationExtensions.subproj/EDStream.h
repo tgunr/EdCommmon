@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDStream.h created by erik
-//  @(#)$Id: EDStream.h,v 2.2 2003-05-26 20:16:14 erik Exp $
+//  @(#)$Id: EDStream.h,v 2.3 2003-07-01 08:24:15 znek Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -24,7 +24,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import "EDTextWriter.h"
+#include "EDTextWriter.h"
 
 struct _EDSFlags {
     unsigned int 	enforcesCanonicalLinebreaks:1;
