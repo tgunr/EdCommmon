@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSHost+Extensions.m created by erik on Fri 15-Oct-1999
-//  @(#)$Id: NSHost+Extensions.m,v 2.1 2003-04-08 16:51:35 znek Exp $
+//  @(#)$Id: NSHost+Extensions.m,v 2.2 2003-04-21 23:23:56 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,7 +19,6 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
 #include "osdep.h"
 #include "functions.h"
 #include "NSHost+Extensions.h"
