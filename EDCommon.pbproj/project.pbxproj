@@ -99,30 +99,6 @@
 			settings = {
 			};
 		};
-		03FDF57703DB5A5A00A8C007 = {
-			fileEncoding = 30;
-			indentWidth = 4;
-			isa = PBXFileReference;
-			path = EDRedBlackTree.h;
-			refType = 4;
-			usesTabs = 0;
-		};
-		03FDF57803DB5A8300A8C007 = {
-			fileEncoding = 30;
-			indentWidth = 4;
-			isa = PBXFileReference;
-			path = "EDRedBlackTree+Private.h";
-			refType = 4;
-			usesTabs = 0;
-		};
-		03FDF57903DB5AA600A8C007 = {
-			fileEncoding = 30;
-			indentWidth = 4;
-			isa = PBXFileReference;
-			path = EDRedBlackTree.m;
-			refType = 4;
-			usesTabs = 0;
-		};
 //030
 //031
 //032
@@ -422,7 +398,6 @@
 				1AA34CF70090839C7F000001,
 				1AA34CF80090839C7F000001,
 				1AA34CF90090839C7F000001,
-				03FDF57903DB5AA600A8C007,
 				1AA34CFA0090839C7F000001,
 				1AA34CFB0090839C7F000001,
 				1AA34CFC0090839C7F000001,
@@ -516,9 +491,7 @@
 				1AA34D050090839C7F000001,
 				1AA34D060090839C7F000001,
 				1AA34D070090839C7F000001,
-				03FDF57703DB5A5A00A8C007,
 				1AA34D080090839C7F000001,
-				03FDF57803DB5A8300A8C007,
 				1AA34D090090839C7F000001,
 				1AA34D0A0090839C7F000001,
 				1AA34D0B0090839C7F000001,
