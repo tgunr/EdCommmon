@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 1.3 2001-03-11 03:17:53 erik Exp $
+//  @(#)$Id: EDMLParser.m,v 1.4 2001-04-26 17:04:20 znek Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -312,6 +312,15 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
                 charp = nextchar(charp, YES);
                 start = charp;
                 while(*charp != '"')
+                    charp = nextchar(charp, YES);
+                tvalue = [NSString stringWithCharacters:start length:(charp - start)];
+                charp = nextchar(charp, YES);
+                }
+            else if(*charp == '\'')
+                {
+                charp = nextchar(charp, YES);
+                start = charp;
+                while(*charp != '\'')
                     charp = nextchar(charp, YES);
                 tvalue = [NSString stringWithCharacters:start length:(charp - start)];
                 charp = nextchar(charp, YES);
