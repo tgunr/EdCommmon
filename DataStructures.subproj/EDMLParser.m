@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 2.2 2002-09-01 19:26:42 erik Exp $
+//  @(#)$Id: EDMLParser.m,v 2.3 2002-09-09 23:57:40 znek Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -27,6 +27,7 @@
 #import "EDMLTagProcessorProtocol.h"
 #import "EDMLParser.h"
 
+#define EDML_MAX_ENTITY_LENGTH 50
 
 @interface EDMLParser(PrivateAPI)
 + (void)_initializeCharacterSets;
@@ -425,8 +426,9 @@ static __inline__ unichar *nextchar(unichar *charp, BOOL raiseOnEnd)
                 {
                 charp = nextchar(charp, YES);
                 start = charp;
-                while((*charp != ';') && ((charp - start) < 50))
+                while((*charp != ';') && ((charp - start) < EDML_MAX_ENTITY_LENGTH))
                     charp = nextchar(charp, YES);
+
                 if(*start == '#')
                     { // convert using unicode char code
                     if((*(start + 1) == 'x') || (*(start + 1) == 'X'))
@@ -439,9 +441,18 @@ static __inline__ unichar *nextchar(unichar *charp, BOOL raiseOnEnd)
                     { // convert using entity table
                     tvalue = [entityTable objectForKey:[NSString stringWithCharacters:start length:(charp - start)]];
                     }
+                else
+                    {
+                    tvalue = nil;
+                    }
+
                 charp = nextchar(charp, NO);
-                if(tvalue == nil) 
+                if(charp - start >= EDML_MAX_ENTITY_LENGTH)
                     [NSException raise:EDMLParserException format:@"Found invalid entity '%@' at pos %d.", [NSString stringWithCharacters:(start - 1) length:(charp - start + 1)], (start - source)];
+
+                if(tvalue == nil)
+                    tvalue = [NSString stringWithCharacters:(start - 1) length:(charp - start + 1)];
+
                 token = [EDMLToken tokenWithType:EDMLPT_STRING];
                 [token setValue:tvalue];
                 }
