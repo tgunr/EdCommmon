@@ -17,10 +17,10 @@ CLASSES = NSArray+Extensions.m NSAttributedString+Extensions.m\
           NSObject+Extensions.m NSScanner+Extensions.m\
           NSString+Extensions.m CollectionMapping.m
 
-HFILES = NSArray+Extensions.h NSDate+Extensions.h\
-         NSDictionary+Extensions.h NSObject+Extensions.h\
-         NSScanner+Extensions.h NSString+Extensions.h\
-         CollectionMapping.h NSAttributedString+Extensions.h
+HFILES = NSArray+Extensions.h NSAttributedString+Extensions.h\
+         NSDate+Extensions.h NSDictionary+Extensions.h\
+         NSObject+Extensions.h NSScanner+Extensions.h\
+         NSString+Extensions.h CollectionMapping.h
 
 OTHERSRCS = Makefile.preamble Makefile Makefile.postamble
 
@@ -29,7 +29,7 @@ MAKEFILEDIR = $(MAKEFILEPATH)/pb_makefiles
 CODE_GEN_STYLE = DYNAMIC
 MAKEFILE = subproj.make
 NEXTSTEP_INSTALLDIR = /Local/Library/Frameworks
-WINDOWS_INSTALLDIR = $NEXT_ROOT/Local/Library/Frameworks
+WINDOWS_INSTALLDIR = $(NEXT_ROOT)$(LOCAL_LIBRARY_DIR)/Frameworks
 LIBS = 
 DEBUG_LIBS = $(LIBS)
 PROF_LIBS = $(LIBS)

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDRedBlackTree.m created by erik on Sun 13-Sep-1998
-//  @(#)$Id: EDRedBlackTree.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDRedBlackTree.m,v 1.2 2000-07-31 20:38:13 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -707,6 +707,7 @@
 
     x =  [self _nodeWithRank:index + 1];
     [self _deleteNode:x];
+#warning ** should dealloc node, right?    
 }
 
 

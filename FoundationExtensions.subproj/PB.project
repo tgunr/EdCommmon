@@ -14,13 +14,13 @@
         FRAMEWORKSEARCH = (); 
         H_FILES = (
             "NSArray+Extensions.h", 
+            "NSAttributedString+Extensions.h", 
             "NSDate+Extensions.h", 
             "NSDictionary+Extensions.h", 
             "NSObject+Extensions.h", 
             "NSScanner+Extensions.h", 
             "NSString+Extensions.h", 
-            CollectionMapping.h, 
-            "NSAttributedString+Extensions.h"
+            CollectionMapping.h
         ); 
         OTHER_LINKED = (); 
         OTHER_SOURCES = (Makefile.preamble, Makefile, Makefile.postamble); 
