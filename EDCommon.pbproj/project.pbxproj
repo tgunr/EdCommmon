@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 34;
+	objectVersion = 38;
 	objects = {
 		00F9505A0093182B7F000001 = {
 			buildRules = (
@@ -83,7 +83,6 @@
 			projectDirPath = "";
 			targets = (
 				1AA34D480090839C7F000001,
-				6786B7DB02D1E0E000A8C007,
 			);
 		};
 		1AA34CC50090839C7F000001 = {
@@ -785,7 +784,6 @@
 		1AA34D460090839C7F000001 = {
 			children = (
 				1AA34D470090839C7F000001,
-				6786B7DC02D1E0E000A8C007,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -803,7 +801,7 @@
 				1AA34D770090839C7F000001,
 				1AA34DA10090839C7F000001,
 				1AA34DA40090839C7F000001,
-				6798738302DC810500A8C007,
+				675000C103114C9500A8C007,
 			);
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 30;
@@ -1324,8 +1322,6 @@
 			files = (
 				6798787102DDFFB200A8C007,
 				1AA34D760090839C7F000001,
-				6798737D02DC7DCD00A8C007,
-				6798737E02DC7DCD00A8C007,
 			);
 			isa = PBXResourcesBuildPhase;
 		};
@@ -1809,6 +1805,18 @@
 			path = "";
 			refType = 4;
 		};
+		675000C103114C9500A8C007 = {
+			buildActionMask = 8;
+			files = (
+			);
+			generatedFileNames = (
+			);
+			isa = PBXShellScriptBuildPhase;
+			neededFileNames = (
+			);
+			shellPath = /bin/sh;
+			shellScript = "AUTODOC=`which autodoc`\nDOC_DIR=$INSTALL_DIR/EDCommon.framework/Resources/English.lproj/Documentation/Reference/ObjC_classic\nif [ \"x$AUTODOC\" != \"x\" ]; then\n    SUBPROJECTS=`'ls' -f -d *.subproj .`\n    for projdir in $SUBPROJECTS; do\n        echo $AUTODOC -allclasses -typedirs -format html -destination $DOC_DIR -project $projdir -copyright \\\"Erik Doernenburg\\\"\n        $AUTODOC -allclasses -typedirs -format html -destination $DOC_DIR -project $projdir -copyright \"Erik Doernenburg\"\n    done    \nfi\necho cp ./EDCommonIntro.html $DOC_DIR/EDCommonIntro.html\ncp ./EDCommonIntro.html $DOC_DIR/EDCommonIntro.html\necho cp ./EDCommonTOC.html $DOC_DIR/EDCommonTOC.html\ncp ./EDCommonTOC.html $DOC_DIR/EDCommonTOC.html";
+		};
 		675AF6BA02DE26F800A8C007 = {
 			isa = PBXFileReference;
 			path = osdep.h;
@@ -1875,45 +1883,6 @@
 			settings = {
 			};
 		};
-		6786B7DB02D1E0E000A8C007 = {
-			buildPhases = (
-				6786B7DE02D1E0ED00A8C007,
-			);
-			buildSettings = {
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = Documentation;
-				REZ_EXECUTABLE = YES;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
-			};
-			dependencies = (
-			);
-			isa = PBXToolTarget;
-			name = Documentation;
-			productInstallPath = /usr/local/bin;
-			productName = Documentation;
-			productReference = 6786B7DC02D1E0E000A8C007;
-			shouldUseHeadermap = 0;
-		};
-		6786B7DC02D1E0E000A8C007 = {
-			isa = PBXExecutableFileReference;
-			path = Documentation;
-			refType = 3;
-		};
-		6786B7DE02D1E0ED00A8C007 = {
-			buildActionMask = 2147483647;
-			files = (
-			);
-			generatedFileNames = (
-			);
-			isa = PBXShellScriptBuildPhase;
-			neededFileNames = (
-			);
-			shellPath = /bin/sh;
-			shellScript = "autodoc -allclasses -typedirs -format html -destination Documentation -project ./AppKitExtensions.subproj -copyright \"Erik Doernenburg\"\nautodoc -allclasses -typedirs -format html -destination Documentation -project ./DataStructures.subproj -copyright \"Erik Doernenburg\"\nautodoc -allclasses -typedirs -format html -destination Documentation -project ./FoundationExtensions.subproj -copyright \"Erik Doernenburg\"\nautodoc -allclasses -typedirs -format html -destination Documentation -project ./Widgets.subproj -copyright \"Erik Doernenburg\"\nautodoc -allclasses -typedirs -format html -destination Documentation -project . -copyright \"Erik Doernenburg\"\ncp ./EDCommonIntro.html ./Documentation/EDCommonIntro.html\ncp ./EDCommonTOC.html Documentation/EDCommonTOC.html";
-		};
 		6795396202D4EE3400A8C007 = {
 			children = (
 				6795396302D4EE8A00A8C007,
@@ -1948,40 +1917,6 @@
 			isa = PBXFileReference;
 			path = EDCommonTOC.html;
 			refType = 4;
-		};
-		6798737D02DC7DCD00A8C007 = {
-			fileRef = 6798737B02DC7DCD00A8C007;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		6798737E02DC7DCD00A8C007 = {
-			fileRef = 6798737C02DC7DCD00A8C007;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		6798738302DC810500A8C007 = {
-			buildActionMask = 2147483647;
-			dstPath = English.lproj/Documentation/Reference/ObjC_classic;
-			dstSubfolderSpec = 7;
-			files = (
-				6798738402DC811200A8C007,
-				6798738502DC811200A8C007,
-			);
-			isa = PBXCopyFilesBuildPhase;
-		};
-		6798738402DC811200A8C007 = {
-			fileRef = 6798737B02DC7DCD00A8C007;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		6798738502DC811200A8C007 = {
-			fileRef = 6798737C02DC7DCD00A8C007;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		6798784602DDFC7E00A8C007 = {
 			isa = PBXFileReference;
