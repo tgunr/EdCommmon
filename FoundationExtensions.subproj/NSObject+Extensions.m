@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSObject+Extensions.m created by erik on Sun 06-Sep-1998
-//  @(#)$Id: NSObject+Extensions.m,v 2.2 2003-01-25 22:33:49 erik Exp $
+//  @(#)$Id: NSObject+Extensions.m,v 2.3 2003-02-10 21:23:15 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -22,12 +22,19 @@
 #import "NSObject+Extensions.h"
 #import "EDObjcRuntime.h"
 
+#ifndef GNU_RUNTIME /* NeXT RUNTIME */
+#import <objc/objc-class.h>
+#else
+#include <objc/objc.h>
+#endif
+#import "deallocnotif.h"
+
 
 //---------------------------------------------------------------------------------------
     @implementation NSObject(EDExtensions)
 //---------------------------------------------------------------------------------------
 
-/*" Various common extensions to #NSObject. "*/
+/*" Various extensions to #NSObject. "*/
 
 //---------------------------------------------------------------------------------------
 //	RUNTIME CONVENIENCES
@@ -237,6 +244,72 @@ Example: Assume you have an array !{a} which contains names and an object !{phon
 
     while((object = [enumerator nextObject]) != nil)
         EDObjcMsgSend1(self, selector, object);
+}
+
+
+//---------------------------------------------------------------------------------------
+//  DEALLOC NOTIFICATIONS
+//---------------------------------------------------------------------------------------
+
+/*" Registers %anObserver for deallocation events. Whenever an object of the receiving class or any of its subclasses is deallocated the observer's #{objectDeallocated:} method will be called. Note that multiple registrations will not result in multiple notifications and do not need to be balanced by the same number of de-registrations.
+
+  In #{objectDeallocated:} the receiver should not send messages to the object or otherwise depend on its state because the object will have been partially deallocated.
+"*/
+
++ (void)addDeallocObserver:(id <EDDeallocNotification>)anObserver
+{
+    EDEnsureDeallocHackIsInstalledForClass(self);
+    EDAddObserverForObject(anObserver, self);
+}
+
+
+/*" Registers %anObserver for the deallocation event of the receiving object. For performance reasons you should use this method sparingly as it requires additional bookeeping. Instead, use the class methods and check in your #{objectDeallocated:} implementation whether it was one of the objects you were interested in. (You will most likely know whether it was one of these objects, and your specialised test will, in general, be faster than the test used by this category.) "*/
+
+- (void)addDeallocObserver:(id <EDDeallocNotification>)anObserver
+{
+    EDEnsureDeallocHackIsInstalledForClass(isa);
+    EDAddObserverForObject(anObserver, self);
+}
+
+
+/*" Removes %anObserver for deallocation events of the receiving class and it's subclasses. Registrations for specific instances are not affected. "*/
+
++ (void)removeDeallocObserver:(id)anObserver
+{
+    EDRemoveObserverForObject(anObserver, self);
+}
+
+
+/*" Removes %anObserver for the deallocation event of the receiving object. Registrations for specific instances are not affected. "*/
+
+- (void)removeDeallocObserver:(id)anObserver
+{
+    EDRemoveObserverForObject(anObserver, self);
+}
+
+
+//---------------------------------------------------------------------------------------
+
+- (void)_edDeallocNotificationHack
+{
+    Class c;
+    void (*deallocImp)(id, SEL);
+
+    // note that this method is not neccesarily patched onto the class that
+    // self->isa points to. so we locate our real class first...
+    deallocImp = NULL; // keep compiler happy
+    for(c = self->isa; c != NULL; c = c->super_class)
+        {
+        if((deallocImp = NSMapGet(EDDeallocImpTable, c)) != NULL)
+            break;
+        }
+    NSAssert1(deallocImp != NULL, @"%@: Cannot find original dealloc", NSStringFromClass(isa));
+
+    // notify our observers
+    EDNotifyObservers(c, self);
+
+    // call the original implementation
+    deallocImp(self, @selector(dealloc));
 }
 
 

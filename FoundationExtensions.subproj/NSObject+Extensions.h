@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSObject+Extensions.h created by erik on Sun 06-Sep-1998
-//  @(#)$Id: NSObject+Extensions.h,v 2.2 2003-01-25 22:33:49 erik Exp $
+//  @(#)$Id: NSObject+Extensions.h,v 2.3 2003-02-10 21:23:15 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -25,6 +25,13 @@
 
 #import <Foundation/NSObject.h>
 
+/*" Protocol used by the Deallocation Notification mechanism. See #{addDeallocObserver:} and related methods in #NSObject Extensions for more information. "*/
+
+@protocol EDDeallocNotification
+- (void)objectDeallocated:(id)object;
+@end
+
+
 /*" Various common extensions to #NSObject. "*/
 
 @interface NSObject(EDExtensions)
@@ -43,6 +50,12 @@
 /*" Repeatedly performing a selector "*/
 - (void)performSelector:(SEL)selector withObjects:(NSArray *)objectList;
 - (void)performSelector:(SEL)selector withObjectsEnumeratedBy:(NSEnumerator *)enumerator;
+
+/*" Managing deallocation observers "*/
++ (void)addDeallocObserver:(id <EDDeallocNotification>)anObserver;
++ (void)removeDeallocObserver:(id)anObserver;
+- (void)addDeallocObserver:(id <EDDeallocNotification>)anObserver;
+- (void)removeDeallocObserver:(id)anObserver;
 
 @end
 

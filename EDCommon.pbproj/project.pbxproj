@@ -72,6 +72,48 @@
 //032
 //033
 //034
+		03C6862303F84B4900A8C007 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			path = "deallocnotif-gnu.m";
+			refType = 4;
+		};
+		03C6862403F84B4900A8C007 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			path = "deallocnotif-next.m";
+			refType = 4;
+		};
+		03C6862503F84B4900A8C007 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			path = deallocnotif.h;
+			refType = 4;
+		};
+		03C6862603F84B4900A8C007 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			path = deallocnotif.m;
+			refType = 4;
+		};
+		03C6862A03F84B4900A8C007 = {
+			fileRef = 03C6862403F84B4900A8C007;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		03C6862B03F84B4900A8C007 = {
+			fileRef = 03C6862503F84B4900A8C007;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		03C6862C03F84B4900A8C007 = {
+			fileRef = 03C6862603F84B4900A8C007;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		03FAC9CE03C74F2600A8C007 = {
 			fileEncoding = 4;
 			isa = PBXFileReference;
@@ -306,6 +348,7 @@
 				6798784A02DDFC7E00A8C007,
 				6798784802DDFC7E00A8C007,
 				6798787402DDFFC400A8C007,
+				03C6862503F84B4900A8C007,
 				1AA34CEB0090839C7F000001,
 			);
 			isa = PBXGroup;
@@ -1009,6 +1052,7 @@
 				6798785402DDFC7E00A8C007,
 				6798785502DDFC7E00A8C007,
 				6798787502DDFFC400A8C007,
+				03C6862B03F84B4900A8C007,
 				1AA34D560090839C7F000001,
 				1AA34D570090839C7F000001,
 				1AA34D580090839C7F000001,
@@ -1516,6 +1560,8 @@
 				6798787302DDFFBC00A8C007,
 				67613C7F02ECCC0F00A8C007,
 				03FAC9D103C74F2600A8C007,
+				03C6862A03F84B4900A8C007,
+				03C6862C03F84B4900A8C007,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2254,6 +2300,9 @@
 		6798786602DDFF4100A8C007 = {
 			children = (
 				6798787202DDFFBC00A8C007,
+				03C6862603F84B4900A8C007,
+				03C6862303F84B4900A8C007,
+				03C6862403F84B4900A8C007,
 			);
 			isa = PBXGroup;
 			name = "Other Sources";
