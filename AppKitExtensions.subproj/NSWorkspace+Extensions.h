@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSWorkspace+Extensions.h created by erik on Mon 19-Feb-2001
-//  $Id: NSWorkspace+Extensions.h,v 1.1 2001-03-11 03:04:45 erik Exp $
+//  $Id: NSWorkspace+Extensions.h,v 1.2 2001-03-11 21:54:59 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,7 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#import <AppKit/NSWorkspace.h>
+#import <AppKit/AppKit.h>
 
 
 @interface NSWorkspace(EDExtensions)
