@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDKeyValuePair.m created by erik on Sat 29-Aug-1998
-//  @(#)$Id: EDObjectPair.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDObjectPair.m,v 1.2 2001-11-04 12:45:05 znek Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -95,7 +95,7 @@
     unsigned int version;
 
     [super init];
-    version = [decoder versionForClassName:@"EDKeyValuePair"];
+    version = [decoder versionForClassName:@"EDObjectPair"];
     if(version > 0)
         {
         firstObject = [[decoder decodeObject] retain];
