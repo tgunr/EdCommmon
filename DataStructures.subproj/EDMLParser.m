@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 1.11 2001-08-25 16:19:47 erik Exp $
+//  @(#)$Id: EDMLParser.m,v 1.12 2002-02-01 09:01:45 erik Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -273,6 +273,7 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
         else if(*charp == '>')
             {
             [NSException raise:EDMLParserException format:@"Syntax Error at pos. %d; found stray `>'.", (charp - source)];
+            token = nil;  // keep compiler happy
             }
         else if(EDBitmapCharsetContainsCharacter(spaceCharset, *charp))
             {
@@ -310,6 +311,7 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
         if(*charp == '<')
             {
             [NSException raise:EDMLParserException format:@"Syntax Error at pos. %d; found `<' in a tag.", (charp - source)];
+            token = nil;  // keep compiler happy
             }
         else if(*charp == '>')
             {
@@ -359,6 +361,10 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
             token = [EDMLToken tokenWithType:EDMLPT_TSTRING];
             [token setValue:tvalue];
             }
+        break;
+    
+    default: // keep compiler happy
+        token = nil;  
         break;
         }
 
@@ -425,6 +431,16 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
             [self _reportClosingTagMismatch:SVAL(0)];
         element = (id <EDMarkupContainerElement>)[self _elementWithAttributeList:SVAL(2)];
         [element setContainedElements:SVAL(1)];
+        rToken = [EDMLToken tokenWithType:EDMLPT_ELEMENT];
+        [rToken setValue:element];
+        }
+    else if((mc = match(stack, 0, 0, 0, EDMLPT_OTAG, EDMLPT_CTAG)) > 0)
+        {
+        id <EDMarkupContainerElement> element;
+
+        if([[[SVAL(1) objectAtIndex:0] firstObject] isEqualToString:SVAL(0)] == NO)
+            [self _reportClosingTagMismatch:SVAL(0)];
+        element = (id <EDMarkupContainerElement>)[self _elementWithAttributeList:SVAL(1)];
         rToken = [EDMLToken tokenWithType:EDMLPT_ELEMENT];
         [rToken setValue:element];
         }
