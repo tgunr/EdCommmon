@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 2.9 2003-04-08 16:51:34 znek Exp $
+//  @(#)$Id: EDMLParser.m,v 2.10 2003-04-08 17:01:36 znek Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -88,11 +88,11 @@ Typically, a parser with a custom tag processor is used as follows: !{
     
     id <EDMLTagProcessor>	myTagProcessor; // assume this exists
     NSString				*myDocument;  // assume this exists
-    EDMLParser		*parser;
-    NSArray			*toplevelElements;
+    EDMLParser              *parser;
+    id                      documentObject;
 
     parser = [EDMLParser parserWithTagProcessor:myTagProcessor];
-    toplevelElements = [parser parseString:myDocument];
+    documentObject = [parser parseDocument:myDocument];
 }
 
 #EDAOMTagProcessor provides a convenience method to initialise a parser with the AOM processor as follows: (See the class description of EDAOMTagProcessor for an explanation of the "tag definitions" dictionary.) !{
@@ -100,13 +100,13 @@ Typically, a parser with a custom tag processor is used as follows: !{
     NSDictionary 	*myTagDefinitions; // assume this exists
     NSString		*myDocument;  // assume this exists
     EDMLParser		*parser;
-    NSArray			*toplevelElements;
+    id              documentObject;
 
     parser = [EDMLParser parserWithTagDefinitions:myTagDefinitions];
-    toplevelElements = [parser parseString:myDocument];
+    documentObject = [parser parseDocument:myDocument];
 }
 
-Note that there are convenience methods to parse XML. "*/
+If you just have a document fragment use parseString: instead. Note that there are convenience methods to parse XML. "*/
 
 
 NSString *EDMLParserException = @"EDMLParserException";
@@ -422,11 +422,127 @@ static __inline__ unichar *nextchar(unichar *charp, BOOL raiseOnEnd)
 }
 
 
+static NSString *readentity(unichar *charp, NSDictionary *entityTable, int *len)
+{
+    NSString 	*entity;
+    unichar		*start, c;
+
+    NSCAssert((*charp == '&'), @"readentity called with charp not pointing to an & char.");
+    charp = nextchar(charp, YES);
+    start = charp;
+    while((*charp != ';') && ((charp - start) < EDML_MAX_ENTITY_LENGTH))
+        charp = nextchar(charp, YES);
+
+    if(*start == '#')
+        { // convert using unicode char code
+        if((*(start + 1) == 'x') || (*(start + 1) == 'X'))
+            c = [[NSString stringWithCharacters:(start + 2) length:(charp - (start + 2))] intValueForHex];
+        else
+            c = [[NSString stringWithCharacters:(start + 1) length:(charp - (start + 1))] intValue];
+        entity = (c > 0) ? [NSString stringWithCharacters:&c length:1] : nil;
+        }
+    else if(entityTable != nil)
+        { // convert using entity table
+        entity = [entityTable objectForKey:[NSString stringWithCharacters:start length:(charp - start)]];
+        }
+    else
+        {
+        entity = nil;
+        }
+
+    charp = nextchar(charp, NO);
+    if(charp - start >= EDML_MAX_ENTITY_LENGTH)
+        [NSException raise:EDMLParserException format:@"Found invalid entity '%@'", [NSString stringWithCharacters:(start - 1) length:(charp - start + 1)]];
+
+    if(entity == nil)
+        entity = [NSString stringWithCharacters:(start - 1) length:(charp - start + 1)];
+
+    *len = (charp - start + 1);
+
+    return entity;
+}
+
+
+static NSString *readquotedstring(unichar *charp, NSDictionary *entityTable, int *len)
+{
+    NSMutableString	*string;
+    unichar			*start, *chunkstart, endchar;
+    int				entitylen;
+
+    endchar = *charp;
+    charp = nextchar(charp, YES);
+    start = chunkstart = charp;
+    string = nil;
+    while(*charp != endchar)
+        {
+        if(*charp == '&')
+            {
+            if(string == nil)
+                string = [NSMutableString stringWithCharacters:chunkstart length:(charp - chunkstart)];
+            else
+                [string appendString:[NSString stringWithCharacters:chunkstart length:(charp - chunkstart)]];
+            [string appendString:readentity(charp, entityTable, &entitylen)];
+            charp += entitylen;
+            chunkstart = charp;
+            }
+        else
+            {
+            charp = nextchar(charp, YES);
+            }
+        }
+    if(string == nil)
+        string = (id)[NSString stringWithCharacters:start length:(charp - chunkstart)];
+    else
+        [string appendString:[NSString stringWithCharacters:chunkstart length:(charp - chunkstart)]];
+    charp = nextchar(charp, NO);
+
+    *len = (charp - start + 1);
+
+    return string;
+}
+
+
+static NSString *readboundedstring(unichar *charp, unichar *endp, NSDictionary *entityTable)
+{
+    NSMutableString	*string;
+    unichar			*start, *chunkstart, endchar;
+    int				entitylen;
+
+    endchar = *charp;
+    start = chunkstart = charp;
+    string = nil;
+    while(charp < endp)
+    {
+        if(*charp == '&')
+        {
+            if(string == nil)
+                string = [NSMutableString stringWithCharacters:chunkstart length:(charp - chunkstart)];
+            else
+                [string appendString:[NSString stringWithCharacters:chunkstart length:(charp - chunkstart)]];
+            [string appendString:readentity(charp, entityTable, &entitylen)];
+            charp += entitylen;
+            chunkstart = charp;
+        }
+        else
+        {
+            charp = nextchar(charp, YES);
+        }
+    }
+    if(string == nil)
+        string = (id)[NSString stringWithCharacters:start length:(charp - chunkstart)];
+    else
+        [string appendString:[NSString stringWithCharacters:chunkstart length:(charp - chunkstart)]];
+
+    return string;
+}
+
+
 - (EDMLToken *)_nextToken
 {
     EDMLToken	*token;
     id			tvalue;
-    unichar		*start, c;
+    unichar		*start;
+    int			len;
 
     if(peekedToken != nil)
         {
@@ -469,35 +585,8 @@ static __inline__ unichar *nextchar(unichar *charp, BOOL raiseOnEnd)
                 }
             else if(*charp == '&')
                 {
-                charp = nextchar(charp, YES);
-                start = charp;
-                while((*charp != ';') && ((charp - start) < EDML_MAX_ENTITY_LENGTH))
-                    charp = nextchar(charp, YES);
-
-                if(*start == '#')
-                    { // convert using unicode char code
-                    if((*(start + 1) == 'x') || (*(start + 1) == 'X'))
-                        c = [[NSString stringWithCharacters:(start + 2) length:(charp - (start + 2))] intValueForHex];
-                    else
-                        c = [[NSString stringWithCharacters:(start + 1) length:(charp - (start + 1))] intValue];
-                    tvalue = (c > 0) ? [NSString stringWithCharacters:&c length:1] : nil;
-                    }
-                else if(entityTable != nil)
-                    { // convert using entity table
-                    tvalue = [entityTable objectForKey:[NSString stringWithCharacters:start length:(charp - start)]];
-                    }
-                else
-                    {
-                    tvalue = nil;
-                    }
-
-                charp = nextchar(charp, NO);
-                if(charp - start >= EDML_MAX_ENTITY_LENGTH)
-                    [NSException raise:EDMLParserException format:@"Found invalid entity '%@' at pos %d.", [NSString stringWithCharacters:(start - 1) length:(charp - start + 1)], (start - source)];
-
-                if(tvalue == nil)
-                    tvalue = [NSString stringWithCharacters:(start - 1) length:(charp - start + 1)];
-
+                tvalue = readentity(charp, entityTable, &len);
+                charp += len;
                 token = [EDMLToken tokenWithType:EDMLPT_STRING];
                 [token setValue:tvalue];
                 }
@@ -509,7 +598,7 @@ static __inline__ unichar *nextchar(unichar *charp, BOOL raiseOnEnd)
                 if(start == charp) // not at end and neither a text nor a switch char
                     [NSException raise:EDMLParserException format:@"Found invalid character \\u%x at pos %d.", (int)*charp, (charp - source)];
                 token = [EDMLToken tokenWithType:EDMLPT_STRING];
-                [token setValue:[NSString stringWithCharacters:start length:(charp - start)]];
+                [token setValue:readboundedstring(start, charp, entityTable)];
                 }
             break;
 
@@ -554,21 +643,13 @@ static __inline__ unichar *nextchar(unichar *charp, BOOL raiseOnEnd)
                 {
                 if(*charp == '"')
                     {
-                    charp = nextchar(charp, YES);
-                    start = charp;
-                    while(*charp != '"')
-                        charp = nextchar(charp, YES);
-                    tvalue = [NSString stringWithCharacters:start length:(charp - start)];
-                    charp = nextchar(charp, YES);
+                    tvalue = readquotedstring(charp, entityTable, &len);
+                    charp += len;
                     }
                 else if(*charp == '\'')
                     {
-                    charp = nextchar(charp, YES);
-                    start = charp;
-                    while(*charp != '\'')
-                        charp = nextchar(charp, YES);
-                    tvalue = [NSString stringWithCharacters:start length:(charp - start)];
-                    charp = nextchar(charp, YES);
+                    tvalue = readquotedstring(charp, entityTable, &len);
+                    charp += len;
                     }
                 else
                     {
