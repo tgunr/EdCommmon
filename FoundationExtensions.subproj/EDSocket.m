@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDSocket.m created by erik
-//  @(#)$Id: EDSocket.m,v 2.1 2003-04-08 16:51:35 znek Exp $
+//  @(#)$Id: EDSocket.m,v 2.2 2003-05-07 11:10:38 znek Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -150,9 +150,15 @@ Note that some socket related functionality is implemented in a category on NSFi
 - (void)setSocketOption:(int)anOption level:(int)aLevel timeValue:(NSTimeInterval)timeout
 {
     struct timeval _timeout;
-    
-    _timeout.tv_sec  = (int)timeout;
-    _timeout.tv_usec = (int) ((timeout - floor(timeout)) * (double)1000000);
+
+#ifndef __FreeBSD__
+#define T_TIMEVAL int
+#else
+#define T_TIMEVAL long
+#endif
+
+    _timeout.tv_sec  = (T_TIMEVAL)timeout;
+    _timeout.tv_usec = (T_TIMEVAL)((timeout - (T_TIMEVAL)timeout) * (NSTimeInterval)1000000);
 
     if(setsockopt(EDSOCKETHANDLE, aLevel, anOption, (struct timeval *)&_timeout, sizeof(_timeout)) == -1)
         [NSException raise:NSFileHandleOperationException format:@"Failed to set option %d on socket: %s", anOption, strerror(ED_ERRNO)];
