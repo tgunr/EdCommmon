@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCommon.h created by erik on Sat 05-Sep-1998
-//  @(#)$Id: EDCommon.h,v 1.5 2001-06-11 01:08:23 erik Exp $
+//  @(#)$Id: EDCommon.h,v 1.6 2001-08-12 23:54:02 znek Exp $
 //
 //  Copyright (c) 1998-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -26,6 +26,7 @@
 #import "NSAttributedString+Extensions.h"
 #import "NSData+Extensions.h"
 #import "NSDate+Extensions.h"
+#import "NSDictionary+Extensions.h"
 #import "NSInvocation+Extensions.h"
 #import "NSObject+Extensions.h"
 #import "NSProcessInfo+Extensions.h"
