@@ -43,7 +43,8 @@
             CollectionMapping.h, 
             "NSDictionary+Extensions.h", 
             "NSAttributedString+Extensions.h", 
-            "NSData+Extensions.h"
+            "NSData+Extensions.h", 
+            "NSProcessInfo+Extensions.h"
         ); 
         SUBPROJECTS = (); 
     }; 
