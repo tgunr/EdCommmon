@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSApplication+Extensions.m created by erik on Sat 09-Oct-1999
-//  @(#)$Id: NSApplication+Extensions.m,v 1.2 2001-03-11 03:04:45 erik Exp $
+//  @(#)$Id: NSApplication+Extensions.m,v 1.3 2002-07-02 16:25:26 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -34,6 +34,10 @@ NSLocalizedString(@"Failed to create a folder in your library folder.", "Error m
     @implementation NSApplication(EDExtensions)
 //---------------------------------------------------------------------------------------
 
+/*" Various useful extensions to #NSApplication. "*/
+
+/*" Looks for a file called "FactoryDefaults.plist" in the main bundle, assumes it is in property list format and registers its contents as user defaults. If the file is missing or in an unreadable format and exception is raised. "*/
+
 - (void)registerFactoryDefaults
 {
    NSString		*resourcePath;
@@ -52,11 +56,15 @@ NSLocalizedString(@"Failed to create a folder in your library folder.", "Error m
 }
 
 
+/*" Returns the name of the application. This does not come from an info file but directly from #NSProcessInfo. "*/
+
 - (NSString *)name
 {
    return [[NSProcessInfo processInfo] processName];
 }
 
+
+/*" Returns the name of the application's library directory. This can be overriden by the user default "LibraryDirectory" as the Windows implemention of the automatic routine can be less than useful. In any case, the library directory is also created if it did not exist before. "*/
 
 - (NSString *)libraryDirectory
 {
@@ -97,6 +105,8 @@ NSLocalizedString(@"Failed to create a folder in your library folder.", "Error m
 }
 
 
+/*" Returns the first menu item in %aMenu (or any of its submenus) that has the specified %action. "*/
+
 - (NSMenuItem *)menuItemWithAction:(SEL)action inMenu:(NSMenu *)aMenu
 {
    NSEnumerator	*itemEnum;
@@ -113,6 +123,8 @@ NSLocalizedString(@"Failed to create a folder in your library folder.", "Error m
    return item;
 }
 
+
+/*" Returns the first menu item in the application's main menu (or any of its submenus) that has the specified %action. "*/
 
 - (NSMenuItem *)menuItemWithAction:(SEL)action
 {

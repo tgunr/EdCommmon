@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSTableColumn+Extensions.m created by erik on Fri 10-Sep-1999
-//  @(#)$Id: NSTableColumn+Extensions.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: NSTableColumn+Extensions.m,v 1.2 2002-07-02 16:25:26 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -25,6 +25,11 @@
 //---------------------------------------------------------------------------------------
     @implementation NSTableColumn(EDExtensions)
 //---------------------------------------------------------------------------------------
+
+/*" Various useful extensions to #NSTableColumn. "*/
+
+
+/*" Returns the string value as it is displayed in row. "*/
 
 - (NSString *)stringValueAtRow:(int)row
 {

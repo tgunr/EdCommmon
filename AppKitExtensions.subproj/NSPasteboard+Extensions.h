@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSPasteboard+Extensions.h created by erik on Mon 28-Jun-1999
-//  @(#)$Id: NSPasteboard+Extensions.h,v 1.2 2002-04-14 14:57:54 znek Exp $
+//  @(#)$Id: NSPasteboard+Extensions.h,v 1.3 2002-07-02 16:25:26 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -25,13 +25,18 @@
 
 #import <AppKit/NSPasteboard.h>
 
+/*" Various useful extensions to #NSPasteboard. "*/
+
 @interface NSPasteboard(EDExtensions)
 
+/*" Typecheck "*/
 - (BOOL)containsType:(NSString *)type;
 
+/*" Handling objects "*/
 - (void)setObject:(id)object forType:(NSString *)pboardType;
 - (id)objectForType:(NSString *)pboardType;
 
+/*" Handling references "*/
 - (void)setObjectByReference:(id)object forType:(NSString *)pboardType;
 - (id)objectByReferenceForType:(NSString *)pboardType;
 

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSApplication+Extensions.h created by erik on Sat 09-Oct-1999
-//  @(#)$Id: NSApplication+Extensions.h,v 1.3 2002-04-14 14:57:54 znek Exp $
+//  @(#)$Id: NSApplication+Extensions.h,v 1.4 2002-07-02 16:25:26 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -25,6 +25,8 @@
 
 #import <AppKit/NSApplication.h>
 
+/*" Various useful extensions to #NSApplication. "*/
+
 @interface NSApplication(EDExtensions)
 
 - (void)registerFactoryDefaults;
@@ -32,6 +34,7 @@
 - (NSString *)name;
 - (NSString *)libraryDirectory;
 - (NSMenuItem *)menuItemWithAction:(SEL)action;
+- (NSMenuItem *)menuItemWithAction:(SEL)action inMenu:(NSMenu *)aMenu;
 
 @end
 

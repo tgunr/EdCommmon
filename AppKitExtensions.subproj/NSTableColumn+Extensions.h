@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSTableColumn+Extensions.h created by erik on Fri 10-Sep-1999
-//  @(#)$Id: NSTableColumn+Extensions.h,v 1.2 2002-04-14 14:57:54 znek Exp $
+//  @(#)$Id: NSTableColumn+Extensions.h,v 1.3 2002-07-02 16:25:26 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -25,6 +25,7 @@
 
 #import <AppKit/NSTableColumn.h>
 
+/*" Various useful extensions to #NSTableColumn. "*/
 
 @interface NSTableColumn(EDExtensions)
 

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSAttributedString+Extensions.m created by erik on Tue 05-Oct-1999
-//  @(#)$Id: NSAttributedString+AppKitExtensions.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: NSAttributedString+AppKitExtensions.m,v 1.2 2002-07-02 16:25:26 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -27,9 +27,13 @@
     @implementation NSAttributedString(EDAppKitExtensions)
 //=======================================================================================
 
+/*" Various common extensions to #NSAttributedString. "*/
+
 //---------------------------------------------------------------------------------------
 //	CLASS ATTRIBUTES
 //---------------------------------------------------------------------------------------
+
+/*" Returns a dark blue, 0.1 0.1 0.5 (calibrated). "*/
 
 + (NSColor *)defaultLinkColor
 {
@@ -46,15 +50,21 @@
     @implementation NSMutableAttributedString(EDAppKitExtensions)
 //=======================================================================================
 
+/*" Various common extensions to #NSMutableAttributedString. "*/
+
 //---------------------------------------------------------------------------------------
 //	APPENDING CONVENIENCE METHODS
 //---------------------------------------------------------------------------------------
+
+/*" Appends the string %aURL as a clickable, underlined URL in the default link color. "*/
 
 - (void)appendURL:(NSString *)aURL
 {
     [self appendURL:aURL linkColor:[[self class] defaultLinkColor]];
 }
 
+
+/*" Appends the string %aURL as a clickable, underlined URL in the link color specified. "*/
 
 - (void)appendURL:(NSString *)aURL linkColor:(NSColor *)linkColor
 {
@@ -69,6 +79,8 @@
         [self addAttribute:NSForegroundColorAttributeName value:linkColor range:urlRange];
 }
 
+
+/*" Appends the image represented by %data with the filename %name to the string. The image is displayed inline if possible. "*/
 
 - (void)appendImage:(NSData *)data name:(NSString *)name
 {
@@ -85,6 +97,8 @@
     [self appendAttributedString:attchString];
 }
 
+
+/*" Appends the attachments represented by %data with the filename %name to the string. "*/
 
 - (void)appendAttachment:(NSData *)data name:(NSString *)name
 {
@@ -109,17 +123,23 @@
 //	URLIFIER
 //---------------------------------------------------------------------------------------
 
+/*" Invokes #urlifyWithLinkColor with the default link color. "*/
+
 - (void)urlify
 {
     [self urlifyWithLinkColor:[[self class] defaultLinkColor] range:NSMakeRange(0, [self length])];
 }
 
 
+/*" Invokes #{urlifyWithLinkColor:range:} with a range covering the entire string. "*/
+
 - (void)urlifyWithLinkColor:(NSColor *)linkColor
 {
     [self urlifyWithLinkColor:linkColor range:NSMakeRange(0, [self length])];
 }
 
+
+/*" Searches the section of the reciever defined by %range for URLs. All those found are reformatted to be underlined and clickable and have the link color specified. Schemes recognized are http, ftp, mailto, gopher, news. "*/
 
 - (void)urlifyWithLinkColor:(NSColor *)linkColor range:(NSRange)range
 {

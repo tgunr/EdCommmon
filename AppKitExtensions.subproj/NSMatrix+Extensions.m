@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSMatrix+Extensions.m created by erik on Sat 04-Nov-2000
-//  $Id: NSMatrix+Extensions.m,v 1.1 2000-12-06 14:35:54 erik Exp $
+//  $Id: NSMatrix+Extensions.m,v 1.2 2002-07-02 16:25:26 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -23,8 +23,12 @@
 
 
 //---------------------------------------------------------------------------------------
-    @implementation NSMatrix(Extensions)
+    @implementation NSMatrix(EDExtensions)
 //---------------------------------------------------------------------------------------
+
+/*" Various common extensions to #NSMatrix. "*/
+
+/*" Selects the %cell if it is anywhere in the matrix. "*/
 
 - (void)selectCell:(NSCell *)cell
 {
@@ -42,6 +46,8 @@
 }
 
 
+/*" Selects the/a cell that has %object as the represented object. "*/
+
 - (void)selectCellForObject:(id)object
 {
     int	 	i, j, n, m;
@@ -49,8 +55,7 @@
     for(i = 0, n = [self numberOfColumns]; i < n; i++)
         for(j = 0, m = [self numberOfRows]; j < m; j++)
             {
-#warning * maybe this should be changed to isEqual:            
-            if([[self cellAtRow:j column:i] representedObject] == object)
+            if([[[self cellAtRow:j column:i] representedObject] isEqual:object])
                 {
                 [self selectCellAtRow:j column:i];
                 break;
@@ -58,6 +63,8 @@
             }
 }
 
+
+/*" Returns the/a cell that has %object as the represented object. "*/
 
 - (NSCell *)cellForObject:(id)object
 {
@@ -67,8 +74,7 @@
     cellEnum = [[self cells] objectEnumerator];
     while((cell = [cellEnum nextObject]) != nil)
         {
-#warning * maybe this should be changed to isEqual:            
-        if([cell representedObject] == object)
+        if([[cell representedObject] isEqual:object])
             break;
         }
 

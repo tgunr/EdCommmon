@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSPasteboard+Extensions.m created by erik on Mon 28-Jun-1999
-//  @(#)$Id: NSPasteboard+Extensions.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: NSPasteboard+Extensions.m,v 1.2 2002-07-02 16:25:26 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -26,17 +26,26 @@
     @implementation NSPasteboard(EDExtensions)
 //---------------------------------------------------------------------------------------
 
+/*" Various useful extensions to #NSPasteboard. "*/
+
+
+/*" Returns #YES if %type is one of the types available on the pasteboard. "*/
+
 - (BOOL)containsType:(NSString *)type
 {
     return [[self types] indexOfObject:type] != NSNotFound;
 }
 
 
+/*" Archives the %object using the standard #NSArchiver and stores it with the type specified. "*/
+
 - (void)setObject:(id)object forType:(NSString *)pboardType
 {
     [self setData:[NSArchiver archivedDataWithRootObject:object] forType:pboardType];
 }
 
+
+/*" Unarchives the object stored with the type specified using the standard #NSUnarchiver. This effectively copies the original object. "*/
 
 - (id)objectForType:(NSString *)pboardType
 {
@@ -45,11 +54,14 @@
 }
 
 
+/*" Saves a reference to the object on the pasteboard. This is in form of a pointer and, hence, can only be used in the same process space. Note also, that the object must be retained externally until its reference is removed from the pasteboard. "*/
+
 - (void)setObjectByReference:(id)object forType:(NSString *)pboardType
 {
     [self setData:[NSData dataWithBytes:&object length:sizeof(id)] forType:pboardType];
 }
 
+/*" Returns the object stored by reference on the pasteboard. This method can return invalid object references as it does not (and cannot) ensure the corresponding object has not been deallocated while the reference was on the pasteboard. "*/
 
 - (id)objectByReferenceForType:(NSString *)pboardType
 {

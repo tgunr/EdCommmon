@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSWindow+Extensions.h created by erik on Sun 11-Oct-1998
-//  @(#)$Id: NSWindow+Extensions.h,v 1.2 2002-04-14 14:57:54 znek Exp $
+//  @(#)$Id: NSWindow+Extensions.h,v 1.3 2002-07-02 16:25:26 erik Exp $
 //
 //  Copyright (c) 1998 by Erik Doernenburg. All rights reserved.
 //
@@ -24,6 +24,8 @@
 
 
 #import <AppKit/NSWindow.h>
+
+/*" Various useful extensions to #NSWindow. "*/
 
 @interface NSWindow(EDExtensions)
 

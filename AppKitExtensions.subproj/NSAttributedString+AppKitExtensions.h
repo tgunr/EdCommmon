@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSAttributedString+Extensions.h created by erik on Tue 05-Oct-1999
-//  @(#)$Id: NSAttributedString+AppKitExtensions.h,v 1.2 2002-04-14 14:57:54 znek Exp $
+//  @(#)$Id: NSAttributedString+AppKitExtensions.h,v 1.3 2002-07-02 16:25:26 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -23,6 +23,8 @@
 #define	__NSAttributedString_AppKitExtensions_h_INCLUDE
 
 
+/*" Various common extensions to #NSAttributedString. "*/
+
 @interface NSAttributedString(EDAppKitExtensions)
 
 + (NSColor *)defaultLinkColor;
@@ -30,13 +32,17 @@
 @end
 
 
+/*" Various common extensions to #NSMutableAttributedString. "*/
+
 @interface NSMutableAttributedString(EDAppKitExtensions)
 
+/*" Appending "special" objects "*/
 - (void)appendURL:(NSString *)aURL;
 - (void)appendURL:(NSString *)aURL linkColor:(NSColor *)linkColor;
 - (void)appendImage:(NSData *)data name:(NSString *)name;
 - (void)appendAttachment:(NSData *)data name:(NSString *)name;
 
+/*" Urlifier "*/
 - (void)urlify;
 - (void)urlifyWithLinkColor:(NSColor *)linkColor;
 - (void)urlifyWithLinkColor:(NSColor *)linkColor range:(NSRange)range;

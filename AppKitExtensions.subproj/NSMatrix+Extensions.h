@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSMatrix+Extensions.h created by erik on Sat 04-Nov-2000
-//  $Id: NSMatrix+Extensions.h,v 1.2 2002-04-14 14:57:54 znek Exp $
+//  $Id: NSMatrix+Extensions.h,v 1.3 2002-07-02 16:25:26 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -25,6 +25,7 @@
 
 #import <AppKit/NSMatrix.h>
 
+/*" Various common extensions to #NSMatrix. "*/
 
 @interface NSMatrix(EDExtensions)
 

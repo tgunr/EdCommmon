@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSTableView+Extensions.m created by erik on Sun 12-Sep-1999
-//  @(#)$Id: NSTableView+Extensions.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: NSTableView+Extensions.m,v 1.2 2002-07-02 16:25:26 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -25,6 +25,10 @@
 //---------------------------------------------------------------------------------------
     @implementation NSTableView(EDExtensions)
 //---------------------------------------------------------------------------------------
+
+/*" Various useful extensions to #NSTableView. "*/
+
+/*" Ensures that the row with %rowIndex is in the top-third of the tableview. Scrolls as little as possible. "*/
 
 - (void)scrollRowToTop:(int)rowIndex
 {

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSWorkspace+Extensions.m created by erik on Mon 19-Feb-2001
-//  $Id: NSWorkspace+Extensions.m,v 1.3 2002-04-14 14:57:55 znek Exp $
+//  $Id: NSWorkspace+Extensions.m,v 1.4 2002-07-02 16:25:26 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -26,7 +26,11 @@
     @implementation NSWorkspace(EDExtensions)
 //---------------------------------------------------------------------------------------
 
+/*" Various useful extensions to #NSWorkspace. "*/
+
 #if !defined(EDCOMMON_OSXBUILD) && !defined(GNUSTEP)
+
+/*" Tries to open the URL passed in with a standard application. Note that this implementation is obsolete and not compiled in on MAC OS X and GNUStep. "*/ 
 
 - (void)openURL:(NSString *)url
 {
@@ -44,6 +48,7 @@
 
 #endif
 
+/*" Tries to compose an email with the standard email client. This method does not work on old version of Mac OS X Server. "*/ 
 
 - (void)composeMailWithSubject:(NSString *)subject recipients:(NSString *)recipients body:(NSString *)body
 {
