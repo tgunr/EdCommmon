@@ -1,5 +1,5 @@
 # FoundationExtensions.subproj
-# $Id: GNUmakefile,v 1.2 2002-07-09 16:22:16 znek Exp $
+# $Id: GNUmakefile,v 1.3 2002-07-14 13:50:08 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -12,6 +12,10 @@ include $(GNUSTEP_MAKEFILES)/common.make
 SUBPROJECT_NAME = FoundationExtensions.subproj
 
 ADDITIONAL_INCLUDE_DIRS = -I..
+
+ifeq "$(GUI_LIB)" "nil"
+ADDITIONAL_OBJCFLAGS += -DEDCOMMON_WOBUILD
+endif
 
 
 FoundationExtensions.subproj_OBJC_FILES = \
