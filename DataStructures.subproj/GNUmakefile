@@ -1,5 +1,5 @@
 # DataStructures.subproj
-# $Id: GNUmakefile,v 2.4 2003-05-27 00:06:28 znek Exp $
+# $Id: GNUmakefile,v 2.5 2003-10-21 16:26:39 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -9,10 +9,6 @@ else
 include $(GNUSTEP_MAKEFILES)/common.make
 
 ADDITIONAL_INCLUDE_DIRS = -I.. -I../FoundationExtensions.subproj
-
-ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
-ADDITIONAL_OBJCFLAGS += -DGNU_RUNTIME
-endif
 
 
 SUBPROJECT_NAME = DataStructures.subproj
@@ -54,14 +50,13 @@ DataStructures.subproj_HAS_RESOURCE_BUNDLE = yes
 DataStructures.subproj_RESOURCE_FILES = XMLEntities.plist
 
 
--include Makefile.preamble
+include ../GNUstepBuild
+
 
 -include GNUmakefile.preamble
 
 include $(GNUSTEP_MAKEFILES)/subproject.make
 
 -include GNUmakefile.postamble
-
--include Makefile.postamble
 
 endif

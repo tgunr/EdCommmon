@@ -1,5 +1,5 @@
 # FoundationExtensions.subproj
-# $Id: GNUmakefile,v 2.3 2003-05-27 00:06:28 znek Exp $
+# $Id: GNUmakefile,v 2.4 2003-10-21 16:26:40 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -9,14 +9,6 @@ else
 include $(GNUSTEP_MAKEFILES)/common.make
 
 ADDITIONAL_INCLUDE_DIRS = -I.. -I../DataStructures.subproj
-
-ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
-ADDITIONAL_OBJCFLAGS += -DGNU_RUNTIME
-endif
-
-ifeq "$(GUI_LIB)" "nil"
-ADDITIONAL_OBJCFLAGS += -DEDCOMMON_WOBUILD
-endif
 
 
 SUBPROJECT_NAME = FoundationExtensions.subproj
@@ -64,14 +56,13 @@ FoundationExtensions.subproj_HAS_RESOURCE_BUNDLE = yes
 FoundationExtensions.subproj_RESOURCE_FILES = MIME.plist
 
 
--include Makefile.preamble
+include ../GNUstepBuild
+
 
 -include GNUmakefile.preamble
 
 include $(GNUSTEP_MAKEFILES)/subproject.make
 
 -include GNUmakefile.postamble
-
--include Makefile.postamble
 
 endif

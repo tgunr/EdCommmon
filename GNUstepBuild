@@ -1,0 +1,25 @@
+# EDGNUstepBuild
+# $Id: GNUstepBuild,v 2.1 2003-10-21 16:26:38 znek Exp $
+
+
+ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
+ADDITIONAL_OBJCFLAGS += -DGNU_RUNTIME
+endif
+
+ifeq "$(GUI_LIB)" "nil"
+ADDITIONAL_OBJCFLAGS += -DEDCOMMON_WOBUILD
+endif
+
+
+# Target specific section
+# EDCommon build global definitions that apply to specific targets 
+
+# Mac OS X 10.2
+ifeq "$(GNUSTEP_HOST_OS)" "darwin6"
+ADDITIONAL_OBJCFLAGS += -DMAC_OS_X_VERSION_10_2 -DEDCOMMON_OSXBUILD
+endif
+
+# Mac OS X 10.3
+ifeq "$(GNUSTEP_HOST_OS)" "darwin7"
+ADDITIONAL_OBJCFLAGS += -DMAC_OS_X_VERSION_10_3 -DEDCOMMON_OSXBUILD
+endif

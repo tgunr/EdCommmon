@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCommon.h created by erik on Sat 05-Sep-1998
-//  @(#)$Id: EDCommon.h,v 2.5 2003-05-26 19:56:11 erik Exp $
+//  @(#)$Id: EDCommon.h,v 2.6 2003-10-21 16:26:38 znek Exp $
 //
 //  Copyright (c) 1998-2003 by Erik Doernenburg. All rights reserved.
 //
@@ -23,6 +23,12 @@
 #define	__EDCommon_h_INCLUDE
 
 #ifdef MAC_OS_X_VERSION_10_2
+#ifndef EDCOMMON_OSXBUILD
+#define EDCOMMON_OSXBUILD
+#endif
+#endif
+
+#ifdef MAC_OS_X_VERSION_10_3
 #ifndef EDCOMMON_OSXBUILD
 #define EDCOMMON_OSXBUILD
 #endif
@@ -100,9 +106,6 @@
 #include "NSWorkspace+Extensions.h"
 #include "EDApplication.h"
 #include "EDKeyControlWindow.h"
-#ifdef EDCOMMON_OSXBUILD
-#include "EDToolbarDefinition.h"
-#endif // EDCOMMON_OSXBUILD
 #include "EDActivityIndicator.h"
 #include "EDCanvas.h"
 #include "EDObjectWell.h"

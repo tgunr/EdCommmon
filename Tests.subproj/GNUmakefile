@@ -3,7 +3,7 @@
 # NOTE: In order for this to run, you need the excellent OCUnit testing framework
 # from SEN:TE available at http://www.sente.ch/software/ocunit/
 #
-# $Id: GNUmakefile,v 1.2 2003-06-30 17:25:10 znek Exp $
+# $Id: GNUmakefile,v 1.3 2003-10-21 16:26:41 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -36,13 +36,9 @@ EDXMLDocumentTests.m            testmain.m \
 EDXMLElementTests.m
 
 
-EDCommonTests_OBJC_LIBS = -lEDCommon -lcrypt -lSenFoundation -lSenTestingKit
+EDCommonTests_OBJC_LIBS = -lEDCommon -lSenFoundation -lSenTestingKit
 ifneq "$(GUI_LIB)" "nil"
 EDCommonTests_OBJC_LIBS += -lgnustep-gui
-endif
-
-ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
-ADDITIONAL_OBJCFLAGS += -DGNU_RUNTIME
 endif
 
 
@@ -52,14 +48,13 @@ EDCommonTests_HAS_RESOURCE_BUNDLE = yes
 EDCommonTests_RESOURCE_FILES = Sample.xml SampleWithNamespaces.xml
 
 
--include Makefile.preamble
+include ../GNUstepBuild
+
 
 -include GNUmakefile.preamble
 
 include $(GNUSTEP_MAKEFILES)/tool.make
 
 -include GNUmakefile.postamble
-
--include Makefile.postamble
 
 endif

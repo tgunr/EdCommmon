@@ -1,7 +1,7 @@
 # EDCommon.framework
 # GNUmakefile
 #
-# $Id: GNUmakefile,v 2.1 2003-09-04 14:35:12 znek Exp $
+# $Id: GNUmakefile,v 2.2 2003-10-21 16:26:38 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -12,10 +12,6 @@ else
 GNUSTEP_INSTALLATION_DIR = $(GNUSTEP_LOCAL_ROOT)
 
 include $(GNUSTEP_MAKEFILES)/common.make
-
-ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
-ADDITIONAL_OBJCFLAGS += -DGNU_RUNTIME
-endif
 
 
 FRAMEWORK_NAME = EDCommon
@@ -33,9 +29,6 @@ framework.m \
 useful.m
 
 
-EDCommon_LIBRARIES_DEPEND_UPON += -lcrypt
-
-
 EDCommon_SUBPROJECTS = \
 FoundationExtensions.subproj \
 DataStructures.subproj
@@ -46,31 +39,37 @@ DataStructures.subproj
 
 ifneq "$(GUI_LIB)" "nil"
 EDCommon_SUBPROJECTS += AppKitExtensions.subproj Widgets.subproj
-else
-ADDITIONAL_OBJCFLAGS += -DEDCOMMON_WOBUILD
-endif
-
-ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
-ADDITIONAL_OBJCFLAGS += -DGNU_RUNTIME
 endif
 
 
--include Makefile.preamble
+include GNUstepBuild
+
+
+# Additional target specific settings
+
+# FreeBSD
+ifeq "$(GNUSTEP_HOST_OS)" "freebsd"
+EDCommon_LIBRARIES_DEPEND_UPON += -lcrypt
+endif
+
+
+
+include Version
 
 # This seems odd, but on Mach the dyld supports
 # major/compatibility, thus you just need a single number.
-# On UNIX things are different, hence we prefix our version
-# with a "1".
+# On UNIX things are different, hence we use the
+# CURRENT_PROJECT_VERSION as the MAJOR_VERSION.
 
-MAJOR_VERSION = 1
-MINOR_VERSION = $(CURRENT_PROJECT_VERSION)
+MAJOR_VERSION = $(CURRENT_PROJECT_VERSION)
+#MINOR_VERSION = 0
+#SUBMINOR_VERSION = 0
+
 
 -include GNUmakefile.preamble
 
 include $(GNUSTEP_MAKEFILES)/framework.make
 
 -include GNUmakefile.postamble
-
--include Makefile.postamble
 
 endif
