@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDActivityIndicator.m created by erik on Tue 10-Nov-1998
-//  @(#)$Id: EDActivityIndicator.m,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: EDActivityIndicator.m,v 1.2 2002-07-01 18:59:37 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -41,7 +41,7 @@ static float frameWidth;
     if(self != [EDActivityIndicator class])
         return;
 
-    [self setVersion:2];
+    [self setVersion:3];
 
     if((path = [[NSBundle bundleForClass:self] pathForResource:@"arrows" ofType:@"tiff"]) != nil)
         sharedImage = [[NSImage alloc] initWithContentsOfFile:path];
@@ -80,6 +80,8 @@ static float frameWidth;
     [super encodeWithCoder:encoder];
     [encoder encodeObject:bgColor];
     [encoder encodeValueOfObjCType:@encode(int) at:&flags];
+    [encoder encodeObject:target];
+    [encoder encodeValueOfObjCType:@encode(SEL) at:&action];
 }
 
 
@@ -108,6 +110,11 @@ static float frameWidth;
         bgColor = [[decoder decodeObject] copyWithZone:[self zone]];
         [decoder decodeValueOfObjCType:@encode(int) at:&flags];
         flags.frameRate = 20;
+        if(version >= 3)
+            {
+            target = [decoder decodeObject];
+            [decoder decodeValueOfObjCType:@encode(SEL) at:&action];
+            }
         }
 
     return self;
@@ -128,6 +135,28 @@ static float frameWidth;
 //---------------------------------------------------------------------------------------
 //	ACCESSOR METHODS
 //---------------------------------------------------------------------------------------
+
+- (void)setTarget:(id)aTarget
+{
+    target = aTarget;
+}
+
+- (id)target
+{
+    return target;
+}
+
+
+- (void)setAction:(SEL)aSelector
+{
+    action = aSelector;
+}
+    
+- (SEL)action
+{
+    return action;
+}
+
 
 - (void)setBackgroundColor:(NSColor *)aColor
 {
@@ -197,6 +226,17 @@ static float frameWidth;
     return flags.frameRate;
 }
 
+
+- (void)highlight:(BOOL)flag
+{
+    if(flag != flags.isHighlighted)
+        {
+        flags.isHighlighted = flag;
+        [self display];
+        }
+}
+
+
 //---------------------------------------------------------------------------------------
 // VIEW ATTRIBUTES
 //---------------------------------------------------------------------------------------
@@ -213,6 +253,8 @@ static float frameWidth;
 
 - (void)drawRect:(NSRect)rect
 {
+    NSRect	sourceFrame;
+    
     if(flags.drawsBackground == YES)
         {
         [bgColor set];
@@ -220,7 +262,55 @@ static float frameWidth;
         }
     if(flags.isHidden == NO)
         {
-        [sharedImage compositeToPoint:NSZeroPoint fromRect:NSMakeRect(xpos, 0, frameWidth, [sharedImage size].height) operation:NSCompositeSourceOver];
+        sourceFrame = NSMakeRect(xpos, 0, frameWidth, [sharedImage size].height);
+        if(flags.isHighlighted)
+            {
+            [sharedImage dissolveToPoint:NSMakePoint( 0, 1) fromRect:sourceFrame fraction:0.2];
+            [sharedImage dissolveToPoint:NSMakePoint( 1, 0) fromRect:sourceFrame fraction:0.2];
+            [sharedImage dissolveToPoint:NSMakePoint( 0,-1) fromRect:sourceFrame fraction:0.2];
+            [sharedImage dissolveToPoint:NSMakePoint(-1, 0) fromRect:sourceFrame fraction:0.2];
+            }
+        [sharedImage compositeToPoint:NSZeroPoint fromRect:sourceFrame operation:NSCompositeSourceOver];
+        }
+}
+
+
+//---------------------------------------------------------------------------------------
+//	EVENT HANDLING
+//---------------------------------------------------------------------------------------
+
+- (BOOL)acceptsFirstMouse:(NSEvent *)theEvent
+{
+    return YES;
+}
+
+
+- (void)mouseDown:(NSEvent *)theEvent
+{
+    BOOL isInside;
+
+    if(target == nil)
+        return;
+    
+    [self highlight:YES];
+    while([theEvent type] != NSLeftMouseUp)
+        {
+        theEvent = [[self window] nextEventMatchingMask: NSLeftMouseUpMask | NSLeftMouseDraggedMask];
+        isInside = [self mouse:[self convertPoint:[theEvent locationInWindow] fromView:nil] inRect:[self bounds]];
+
+        switch([theEvent type])
+            {
+        case NSLeftMouseDragged:
+            [self highlight:isInside];
+            break;
+        case NSLeftMouseUp:
+            if(isInside)
+                [target performSelector:action withObject:self];
+            [self highlight:NO];
+            break;
+        default:
+            break;
+            }
         }
 }
 

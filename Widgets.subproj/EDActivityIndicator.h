@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDActivityIndicator.h created by erik on Tue 10-Nov-1998
-//  @(#)$Id: EDActivityIndicator.h,v 1.2 2002-04-14 14:57:57 znek Exp $
+//  @(#)$Id: EDActivityIndicator.h,v 1.3 2002-07-01 18:59:37 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -34,9 +34,11 @@ struct EDAIFlags
     unsigned isHidden:1;
     unsigned wasHiddenOnStart:1;
     unsigned frameRate:8;
-    unsigned padding:20;
+    unsigned isHighlighted:1;
+    unsigned padding:19;
 #else
-    unsigned padding:20;
+    unsigned padding:19;
+    unsigned isHighlighted:1;
     unsigned frameRate:8;
     unsigned wasHiddenOnStart:1;
     unsigned isHidden:1;
@@ -51,11 +53,17 @@ struct EDAIFlags
 {
     struct EDAIFlags flags;
     NSColor			 *bgColor;
+    id				 target;
+    SEL				 action;
 
     float			 xpos;    
     NSTimer			 *animationTimer;
 }
 
+- (void)setTarget:(id)aTarget;
+- (id)target;
+- (void)setAction:(SEL)aSelector;
+- (SEL)action;
 - (void)setBackgroundColor:(NSColor *)aColor;
 - (NSColor *)backgroundColor;
 - (void)setDrawsBackground:(BOOL)flag;
@@ -66,6 +74,7 @@ struct EDAIFlags
 - (BOOL)isHidden;
 - (void)setFrameRate:(unsigned int)value;
 - (unsigned int)frameRate;
+- (void)highlight:(BOOL)flag;
 
 - (IBAction)step:(id)sender;
 - (IBAction)startAnimation:(id)sender;
