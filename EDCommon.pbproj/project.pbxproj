@@ -95,6 +95,7 @@
 				1AA34D140090839C7F000001,
 				1AA34D2F0090839C7F000001,
 				1AA34CC90090839C7F000001,
+				6798737A02DC7DA800A8C007,
 				1AA34D420090839C7F000001,
 				1AA34D460090839C7F000001,
 			);
@@ -315,7 +316,6 @@
 				1AA34CFA0090839C7F000001,
 				1AA34CFB0090839C7F000001,
 				1AA34CFC0090839C7F000001,
-				1AA34CFD0090839C7F000001,
 			);
 			isa = PBXGroup;
 			name = Classes;
@@ -380,7 +380,8 @@
 		};
 		1AA34CFD0090839C7F000001 = {
 			isa = PBXFileReference;
-			path = EDStringScanner.m;
+			name = EDStringScanner.m;
+			path = DataStructures.subproj/EDStringScanner.m;
 			refType = 4;
 		};
 		1AA34CFE0090839C7F000001 = {
@@ -396,7 +397,6 @@
 				1AA34D090090839C7F000001,
 				1AA34D0A0090839C7F000001,
 				1AA34D0B0090839C7F000001,
-				1AA34D0C0090839C7F000001,
 				1AA34D0D0090839C7F000001,
 			);
 			isa = PBXGroup;
@@ -472,7 +472,8 @@
 		};
 		1AA34D0C0090839C7F000001 = {
 			isa = PBXFileReference;
-			path = EDStringScanner.h;
+			name = EDStringScanner.h;
+			path = DataStructures.subproj/EDStringScanner.h;
 			refType = 4;
 		};
 		1AA34D0D0090839C7F000001 = {
@@ -782,6 +783,7 @@
 				1AA34D770090839C7F000001,
 				1AA34DA10090839C7F000001,
 				1AA34DA40090839C7F000001,
+				6798738302DC810500A8C007,
 			);
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 29;
@@ -1291,6 +1293,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AA34D760090839C7F000001,
+				6798737D02DC7DCD00A8C007,
+				6798737E02DC7DCD00A8C007,
 			);
 			isa = PBXResourcesBuildPhase;
 		};
@@ -1743,10 +1747,11 @@
 		};
 		674AF33902D4720100A8C007 = {
 			children = (
-				1AA34D020090839C7F000001,
-				1AA34D030090839C7F000001,
-				6798924902BF68EE00A8C007,
 				676FAAAD02B917CF00A8C007,
+				1AA34D020090839C7F000001,
+				6798924902BF68EE00A8C007,
+				1AA34D030090839C7F000001,
+				1AA34D0C0090839C7F000001,
 			);
 			isa = PBXGroup;
 			name = Headers;
@@ -1754,9 +1759,10 @@
 		};
 		674AF33A02D4720900A8C007 = {
 			children = (
+				676FAAAC02B917CF00A8C007,
 				1AA34CF40090839C7F000001,
 				1AA34CF50090839C7F000001,
-				676FAAAC02B917CF00A8C007,
+				1AA34CFD0090839C7F000001,
 			);
 			isa = PBXGroup;
 			name = Classes;
@@ -1827,7 +1833,7 @@
 			neededFileNames = (
 			);
 			shellPath = /bin/sh;
-			shellScript = "autodoc -combine -allclasses -typedirs -format html -destination Documentation -project . -copyright \"Erik Doernenburg\"";
+			shellScript = "autodoc -allclasses -typedirs -format html -destination Documentation -project ./AppKitExtensions.subproj -copyright \"Erik Doernenburg\"\nautodoc -allclasses -typedirs -format html -destination Documentation -project ./DataStructures.subproj -copyright \"Erik Doernenburg\"\nautodoc -allclasses -typedirs -format html -destination Documentation -project ./FoundationExtensions.subproj -copyright \"Erik Doernenburg\"\nautodoc -allclasses -typedirs -format html -destination Documentation -project ./Widgets.subproj -copyright \"Erik Doernenburg\"\nautodoc -allclasses -typedirs -format html -destination Documentation -project . -copyright \"Erik Doernenburg\"\ncp ./EDCommonIntro.html ./Documentation/EDCommonIntro.html\ncp ./EDCommonTOC.html Documentation/EDCommonTOC.html";
 		};
 		6795396202D4EE3400A8C007 = {
 			children = (
@@ -1843,6 +1849,60 @@
 			name = EDMLTagProcessorProtocol.mdoc;
 			path = DataStructures.subproj/EDMLTagProcessorProtocol.mdoc;
 			refType = 4;
+		};
+		6798737A02DC7DA800A8C007 = {
+			children = (
+				6798737B02DC7DCD00A8C007,
+				6798737C02DC7DCD00A8C007,
+			);
+			isa = PBXGroup;
+			name = "Additional Documentation";
+			path = "";
+			refType = 4;
+		};
+		6798737B02DC7DCD00A8C007 = {
+			isa = PBXFileReference;
+			path = EDCommonIntro.html;
+			refType = 4;
+		};
+		6798737C02DC7DCD00A8C007 = {
+			isa = PBXFileReference;
+			path = EDCommonTOC.html;
+			refType = 4;
+		};
+		6798737D02DC7DCD00A8C007 = {
+			fileRef = 6798737B02DC7DCD00A8C007;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		6798737E02DC7DCD00A8C007 = {
+			fileRef = 6798737C02DC7DCD00A8C007;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		6798738302DC810500A8C007 = {
+			buildActionMask = 2147483647;
+			dstPath = English.lproj/Documentation/Reference/ObjC_classic;
+			dstSubfolderSpec = 7;
+			files = (
+				6798738402DC811200A8C007,
+				6798738502DC811200A8C007,
+			);
+			isa = PBXCopyFilesBuildPhase;
+		};
+		6798738402DC811200A8C007 = {
+			fileRef = 6798737B02DC7DCD00A8C007;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		6798738502DC811200A8C007 = {
+			fileRef = 6798737C02DC7DCD00A8C007;
+			isa = PBXBuildFile;
+			settings = {
+			};
 		};
 		6798924902BF68EE00A8C007 = {
 			isa = PBXFileReference;
