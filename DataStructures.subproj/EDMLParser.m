@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 2.6 2003-01-03 16:08:59 znek Exp $
+//  @(#)$Id: EDMLParser.m,v 2.7 2003-01-04 17:00:30 erik Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -347,7 +347,7 @@ Note that this method automatically loads the standard XML entity table if no en
 
 /*" Parses, or tries to parse, the text contained in %aString. During the process methods from the #EDTagProcessorProtocol are sent to the current tag processor. #{parseString:} returns an array of all top-level elements found in the string as created by the tag processor. Exceptions are raised when syntax errors or mismatched container tags are encountered. (If the tag processor raises any exception, the parser shuts down properly, and re-raises it.) "*/
 
-- (id)parseString:(NSString *)aString
+- (NSArray *)parseString:(NSString *)aString
 {
     unsigned int 	length;
     id				result;
