@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSFileHandle+NetExt.m created by erik
-//  @(#)$Id: NSFileHandle+Extensions.m,v 2.0 2002-08-16 18:12:48 erik Exp $
+//  @(#)$Id: NSFileHandle+Extensions.m,v 2.1 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 1997,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,9 +19,9 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "osdep.h"
-#import "functions.h"
-#import "NSFileHandle+Extensions.h"
+#include "osdep.h"
+#include "functions.h"
+#include "NSFileHandle+Extensions.h"
 
 #ifdef WIN32
 #import <System/windows.h>  // move this to osdep.h?

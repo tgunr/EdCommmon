@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDIRCObject.m created by erik
-//  @(#)$Id: EDIRCObject.m,v 2.0 2002-08-16 18:12:45 erik Exp $
+//  @(#)$Id: EDIRCObject.m,v 2.1 2003-04-08 16:51:33 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -20,8 +20,8 @@
 
 #import <Foundation/Foundation.h>
 #import <Foundation/NSDebug.h>
-#import "EDLightWeightLock.h"
-#import "EDIRCObject.h"
+#include "EDLightWeightLock.h"
+#include "EDIRCObject.h"
 
 
 //---------------------------------------------------------------------------------------

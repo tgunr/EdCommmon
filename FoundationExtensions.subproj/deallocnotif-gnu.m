@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  deallocnotif-next.h created by erik on Mon Jul 15 2002
-//  @(#)$Id: deallocnotif-gnu.m,v 2.1 2003-02-10 21:23:15 erik Exp $
+//  @(#)$Id: deallocnotif-gnu.m,v 2.2 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -23,8 +23,8 @@
 #import <Foundation/Foundation.h>
 #include <objc/objc-api.h>
 #include <objc/objc.h>
-#import "NSObject+Extensions.h"
-#import "deallocnotif.h"
+#include "NSObject+Extensions.h"
+#include "deallocnotif.h"
 
 //#define DEBUG_PATCHING 1
 

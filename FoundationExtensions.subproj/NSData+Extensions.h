@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSData+Extensions.h created by erik on Mon 20-Nov-2000
-//  $Id: NSData+Extensions.h,v 2.1 2002-08-18 19:18:09 erik Exp $
+//  $Id: NSData+Extensions.h,v 2.2 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -23,7 +23,7 @@
 #define	__NSData_Extensions_h_INCLUDE
 
 
-#import "EDCommonDefines.h"
+#include "EDCommonDefines.h"
 
 /*" Various common extensions to #NSData. "*/
 

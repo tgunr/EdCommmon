@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSPasteboard+Extensions.m created by erik on Mon 28-Jun-1999
-//  @(#)$Id: NSPasteboard+Extensions.m,v 2.0 2002-08-16 18:12:44 erik Exp $
+//  @(#)$Id: NSPasteboard+Extensions.m,v 2.1 2003-04-08 16:51:32 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "NSPasteboard+Extensions.h"
+#include "NSPasteboard+Extensions.h"
 
 
 //---------------------------------------------------------------------------------------

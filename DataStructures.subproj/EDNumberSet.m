@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDNumberSet.m created by erik on Sun 04-Jul-1999
-//  @(#)$Id: EDNumberSet.m,v 2.1 2003-01-19 22:47:27 erik Exp $
+//  @(#)$Id: EDNumberSet.m,v 2.2 2003-04-08 16:51:34 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,10 +19,10 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "CollectionMapping.h"
-#import "EDSortedArray.h"
-#import "EDRange.h"
-#import "EDNumberSet.h"
+#include "CollectionMapping.h"
+#include "EDSortedArray.h"
+#include "EDRange.h"
+#include "EDNumberSet.h"
 
 #define RWL(LOC1, LOC2) [[[EDRange allocWithZone:[self zone]] initWithLocations:(LOC1):(LOC2)] autorelease]
 

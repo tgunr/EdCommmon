@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+printf.m created by erik on Sat 27-Sep-1997
-//  @(#)$Id: NSString+Extensions.m,v 2.0 2002-08-16 18:12:49 erik Exp $
+//  @(#)$Id: NSString+Extensions.m,v 2.1 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -25,8 +25,8 @@
 #import <CoreFoundation/CoreFoundation.h>
 #endif
 #import <Foundation/Foundation.h>
-#import "NSString+Extensions.h"
-#import "EDObjectPair.h"
+#include "NSString+Extensions.h"
+#include "EDObjectPair.h"
 
 #ifndef WIN32
 #import <unistd.h>

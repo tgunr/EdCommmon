@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  deallocnotif.h created by erik on Mon Jul 15 2002
-//  @(#)$Id: deallocnotif.h,v 2.1 2003-02-10 21:23:15 erik Exp $
+//  @(#)$Id: deallocnotif.h,v 2.2 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -18,7 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#import "EDCommonDefines.h"
+#include "EDCommonDefines.h"
 
 EDCOMMON_EXTERN void EDAddObserverForObject(id observer, id object);
 EDCOMMON_EXTERN void EDRemoveObserverForObject(id observer, id object);

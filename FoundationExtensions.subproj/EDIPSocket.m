@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDIPSocket.m created by erik
-//  @(#)$Id: EDIPSocket.m,v 2.1 2002-09-01 19:24:26 erik Exp $
+//  @(#)$Id: EDIPSocket.m,v 2.2 2003-04-08 16:51:34 znek Exp $
 //
 //  Copyright (c) 1997-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -19,10 +19,10 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "osdep.h"
-#import "functions.h"
-#import "NSFileHandle+Extensions.h"
-#import "EDIPSocket.h"
+#include "osdep.h"
+#include "functions.h"
+#include "NSFileHandle+Extensions.h"
+#include "EDIPSocket.h"
 
 @interface EDIPSocket(PrivateAPI)
 - (void)_connectToAddress:(NSString *)hostAddress port:(unsigned short)port hostDescription:(NSString *)hostDesc;

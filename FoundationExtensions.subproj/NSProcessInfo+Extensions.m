@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSProcessInfo+Extensions.m created by znek on Sat 23-Sep-2000
-//  $Id: NSProcessInfo+Extensions.m,v 2.0 2002-08-16 18:12:49 erik Exp $
+//  $Id: NSProcessInfo+Extensions.m,v 2.1 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "NSProcessInfo+Extensions.h"
+#include "NSProcessInfo+Extensions.h"
 
 #ifndef WIN32
 #	include <sys/types.h>

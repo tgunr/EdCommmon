@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCollectionMapping.h created by erik on Wed 17-Mar-1999
-//  @(#)$Id: CollectionMapping.h,v 2.0 2002-08-16 18:12:47 erik Exp $
+//  @(#)$Id: CollectionMapping.h,v 2.1 2003-04-08 16:51:34 znek Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -24,8 +24,8 @@
 
 // for compatibility only
 
-#import "NSArray+Extensions.h"
-#import "NSSet+Extensions.h"
-#import "NSObject+Extensions.h"
+#include "NSArray+Extensions.h"
+#include "NSSet+Extensions.h"
+#include "NSObject+Extensions.h"
 
 #endif	/* __CollectionMapping_h_INCLUDE */

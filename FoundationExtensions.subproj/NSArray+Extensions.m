@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.m created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.m,v 2.2 2003-01-25 22:33:49 erik Exp $
+//  @(#)$Id: NSArray+Extensions.m,v 2.3 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,9 +19,9 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "NSArray+Extensions.h"
-#import "NSObject+Extensions.h"
-#import "EDObjcRuntime.h"
+#include "NSArray+Extensions.h"
+#include "NSObject+Extensions.h"
+#include "EDObjcRuntime.h"
 
 #if (!defined(EDCOMMON_OSXBUILD) && !defined(GNUSTEP))
 #import <EOControl/EOKeyValueCoding.h>

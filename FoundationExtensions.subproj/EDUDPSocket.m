@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDUDPSocket.m created by erik
-//  @(#)$Id: EDUDPSocket.m,v 2.0 2002-08-16 18:12:48 erik Exp $
+//  @(#)$Id: EDUDPSocket.m,v 2.1 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,9 +19,9 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "osdep.h"
-#import "functions.h"
-#import "EDUDPSocket.h"
+#include "osdep.h"
+#include "functions.h"
+#include "EDUDPSocket.h"
 
 
 #ifdef WIN32

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDSwapView.m created by erik
-//  @(#)$Id: EDSwapView.m,v 2.0 2002-08-16 18:12:50 erik Exp $
+//  @(#)$Id: EDSwapView.m,v 2.1 2003-04-08 16:51:36 znek Exp $
 //
 //  Copyright (c) 1997-1998 by Erik Doernenburg. All rights reserved.
 //
@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <AppKit/AppKit.h>
-#import "EDSwapView.h"
+#include "EDSwapView.h"
 
 @interface EDSwapView(PrivateAPI)
 - (void)_setViewVar:(NSView **)viewVar toView:(NSView *)aView;

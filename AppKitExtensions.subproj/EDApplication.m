@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDApplication.m created by erik on Sun 19-Jul-1998
-//  @(#)$Id: EDApplication.m,v 2.1 2002-09-01 16:55:09 erik Exp $
+//  @(#)$Id: EDApplication.m,v 2.2 2003-04-08 16:51:31 znek Exp $
 //
 //  Copyright (c) 1998 by Erik Doernenburg. All rights reserved.
 //
@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <AppKit/AppKit.h>
-#import "NSApplication+Extensions.h"
-#import "EDApplication.h"
+#include "NSApplication+Extensions.h"
+#include "EDApplication.h"
 
 @interface EDApplication(PrivateAPI)
 + (void)reportException:(NSException *)theException;

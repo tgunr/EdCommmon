@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTVScrollView.m created by erik on Mon 28-Jun-1999
-//  @(#)$Id: EDTVScrollView.m,v 2.0 2002-08-16 18:12:50 erik Exp $
+//  @(#)$Id: EDTVScrollView.m,v 2.1 2003-04-08 16:51:36 znek Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <AppKit/AppKit.h>
-#import "EDTVScrollView.h"
+#include "EDTVScrollView.h"
 
 //---------------------------------------------------------------------------------------
     @implementation EDTVScrollView

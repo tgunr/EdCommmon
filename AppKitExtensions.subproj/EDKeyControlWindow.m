@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDKeyControlWindow.m created by erik on Sat 14-Aug-1999
-//  @(#)$Id: EDKeyControlWindow.m,v 2.0 2002-08-16 18:12:44 erik Exp $
+//  @(#)$Id: EDKeyControlWindow.m,v 2.1 2003-04-08 16:51:31 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,9 +19,9 @@
 //---------------------------------------------------------------------------------------
 
 #import <AppKit/AppKit.h>
-#import "EDCommonDefines.h"
-#import "NSApplication+Extensions.h"
-#import "EDKeyControlWindow.h"
+#include "EDCommonDefines.h"
+#include "NSApplication+Extensions.h"
+#include "EDKeyControlWindow.h"
 
 @interface EDKeyControlWindow(PrivateAPI)
 - (void)_adjustPromptFieldOrigin;

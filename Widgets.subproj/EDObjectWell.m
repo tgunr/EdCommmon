@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjectWell.m created by erik on Sun 11-Oct-1998
-//  @(#)$Id: EDObjectWell.m,v 2.0 2002-08-16 18:12:50 erik Exp $
+//  @(#)$Id: EDObjectWell.m,v 2.1 2003-04-08 16:51:36 znek Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <AppKit/AppKit.h>
-#import "EDObjectWell.h"
+#include "EDObjectWell.h"
 
 @interface EDObjectWell(PrivateAPI)
 - (void)_setDefaultValues;

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCanvas.m created by erik on Sat 31-Oct-1998
-//  @(#)$Id: EDCanvas.m,v 2.0 2002-08-16 18:12:50 erik Exp $
+//  @(#)$Id: EDCanvas.m,v 2.1 2003-04-08 16:51:36 znek Exp $
 //
 //  Copyright (c) 1998 by Erik Doernenburg. All rights reserved.
 //
@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <AppKit/AppKit.h>
-#import "EDCanvas.h"
+#include "EDCanvas.h"
 
 //---------------------------------------------------------------------------------------
     @implementation EDCanvas

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSObject+Extensions.m created by erik on Sun 06-Sep-1998
-//  @(#)$Id: NSObject+Extensions.m,v 2.3 2003-02-10 21:23:15 erik Exp $
+//  @(#)$Id: NSObject+Extensions.m,v 2.4 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,15 +19,15 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "NSObject+Extensions.h"
-#import "EDObjcRuntime.h"
+#include "NSObject+Extensions.h"
+#include "EDObjcRuntime.h"
 
 #ifndef GNU_RUNTIME /* NeXT RUNTIME */
 #import <objc/objc-class.h>
 #else
 #include <objc/objc.h>
 #endif
-#import "deallocnotif.h"
+#include "deallocnotif.h"
 
 
 //---------------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSData+Extensions.m created by erik on Mon 20-Nov-2000
-//  $Id: NSData+Extensions.m,v 2.1 2002-08-18 19:18:09 erik Exp $
+//  $Id: NSData+Extensions.m,v 2.2 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "osdep.h"
-#import "NSData+Extensions.h"
+#include "osdep.h"
+#include "NSData+Extensions.h"
 
 
 //---------------------------------------------------------------------------------------

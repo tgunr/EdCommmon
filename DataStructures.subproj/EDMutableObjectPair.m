@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMutableObjectPair.m created by erik on Tue Jul 23 2002
-//  @(#)$Id: EDMutableObjectPair.m,v 2.0 2002-08-16 18:12:46 erik Exp $
+//  @(#)$Id: EDMutableObjectPair.m,v 2.1 2003-04-08 16:51:34 znek Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "EDMutableObjectPair.h"
+#include "EDMutableObjectPair.h"
 
 
 //---------------------------------------------------------------------------------------

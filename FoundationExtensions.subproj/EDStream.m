@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDStream.m created by erik
-//  @(#)$Id: EDStream.m,v 2.0 2002-08-16 18:12:48 erik Exp $
+//  @(#)$Id: EDStream.m,v 2.1 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "EDTCPSocket.h"
-#import "EDStream.h"
+#include "EDTCPSocket.h"
+#include "EDStream.h"
 
 @interface EDStream(PrivateAPI)
 - (void)_writeRawData:(NSData *)data;

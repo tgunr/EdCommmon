@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 // EDBitmapCharset.m created by erik on Fri 08-Oct-1999 */
-//  @(#)$Id: EDBitmapCharset.m,v 2.0 2002-08-16 18:12:45 erik Exp $
+//  @(#)$Id: EDBitmapCharset.m,v 2.1 2003-04-08 16:51:33 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "EDBitmapCharset.h"
+#include "EDBitmapCharset.h"
 
 
 EDBitmapCharset *EDBitmapCharsetFromCharacterSet(NSCharacterSet *charset)

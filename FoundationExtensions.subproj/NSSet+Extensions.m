@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSSet+Extensions.m created by erik on Sat 10-Mar-2001
-//  $Id: NSSet+Extensions.m,v 2.0 2002-08-16 18:12:49 erik Exp $
+//  $Id: NSSet+Extensions.m,v 2.1 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "EDObjcRuntime.h"
-#import "NSSet+Extensions.h"
+#include "EDObjcRuntime.h"
+#include "NSSet+Extensions.h"
 
 
 //---------------------------------------------------------------------------------------

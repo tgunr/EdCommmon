@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSDate+Extensions.m created by erik on Sun 15-Aug-1999
-//  @(#)$Id: NSDate+Extensions.m,v 2.0 2002-08-16 18:12:48 erik Exp $
+//  @(#)$Id: NSDate+Extensions.m,v 2.1 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "NSDate+Extensions.h"
+#include "NSDate+Extensions.h"
 
 
 //---------------------------------------------------------------------------------------

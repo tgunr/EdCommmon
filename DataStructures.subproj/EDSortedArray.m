@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDSortedArray.m created by erik on Sun 13-Sep-1998
-//  @(#)$Id: EDSortedArray.m,v 2.1 2003-01-19 22:47:27 erik Exp $
+//  @(#)$Id: EDSortedArray.m,v 2.2 2003-04-08 16:51:34 znek Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "EDSortedArray.h"
-#import "EDSortedArray+Private.h"
+#include "EDSortedArray.h"
+#include "EDSortedArray+Private.h"
 
 #define RED 1
 #define BLACK 0

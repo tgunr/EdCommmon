@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDSocket.m created by erik
-//  @(#)$Id: EDSocket.m,v 2.0 2002-08-16 18:12:48 erik Exp $
+//  @(#)$Id: EDSocket.m,v 2.1 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,9 +19,9 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "NSObject+Extensions.h"
-#import "osdep.h"
-#import "EDSocket.h"
+#include "NSObject+Extensions.h"
+#include "osdep.h"
+#include "EDSocket.h"
 
 @interface EDSocket(PrivateAPI)
 - (void)_realHandleNotification:(NSNotification *)notification;

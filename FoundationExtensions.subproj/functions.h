@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  functions.h created by erik
-//  @(#)$Id: functions.h,v 2.0 2002-08-16 18:12:49 erik Exp $
+//  @(#)$Id: functions.h,v 2.1 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -22,7 +22,7 @@
 #ifndef	__functions_h_INCLUDE
 #define	__functions_h_INCLUDE
 
-#import "osdep.h"
+#include "osdep.h"
 
 /*" Takes an IP address in the POSIX structure and returns an #NSString with the address in the typical dotted number representation. "*/
 NSString *EDStringFromInAddr(struct in_addr address);

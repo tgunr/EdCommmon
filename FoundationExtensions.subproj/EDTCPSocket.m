@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTCPSocket.m created by erik
-//  @(#)$Id: EDTCPSocket.m,v 2.0 2002-08-16 18:12:48 erik Exp $
+//  @(#)$Id: EDTCPSocket.m,v 2.1 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 1997-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "osdep.h"
-#import "EDTCPSocket.h"
+#include "osdep.h"
+#include "EDTCPSocket.h"
 
 
 #ifdef WIN32

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDSparseClusterArray.m created by erik on Fri 28-May-1999
-//  @(#)$Id: EDSparseClusterArray.m,v 2.0 2002-08-16 18:12:46 erik Exp $
+//  @(#)$Id: EDSparseClusterArray.m,v 2.1 2003-04-08 16:51:34 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "EDSparseClusterArray.h"
+#include "EDSparseClusterArray.h"
 
 
 @interface EDSparseClusterArray(PrivateAPI)

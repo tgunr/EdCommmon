@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDAOMTagProcessor.h created by erik
-//  @(#)$Id: EDAOMTagProcessor.h,v 2.2 2003-01-19 22:47:27 erik Exp $
+//  @(#)$Id: EDAOMTagProcessor.h,v 2.3 2003-04-08 16:51:33 znek Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -23,7 +23,7 @@
 #define	__EDAOMTagProcessor_h_INCLUDE
 
 
-#import "EDMLTagProcessorProtocol.h"
+#include "EDMLTagProcessorProtocol.h"
 
 @class EDMLParser;
 

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  deallocnotif-next.h created by erik on Mon Jul 15 2002
-//  @(#)$Id: deallocnotif.m,v 2.1 2003-02-10 21:23:16 erik Exp $
+//  @(#)$Id: deallocnotif.m,v 2.2 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "EDObjcRuntime.h"
-#import "deallocnotif.h"
+#include "EDObjcRuntime.h"
+#include "deallocnotif.h"
 
 
 static void initializeTables();

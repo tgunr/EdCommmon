@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.h created by erik
-//  @(#)$Id: EDMLParser.h,v 2.2 2002-12-16 22:40:25 erik Exp $
+//  @(#)$Id: EDMLParser.h,v 2.3 2003-04-08 16:51:33 znek Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -23,8 +23,8 @@
 #define	__EDMLParser_h_INCLUDE
 
 
-#import "EDCommonDefines.h"
-#import "EDMLTagProcessorProtocol.h"
+#include "EDCommonDefines.h"
+#include "EDMLTagProcessorProtocol.h"
 
 
 @interface EDMLParser : NSObject

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDToolbarDefinition.h created by erik on Sat 06-Jun-2001
-//  @(#)$Id: EDToolbarDefinition.m,v 2.0 2002-08-16 18:12:44 erik Exp $
+//  @(#)$Id: EDToolbarDefinition.m,v 2.1 2003-04-08 16:51:31 znek Exp $
 //
 //  Copyright (c) 2001 by Erik Doernenburg. All rights reserved.
 //
@@ -21,8 +21,8 @@
 #ifdef EDCOMMON_OSXBUILD
 
 #import <AppKit/AppKit.h>
-#import "CollectionMapping.h"
-#import "EDToolbarDefinition.h"
+#include "CollectionMapping.h"
+#include "EDToolbarDefinition.h"
 
 
 //---------------------------------------------------------------------------------------

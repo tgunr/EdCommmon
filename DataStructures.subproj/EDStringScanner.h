@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDStringScanner.h created by erik on Mon 24-Apr-2000
-//  $Id: EDStringScanner.h,v 2.0 2002-08-16 18:12:46 erik Exp $
+//  $Id: EDStringScanner.h,v 2.1 2003-04-08 16:51:34 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -23,7 +23,7 @@
 #define	__EDStringScanner_h_INCLUDE
 
 
-#import "EDCommonDefines.h"
+#include "EDCommonDefines.h"
 
 @interface EDStringScanner : NSObject
 {

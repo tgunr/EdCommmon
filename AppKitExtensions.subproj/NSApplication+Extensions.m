@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSApplication+Extensions.m created by erik on Sat 09-Oct-1999
-//  @(#)$Id: NSApplication+Extensions.m,v 2.0 2002-08-16 18:12:44 erik Exp $
+//  @(#)$Id: NSApplication+Extensions.m,v 2.1 2003-04-08 16:51:32 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,8 +19,9 @@
 //---------------------------------------------------------------------------------------
 
 #import <AppKit/AppKit.h>
-#import "EDCommonDefines.h"
-#import "NSApplication+Extensions.h"
+#include "EDCommonDefines.h"
+#include "NSApplication+Extensions.h"
+#include "EDObjcRuntime.h"
 
 
 #define LS_CANNOT_CREATE_LIBRARY_FOLDER \
@@ -117,7 +118,7 @@ NSLocalizedString(@"Failed to create a folder in your library folder.", "Error m
        {
        if([item hasSubmenu])
            item = [self menuItemWithAction:action inMenu:[item submenu]];
-       if([item action] == action)
+       if(EDObjcSelectorsAreEqual([item action], action))
            break;
        }
    return item;

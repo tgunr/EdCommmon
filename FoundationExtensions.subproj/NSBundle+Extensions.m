@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSBundle+Extensions.m created by erik on Sat Jan 04 2003
-//  @(#)$Id: NSBundle+Extensions.m,v 1.3 2003-01-16 22:39:01 erik Exp $
+//  @(#)$Id: NSBundle+Extensions.m,v 1.4 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "NSBundle+Extensions.h"
-#import "NSArray+Extensions.h"
+#include "NSBundle+Extensions.h"
+#include "NSArray+Extensions.h"
 
 
 //---------------------------------------------------------------------------------------

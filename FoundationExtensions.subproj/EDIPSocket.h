@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDIPSocket.h created by erik
-//  @(#)$Id: EDIPSocket.h,v 2.0 2002-08-16 18:12:47 erik Exp $
+//  @(#)$Id: EDIPSocket.h,v 2.1 2003-04-08 16:51:34 znek Exp $
 //
 //  Copyright (c) 1997-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -23,8 +23,8 @@
 #define	__EDIPSocket_h_INCLUDE
 
 
-#import "EDCommonDefines.h"
-#import "EDSocket.h"
+#include "EDCommonDefines.h"
+#include "EDSocket.h"
 
 
 struct _EDIPSFlags {

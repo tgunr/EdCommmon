@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDLRUCache.m created by erik on Fri 29-Oct-1999
-//  @(#)$Id: EDLRUCache.m,v 2.0 2002-08-16 18:12:45 erik Exp $
+//  @(#)$Id: EDLRUCache.m,v 2.1 2003-04-08 16:51:33 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "NSDate+Extensions.h"
-#import "EDLRUCache.h"
+#include "NSDate+Extensions.h"
+#include "EDLRUCache.h"
 
 
 //---------------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDStringScanner.m created by erik on Mon 24-Apr-2000
-//  $Id: EDStringScanner.m,v 2.0 2002-08-16 18:12:46 erik Exp $
+//  $Id: EDStringScanner.m,v 2.1 2003-04-08 16:51:34 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "EDStringScanner.h"
+#include "EDStringScanner.h"
 
 @interface EDStringScanner(PrivateAPI)
 - (void)_getNextChunk;

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDBitmapCharset.h created by erik on Fri 08-Oct-1999
-//  @(#)$Id: EDBitmapCharset.h,v 2.0 2002-08-16 18:12:45 erik Exp $
+//  @(#)$Id: EDBitmapCharset.h,v 2.1 2003-04-08 16:51:33 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -23,7 +23,7 @@
 #define	__EDBitmapCharset_h_INCLUDE
 
 
-#import "EDCommonDefines.h"
+#include "EDCommonDefines.h"
 
 /*" The datastructure behind EDBitmapCharsets. Use these instead of NSCharacterSet objects when you need a lot of contains tests; and you want them to be as fast as possible. "*/
 

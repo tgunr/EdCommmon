@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCommon.h created by erik on Sat 05-Sep-1998
-//  @(#)$Id: EDCommon.h,v 2.3 2003-01-25 22:33:43 erik Exp $
+//  @(#)$Id: EDCommon.h,v 2.4 2003-04-08 16:51:31 znek Exp $
 //
 //  Copyright (c) 1998-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -30,71 +30,71 @@
 
 #import <Foundation/Foundation.h>
 
-#import "EDCommonDefines.h"
-#import "EDObjcRuntime.h"
+#include "EDCommonDefines.h"
+#include "EDObjcRuntime.h"
 
-#import "NSArray+Extensions.h"
-#import "NSAttributedString+Extensions.h"
-#import "NSData+Extensions.h"
-#import "NSDate+Extensions.h"
-#import "NSDictionary+Extensions.h"
-#import "NSFileHandle+Extensions.h"
-#import "NSHost+Extensions.h"
-#import "NSInvocation+Extensions.h"
-#import "NSObject+Extensions.h"
-#import "NSProcessInfo+Extensions.h"
-#import "NSScanner+Extensions.h"
-#import "NSSet+Extensions.h"
-#import "NSString+Extensions.h"
-#import "EDSocket.h"
-#import "EDIPSocket.h"
-#import "EDTCPSocket.h"
-#import "EDUDPSocket.h"
-#import "EDStream.h"
-//#import "functions.h"
+#include "NSArray+Extensions.h"
+#include "NSAttributedString+Extensions.h"
+#include "NSData+Extensions.h"
+#include "NSDate+Extensions.h"
+#include "NSDictionary+Extensions.h"
+#include "NSFileHandle+Extensions.h"
+#include "NSHost+Extensions.h"
+#include "NSInvocation+Extensions.h"
+#include "NSObject+Extensions.h"
+#include "NSProcessInfo+Extensions.h"
+#include "NSScanner+Extensions.h"
+#include "NSSet+Extensions.h"
+#include "NSString+Extensions.h"
+#include "EDSocket.h"
+#include "EDIPSocket.h"
+#include "EDTCPSocket.h"
+#include "EDUDPSocket.h"
+#include "EDStream.h"
+//#include "functions.h"
 
-#import "EDBitmapCharset.h"
-#import "EDIRCObject.h"
-#import "EDLightWeightLock.h"
-#import "EDLRUCache.h"
-#import "EDMutableObjectPair.h"
-#import "EDNumberSet.h"
-#import "EDObjectPair.h"
-#import "EDObjectReference.h"
-#import "EDRange.h"
-#import "EDSortedArray.h"
-#import "EDSparseClusterArray.h"
-#import "EDStack.h"
-#import "EDStringScanner.h"
+#include "EDBitmapCharset.h"
+#include "EDIRCObject.h"
+#include "EDLightWeightLock.h"
+#include "EDLRUCache.h"
+#include "EDMutableObjectPair.h"
+#include "EDNumberSet.h"
+#include "EDObjectPair.h"
+#include "EDObjectReference.h"
+#include "EDRange.h"
+#include "EDSortedArray.h"
+#include "EDSparseClusterArray.h"
+#include "EDStack.h"
+#include "EDStringScanner.h"
 
-#import "EDMLParser.h"
-#import "EDMLTagProcessorProtocol.h"
-#import "EDAOMTagProcessor.h"
+#include "EDMLParser.h"
+#include "EDMLTagProcessorProtocol.h"
+#include "EDAOMTagProcessor.h"
 
 
 #ifndef EDCOMMON_WOBUILD
 
 #import <AppKit/AppKit.h>
 
-#import "NSApplication+Extensions.h"
-#import "NSAttributedString+AppKitExtensions.h"
-#import "NSMatrix+Extensions.h"
-#import "NSPasteboard+Extensions.h"
-#import "NSTableColumn+Extensions.h"
-#import "NSTableView+Extensions.h"
-#import "NSWindow+Extensions.h"
-#import "NSWorkspace+Extensions.h"
-#import "EDApplication.h"
-#import "EDKeyControlWindow.h"
+#include "NSApplication+Extensions.h"
+#include "NSAttributedString+AppKitExtensions.h"
+#include "NSMatrix+Extensions.h"
+#include "NSPasteboard+Extensions.h"
+#include "NSTableColumn+Extensions.h"
+#include "NSTableView+Extensions.h"
+#include "NSWindow+Extensions.h"
+#include "NSWorkspace+Extensions.h"
+#include "EDApplication.h"
+#include "EDKeyControlWindow.h"
 #ifdef EDCOMMON_OSXBUILD
-#import "EDToolbarDefinition.h"
+#include "EDToolbarDefinition.h"
 #endif // EDCOMMON_OSXBUILD
-#import "EDActivityIndicator.h"
-#import "EDCanvas.h"
-#import "EDObjectWell.h"
-#import "EDTableView.h"
-#import "EDTVScrollView.h"
-#import "EDSwapView.h"
+#include "EDActivityIndicator.h"
+#include "EDCanvas.h"
+#include "EDObjectWell.h"
+#include "EDTableView.h"
+#include "EDTVScrollView.h"
+#include "EDSwapView.h"
 
 #endif // EDCOMMON_WOBUILD
 

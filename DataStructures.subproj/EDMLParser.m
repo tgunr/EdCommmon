@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 2.8 2003-02-17 19:18:26 erik Exp $
+//  @(#)$Id: EDMLParser.m,v 2.9 2003-04-08 16:51:34 znek Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -19,13 +19,13 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "NSArray+Extensions.h"
-#import "NSString+Extensions.h"
-#import "EDBitmapCharset.h"
-#import "EDObjectPair.h"
-#import "EDMLToken.h"
-#import "EDMLTagProcessorProtocol.h"
-#import "EDMLParser.h"
+#include "NSArray+Extensions.h"
+#include "NSString+Extensions.h"
+#include "EDBitmapCharset.h"
+#include "EDObjectPair.h"
+#include "EDMLToken.h"
+#include "EDMLTagProcessorProtocol.h"
+#include "EDMLParser.h"
 
 #define EDML_MAX_ENTITY_LENGTH 50
 

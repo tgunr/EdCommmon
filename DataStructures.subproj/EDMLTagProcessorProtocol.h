@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLTagProcessorProtocol.h created by erik
-//  @(#)$Id: EDMLTagProcessorProtocol.h,v 2.1 2002-12-16 22:40:25 erik Exp $
+//  @(#)$Id: EDMLTagProcessorProtocol.h,v 2.2 2003-04-08 16:51:34 znek Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -23,7 +23,7 @@
 #define	__EDMLTagProcessorProtocol_h_INCLUDE
 
 
-#import "EDCommonDefines.h"
+#include "EDCommonDefines.h"
 
 @class EDObjectPair;
 

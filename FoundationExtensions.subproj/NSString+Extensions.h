@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+printf.m created by erik on Sat 27-Sep-1997
-//  @(#)$Id: NSString+Extensions.h,v 2.0 2002-08-16 18:12:49 erik Exp $
+//  @(#)$Id: NSString+Extensions.h,v 2.1 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -24,7 +24,7 @@
 
 
 #import <Foundation/NSString.h>
-#import "EDCommonDefines.h"
+#include "EDCommonDefines.h"
 
 @class NSFileHandle, EDObjectPair;
 

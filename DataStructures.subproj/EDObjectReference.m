@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjectReference.m created by erik on Thu 13-Aug-1998
-//  @(#)$Id: EDObjectReference.m,v 2.0 2002-08-16 18:12:46 erik Exp $
+//  @(#)$Id: EDObjectReference.m,v 2.1 2003-04-08 16:51:34 znek Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "EDObjectReference.h"
+#include "EDObjectReference.h"
 
 
 //---------------------------------------------------------------------------------------

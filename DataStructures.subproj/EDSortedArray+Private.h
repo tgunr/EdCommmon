@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDSortedArray+Private.h created by erik on Tue 15-Sep-1998
-//  @(#)$Id: EDSortedArray+Private.h,v 2.1 2003-01-19 22:47:27 erik Exp $
+//  @(#)$Id: EDSortedArray+Private.h,v 2.2 2003-04-08 16:51:34 znek Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -23,7 +23,7 @@
 #define	__EDSortedArray_Private_h_INCLUDE
 
 
-#import "EDSortedArray.h"
+#include "EDSortedArray.h"
 
 
 /*" This structure is used to represent nodes. It's a struct and not an object because latter would use yet another 4 bytes for the isa pointer. "*/

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSDictionary+Extensions.m created by znek on Sun 02-Jan-2000
-//  @(#)$Id: NSDictionary+Extensions.m,v 2.0 2002-08-16 18:12:48 erik Exp $
+//  @(#)$Id: NSDictionary+Extensions.m,v 2.1 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "NSDictionary+Extensions.h"
+#include "NSDictionary+Extensions.h"
 
 //---------------------------------------------------------------------------------------
     @implementation NSDictionary(EDExtensions)

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTCPSocket.h created by erik
-//  @(#)$Id: EDTCPSocket.h,v 2.0 2002-08-16 18:12:48 erik Exp $
+//  @(#)$Id: EDTCPSocket.h,v 2.1 2003-04-08 16:51:35 znek Exp $
 //
 //  Copyright (c) 1997-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -23,7 +23,7 @@
 #define	__EDTCPSocket_h_INCLUDE
 
 
-#import "EDIPSocket.h"
+#include "EDIPSocket.h"
 
 
 @interface EDTCPSocket : EDIPSocket

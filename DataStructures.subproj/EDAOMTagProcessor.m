@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDAOMTagProcessor.m created by erik
-//  @(#)$Id: EDAOMTagProcessor.m,v 2.4 2003-01-19 22:47:27 erik Exp $
+//  @(#)$Id: EDAOMTagProcessor.m,v 2.5 2003-04-08 16:51:33 znek Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -19,11 +19,11 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "NSSet+Extensions.h"
-#import "EDCommonDefines.h"
-#import "EDObjectPair.h"
-#import "EDMLParser.h"
-#import "EDAOMTagProcessor.h"
+#include "NSSet+Extensions.h"
+#include "EDCommonDefines.h"
+#include "EDObjectPair.h"
+#include "EDMLParser.h"
+#include "EDAOMTagProcessor.h"
 
 
 //=======================================================================================

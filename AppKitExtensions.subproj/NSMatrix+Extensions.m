@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSMatrix+Extensions.m created by erik on Sat 04-Nov-2000
-//  $Id: NSMatrix+Extensions.m,v 2.0 2002-08-16 18:12:44 erik Exp $
+//  $Id: NSMatrix+Extensions.m,v 2.1 2003-04-08 16:51:32 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <AppKit/AppKit.h>
-#import "NSMatrix+Extensions.h"
+#include "NSMatrix+Extensions.h"
 
 
 //---------------------------------------------------------------------------------------
