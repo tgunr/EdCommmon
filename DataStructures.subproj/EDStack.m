@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDStack.m created by erik on Sat 19-Jul-1997
-//  @(#)$Id: EDStack.m,v 2.0 2002-08-16 18:12:46 erik Exp $
+//  @(#)$Id: EDStack.m,v 2.1 2002-10-24 15:58:39 erik Exp $
 //
 //  Copyright (c) 1997 by Erik Doernenburg. All rights reserved.
 //
@@ -92,8 +92,13 @@ This datastructure does not implement the copying and coding protocols as stacks
 
 - (id)popObject
 {
-    id object = [[[storage lastObject] retain] autorelease];
-    [storage removeLastObject];
+    id object;
+
+    if((object = [storage lastObject]) != nil)
+        {
+        [[object retain] autorelease];
+        [storage removeLastObject];
+        }
     return object;
 }
 
