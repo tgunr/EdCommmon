@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDRedBlackTree.m created by erik on Sun 13-Sep-1998
-//  @(#)$Id: EDRedBlackTree.m,v 2.0 2002-08-16 18:12:46 erik Exp $
+//  @(#)$Id: EDRedBlackTree.m,v 2.1 2002-08-28 20:41:32 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -35,7 +35,7 @@ This behaviour can be emulated, of course, using NSMutableArrays and (binary) se
 
 A final note: NSArrays are implemented extremely well and in collections with less than at least about 3000 objects performance gains are negligible; NSArray might even be faster! However, beyond a certain size the performance difference is more than noticeable. In the end, you might still want to use the trees unless you already have the binary search insert written somewhere else.
 
-This datastructure does not implement the copying and coding protocols as binary searc trees are usually required in the context of algorithms, rather than data storage.
+This datastructure does not implement the copying and coding protocols as binary search trees are usually required in the context of algorithms, rather than data storage.
 "*/
 
 

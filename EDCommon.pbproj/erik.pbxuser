@@ -13,20 +13,19 @@
 			6795395E02D4CA2100A8C007,
 		);
 		perUserDictionary = {
-			PBXPerProjectTemplateStateSaveDate = 51464609;
+			PBXPerProjectTemplateStateSaveDate = 52255747;
 			PBXWorkspaceContents = (
 				{
 					LeftSlideOut = {
 						Split0 = {
 							Split0 = {
 								NavContent0 = {
+									bookmark = 67EB2F7C031D5D1100A8C007;
 									history = (
-										6776EDFE02E493A700A8C007,
 										6776EE0002E493A700A8C007,
 										6776EE0102E493A700A8C007,
 										6776EE0202E493A700A8C007,
 										6776EE0302E493A700A8C007,
-										6776EE0402E493A700A8C007,
 										6776EE0502E493A700A8C007,
 										6776EE0602E493A700A8C007,
 										6776EE0702E493A700A8C007,
@@ -51,7 +50,6 @@
 										6776EE2602E493A700A8C007,
 										6776EE2802E493A700A8C007,
 										671F69AE02E49A2000A8C007,
-										6761716902E5D31B00A8C007,
 										6724424902EB4FBA00A8C007,
 										67613C8002ECCD4B00A8C007,
 										67613C8102ECCD4B00A8C007,
@@ -74,9 +72,19 @@
 										6750008F031079C400A8C007,
 										67500090031079C400A8C007,
 										67500091031079C400A8C007,
-										67500092031079C400A8C007,
 										67500093031079C400A8C007,
 										67500094031079C400A8C007,
+										67500503031156D400A8C007,
+										67500504031156D400A8C007,
+										67500505031156D400A8C007,
+										67500506031156D400A8C007,
+										67500507031156D400A8C007,
+										67500508031156D400A8C007,
+										6724BD4F03165F7C00A8C007,
+										67EB2F67031D5B3800A8C007,
+										67EB2F68031D5B3800A8C007,
+										67EB2F79031D5D1100A8C007,
+										67EB2F7A031D5D1100A8C007,
 									);
 									prevStack = (
 										67F5312802E2203000A8C007,
@@ -153,7 +161,6 @@
 										6776EE6B02E493A700A8C007,
 										6776EE6C02E493A700A8C007,
 										6776EE6D02E493A700A8C007,
-										6776EE6E02E493A700A8C007,
 										6776EE6F02E493A700A8C007,
 										6776EE7002E493A700A8C007,
 										6776EE7102E493A700A8C007,
@@ -312,11 +319,22 @@
 										6750FC53031065F400A8C007,
 										67500097031079C400A8C007,
 										67500098031079C400A8C007,
+										6750050B031156D400A8C007,
+										6750050C031156D400A8C007,
+										6750050D031156D400A8C007,
+										6750050E031156D400A8C007,
+										6750050F031156D400A8C007,
+										67500511031156D400A8C007,
+										67500512031156D400A8C007,
+										6724BD5103165F7C00A8C007,
+										67EB2F6A031D5B3800A8C007,
+										67EB2F6B031D5B3800A8C007,
+										67EB2F7B031D5D1100A8C007,
 									);
 								};
 								NavCount = 1;
 								NavGeometry0 = {
-									Frame = "{{0, 0}, {851, 584}}";
+									Frame = "{{0, 0}, {977, 825}}";
 									NavBarVisible = YES;
 								};
 							};
@@ -342,26 +360,22 @@
 						Tab1 = {
 							OptionsSetName = "Hierarchy, all classes";
 						};
-						Tab3 = {
-							SplitCount = 2;
-						};
-						TabCount = 6;
+						TabCount = 5;
 					};
 				},
 			);
 			PBXWorkspaceGeometries = (
 				{
-					ContentSize = "{1152, 863}";
+					ContentSize = "{1251, 872}";
 					LeftSlideOut = {
-						ActiveTab = 0;
+						ActiveTab = 4;
 						Collapsed = NO;
-						Frame = "{{0, 23}, {1152, 840}}";
+						Frame = "{{0, 23}, {1251, 849}}";
 						Split0 = {
-							ActiveTab = 2;
 							Collapsed = NO;
-							Frame = "{{301, 0}, {851, 840}}";
+							Frame = "{{274, 0}, {977, 849}}";
 							Split0 = {
-								Frame = "{{0, 256}, {851, 584}}";
+								Frame = "{{0, 24}, {977, 825}}";
 							};
 							SplitCount = 1;
 							Tab0 = {
@@ -407,9 +421,9 @@
 								};
 							};
 							Tab2 = {
-								BuildMessageFrame = "{{0, 0}, {853, 152}}";
-								BuildTranscriptFrame = "{{0, 161}, {853, 73}}";
-								Frame = "{{0, 0}, {851, 232}}";
+								BuildMessageFrame = "{{0, 0}, {952, 79}}";
+								BuildTranscriptFrame = "{{0, 88}, {952, 266}}";
+								Frame = "{{0, 0}, {950, 352}}";
 							};
 							Tab3 = {
 								Frame = "{{0, 0}, {868, 238}}";
@@ -419,14 +433,14 @@
 						};
 						SplitCount = 1;
 						Tab0 = {
-							Frame = "{{0, 0}, {277, 840}}";
+							Frame = "{{0, 0}, {277, 849}}";
 							GroupTreeTableConfiguration = (
-								SCMStatusColumn,
-								22,
 								MainColumn,
 								222,
 								TargetStatusColumn,
 								18,
+								SCMStatusColumn,
+								22,
 							);
 						};
 						Tab1 = {
@@ -450,55 +464,33 @@
 							Frame = "{{0, 0}, {217, 554}}";
 						};
 						Tab3 = {
-							Frame = "{{0, 0}, {239, 554}}";
-							Split0 = {
-								Frame = "{{0, 0}, {239, 268}}";
-								TargetTreeTableConfiguration = (
-									ActiveTarget,
-									16,
-									TargetName,
-									207,
-								);
-							};
-							Split1 = {
-								BuildStyleTreeTableConfiguration = (
-									IsActive,
-									16,
-									Name,
-									208,
-								);
-								Frame = "{{0, 277}, {239, 277}}";
-							};
-							SplitCount = 2;
+							Frame = "{{0, 0}, {239, 840}}";
+							TargetTableConfiguration = (
+								ActiveObject,
+								16,
+								ObjectNames,
+								206.296,
+							);
 						};
 						Tab4 = {
-							ExecutableTreeTableConfiguration = (
-								ActiveExecutable,
-								16,
-								ExecutableName,
-								217,
-							);
-							Frame = "{{0, 0}, {250, 554}}";
-						};
-						Tab5 = {
 							BreakpointsTreeTableConfiguration = (
 								breakpointColumn,
 								197,
 								enabledColumn,
 								31,
 							);
-							Frame = "{{0, 0}, {250, 554}}";
+							Frame = "{{0, 0}, {250, 849}}";
 						};
-						TabCount = 6;
+						TabCount = 5;
 						TabsVisible = YES;
 					};
 					StatusViewVisible = YES;
 					Template = 64ABBB4501FA494900185B06;
 					ToolbarVisible = YES;
-					WindowLocation = "{95, 197}";
+					WindowLocation = "{193, 197}";
 				},
 			);
-			PBXWorkspaceStateSaveDate = 51464609;
+			PBXWorkspaceStateSaveDate = 52255747;
 		};
 		perUserProjectItems = {
 			671F69AE02E49A2000A8C007 = 671F69AE02E49A2000A8C007;
@@ -511,6 +503,8 @@
 			6724424D02EB4FBA00A8C007 = 6724424D02EB4FBA00A8C007;
 			6724424E02EB4FBA00A8C007 = 6724424E02EB4FBA00A8C007;
 			6724426502EB531D00A8C007 = 6724426502EB531D00A8C007;
+			6724BD4F03165F7C00A8C007 = 6724BD4F03165F7C00A8C007;
+			6724BD5103165F7C00A8C007 = 6724BD5103165F7C00A8C007;
 			67381CA402F968D100A8C007 = 67381CA402F968D100A8C007;
 			67381CA602F968D100A8C007 = 67381CA602F968D100A8C007;
 			67381CA702F968D100A8C007 = 67381CA702F968D100A8C007;
@@ -527,11 +521,23 @@
 			6750008F031079C400A8C007 = 6750008F031079C400A8C007;
 			67500090031079C400A8C007 = 67500090031079C400A8C007;
 			67500091031079C400A8C007 = 67500091031079C400A8C007;
-			67500092031079C400A8C007 = 67500092031079C400A8C007;
 			67500093031079C400A8C007 = 67500093031079C400A8C007;
 			67500094031079C400A8C007 = 67500094031079C400A8C007;
 			67500097031079C400A8C007 = 67500097031079C400A8C007;
 			67500098031079C400A8C007 = 67500098031079C400A8C007;
+			67500503031156D400A8C007 = 67500503031156D400A8C007;
+			67500504031156D400A8C007 = 67500504031156D400A8C007;
+			67500505031156D400A8C007 = 67500505031156D400A8C007;
+			67500506031156D400A8C007 = 67500506031156D400A8C007;
+			67500507031156D400A8C007 = 67500507031156D400A8C007;
+			67500508031156D400A8C007 = 67500508031156D400A8C007;
+			6750050B031156D400A8C007 = 6750050B031156D400A8C007;
+			6750050C031156D400A8C007 = 6750050C031156D400A8C007;
+			6750050D031156D400A8C007 = 6750050D031156D400A8C007;
+			6750050E031156D400A8C007 = 6750050E031156D400A8C007;
+			6750050F031156D400A8C007 = 6750050F031156D400A8C007;
+			67500511031156D400A8C007 = 67500511031156D400A8C007;
+			67500512031156D400A8C007 = 67500512031156D400A8C007;
 			6750FC45031065F400A8C007 = 6750FC45031065F400A8C007;
 			6750FC46031065F400A8C007 = 6750FC46031065F400A8C007;
 			6750FC47031065F400A8C007 = 6750FC47031065F400A8C007;
@@ -569,18 +575,15 @@
 			67613C9A02ECCD4B00A8C007 = 67613C9A02ECCD4B00A8C007;
 			67613CB702ED8B6E00A8C007 = 67613CB702ED8B6E00A8C007;
 			67613CB802ED8B6E00A8C007 = 67613CB802ED8B6E00A8C007;
-			6761716902E5D31B00A8C007 = 6761716902E5D31B00A8C007;
 			6761716B02E5D31B00A8C007 = 6761716B02E5D31B00A8C007;
 			6776ED4502E3058700A8C007 = 6776ED4502E3058700A8C007;
 			6776ED6202E3182200A8C007 = 6776ED6202E3182200A8C007;
 			6776ED6302E3182200A8C007 = 6776ED6302E3182200A8C007;
 			6776ED6402E3182200A8C007 = 6776ED6402E3182200A8C007;
-			6776EDFE02E493A700A8C007 = 6776EDFE02E493A700A8C007;
 			6776EE0002E493A700A8C007 = 6776EE0002E493A700A8C007;
 			6776EE0102E493A700A8C007 = 6776EE0102E493A700A8C007;
 			6776EE0202E493A700A8C007 = 6776EE0202E493A700A8C007;
 			6776EE0302E493A700A8C007 = 6776EE0302E493A700A8C007;
-			6776EE0402E493A700A8C007 = 6776EE0402E493A700A8C007;
 			6776EE0502E493A700A8C007 = 6776EE0502E493A700A8C007;
 			6776EE0602E493A700A8C007 = 6776EE0602E493A700A8C007;
 			6776EE0702E493A700A8C007 = 6776EE0702E493A700A8C007;
@@ -672,7 +675,6 @@
 			6776EE6B02E493A700A8C007 = 6776EE6B02E493A700A8C007;
 			6776EE6C02E493A700A8C007 = 6776EE6C02E493A700A8C007;
 			6776EE6D02E493A700A8C007 = 6776EE6D02E493A700A8C007;
-			6776EE6E02E493A700A8C007 = 6776EE6E02E493A700A8C007;
 			6776EE6F02E493A700A8C007 = 6776EE6F02E493A700A8C007;
 			6776EE7002E493A700A8C007 = 6776EE7002E493A700A8C007;
 			6776EE7102E493A700A8C007 = 6776EE7102E493A700A8C007;
@@ -788,6 +790,14 @@
 			67BE338002F5FC8500A8C007 = 67BE338002F5FC8500A8C007;
 			67BE338102F5FC8500A8C007 = 67BE338102F5FC8500A8C007;
 			67BE338202F5FC8500A8C007 = 67BE338202F5FC8500A8C007;
+			67EB2F67031D5B3800A8C007 = 67EB2F67031D5B3800A8C007;
+			67EB2F68031D5B3800A8C007 = 67EB2F68031D5B3800A8C007;
+			67EB2F6A031D5B3800A8C007 = 67EB2F6A031D5B3800A8C007;
+			67EB2F6B031D5B3800A8C007 = 67EB2F6B031D5B3800A8C007;
+			67EB2F79031D5D1100A8C007 = 67EB2F79031D5D1100A8C007;
+			67EB2F7A031D5D1100A8C007 = 67EB2F7A031D5D1100A8C007;
+			67EB2F7B031D5D1100A8C007 = 67EB2F7B031D5D1100A8C007;
+			67EB2F7C031D5D1100A8C007 = 67EB2F7C031D5D1100A8C007;
 			67F5312802E2203000A8C007 = 67F5312802E2203000A8C007;
 			67F5312902E2203000A8C007 = 67F5312902E2203000A8C007;
 		};
@@ -898,6 +908,26 @@
 		rType = 0;
 		vrLen = 2127;
 		vrLoc = 0;
+	};
+	6724BD4F03165F7C00A8C007 = {
+		fRef = 1AA34D3A0090839C7F000001;
+		isa = PBXTextBookmark;
+		name = "EDObjectWell.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1327;
+		vrLoc = 1602;
+	};
+	6724BD5103165F7C00A8C007 = {
+		fRef = 1AA34D3A0090839C7F000001;
+		isa = PBXTextBookmark;
+		name = "EDObjectWell.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1327;
+		vrLoc = 1602;
 	};
 	67381CA402F968D100A8C007 = {
 		fRef = 1AA34CE60090839C7F000001;
@@ -1065,16 +1095,6 @@
 		vrLen = 1616;
 		vrLoc = 0;
 	};
-	67500092031079C400A8C007 = {
-		fRef = 1AA34CC70090839C7F000001;
-		isa = PBXTextBookmark;
-		name = "EDCommon.h: 55";
-		rLen = 0;
-		rLoc = 2090;
-		rType = 0;
-		vrLen = 971;
-		vrLoc = 1346;
-	};
 	67500093031079C400A8C007 = {
 		fRef = 6750009B031079C400A8C007;
 		isa = PBXTextBookmark;
@@ -1119,6 +1139,136 @@
 		isa = PBXFileReference;
 		name = EDSLTags.plist;
 		path = "/Users/erik/WorkArea/Source/ed (old)/EDStyleSheet/EDSLTags.plist";
+		refType = 0;
+	};
+	67500503031156D400A8C007 = {
+		fRef = 67500517031156D400A8C007;
+		isa = PBXBookmark;
+	};
+	67500504031156D400A8C007 = {
+		fRef = 67500518031156D400A8C007;
+		isa = PBXBookmark;
+	};
+	67500505031156D400A8C007 = {
+		fRef = 67500519031156D400A8C007;
+		isa = PBXBookmark;
+	};
+	67500506031156D400A8C007 = {
+		fRef = EE6AABC9025313F000C21B98;
+		isa = PBXTextBookmark;
+		name = "EDObjcRuntime.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 2300;
+		vrLoc = 0;
+	};
+	67500507031156D400A8C007 = {
+		fRef = 1AA34CC70090839C7F000001;
+		isa = PBXTextBookmark;
+		name = "EDCommon.h: 55";
+		rLen = 0;
+		rLoc = 2090;
+		rType = 0;
+		vrLen = 1185;
+		vrLoc = 1250;
+	};
+	67500508031156D400A8C007 = {
+		fRef = 6750051A031156D400A8C007;
+		isa = PBXBookmark;
+	};
+	6750050B031156D400A8C007 = {
+		fRef = 6750051B031156D400A8C007;
+		isa = PBXBookmark;
+	};
+	6750050C031156D400A8C007 = {
+		fRef = 6750051C031156D400A8C007;
+		isa = PBXBookmark;
+	};
+	6750050D031156D400A8C007 = {
+		fRef = 67500515031156D400A8C007;
+		isa = PBXBookmark;
+	};
+	6750050E031156D400A8C007 = {
+		fRef = 67500516031156D400A8C007;
+		isa = PBXBookmark;
+	};
+	6750050F031156D400A8C007 = {
+		fRef = 1AA34CC70090839C7F000001;
+		isa = PBXTextBookmark;
+		name = "EDCommon.h: 55";
+		rLen = 0;
+		rLoc = 2090;
+		rType = 0;
+		vrLen = 1185;
+		vrLoc = 1250;
+	};
+	67500511031156D400A8C007 = {
+		fRef = EE6AABC9025313F000C21B98;
+		isa = PBXTextBookmark;
+		name = "EDObjcRuntime.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 2300;
+		vrLoc = 0;
+	};
+	67500512031156D400A8C007 = {
+		fRef = 1AA34CC70090839C7F000001;
+		isa = PBXTextBookmark;
+		name = "EDCommon.h: 55";
+		rLen = 0;
+		rLoc = 2090;
+		rType = 0;
+		vrLen = 1185;
+		vrLoc = 1250;
+	};
+	67500515031156D400A8C007 = {
+		isa = PBXFileReference;
+		name = iSetting_Spe_BCDJCEJ.html;
+		path = /Developer/Documentation/DeveloperTools/ProjectBuilder/ProjectBuilder.help/Contents/Resources/English.lproj/Targets/iSetting_Spe_BCDJCEJ.html;
+		refType = 0;
+	};
+	67500516031156D400A8C007 = {
+		isa = PBXFileReference;
+		name = PBBuildSettings.html;
+		path = /Developer/Documentation/ReleaseNotes/PBBuildSettings.html;
+		refType = 0;
+	};
+	67500517031156D400A8C007 = {
+		isa = PBXFileReference;
+		name = index.html;
+		path = /Developer/Documentation/DeveloperTools/ProjectBuilder/ProjectBuilder.help/Contents/Resources/English.lproj/UsingHelp/index.html;
+		refType = 0;
+	};
+	67500518031156D400A8C007 = {
+		isa = PBXFileReference;
+		name = index.html;
+		path = /Developer/Documentation/DeveloperTools/ProjectBuilder/ProjectBuilder.help/Contents/Resources/English.lproj/Running/index.html;
+		refType = 0;
+	};
+	67500519031156D400A8C007 = {
+		isa = PBXFileReference;
+		name = iSetting_Spe_BCDJCEJ.html;
+		path = /Developer/Documentation/DeveloperTools/ProjectBuilder/ProjectBuilder.help/Contents/Resources/English.lproj/Targets/iSetting_Spe_BCDJCEJ.html;
+		refType = 0;
+	};
+	6750051A031156D400A8C007 = {
+		isa = PBXFileReference;
+		name = PBBuildSettings.html;
+		path = /Developer/Documentation/ReleaseNotes/PBBuildSettings.html;
+		refType = 0;
+	};
+	6750051B031156D400A8C007 = {
+		isa = PBXFileReference;
+		name = index.html;
+		path = /Developer/Documentation/DeveloperTools/ProjectBuilder/ProjectBuilder.help/Contents/Resources/English.lproj/UsingHelp/index.html;
+		refType = 0;
+	};
+	6750051C031156D400A8C007 = {
+		isa = PBXFileReference;
+		name = index.html;
+		path = /Developer/Documentation/DeveloperTools/ProjectBuilder/ProjectBuilder.help/Contents/Resources/English.lproj/Running/index.html;
 		refType = 0;
 	};
 	6750FC45031065F400A8C007 = {
@@ -1491,22 +1641,12 @@
 		vrLen = 1512;
 		vrLoc = 1276;
 	};
-	6761716902E5D31B00A8C007 = {
-		fRef = 675AF6BA02DE26F800A8C007;
-		isa = PBXTextBookmark;
-		name = "osdep.h: 208";
-		rLen = 0;
-		rLoc = 5668;
-		rType = 0;
-		vrLen = 786;
-		vrLoc = 5265;
-	};
 	6761716B02E5D31B00A8C007 = {
 		fRef = 675AF6BA02DE26F800A8C007;
 		isa = PBXTextBookmark;
 		name = "osdep.h: 208";
 		rLen = 0;
-		rLoc = 5668;
+		rLoc = 5725;
 		rType = 0;
 		vrLen = 786;
 		vrLoc = 5265;
@@ -1551,16 +1691,6 @@
 		vrLen = 2085;
 		vrLoc = 0;
 	};
-	6776EDFE02E493A700A8C007 = {
-		fRef = EE6AABC9025313F000C21B98;
-		isa = PBXTextBookmark;
-		name = "EDObjcRuntime.h: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 2205;
-		vrLoc = 0;
-	};
 	6776EE0002E493A700A8C007 = {
 		fRef = 1AA34D360090839C7F000001;
 		isa = PBXTextBookmark;
@@ -1587,10 +1717,6 @@
 	};
 	6776EE0302E493A700A8C007 = {
 		fRef = 6776EEE202E493A700A8C007;
-		isa = PBXBookmark;
-	};
-	6776EE0402E493A700A8C007 = {
-		fRef = 6776EEE602E493A700A8C007;
 		isa = PBXBookmark;
 	};
 	6776EE0502E493A700A8C007 = {
@@ -2483,10 +2609,6 @@
 	};
 	6776EE6D02E493A700A8C007 = {
 		fRef = 6776EEDE02E493A700A8C007;
-		isa = PBXBookmark;
-	};
-	6776EE6E02E493A700A8C007 = {
-		fRef = 6776EEDF02E493A700A8C007;
 		isa = PBXBookmark;
 	};
 	6776EE6F02E493A700A8C007 = {
@@ -3571,12 +3693,6 @@
 		path = /System/Library/Frameworks/Foundation.framework/Versions/C/Resources/English.lproj/Documentation/Reference/ObjC_classic/FoundationTOC.html;
 		refType = 0;
 	};
-	6776EEDF02E493A700A8C007 = {
-		isa = PBXFileReference;
-		name = FoundationTypesConstants.html;
-		path = /System/Library/Frameworks/Foundation.framework/Versions/C/Resources/English.lproj/Documentation/Reference/ObjC_classic/TypesAndConstants/FoundationTypesConstants.html;
-		refType = 0;
-	};
 	6776EEE002E493A700A8C007 = {
 		isa = PBXFileReference;
 		name = NSException.h;
@@ -3613,23 +3729,17 @@
 		path = /System/Library/Frameworks/Foundation.framework/Versions/C/Resources/English.lproj/Documentation/Reference/ObjC_classic/Classes/NSException.html;
 		refType = 0;
 	};
-	6776EEE602E493A700A8C007 = {
-		isa = PBXFileReference;
-		name = FoundationTypesConstants.html;
-		path = /System/Library/Frameworks/Foundation.framework/Versions/C/Resources/English.lproj/Documentation/Reference/ObjC_classic/TypesAndConstants/FoundationTypesConstants.html;
-		refType = 0;
-	};
 	6795395E02D4CA2100A8C007 = {
 		fileReference = 676FAAAD02B917CF00A8C007;
 		isa = PBXFileBreakpoint;
 		lineNumber = 95;
-		state = 1;
+		state = 2;
 	};
 	6798924B02BF9E6D00A8C007 = {
 		fileReference = 676FAAAC02B917CF00A8C007;
 		isa = PBXFileBreakpoint;
 		lineNumber = 236;
-		state = 1;
+		state = 2;
 	};
 	6798924C02C0A81D00A8C007 = {
 		fileReference = 1AA34CF40090839C7F000001;
@@ -3716,6 +3826,88 @@
 		rType = 0;
 		vrLen = 1404;
 		vrLoc = 1351;
+	};
+	67EB2F67031D5B3800A8C007 = {
+		fRef = 1AA34D330090839C7F000001;
+		isa = PBXTextBookmark;
+		name = "EDObjectWell.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1530;
+		vrLoc = 1258;
+	};
+	67EB2F68031D5B3800A8C007 = {
+		fRef = 1AA34CFA0090839C7F000001;
+		isa = PBXTextBookmark;
+		name = "EDRedBlackTree.m: 18";
+		rLen = 0;
+		rLoc = 1170;
+		rType = 0;
+		vrLen = 1480;
+		vrLoc = 0;
+	};
+	67EB2F6A031D5B3800A8C007 = {
+		fRef = 1AA34D330090839C7F000001;
+		isa = PBXTextBookmark;
+		name = "EDObjectWell.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1530;
+		vrLoc = 1258;
+	};
+	67EB2F6B031D5B3800A8C007 = {
+		fRef = 1AA34CFA0090839C7F000001;
+		isa = PBXTextBookmark;
+		name = "EDRedBlackTree.m: 18";
+		rLen = 0;
+		rLoc = 1170;
+		rType = 0;
+		vrLen = 1480;
+		vrLoc = 0;
+	};
+	67EB2F79031D5D1100A8C007 = {
+		fRef = 675AF6BA02DE26F800A8C007;
+		isa = PBXTextBookmark;
+		name = "osdep.h: 135";
+		rLen = 0;
+		rLoc = 4095;
+		rType = 0;
+		vrLen = 660;
+		vrLoc = 3707;
+	};
+	67EB2F7A031D5D1100A8C007 = {
+		isa = PBXTargetBookmark;
+		trg = 1AA34D480090839C7F000001;
+	};
+	67EB2F7B031D5D1100A8C007 = {
+		fRef = 675AF6BA02DE26F800A8C007;
+		isa = PBXTextBookmark;
+		name = "osdep.h: 135";
+		rLen = 0;
+		rLoc = 4095;
+		rType = 0;
+		vrLen = 660;
+		vrLoc = 3707;
+	};
+	67EB2F7C031D5D1100A8C007 = {
+		isa = PBXTargetBookmark;
+		trg = 1AA34D480090839C7F000001;
+		uiCtxt = {
+			TOCViewDetailVisibleRect = "{{0, 0}, {671, 287}}";
+			TOCViewExpandedItems = (
+				"com.apple.target-editor-pane.settings",
+				"com.apple.target-editor-pane.settings.simple",
+				"com.apple.target-editor-pane.info-plist",
+				"com.apple.target-editor-pane.info-plist.simple",
+				"com.apple.target-editor-pane.buildphases",
+			);
+			TOCViewMasterVisibleRect = "{{0, 0}, {267, 771}}";
+			TOCViewSelectedItems = (
+				PBXTargetLdLinkerSettingsModule,
+			);
+		};
 	};
 	67F5312802E2203000A8C007 = {
 		fRef = 6798737B02DC7DCD00A8C007;

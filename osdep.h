@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  osdep.h created by erik on Wed 28-Jan-1998
-//  @(#)$Id: osdep.h,v 2.0 2002-08-16 18:12:43 erik Exp $
+//  @(#)$Id: osdep.h,v 2.1 2002-08-28 20:41:32 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -132,7 +132,8 @@ extern int gethostname(char *name, int namelen);
 
 #import <stddef.h>
 #import <netinet/in.h>
-#import <netinet/ip_compat.h>
+#warning ** excluded header for Jaguar, must test Puma
+//#import <netinet/ip_compat.h>
 #import <sys/socket.h>
 #import <sys/ioctl.h>
 #import <sys/types.h>
