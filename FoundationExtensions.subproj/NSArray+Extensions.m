@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.m created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.m,v 1.7 2002-07-02 15:05:32 erik Exp $
+//  @(#)$Id: NSArray+Extensions.m,v 1.8 2002-07-09 15:53:52 erik Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -58,7 +58,7 @@ static NSComparisonResult compareAttributes(id object1, id object2, void *contex
 
 //---------------------------------------------------------------------------------------
 
-/*" Return the object at index 0 or %nil if the array is empty. #Note: The method #firstObject is also implemented in the HTML framework which is sometimes loaded in AppKit applications. Unfortunately, its implemenation differs in that it raises an exception if the array is empty. (Don't ask why they did that!) So, you either live with this or call #applyFirstObjectPatch before the HTML framework is loaded. "*/
+/*" Return the object at index 0 or !{nil} if the array is empty. #Note: The method #firstObject is also implemented in the HTML framework which is sometimes loaded in AppKit applications. Unfortunately, its implemenation differs in that it raises an exception if the array is empty. (Don't ask why they did that!) So, you either live with this or call #applyFirstObjectPatch before the HTML framework is loaded. "*/
 
 - (id)firstObject
 {
@@ -98,7 +98,7 @@ static EDObjcMethodInfo myFirstObjectMethod;
 
 //---------------------------------------------------------------------------------------
 
-/*" Returns a new array with the same objects as the receiver but rearranged randomly. "*/
+/*" Returns a new array that is a copy of the receiver with the objects rearranged randomly. "*/
 
 - (NSArray *)shuffledArray
 {
@@ -108,7 +108,7 @@ static EDObjcMethodInfo myFirstObjectMethod;
 }
 
 
-/*" Returns a new array with the objects sorted objects according to their compare: method "*/
+/*" Returns a new array that is a copy of the receiver with the objects sorted objects according to their compare: method "*/
 
 - (NSArray *)sortedArray
 {
@@ -116,7 +116,7 @@ static EDObjcMethodInfo myFirstObjectMethod;
 }
 
 
-/*" Returns a new array with the objects sorted objects according to the values of their attribute %{attributeName}. These are retrieved using key/value coding. "*/
+/*" Returns a new array that is a copy of the receiver with the objects sorted according to the values of their attribute %{attributeName}. These are retrieved using key/value coding. "*/
 
 - (NSArray *)sortedArrayByComparingAttribute:(NSString *)attributeName
 {
@@ -124,9 +124,78 @@ static EDObjcMethodInfo myFirstObjectMethod;
 }
 
 
+/*" If the receiver contains instances of #NSArray the objects from the embedded array are transferred to the receiver and the embedded array is deleted. This method works recursively which means that embedded arrays are also flattened before their contents are transferred. "*/
+
+- (NSArray *)flattenedArray
+{
+    NSMutableArray	*flattenedArray;
+    id				object;
+    unsigned int	i, n = [self count];
+
+    flattenedArray = [[[NSMutableArray allocWithZone:[self zone]] init] autorelease];
+    for(i = 0; i < n; i++)
+        {
+        object = [self objectAtIndex:i];
+        if([object isKindOfClass:[NSArray class]])
+            [flattenedArray addObjectsFromArray:[object flattenedArray]];
+        else
+            [flattenedArray addObject:object];
+        }
+
+    return flattenedArray;
+}
+
+
 //---------------------------------------------------------------------------------------
 
-/*" Returns an array containing all objects from the receiver up to (not including) the object at index %index. "*/
+/*" Uses each object in the receiver as a key and looks up the corresponding value in %mapping. All these values are added in the same order to the array returned. Note that this method raises an Exception if any of the objects in the receiver are not found as a key in %mapping."*/
+
+- (NSArray *)arrayByMappingWithDictionary:(NSDictionary *)mapping
+{
+    NSMutableArray	*mappedArray;
+    unsigned int	i, n = [self count];
+
+    mappedArray = [[[NSMutableArray allocWithZone:[self zone]] initWithCapacity:n] autorelease];
+    for(i = 0; i < n; i++)
+        [mappedArray addObject:[mapping objectForKey:[self objectAtIndex:i]]];
+
+    return mappedArray;
+}
+
+
+/*" Invokes the method described by %selector in each object in the receiver. All returned values are added in the same order to the array returned. "*/
+
+- (NSArray *)arrayByMappingWithSelector:(SEL)selector
+{
+    NSMutableArray	*mappedArray;
+    unsigned int	i, n = [self count];
+
+    mappedArray = [[[NSMutableArray allocWithZone:[self zone]] initWithCapacity:n] autorelease];
+    for(i = 0; i < n; i++)
+        [mappedArray addObject:EDObjcMsgSend([self objectAtIndex:i], selector)];
+
+    return mappedArray;
+}
+
+
+/*" Invokes the method described by %selector in each object in the receiver, passing %object as an argument. All returned values are added in the same order to the array returned. "*/
+
+- (NSArray *)arrayByMappingWithSelector:(SEL)selector withObject:(id)object
+{
+    NSMutableArray	*mappedArray;
+    unsigned int	i, n = [self count];
+
+    mappedArray = [[[NSMutableArray allocWithZone:[self zone]] initWithCapacity:n] autorelease];
+    for(i = 0; i < n; i++)
+        [mappedArray addObject:EDObjcMsgSend1([self objectAtIndex:i], selector, object)];
+
+    return mappedArray;
+}
+
+
+//---------------------------------------------------------------------------------------
+
+/*" Returns an array containing all objects from the receiver up to (not including) the object at %index. "*/
 
 - (NSArray *)subarrayToIndex:(unsigned int)index
 {
@@ -134,7 +203,7 @@ static EDObjcMethodInfo myFirstObjectMethod;
 }
 
 
-/*" Returns an array containing all objects from the receiver starting with the object at index %index. "*/
+/*" Returns an array containing all objects from the receiver starting with the object at %index. "*/
 
 - (NSArray *)subarrayFromIndex:(unsigned int)index
 {
@@ -144,7 +213,7 @@ static EDObjcMethodInfo myFirstObjectMethod;
 
 //---------------------------------------------------------------------------------------
 
-/*" Returns #YES if the receiver is contained in %otherArray at %offset. "*/
+/*" Returns YES if the receiver is contained in %otherArray at %offset. "*/
 
 - (BOOL)isSubarrayOfArray:(NSArray *)other atOffset:(int)offset
 {
@@ -160,7 +229,7 @@ static EDObjcMethodInfo myFirstObjectMethod;
 
 //---------------------------------------------------------------------------------------
 
-/*" Returns the first index at which %otherArray is contained in the receiver; or #NSNotFound otherwise. "*/
+/*" Returns the first index at which %otherArray is contained in the receiver; or !{NSNotFound} otherwise. "*/
 
 - (unsigned int)indexOfSubarray:(NSArray *)other
 {

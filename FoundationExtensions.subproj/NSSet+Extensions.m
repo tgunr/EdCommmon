@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSSet+Extensions.m created by erik on Sat 10-Mar-2001
-//  $Id: NSSet+Extensions.m,v 1.2 2002-07-02 15:05:33 erik Exp $
+//  $Id: NSSet+Extensions.m,v 1.3 2002-07-09 15:53:52 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,6 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
+#import "EDObjcRuntime.h"
 #import "NSSet+Extensions.h"
 
 
@@ -51,6 +52,59 @@
     [temp addObjectsFromArray:anArray];
 
     return temp;
+}
+
+
+//---------------------------------------------------------------------------------------
+
+/*" Uses each object in the receiver as a key and looks up the corresponding value in %mapping. All these values are added to the set returned. Note that this method raises an exception if any of the objects in the receiver is not found as a key in %mapping. Note also, that the returned set can be smaller than the receiver. "*/
+
+- (NSSet *)setByMappingWithDictionary:(NSDictionary *)mapping
+{
+    NSMutableSet	*mappedSet;
+    NSEnumerator	*objectEnum;
+    id				object;
+
+    mappedSet = [[[NSMutableSet allocWithZone:[self zone]] initWithCapacity:[self count]] autorelease];
+    objectEnum = [self objectEnumerator];
+    while((object = [objectEnum nextObject]) != nil)
+        [mappedSet addObject:[mapping objectForKey:object]];
+
+    return mappedSet;
+}
+
+
+/*" Invokes the method described by %selector in each object in the receiver. All returned values are added to the set returned. Note that the returned set can be smaller than the receiver. "*/
+
+- (NSSet *)setByMappingWithSelector:(SEL)selector
+{
+    NSMutableSet	*mappedSet;
+    NSEnumerator	*objectEnum;
+    id				object;
+
+    mappedSet = [[[NSMutableSet allocWithZone:[self zone]] initWithCapacity:[self count]] autorelease];
+    objectEnum = [self objectEnumerator];
+    while((object = [objectEnum nextObject]) != nil)
+        [mappedSet addObject:EDObjcMsgSend(object, selector)];
+
+    return mappedSet;
+}
+
+
+/*" Invokes the method described by %selector in each object in the receiver passing %object as an argument. All returned values are added to the set returned. Note that the returned set can be smaller than the receiver. "*/
+
+- (NSSet *)setByMappingWithSelector:(SEL)selector withObject:(id)otherObject
+{
+    NSMutableSet	*mappedSet;
+    NSEnumerator	*objectEnum;
+    id				object;
+
+    mappedSet = [[[NSMutableSet allocWithZone:[self zone]] initWithCapacity:[self count]] autorelease];
+    objectEnum = [self objectEnumerator];
+    while((object = [objectEnum nextObject]) != nil)
+        [mappedSet addObject:EDObjcMsgSend1(object, selector, otherObject)];
+
+    return mappedSet;
 }
 
 

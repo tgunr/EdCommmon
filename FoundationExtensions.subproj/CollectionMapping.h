@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCollectionMapping.h created by erik on Wed 17-Mar-1999
-//  @(#)$Id: CollectionMapping.h,v 1.4 2002-07-02 15:05:32 erik Exp $
+//  @(#)$Id: CollectionMapping.h,v 1.5 2002-07-09 15:53:52 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -22,35 +22,10 @@
 #ifndef	__CollectionMapping_h_INCLUDE
 #define	__CollectionMapping_h_INCLUDE
 
+// for compatibility only
 
-#import <Foundation/Foundation.h>
-
-
-/*" Mapping extensions to #NSArray. "*/
-
-@interface NSArray(EDCollectionMapping)
-- (NSArray *)arrayByMappingWithDictionary:(NSDictionary *)mapping;
-- (NSArray *)arrayByMappingWithSelector:(SEL)selector; // similar to valueForKey:
-- (NSArray *)arrayByMappingWithSelector:(SEL)selector withObject:(id)object;
-- (NSArray *)flattenedArray; // doesn't really belong here...
-@end
-
-
-/*" Mapping extensions to #NSSet. "*/
-
-@interface NSSet(EDCollectionMapping)
-- (NSSet *)setByMappingWithDictionary:(NSDictionary *)mapping;
-- (NSSet *)setByMappingWithSelector:(SEL)selector; // similar to valueForKey:
-- (NSSet *)setByMappingWithSelector:(SEL)selector withObject:(id)object;
-@end
-
-
-/*" Mapping extensions to #NSObject. "*/
-
-@interface NSObject(EDCollectionMapping)
-- (NSArray *)mapArray:(NSArray *)array withSelector:(SEL)aSelector;
-- (void)performSelector:(SEL)selector withObjects:(NSArray *)objectList;
-- (void)performSelector:(SEL)selector withObjectsEnumeratedBy:(NSEnumerator *)enumerator;
-@end
+#import "NSArray+Extensions.h"
+#import "NSSet+Extensions.h"
+#import "NSObject+Extensions.h"
 
 #endif	/* __CollectionMapping_h_INCLUDE */

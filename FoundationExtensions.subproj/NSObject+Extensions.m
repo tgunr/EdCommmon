@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSObject+Extensions.m created by erik on Sun 06-Sep-1998
-//  @(#)$Id: NSObject+Extensions.m,v 1.5 2002-07-02 15:05:32 erik Exp $
+//  @(#)$Id: NSObject+Extensions.m,v 1.6 2002-07-09 15:53:52 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -21,6 +21,7 @@
 #import <Foundation/Foundation.h>
 #import "NSObject+Extensions.h"
 #import "EDObjcRuntime.h"
+
 
 //---------------------------------------------------------------------------------------
     @implementation NSObject(EDExtensions)
@@ -162,6 +163,55 @@ NSArray *EDSubclassesOfClass(Class aClass)
 {
     return EDSubclassesOfClass(self);
 }
+
+
+//---------------------------------------------------------------------------------------
+//  MAPPING
+//---------------------------------------------------------------------------------------
+
+/*" Invokes the method described by %selector in the receiver once for each object in %anArray and collects the return values in another array that is returned. Note that the selector is assumed to take one argument, the current object from the array, and return the corresponding object.
+
+Example: Assume you have an array !{a} which contains names and an object !{phoneBook} implementing a method !{lookupPhoneNumber:} which returns a phone number for a name. In this case you can use !{[phoneBook mapArray:a withSelector:@selector(lookupPhoneNumber:)]} to get the corresponding array of phone numbers."*/
+
+- (NSArray *)mapArray:(NSArray *)anArray withSelector:(SEL)selector
+{
+    NSMutableArray	*mappedArray;
+    unsigned int	i, n = [anArray count];
+
+    mappedArray = [[[NSMutableArray allocWithZone:[self zone]] initWithCapacity:n] autorelease];
+    for(i = 0; i < n; i++)
+        [mappedArray addObject:EDObjcMsgSend1(self, selector, [anArray objectAtIndex:i])];
+
+    return mappedArray;
+}
+
+
+//---------------------------------------------------------------------------------------
+//  REPEATED PERFORM
+//---------------------------------------------------------------------------------------
+
+/*" Invokes the method described by %selector in the receiver once for each object in %array, passing the respective object as an argument. "*/
+
+- (void)performSelector:(SEL)selector withObjects:(NSArray *)array
+{
+    unsigned int	i, n = [array count];
+
+    for(i = 0; i < n; i++)
+        EDObjcMsgSend1(self, selector, [array objectAtIndex:i]);
+}
+
+
+/*" Invokes the method described by %selector in the receiver once for each object enumerated by %enumerator, passing the respective object as an argument. "*/
+
+- (void)performSelector:(SEL)selector withObjectsEnumeratedBy:(NSEnumerator *)enumerator
+{
+    id object;
+
+    while((object = [enumerator nextObject]) != nil)
+        EDObjcMsgSend1(self, selector, object);
+}
+
+
 
 
 //---------------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.h created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.h,v 1.5 2002-07-02 15:05:32 erik Exp $
+//  @(#)$Id: NSArray+Extensions.h,v 1.6 2002-07-09 15:53:52 erik Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -38,17 +38,23 @@
 #endif
 #endif
 
-/*" Rearranging the array "*/
-- (NSArray *)shuffledArray;
-- (NSArray *)sortedArray;
-- (NSArray *)sortedArrayByComparingAttribute:(NSString *)attributeName;
-
 /*" Handling subarrays "*/
 - (NSArray *)subarrayToIndex:(unsigned int)index;
 - (NSArray *)subarrayFromIndex:(unsigned int)index;
 
 - (BOOL)isSubarrayOfArray:(NSArray *)other atOffset:(int)offset;
 - (unsigned int)indexOfSubarray:(NSArray *)other;
+
+/*" Rearranging the array "*/
+- (NSArray *)shuffledArray;
+- (NSArray *)sortedArray;
+- (NSArray *)sortedArrayByComparingAttribute:(NSString *)attributeName;
+- (NSArray *)flattenedArray;
+
+/*" Mapping the array "*/
+- (NSArray *)arrayByMappingWithDictionary:(NSDictionary *)mapping;
+- (NSArray *)arrayByMappingWithSelector:(SEL)selector; // similar to valueForKey:
+- (NSArray *)arrayByMappingWithSelector:(SEL)selector withObject:(id)object;
 
 /*" List files "*/
 + (NSArray *)arrayWithFilesOfType:(NSString *)type inPath:(NSString *)aPath;

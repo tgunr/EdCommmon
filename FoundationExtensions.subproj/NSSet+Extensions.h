@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSSet+Extensions.h created by erik on Sat 10-Mar-2001
-//  $Id: NSSet+Extensions.h,v 1.3 2002-07-02 15:05:33 erik Exp $
+//  $Id: NSSet+Extensions.h,v 1.4 2002-07-09 15:53:52 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -33,6 +33,11 @@
 /*" Adding objects "*/
 - (NSSet *)setByAddingObjectsFromSet:(NSSet *)otherSet;
 - (NSSet *)setByAddingObjectsFromArray:(NSArray *)anArray;
+
+/*" Mapping the set "*/
+- (NSSet *)setByMappingWithDictionary:(NSDictionary *)mapping;
+- (NSSet *)setByMappingWithSelector:(SEL)selector; // similar to valueForKey:
+- (NSSet *)setByMappingWithSelector:(SEL)selector withObject:(id)object;
 
 @end
 

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+printf.m created by erik on Sat 27-Sep-1997
-//  @(#)$Id: NSString+Extensions.m,v 1.6 2002-07-02 15:05:33 erik Exp $
+//  @(#)$Id: NSString+Extensions.m,v 1.7 2002-07-09 15:53:52 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -81,7 +81,7 @@ static NSCharacterSet *iwsSet = nil;
 }
 
 
-/*" Returns #YES if the receiver consists of whitespace only. "*/
+/*" Returns YES if the receiver consists of whitespace only. "*/
 
 - (BOOL)isWhitespace
 {
@@ -161,7 +161,7 @@ static NSCharacterSet *iwsSet = nil;
 #endif
 
 
-/*" Returns #YES if the receiver's prefix is equal to %string, comparing case insensitive. "*/
+/*" Returns YES if the receiver's prefix is equal to %string, comparing case insensitive. "*/
 
 - (BOOL)hasPrefixCaseInsensitive:(NSString *)string
 {
@@ -169,7 +169,7 @@ static NSCharacterSet *iwsSet = nil;
 }
 
 
-/*" Returns #YES if the receiver is equal to string "yes", comparing case insensitive. "*/
+/*" Returns YES if the receiver is equal to string "yes", comparing case insensitive. "*/
 
 - (BOOL)boolValue
 {
@@ -255,7 +255,7 @@ Note: This method is not available on Windows NT platforms. "*/
 }
 
 
-/*" Returns #YES if the receiver is a encryption of %aString. Assume you have the encrypted password in !{pwd} and the user's input in !{input}. Call !{[pwd isValidEncryptionOfString:input]} to verify the passwrd.
+/*" Returns YES if the receiver is a encryption of %aString. Assume you have the encrypted password in !{pwd} and the user's input in !{input}. Call !{[pwd isValidEncryptionOfString:input]} to verify the passwrd.
 
 This method is thread-safe.
 

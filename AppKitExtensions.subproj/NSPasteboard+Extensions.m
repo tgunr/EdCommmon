@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSPasteboard+Extensions.m created by erik on Mon 28-Jun-1999
-//  @(#)$Id: NSPasteboard+Extensions.m,v 1.2 2002-07-02 16:25:26 erik Exp $
+//  @(#)$Id: NSPasteboard+Extensions.m,v 1.3 2002-07-09 15:55:23 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -29,7 +29,7 @@
 /*" Various useful extensions to #NSPasteboard. "*/
 
 
-/*" Returns #YES if %type is one of the types available on the pasteboard. "*/
+/*" Returns YES if %type is one of the types available on the pasteboard. "*/
 
 - (BOOL)containsType:(NSString *)type
 {

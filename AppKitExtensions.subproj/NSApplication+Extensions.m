@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSApplication+Extensions.m created by erik on Sat 09-Oct-1999
-//  @(#)$Id: NSApplication+Extensions.m,v 1.3 2002-07-02 16:25:26 erik Exp $
+//  @(#)$Id: NSApplication+Extensions.m,v 1.4 2002-07-09 15:55:23 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -105,7 +105,7 @@ NSLocalizedString(@"Failed to create a folder in your library folder.", "Error m
 }
 
 
-/*" Returns the first menu item in %aMenu (or any of its submenus) that has the specified %action. "*/
+/*" Returns the first menu item in %aMenu (or any of its submenus) that has the specified %action, !{nil} otherwise. "*/
 
 - (NSMenuItem *)menuItemWithAction:(SEL)action inMenu:(NSMenu *)aMenu
 {
@@ -124,7 +124,7 @@ NSLocalizedString(@"Failed to create a folder in your library folder.", "Error m
 }
 
 
-/*" Returns the first menu item in the application's main menu (or any of its submenus) that has the specified %action. "*/
+/*" Returns the first menu item in the application's main menu (or any of its submenus) that has the specified %action, !{nil} otherwise. "*/
 
 - (NSMenuItem *)menuItemWithAction:(SEL)action
 {

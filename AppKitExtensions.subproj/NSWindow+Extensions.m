@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSWindow+Extensions.m created by erik on Sun 11-Oct-1998
-//  @(#)$Id: NSWindow+Extensions.m,v 1.2 2002-07-02 16:25:26 erik Exp $
+//  @(#)$Id: NSWindow+Extensions.m,v 1.3 2002-07-09 15:55:23 erik Exp $
 //
 //  Copyright (c) 1998 by Erik Doernenburg. All rights reserved.
 //
@@ -28,7 +28,7 @@
 
 /*" Various useful extensions to #NSWindow. "*/
 
-/*" Takes a tag from the sender, or from the selected cell if the sender is a matrix, and stops the current modal session with this code. "*/
+/*" Takes the tag from the sender, or from the selected cell if the sender is a matrix, and stops the current modal session with this code. "*/
 
 - (void)endModalSessionWithCodeFromSender:(id)sender
 {

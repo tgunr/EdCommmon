@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSDate+Extensions.m created by erik on Sun 15-Aug-1999
-//  @(#)$Id: NSDate+Extensions.m,v 1.2 2002-07-02 15:05:32 erik Exp $
+//  @(#)$Id: NSDate+Extensions.m,v 1.3 2002-07-09 15:53:52 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -29,7 +29,7 @@
 /*" Various common extensions to #NSDate. "*/
 
 
-/*" Returns #YES if the receiver signifies an earlier date than %{other}. "*/
+/*" Returns YES if the receiver signifies an earlier date than %{other}. "*/
 
 - (BOOL)precedesDate:(NSDate *)other
 {

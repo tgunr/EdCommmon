@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSObject+Extensions.h created by erik on Sun 06-Sep-1998
-//  @(#)$Id: NSObject+Extensions.h,v 1.3 2002-07-02 15:05:32 erik Exp $
+//  @(#)$Id: NSObject+Extensions.h,v 1.4 2002-07-09 15:53:52 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -36,6 +36,13 @@
 
 /*" Class hierarchy "*/
 + (NSArray *)subclasses;
+
+/*" Mapping an array "*/
+- (NSArray *)mapArray:(NSArray *)anArray withSelector:(SEL)aSelector;
+
+/*" Repeatedly performing a selector "*/
+- (void)performSelector:(SEL)selector withObjects:(NSArray *)objectList;
+- (void)performSelector:(SEL)selector withObjectsEnumeratedBy:(NSEnumerator *)enumerator;
 
 @end
 
