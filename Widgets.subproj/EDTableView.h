@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTableView.h created by erik on Mon 28-Jun-1999
-//  @(#)$Id: EDTableView.h,v 1.4 2002-07-09 15:57:59 erik Exp $
+//  @(#)$Id: EDTableView.h,v 1.5 2002-07-09 17:02:42 erik Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -48,7 +48,7 @@ struct _EDTVFlags {
 /*" Managing "click-through" columns "*/
 - (void)addToClickThroughColumns:(NSTableColumn *)aColumn;
 - (void)removeFromClickThroughColumns:(NSTableColumn *)aColumn;
-- (NSArray *)clickTroughColumns;
+- (NSArray *)clickThroughColumns;
 
 @end
 

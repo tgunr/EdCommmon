@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTableView.m created by erik on Mon 28-Jun-1999
-//  @(#)$Id: EDTableView.m,v 1.4 2002-07-09 15:57:59 erik Exp $
+//  @(#)$Id: EDTableView.m,v 1.5 2002-07-09 17:02:42 erik Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -52,7 +52,7 @@
 
 - (void)dealloc
 {
-    [clickTroughColumns release];
+    [clickThroughColumns release];
     [super dealloc];
 }
 
@@ -97,9 +97,9 @@
 - (void)addToClickThroughColumns:(NSTableColumn *)aColumn
 {
     NSAssert([[self tableColumns] indexOfObject:aColumn] != NSNotFound, @"invalid column");
-    if(clickTroughColumns == nil)
-        clickTroughColumns = [[NSMutableSet allocWithZone:[self zone]] init];
-    [clickTroughColumns addObject:aColumn];
+    if(clickThroughColumns == nil)
+        clickThroughColumns = [[NSMutableSet allocWithZone:[self zone]] init];
+    [clickThroughColumns addObject:aColumn];
 }
 
 
@@ -107,16 +107,16 @@
 
 - (void)removeFromClickThroughColumns:(NSTableColumn *)aColumn
 {
-    NSAssert([clickTroughColumns containsObject:aColumn], @"invalid column");
-    [clickTroughColumns removeObject:aColumn];
+    NSAssert([clickThroughColumns containsObject:aColumn], @"invalid column");
+    [clickThroughColumns removeObject:aColumn];
 }
 
 
 /*" Returns the list of columns with click-through behaviour. "*/
 
-- (NSArray *)clickTroughColumns
+- (NSArray *)clickThroughColumns
 {
-    return [clickTroughColumns allObjects];
+    return [clickThroughColumns allObjects];
 }
 
 
@@ -138,7 +138,7 @@
     clickedRowIdx = [self rowAtPoint:location];
     clickedColumnIdx = [self columnAtPoint:location];
     if((clickedColumnIdx == -1) || (clickedRowIdx == -1) ||
-      ([clickTroughColumns containsObject:[_tableColumns objectAtIndex:clickedColumnIdx]] == NO))
+      ([clickThroughColumns containsObject:[_tableColumns objectAtIndex:clickedColumnIdx]] == NO))
         {
         [super mouseDown:theEvent];
         }

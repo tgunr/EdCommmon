@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDActivityIndicator.m created by erik on Tue 10-Nov-1998
-//  @(#)$Id: EDActivityIndicator.m,v 1.3 2002-07-09 15:56:59 erik Exp $
+//  @(#)$Id: EDActivityIndicator.m,v 1.4 2002-07-09 17:02:42 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -48,7 +48,6 @@ static NSImage *sharedImage = nil;
     if((path = [[NSBundle bundleForClass:self] pathForResource:@"arrows" ofType:@"tiff"]) != nil)
         sharedImage = [[NSImage alloc] initWithContentsOfFile:path];
     NSAssert(sharedImage != nil, @"cannot find image named 'arrows'");
-    frameWidth = [sharedImage size].height;
 }
 
 
