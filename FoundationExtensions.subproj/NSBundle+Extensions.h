@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSBundle+Extensions.h created by erik on Sat Jan 04 2003
-//  @(#)$Id: NSBundle+Extensions.h,v 1.1 2003-01-08 22:28:36 erik Exp $
+//  @(#)$Id: NSBundle+Extensions.h,v 1.2 2003-02-23 02:49:33 znek Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -32,4 +32,4 @@
     
 @end
 
-#endif	__NSBundle_Extensions_h_INCLUDE
+#endif	/* __NSBundle_Extensions_h_INCLUDE */

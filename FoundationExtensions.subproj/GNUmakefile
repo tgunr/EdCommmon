@@ -1,5 +1,5 @@
 # FoundationExtensions.subproj
-# $Id: GNUmakefile,v 2.1 2002-09-29 23:17:56 znek Exp $
+# $Id: GNUmakefile,v 2.2 2003-02-23 02:49:33 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -32,7 +32,8 @@ EDUDPSocket.h                           NSProcessInfo+Extensions.h \
 NSArray+Extensions.h                    NSScanner+Extensions.h \
 NSAttributedString+Extensions.h         NSSet+Extensions.h \
 NSData+Extensions.h                     NSString+Extensions.h \
-NSDate+Extensions.h                     functions.h
+NSDate+Extensions.h                     NSBundle+Extensions.h \
+functions.h				deallocnotif.h
 
 
 FoundationExtensions.subproj_OBJC_FILES = \
@@ -44,8 +45,15 @@ EDUDPSocket.m                           NSProcessInfo+Extensions.m \
 NSArray+Extensions.m                    NSScanner+Extensions.m \
 NSAttributedString+Extensions.m         NSSet+Extensions.m \
 NSData+Extensions.m                     NSString+Extensions.m \
-NSDate+Extensions.m                     functions.m \
-NSDictionary+Extensions.m
+NSDate+Extensions.m                     NSBundle+Extensions.m \
+NSDictionary+Extensions.m \
+functions.m				deallocnotif.m
+
+ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
+FoundationExtensions.subproj_OBJC_FILES += deallocnotif-gnu.m
+else
+FoundationExtensions.subproj_OBJC_FILES += deallocnotif-next.m
+endif
 
 
 FoundationExtensions.subproj_HAS_RESOURCE_BUNDLE = yes
