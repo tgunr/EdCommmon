@@ -9,6 +9,7 @@
             "NSDictionary+Extensions.m", 
             "NSObject+Extensions.m", 
             "NSProcessInfo+Extensions.m", 
+            "NSSet+Extensions.m", 
             "NSScanner+Extensions.m", 
             "NSString+Extensions.m", 
             CollectionMapping.m
@@ -22,6 +23,7 @@
             "NSDictionary+Extensions.h", 
             "NSObject+Extensions.h", 
             "NSProcessInfo+Extensions.h", 
+            "NSSet+Extensions.h", 
             "NSScanner+Extensions.h", 
             "NSString+Extensions.h", 
             CollectionMapping.h
@@ -32,7 +34,8 @@
         PROJECT_HEADERS = (
             CollectionMapping.h, 
             "NSString+Extensions.h", 
-            "NSAttributedString+Extensions.h"
+            "NSAttributedString+Extensions.h", 
+            "NSSet+Extensions.h"
         ); 
         PUBLIC_HEADERS = (
             "NSArray+Extensions.h", 
@@ -44,7 +47,8 @@
             "NSDictionary+Extensions.h", 
             "NSAttributedString+Extensions.h", 
             "NSData+Extensions.h", 
-            "NSProcessInfo+Extensions.h"
+            "NSProcessInfo+Extensions.h", 
+            "NSSet+Extensions.h"
         ); 
         SUBPROJECTS = (); 
     }; 
