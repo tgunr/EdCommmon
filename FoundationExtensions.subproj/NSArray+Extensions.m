@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.m created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.m,v 1.6 2002-04-28 22:16:49 znek Exp $
+//  @(#)$Id: NSArray+Extensions.m,v 1.7 2002-07-02 15:05:32 erik Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -43,9 +43,11 @@ static NSComparisonResult compareAttributes(id object1, id object2, void *contex
     @implementation NSArray(EDExtensions)
 //=======================================================================================
 
+/*" Various common extensions to #NSArray. "*/
+
 //---------------------------------------------------------------------------------------
 
-/*" Return the object at index 0 and make sure that the array does only contain this object. "*/
+/*" If the array contains exactly one object this is returned. Otherwise an #NSInternalInconsistencyException is raised. "*/
 
 - (id)singleObject
 {
@@ -56,7 +58,7 @@ static NSComparisonResult compareAttributes(id object1, id object2, void *contex
 
 //---------------------------------------------------------------------------------------
 
-/*" Return the object at index 0 or %nil if the array is empty. WARNING: The method #firstObject is also implemented in the HTML framework which is sometimes loaded in AppKit applications. Unfortunately, its implemenation differs in that it raises an exception if the array is empty. (Don't ask why they did that!) So, you either live with this or call #applyFirstObjectPatch before the HTML framework is loaded. "*/
+/*" Return the object at index 0 or %nil if the array is empty. #Note: The method #firstObject is also implemented in the HTML framework which is sometimes loaded in AppKit applications. Unfortunately, its implemenation differs in that it raises an exception if the array is empty. (Don't ask why they did that!) So, you either live with this or call #applyFirstObjectPatch before the HTML framework is loaded. "*/
 
 - (id)firstObject
 {
@@ -70,6 +72,8 @@ static NSComparisonResult compareAttributes(id object1, id object2, void *contex
 #ifdef __MACH__
 
 static EDObjcMethodInfo myFirstObjectMethod;
+
+/*" See description of #{firstObject}. "*/
 
 + (void)applyFirstObjectPatch
 {
@@ -112,7 +116,7 @@ static EDObjcMethodInfo myFirstObjectMethod;
 }
 
 
-/*" Returns a new array with the objects sorted objects according to the values of their attribute %attributeName "*/
+/*" Returns a new array with the objects sorted objects according to the values of their attribute %{attributeName}. These are retrieved using key/value coding. "*/
 
 - (NSArray *)sortedArrayByComparingAttribute:(NSString *)attributeName
 {
@@ -140,7 +144,7 @@ static EDObjcMethodInfo myFirstObjectMethod;
 
 //---------------------------------------------------------------------------------------
 
-/*" Returns #YES if the receiver is contained in %otherArray at offset %offset. "*/
+/*" Returns #YES if the receiver is contained in %otherArray at %offset. "*/
 
 - (BOOL)isSubarrayOfArray:(NSArray *)other atOffset:(int)offset
 {
@@ -177,7 +181,7 @@ static EDObjcMethodInfo myFirstObjectMethod;
 
 //---------------------------------------------------------------------------------------
 
-/*" Creates and returns an array of NSString objects. These refer to all files of a type specified in %type that can be found in the directory %aPath. "*/
+/*" Creates and returns an array of NSString objects. These refer to all files of the type specified in %type that can be found in the directory %aPath. "*/
 
 + (NSArray *)arrayWithFilesOfType:(NSString *)type inPath:(NSString *)aPath
 {
@@ -193,7 +197,7 @@ static EDObjcMethodInfo myFirstObjectMethod;
 }
 
 
-/*" Creates and returns an array of NSString objects. These refer to all files of a type specified in %types that can be found in a directory named %libraryName in any of the standard library locations as returned by #NSSearchPathForDirectoriesInDomains. "*/
+/*" Creates and returns an array of NSString objects. These refer to all files of a type specified in %type that can be found in a directory named %libraryName in any of the standard library locations as returned by #NSSearchPathForDirectoriesInDomains. "*/
 
 + (NSArray *)arrayWithFilesOfType:(NSString *)type inLibrary:(NSString *)libraryName
 {
@@ -223,6 +227,9 @@ static EDObjcMethodInfo myFirstObjectMethod;
     @implementation NSMutableArray(EDExtensions)
 //=======================================================================================
 
+/*" Various common extensions to #NSMutableArray. "*/
+
+
 /*" Randomly changes the order of the objects in the receiving array. "*/
 
 - (void)shuffle
@@ -244,7 +251,7 @@ static EDObjcMethodInfo myFirstObjectMethod;
 }
 
 
-/*" Sort objects according to their compare: method "*/
+/*" Sorts objects according to their compare: method "*/
 
 - (void)sort
 {
@@ -252,7 +259,7 @@ static EDObjcMethodInfo myFirstObjectMethod;
 }
 
 
-/*" Sort objects according to the values of their attribute %attributeName "*/
+/*" Sorts objects according to the values of their %{attributeName}. These are retrieved using key/value coding. "*/
 
 - (void)sortByComparingAttribute:(NSString *)attributeName
 {

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSProcessInfo+Extensions.h created by znek on Sat 23-Sep-2000
-//  $Id: NSProcessInfo+Extensions.h,v 1.2 2002-04-14 14:57:57 znek Exp $
+//  $Id: NSProcessInfo+Extensions.h,v 1.3 2002-07-02 15:05:32 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -25,7 +25,9 @@
 
 #import <Foundation/NSProcessInfo.h>
 
-@interface NSProcessInfo (EDExtensions)
+/*" Various common extensions to #NSProcessInfo. "*/
+
+@interface NSProcessInfo(EDExtensions)
 
 - (int)pid;
 

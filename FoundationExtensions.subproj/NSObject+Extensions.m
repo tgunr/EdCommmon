@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSObject+Extensions.m created by erik on Sun 06-Sep-1998
-//  @(#)$Id: NSObject+Extensions.m,v 1.4 2002-06-11 18:21:04 erik Exp $
+//  @(#)$Id: NSObject+Extensions.m,v 1.5 2002-07-02 15:05:32 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -26,9 +26,13 @@
     @implementation NSObject(EDExtensions)
 //---------------------------------------------------------------------------------------
 
+/*" Various common extensions to #NSObject. "*/
+
 //---------------------------------------------------------------------------------------
 //	RUNTIME CONVENIENCES
 //---------------------------------------------------------------------------------------
+
+/*" Raises an #NSInternalInconsistencyException stating that the method must be overriden. "*/
 
 - (volatile void)methodIsAbstract:(SEL)selector
 {
@@ -36,11 +40,15 @@
 }
 
 
+/*" Prints a warning that the method is obsolete. This warning is only printed once per method. "*/
+
 - (void)methodIsObsolete:(SEL)selector
 {
     [self methodIsObsolete:selector hint:nil];
 }
 
+
+/*" Prints a warning that the method is obsolete including the %hint supplied. This warning is only printed once per method. "*/
 
 - (void)methodIsObsolete:(SEL)selector hint:(NSString *)hint
 {
@@ -148,6 +156,7 @@ NSArray *EDSubclassesOfClass(Class aClass)
 #endif
 }
 
+/*" Returns all subclasses of the receiving class "*/
 
 + (NSArray *)subclasses
 {

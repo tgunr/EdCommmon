@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSSet+Extensions.m created by erik on Sat 10-Mar-2001
-//  $Id: NSSet+Extensions.m,v 1.1 2001-03-11 03:06:58 erik Exp $
+//  $Id: NSSet+Extensions.m,v 1.2 2002-07-02 15:05:33 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -26,6 +26,10 @@
     @implementation NSSet(EDExtensions)
 //---------------------------------------------------------------------------------------
 
+/*" Various common extensions to #NSSet. "*/
+
+/*" Adds all objects from %otherSet to the receiver. "*/
+
 - (NSSet *)setByAddingObjectsFromSet:(NSSet *)otherSet
 {
     NSMutableSet	*temp;
@@ -36,6 +40,8 @@
     return temp;
 }
 
+
+/*" Adds all objects from %anArray to the receiver. "*/
 
 - (NSSet *)setByAddingObjectsFromArray:(NSArray *)anArray
 {

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSData+Extensions.m created by erik on Mon 20-Nov-2000
-//  $Id: NSData+Extensions.m,v 1.1 2000-12-06 14:36:49 erik Exp $
+//  $Id: NSData+Extensions.m,v 1.2 2002-07-02 15:05:32 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -25,6 +25,8 @@
 //---------------------------------------------------------------------------------------
     @implementation NSData(EDExtensions)
 //---------------------------------------------------------------------------------------
+
+/*" Various common extensions to #NSData. "*/
 
 static const unsigned short crc16table[] =
 {
@@ -99,6 +101,7 @@ static const unsigned long crc32table[] =
 };
 
 
+/*" Returns the CRC16 for the receiver. "*/
 
 - (unsigned short)crc16
 {
@@ -118,6 +121,8 @@ static const unsigned long crc32table[] =
 
 }
 
+
+/*" Returns the CRC32 for the receiver. "*/
 
 - (unsigned int)crc32
 {

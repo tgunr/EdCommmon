@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSProcessInfo+Extensions.m created by znek on Sat 23-Sep-2000
-//  $Id: NSProcessInfo+Extensions.m,v 1.1 2000-10-23 23:22:40 erik Exp $
+//  $Id: NSProcessInfo+Extensions.m,v 1.2 2002-07-02 15:05:32 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -34,6 +34,10 @@
 //---------------------------------------------------------------------------------------
     @implementation NSProcessInfo(EDExtensions)
 //---------------------------------------------------------------------------------------
+
+/*" Various common extensions to #NSProcessInfo. "*/
+
+/*" Returns the process ID of the current process. "*/
 
 - (int)pid
 {

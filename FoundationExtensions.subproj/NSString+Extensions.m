@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+printf.m created by erik on Sat 27-Sep-1997
-//  @(#)$Id: NSString+Extensions.m,v 1.5 2001-02-19 21:47:26 erik Exp $
+//  @(#)$Id: NSString+Extensions.m,v 1.6 2002-07-02 15:05:33 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,6 +18,9 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+#ifndef EDCOMMON_WOBUILD
+#import <AppKit/AppKit.h>
+#endif
 #import <Foundation/Foundation.h>
 #import "NSString+Extensions.h"
 
@@ -32,6 +35,8 @@
     @implementation NSString(EDExtensions)
 //=======================================================================================
 
+/*" Various common extensions to #NSString. "*/
+
 static NSFileHandle *stdoutFileHandle = nil;
 static NSLock *printfLock = nil;
 static NSCharacterSet *iwsSet = nil;
@@ -40,6 +45,8 @@ static NSCharacterSet *iwsSet = nil;
 //---------------------------------------------------------------------------------------
 //	CONVENIENCE CONSTRUCTORS
 //---------------------------------------------------------------------------------------
+
+/*" Convenience factory method. "*/
 
 + (NSString *)stringWithData:(NSData *)data encoding:(NSStringEncoding)encoding
 {
@@ -50,6 +57,8 @@ static NSCharacterSet *iwsSet = nil;
 //---------------------------------------------------------------------------------------
 //	VARIOUS EXTENSIONS
 //---------------------------------------------------------------------------------------
+
+/*" Returns a copy of the receiver with all whitespace left of the first non-whitespace character and right of the last whitespace character removed. "*/
 
 - (NSString *)stringByRemovingSurroundingWhitespace
 {
@@ -72,6 +81,8 @@ static NSCharacterSet *iwsSet = nil;
 }
 
 
+/*" Returns #YES if the receiver consists of whitespace only. "*/
+
 - (BOOL)isWhitespace
 {
     if(iwsSet == nil)
@@ -82,11 +93,15 @@ static NSCharacterSet *iwsSet = nil;
 }
 
 
+/*" Returns a copy of the receiver with all whitespace removed. "*/
+
 - (NSString *)stringByRemovingWhitespace
 {
     return [self stringByRemovingCharactersFromSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
+
+/*" Returns a copy of the receiver with all characters from %set removed. "*/
 
 - (NSString *)stringByRemovingCharactersFromSet:(NSCharacterSet *)set
 {
@@ -101,11 +116,60 @@ static NSCharacterSet *iwsSet = nil;
 }
 
 
+#ifndef EDCOMMON_WOBUILD
+
+/*" Returns a string that is not wider than %maxWidths pixels. "*/
+
+- (NSString *)stringByAbbreviatingPathToWidth:(float)maxWidth forFont:(NSFont *)font
+{
+    return [self stringByAbbreviatingPathToWidth:maxWidth forAttributes:[NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName]];
+}
+
+/*" Returns a string that is not wider than %maxWidths pixels. "*/
+
+- (NSString *)stringByAbbreviatingPathToWidth:(float)maxWidth forAttributes:(NSDictionary *)attributes
+{
+    NSString		*result;
+    NSMutableArray	*components;
+    int 			i;
+
+    if([self sizeWithAttributes:attributes].width <= maxWidth)
+        return self;
+
+    result = [self stringByAbbreviatingWithTildeInPath];
+    if([result sizeWithAttributes:attributes].width <= maxWidth)
+        return result;
+
+    components = [[[result pathComponents] mutableCopy] autorelease];
+    if([[components objectAtIndex:0] isEqualToString:@"/"])
+        [components removeObjectAtIndex:0];
+    if([components count] < 2)
+        return nil;
+    [components replaceObjectAtIndex:0 withObject:@"..."];
+
+    for(i = 1; i < [components count] - 1; i++)
+        {
+        [components removeObjectAtIndex:i];
+        result = [NSString pathWithComponents:components];
+        if([result sizeWithAttributes:attributes].width <= maxWidth)
+            return result;
+        }
+
+    return nil;
+}
+
+#endif
+
+
+/*" Returns #YES if the receiver's prefix is equal to %string, comparing case insensitive. "*/
+
 - (BOOL)hasPrefixCaseInsensitive:(NSString *)string
 {
     return (([string length] <= [self length]) && ([self compare:string options:(NSCaseInsensitiveSearch|NSAnchoredSearch) range:NSMakeRange(0, [string length])] == NSOrderedSame));
 }
 
+
+/*" Returns #YES if the receiver is equal to string "yes", comparing case insensitive. "*/
 
 - (BOOL)boolValue
 {
@@ -114,6 +178,8 @@ static NSCharacterSet *iwsSet = nil;
     return [self caseInsensitiveCompare:@"yes"] == NSOrderedSame;
 }
 
+
+/*" Assumes the string contains an integer written in hexadecimal notation and returns its value. Uses #scanHexInt in #NSScanner. "*/
 
 - (unsigned int)intValueForHex
 {
@@ -124,6 +190,8 @@ static NSCharacterSet *iwsSet = nil;
     return value;
 }
 
+
+/*" Returns yes if the string contains no text characters. Note that its length can still be non-zero. "*/
 
 - (BOOL)isEmpty
 {
@@ -136,6 +204,12 @@ static NSCharacterSet *iwsSet = nil;
 //	CRYPTING
 //---------------------------------------------------------------------------------------
 
+/*" Returns an encrypted version of the receiver using a random "salt."
+
+This method is thread-safe.
+
+Note: This method is not available on Windows NT platforms. "*/
+
 - (NSString *)encryptedString
 {
     char 	salt[3];
@@ -147,6 +221,12 @@ static NSCharacterSet *iwsSet = nil;
     return [self encryptedStringWithSalt:salt];
 }
 
+
+/*" Returns an encrypted version of the receiver using %salt as randomizer. %Salt must be a C String containing excatly two characters.
+
+This method is thread-safe.
+
+Note: This method is not available on Windows NT platforms. "*/
 
 - (NSString *)encryptedStringWithSalt:(const char *)salt
 {
@@ -175,6 +255,12 @@ static NSCharacterSet *iwsSet = nil;
 }
 
 
+/*" Returns #YES if the receiver is a encryption of %aString. Assume you have the encrypted password in !{pwd} and the user's input in !{input}. Call !{[pwd isValidEncryptionOfString:input]} to verify the passwrd.
+
+This method is thread-safe.
+
+Note: This method is not available on Windows NT platforms. "*/
+
 - (BOOL)isValidEncryptionOfString:(NSString *)aString
 {
   char salt[3];
@@ -188,6 +274,8 @@ static NSCharacterSet *iwsSet = nil;
 //---------------------------------------------------------------------------------------
 //	SHARING STRING INSTANCES (USE WITH CAUTION!)
 //---------------------------------------------------------------------------------------
+
+/*" Maintains a global pool of string instances. Returns the instance stored in the pool or adds the receiver if no such string was in the pool before. This can be used to allow for equality tests using #{==} instead of #{isEqual:} but this "leaks" all string instances that are ever shared. "*/
 
 - (NSString *)sharedInstance
 {
@@ -208,6 +296,8 @@ static NSCharacterSet *iwsSet = nil;
 //	PRINTING
 //---------------------------------------------------------------------------------------
 
+/*" Writes the %printf format string to %stdout using the default C String encoding. "*/
+
 + (void)printf:(NSString *)format, ...
 {
     va_list   	args;
@@ -220,6 +310,8 @@ static NSCharacterSet *iwsSet = nil;
     va_end(args);
 }
 
+
+/*" Writes the %printf format string to %fileHandle using the default C String encoding. "*/
 
 + (void)fprintf:(NSFileHandle *)fileHandle:(NSString *)format, ...
 {
@@ -234,6 +326,8 @@ static NSCharacterSet *iwsSet = nil;
 }
 
 
+/*" Writes the contents of the reciever to %stdout using the default C String encoding. "*/
+
 - (void)printf
 {
     if(printfLock == nil)
@@ -246,6 +340,8 @@ static NSCharacterSet *iwsSet = nil;
     [printfLock unlock];
 }
 
+
+/*" Writes the contents of the reciever to %fileHandle using the default C String encoding. "*/
 
 - (void)fprintf:(NSFileHandle *)fileHandle
 {
@@ -266,6 +362,10 @@ static NSCharacterSet *iwsSet = nil;
 //=======================================================================================
     @implementation NSMutableString(EDExtensions)
 //=======================================================================================
+
+/*" Various common extensions to #NSMutableString. "*/
+
+/*" Removes all whitespace left of the first non-whitespace character and right of the last whitespace character. "*/
 
 - (void)removeSurroundingWhitespace
 {
@@ -290,11 +390,15 @@ static NSCharacterSet *iwsSet = nil;
 }
 
 
+/*" Removes all whitespace from the string. "*/
+
 - (void)removeWhitespace
 {
     [self removeCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
+
+/*" Removes all characters in %set from the string. "*/
 
 - (void)removeCharactersInSet:(NSCharacterSet *)set
 {

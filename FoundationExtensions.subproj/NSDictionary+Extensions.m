@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSDictionary+Extensions.m created by znek on Sun 02-Jan-2000
-//  @(#)$Id: NSDictionary+Extensions.m,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: NSDictionary+Extensions.m,v 1.2 2002-07-02 15:05:32 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -24,6 +24,10 @@
 //---------------------------------------------------------------------------------------
     @implementation NSDictionary(EDExtensions)
 //---------------------------------------------------------------------------------------
+
+/*" Various common extensions to #NSDictionary. "*/
+
+/*" Based on the assumption that all keys are instances of #NSString returns the object for a key that is equal to %searchKey when compared case insensitively. Note that the dictionary might contain multiple keys that fullfill this criterion and no assumptions should be made regarding the key chosen. In fact, different keys might be chosen in subsequent invocations of this method. "*/
 
 - (id)objectForStringKeyCaseInsensitive:(NSString *)searchKey
 {
@@ -62,6 +66,10 @@
 //---------------------------------------------------------------------------------------
     @implementation NSMutableDictionary(EDExtensions)
 //---------------------------------------------------------------------------------------
+
+/*" Various common extensions to #NSMutableDictionary. "*/
+
+/*" Assumes that all values are instances of #NSMutableArray. Creates a dictionary instance if required and adds the %object to the array. "*/
 
 - (void)addObject:(id)object toArrayForKey:(id)key
 {

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSAttributedString+Extensions.h created by erik on Tue 05-Oct-1999
-//  $Id: NSAttributedString+Extensions.m,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  $Id: NSAttributedString+Extensions.m,v 1.2 2002-07-02 15:05:32 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -26,6 +26,10 @@
     @implementation NSMutableAttributedString(EDExtensions)
 //---------------------------------------------------------------------------------------
 
+/*" Various common extensions to #NSMutableAttributedString. "*/
+
+/*" Appends  %string to the receiver using the text attributes as set at the end of the receiver. "*/
+
 - (void)appendString:(NSString *)string
 {
 #if 0
@@ -35,6 +39,7 @@
 #endif
 }
 
+/*" Appends  %string to the receiver using the %attributes passed in. "*/
 
 - (void)appendString:(NSString *)string withAttributes:(NSDictionary *)attributes
 {

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSData+Extensions.h created by erik on Mon 20-Nov-2000
-//  $Id: NSData+Extensions.h,v 1.2 2002-04-14 14:57:57 znek Exp $
+//  $Id: NSData+Extensions.h,v 1.3 2002-07-02 15:05:32 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -23,8 +23,11 @@
 #define	__NSData_Extensions_h_INCLUDE
 
 
+/*" Various common extensions to #NSData. "*/
+
 @interface NSData(EDExtensions)
 
+/*" Calculating CRCs "*/
 - (unsigned short)crc16;
 - (unsigned int)crc32;
 

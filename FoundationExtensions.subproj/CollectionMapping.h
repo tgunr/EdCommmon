@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCollectionMapping.h created by erik on Wed 17-Mar-1999
-//  @(#)$Id: CollectionMapping.h,v 1.3 2002-04-14 14:57:56 znek Exp $
+//  @(#)$Id: CollectionMapping.h,v 1.4 2002-07-02 15:05:32 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -26,6 +26,8 @@
 #import <Foundation/Foundation.h>
 
 
+/*" Mapping extensions to #NSArray. "*/
+
 @interface NSArray(EDCollectionMapping)
 - (NSArray *)arrayByMappingWithDictionary:(NSDictionary *)mapping;
 - (NSArray *)arrayByMappingWithSelector:(SEL)selector; // similar to valueForKey:
@@ -33,11 +35,17 @@
 - (NSArray *)flattenedArray; // doesn't really belong here...
 @end
 
+
+/*" Mapping extensions to #NSSet. "*/
+
 @interface NSSet(EDCollectionMapping)
 - (NSSet *)setByMappingWithDictionary:(NSDictionary *)mapping;
 - (NSSet *)setByMappingWithSelector:(SEL)selector; // similar to valueForKey:
 - (NSSet *)setByMappingWithSelector:(SEL)selector withObject:(id)object;
 @end
+
+
+/*" Mapping extensions to #NSObject. "*/
 
 @interface NSObject(EDCollectionMapping)
 - (NSArray *)mapArray:(NSArray *)array withSelector:(SEL)aSelector;

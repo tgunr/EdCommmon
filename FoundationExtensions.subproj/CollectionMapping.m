@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCollectionMapping.m created by erik on Wed 17-Mar-1999
-//  @(#)$Id: CollectionMapping.m,v 1.4 2002-04-14 14:57:56 znek Exp $
+//  @(#)$Id: CollectionMapping.m,v 1.5 2002-07-02 15:05:32 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -27,6 +27,10 @@
     @implementation NSArray(EDCollectionMapping)
 //---------------------------------------------------------------------------------------
 
+/*" Mapping extensions to #NSArray. "*/
+
+/*" Uses each object in the receiver as a key and looks up the corresponding value in %mapping. All these values are added in the same order to the array returned. Note that this method raises of any of the objects in the receiver is not found as a key in %mapping."*/
+
 - (NSArray *)arrayByMappingWithDictionary:(NSDictionary *)mapping
 {
     NSMutableArray	*mappedArray;
@@ -39,6 +43,8 @@
     return mappedArray;
 }
 
+
+/*" Invokes the method described by %selector on each object in the receiver. All returned values are added in the same order to the array returned. "*/
 
 - (NSArray *)arrayByMappingWithSelector:(SEL)selector
 {
@@ -53,6 +59,8 @@
 }
 
 
+/*" Invokes the method described by %selector on each object in the receiver passing %object as an argument. All returned values are added in the same order to the array returned. "*/
+
 - (NSArray *)arrayByMappingWithSelector:(SEL)selector withObject:(id)object
 {
     NSMutableArray	*mappedArray;
@@ -65,6 +73,8 @@
     return mappedArray;
 }
 
+
+/*" If the receiver contains instances of #NSArray the objects from the embedded array are transferred to the receiver and the embedded array is deleted. This method works recursively which means that embedded arrays are also flattened before their contents are transferred. "*/
 
 - (NSArray *)flattenedArray
 {
@@ -95,6 +105,10 @@
     @implementation NSSet(EDCollectionMapping)
 //---------------------------------------------------------------------------------------
 
+/*" Mapping extensions to #NSSet. "*/
+
+/*" Uses each object in the receiver as a key and looks up the corresponding value in %mapping. All these values are added to the set returned. Note that this method raises of any of the objects in the receiver is not found as a key in %mapping. Note also, that the returned set can be smaller than the receiver. "*/
+
 - (NSSet *)setByMappingWithDictionary:(NSDictionary *)mapping
 {
     NSMutableSet	*mappedSet;
@@ -110,6 +124,8 @@
 }
 
 
+/*" Invokes the method described by %selector on each object in the receiver. All returned values are added  to the set returned. Note that the returned set can be smaller than the receiver. "*/
+
 - (NSSet *)setByMappingWithSelector:(SEL)selector
 {
     NSMutableSet	*mappedSet;
@@ -124,6 +140,8 @@
     return mappedSet;
 }
 
+
+/*" Invokes the method described by %selector on each object in the receiver passing %object as an argument. All returned values are added  to the set returned. Note that the returned set can be smaller than the receiver. "*/
 
 - (NSSet *)setByMappingWithSelector:(SEL)selector withObject:(id)otherObject
 {
@@ -150,6 +168,10 @@
     @implementation NSObject(EDCollectionMapping)
 //---------------------------------------------------------------------------------------
 
+/*" Mapping extensions to #NSObject. "*/
+
+/*" Invokes the method described by %selector on the receiver once for each object in %array and collects the return values in an array that is returned. Note that the %selector is assumed to take one argument, the object, and return a corresponding object. "*/
+
 - (NSArray *)mapArray:(NSArray *)array withSelector:(SEL)selector
 {
     NSMutableArray	*mappedArray;
@@ -163,6 +185,8 @@
 }
 
 
+/*" Invokes the method described by %selector on the receiver once for each object in %array, passing the respective object as an argument. "*/
+
 - (void)performSelector:(SEL)selector withObjects:(NSArray *)array
 {
     unsigned int	i, n = [array count];
@@ -171,6 +195,8 @@
         EDObjcMsgSend1(self, selector, [array objectAtIndex:i]);
 }
 
+
+/*" Invokes the method described by %selector on the receiver once for each object enumerated by %enumerator, passing the respective object as an argument. "*/
 
 - (void)performSelector:(SEL)selector withObjectsEnumeratedBy:(NSEnumerator *)enumerator
 {

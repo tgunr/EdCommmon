@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.h created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.h,v 1.4 2002-04-14 14:57:56 znek Exp $
+//  @(#)$Id: NSArray+Extensions.h,v 1.5 2002-07-02 15:05:32 erik Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -25,9 +25,11 @@
 
 #import <Foundation/NSArray.h>
 
+/*" Various common extensions to #NSArray. "*/
 
 @interface NSArray(EDExtensions)
 
+/*" Retrieving individual objects "*/
 - (id)singleObject;
 - (id)firstObject;
 #ifndef EDCOMMON_OSXBUILD
@@ -36,23 +38,29 @@
 #endif
 #endif
 
+/*" Rearranging the array "*/
 - (NSArray *)shuffledArray;
 - (NSArray *)sortedArray;
 - (NSArray *)sortedArrayByComparingAttribute:(NSString *)attributeName;
 
+/*" Handling subarrays "*/
 - (NSArray *)subarrayToIndex:(unsigned int)index;
 - (NSArray *)subarrayFromIndex:(unsigned int)index;
 
 - (BOOL)isSubarrayOfArray:(NSArray *)other atOffset:(int)offset;
 - (unsigned int)indexOfSubarray:(NSArray *)other;
 
+/*" List files "*/
 + (NSArray *)arrayWithFilesOfType:(NSString *)type inPath:(NSString *)aPath;
 + (NSArray *)arrayWithFilesOfType:(NSString *)type inLibrary:(NSString *)libraryName;
 
 @end
 
 
+/*" Various common extensions to #NSMutableArray. "*/
+
 @interface NSMutableArray(EDExtensions)
+/*" Rearranging the array "*/
 - (void)shuffle;
 - (void)sort;
 - (void)sortByComparingAttribute:(NSString *)attributeName;

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSObject+Extensions.h created by erik on Sun 06-Sep-1998
-//  @(#)$Id: NSObject+Extensions.h,v 1.2 2002-04-14 14:57:57 znek Exp $
+//  @(#)$Id: NSObject+Extensions.h,v 1.3 2002-07-02 15:05:32 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -25,13 +25,16 @@
 
 #import <Foundation/NSObject.h>
 
+/*" Various common extensions to #NSObject. "*/
 
 @interface NSObject(EDExtensions)
 
+/*" Developer notes "*/
 - (volatile void)methodIsAbstract:(SEL)selector;
 - (void)methodIsObsolete:(SEL)selector;
 - (void)methodIsObsolete:(SEL)selector hint:(NSString *)hint;
 
+/*" Class hierarchy "*/
 + (NSArray *)subclasses;
 
 @end

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSSet+Extensions.h created by erik on Sat 10-Mar-2001
-//  $Id: NSSet+Extensions.h,v 1.2 2002-04-14 14:57:57 znek Exp $
+//  $Id: NSSet+Extensions.h,v 1.3 2002-07-02 15:05:33 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -26,8 +26,11 @@
 #import <Foundation/NSScanner.h>
 
 
+/*" Various common extensions to #NSSet. "*/
+
 @interface NSSet(EDExtensions)
 
+/*" Adding objects "*/
 - (NSSet *)setByAddingObjectsFromSet:(NSSet *)otherSet;
 - (NSSet *)setByAddingObjectsFromArray:(NSArray *)anArray;
 

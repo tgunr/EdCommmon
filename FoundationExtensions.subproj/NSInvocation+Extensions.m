@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSInvocation+Extensions.m created by erik on Sun 27-May-2001
-//  @(#)$Id: NSInvocation+Extensions.m,v 1.1 2001-06-11 01:08:28 erik Exp $
+//  @(#)$Id: NSInvocation+Extensions.m,v 1.2 2002-07-02 15:05:32 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -26,6 +26,9 @@
     @implementation NSInvocation(EDExtensions)
 //---------------------------------------------------------------------------------------
 
+/*" Various common extensions to #NSInvocation. "*/
+
+/*" Returns an invocation the can be used to send %selector to the %object. The method is assumed to have no argument. "*/
 + (NSInvocation *)invocationWithTarget:(id)object method:(SEL)selector
 {
     NSInvocation 		*invocation;
@@ -39,6 +42,8 @@
     return invocation;
 }
 
+
+/*" Returns an invocation the can be used to send %selector to the %object. The method is assumed to have one argument. "*/
 
 + (NSInvocation *)invocationWithTarget:(id)object method:(SEL)selector argument:(void *)argument
 {

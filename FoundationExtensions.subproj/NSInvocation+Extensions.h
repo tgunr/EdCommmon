@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSInvocation+Extensions.h created by erik on Sun 27-May-2001
-//  @(#)$Id: NSInvocation+Extensions.h,v 1.2 2002-04-14 14:57:57 znek Exp $
+//  @(#)$Id: NSInvocation+Extensions.h,v 1.3 2002-07-02 15:05:32 erik Exp $
 //
 //  Copyright (c) 2001 by Erik Doernenburg. All rights reserved.
 //
@@ -23,8 +23,11 @@
 #define	__NSInvocation_Extensions_h_INCLUDE
 
 
+/*" Various common extensions to #NSInvocation. "*/
+
 @interface NSInvocation(EDExtensions)
 
+/*" Convenience factory methods "*/
 + (NSInvocation *)invocationWithTarget:(id)object method:(SEL)selector;
 + (NSInvocation *)invocationWithTarget:(id)object method:(SEL)selector argument:(void *)argument;
 

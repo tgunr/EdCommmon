@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+printf.m created by erik on Sat 27-Sep-1997
-//  @(#)$Id: NSString+Extensions.h,v 1.6 2002-04-14 15:07:34 znek Exp $
+//  @(#)$Id: NSString+Extensions.h,v 1.7 2002-07-02 15:05:33 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -25,34 +25,51 @@
 
 #import <Foundation/NSString.h>
 
-
 @class NSFileHandle;
 
+#ifndef EDCOMMON_WOBUILD
+@class NSFont;
+#endif
+
+/*" Various common extensions to #NSString. "*/
 
 @interface NSString(EDExtensions)
 
+/*" Convenience factory methods "*/
 + (NSString *)stringWithData:(NSData *)data encoding:(NSStringEncoding)encoding;
 
+/*" Handling whitespace "*/
 - (NSString *)stringByRemovingSurroundingWhitespace;
 - (BOOL)isWhitespace;
 - (NSString *)stringByRemovingWhitespace;
 - (NSString *)stringByRemovingCharactersFromSet:(NSCharacterSet *)set;
 
-- (BOOL)hasPrefixCaseInsensitive:(NSString *)string;
+#ifndef EDCOMMON_WOBUILD
+/*" Abbreviating paths "*/
+- (NSString *)stringByAbbreviatingPathToWidth:(float)maxWidth forFont:(NSFont *)font;
+- (NSString *)stringByAbbreviatingPathToWidth:(float)maxWidth forAttributes:(NSDictionary *)attributes;
+#endif
 
+/*" Comparisons "*/
+- (BOOL)hasPrefixCaseInsensitive:(NSString *)string;
+- (BOOL)isEmpty;
+
+/*" Conversions "*/
 - (BOOL)boolValue;
 - (unsigned int)intValueForHex;
 
-- (BOOL)isEmpty;
 
 #ifndef WIN32
+/*" Encryptions "*/
 - (NSString *)encryptedString;
 - (NSString *)encryptedStringWithSalt:(const char *)salt;
 - (BOOL)isValidEncryptionOfString:(NSString *)aString;
 #endif
 
+/*" Sharing instances "*/
 - (NSString *)sharedInstance;
 
+/*" Printing/formatting "*/
 + (void)printf:(NSString *)format, ...;
 + (void)fprintf:(NSFileHandle *)fileHandle:(NSString *)format, ...;
 - (void)printf;
@@ -61,8 +78,11 @@
 @end
 
 
+/*" Various common extensions to #NSMutableString. "*/
+
 @interface NSMutableString(EDExtensions)
 
+/*" Removing characters "*/
 - (void)removeWhitespace;
 - (void)removeCharactersInSet:(NSCharacterSet *)set;
 

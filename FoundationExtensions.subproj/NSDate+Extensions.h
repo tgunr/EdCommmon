@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSDate+Extensions.h created by erik on Sun 15-Aug-1999
-//  @(#)$Id: NSDate+Extensions.h,v 1.2 2002-04-14 14:57:57 znek Exp $
+//  @(#)$Id: NSDate+Extensions.h,v 1.3 2002-07-02 15:05:32 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -22,6 +22,8 @@
 #ifndef	__NSDate_Extensions_h_INCLUDE
 #define	__NSDate_Extensions_h_INCLUDE
 
+
+/*" Various common extensions to #NSDate. "*/
 
 @interface NSDate(EDExtensions)
 

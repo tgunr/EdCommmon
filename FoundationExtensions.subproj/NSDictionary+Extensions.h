@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSDictionary+Extensions.h created by znek on Sun 02-Jan-2000
-//  @(#)$Id: NSDictionary+Extensions.h,v 1.2 2002-04-14 14:57:57 znek Exp $
+//  @(#)$Id: NSDictionary+Extensions.h,v 1.3 2002-07-02 15:05:32 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -23,13 +23,17 @@
 #define	__NSDictionary_Extensions_h_INCLUDE
 
 
+/*" Various common extensions to #NSDictionary. "*/
+
 @interface NSDictionary(EDExtensions)
 
 // this might be really slow...
-- (id)objectForStringKeyCaseInsensitive:(NSString *)key;
+- (id)objectForStringKeyCaseInsensitive:(NSString *)searchKey;
 
 @end
 
+
+/*" Various common extensions to #NSMutableDictionary. "*/
 
 @interface NSMutableDictionary(EDExtensions)
 

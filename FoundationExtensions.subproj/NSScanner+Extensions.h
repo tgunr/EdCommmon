@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSScanner+Extensions.h created by erik
-//  @(#)$Id: NSScanner+Extensions.h,v 1.2 2002-04-14 14:57:57 znek Exp $
+//  @(#)$Id: NSScanner+Extensions.h,v 1.3 2002-07-02 15:05:32 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -25,6 +25,7 @@
 
 #import <Foundation/NSScanner.h>
 
+/*" Various common extensions to #NSScanner. "*/
 
 @interface NSScanner(EDExtensions)
 

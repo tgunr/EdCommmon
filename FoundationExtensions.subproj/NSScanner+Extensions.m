@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSScanner+Extensions.m created by erik
-//  @(#)$Id: NSScanner+Extensions.m,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: NSScanner+Extensions.m,v 1.2 2002-07-02 15:05:33 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -26,6 +26,11 @@
     @implementation NSScanner(EDExtensions)
 //---------------------------------------------------------------------------------------
 
+/*" Various common extensions to #NSScanner. "*/
+
+
+/*" Copies the remainder of the scanner's string into a string which is returned indirectly through %stringRef. The latter can be %NULL in which case the string is discarded. Returns #NO if the scanner is at the end when the method is called. "*/
+
 - (BOOL)scanUpToEndIntoString:(NSString **)stringRef
 {
     if([self isAtEnd])
@@ -40,6 +45,9 @@
 //---------------------------------------------------------------------------------------
 //	BRACKET STUFF
 //---------------------------------------------------------------------------------------
+
+/*" Assumes that the scanner is located just behind an opening bracket, ie. round, angle, curly or square brackets, and scans up to the matching closing bracket. Nested bracket pairs are ignored in this process. Returns #YES if the bracket was found and if %stringRef is not %NULL indirectly returns the string between the brackets. "*/
+
 
 - (BOOL)scanUpToClosingBracketIntoString:(NSString **)stringRef
 {
