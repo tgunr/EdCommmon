@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 2.1 2002-09-01 17:43:07 erik Exp $
+//  @(#)$Id: EDMLParser.m,v 2.2 2002-09-01 19:26:42 erik Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -258,7 +258,7 @@ Note that the tag processor can specify that whitespace within text, i.e. betwee
 }
 
 
-/*" Set the "entity table" for the parser. This table maps entities of the form !{&ename;} to another string, usually a single characters. Entities are only replaced within text, not within tags. !{
+/*" Set the "entity table" for the parser. This table maps entities of the form !{&ename;} to another string, usually a single characters. Entities are only replaced within text, not within tags.
 
 Example table: !{
     {
