@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------------------
 //  framework.m created by erik on Sun 28-May-2000
-//  @(#)$Id: framework.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: framework.m,v 1.2 2000-10-23 23:25:05 erik Exp $
 //
-//  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -20,12 +20,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSFramework_EDCommon
+@interface EDCommonFramework
 @end
 
 
 //---------------------------------------------------------------------------------------
-    @implementation NSFramework_EDCommon(LoadMessage)
+    @implementation EDCommonFramework
 //---------------------------------------------------------------------------------------
 
 + (void)load
@@ -41,10 +41,12 @@
     if(didLog == YES)
         return;
     didLog = YES;
-#ifndef EDCOMMON_WOBUILD
-    NSLog(@"Loaded: %s", EDCommonVersionString);
-#else
+#if defined(EDCOMMON_WOBUILD)
     NSLog(@"Loaded: %s (WOBUILD)", EDCommonVersionString);
+#elif defined(EDCOMMON_OSXSBUILD)
+    NSLog(@"Loaded: %s (OSXSBUILD)", EDCommonVersionString);
+#else
+    NSLog(@"Loaded: %s", EDCommonVersionString);
 #endif
 #endif
 }
