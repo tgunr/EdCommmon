@@ -44,7 +44,8 @@ PUBLIC_HEADERS = NSArray+Extensions.h NSDate+Extensions.h\
                  NSString+Extensions.h CollectionMapping.h\
                  NSDictionary+Extensions.h\
                  NSAttributedString+Extensions.h NSData+Extensions.h\
-                 NSProcessInfo+Extensions.h NSSet+Extensions.h
+                 NSProcessInfo+Extensions.h NSSet+Extensions.h\
+                 NSInvocation+Extensions.h
 
 PROJECT_HEADERS = CollectionMapping.h NSString+Extensions.h\
                   NSAttributedString+Extensions.h NSSet+Extensions.h

@@ -50,7 +50,8 @@
             "NSAttributedString+Extensions.h", 
             "NSData+Extensions.h", 
             "NSProcessInfo+Extensions.h", 
-            "NSSet+Extensions.h"
+            "NSSet+Extensions.h", 
+            "NSInvocation+Extensions.h"
         ); 
         SUBPROJECTS = (); 
     }; 
