@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDBitmapCharset.h created by erik on Fri 08-Oct-1999
-//  @(#)$Id: EDBitmapCharset.h,v 1.3 2002-07-09 15:56:55 erik Exp $
+//  @(#)$Id: EDBitmapCharset.h,v 1.4 2002-07-09 16:17:02 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -34,7 +34,7 @@ typedef struct
 } EDBitmapCharset;
 
 
-/*" Returns YES if the character is in the charset. This is the only operation currently supported on EDBitmapCharsets. "*/
+/*" Returns YES if the character is in the charset. To be more precise, YES means any value greater than 0. In fact, this method returns the exact bit that was tested against.  This is the only operation currently supported on EDBitmapCharsets. "*/
 
 static __inline__ BOOL EDBitmapCharsetContainsCharacter(EDBitmapCharset *charset, unichar character)
 {
