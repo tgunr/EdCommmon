@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjcRuntime.h created by znek on Mon 18-Mar-2002
-//  @(#)$Id: EDObjcRuntime.h,v 2.1 2003-01-25 22:33:43 erik Exp $
+//  @(#)$Id: EDObjcRuntime.h,v 2.2 2003-04-08 16:49:49 znek Exp $
 //
 //  Copyright (c) 1997-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -39,7 +39,7 @@
 #define EDObjcMethodInfo Method
 #define EDObjcClassGetInstanceMethod class_getInstanceMethod
 #define EDObjcClassGetClassMethod class_getClassMethod
-
+#define EDObjcSelectorsAreEqual(sel1, sel2) ((sel1)) == ((sel2))
 
 #else /* GNU_RUNTIME */
 
@@ -54,6 +54,7 @@
 #define EDObjcMethodInfo Method_t
 #define EDObjcClassGetInstanceMethod class_get_instance_method
 #define EDObjcClassGetClassMethod class_get_class_method
+#define EDObjcSelectorsAreEqual(sel1, sel2) sel_eq(((sel1)),((sel2)))
 
 #endif
 
