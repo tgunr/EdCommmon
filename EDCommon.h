@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCommon.h created by erik on Sat 05-Sep-1998
-//  @(#)$Id: EDCommon.h,v 2.2 2003-01-19 22:47:46 erik Exp $
+//  @(#)$Id: EDCommon.h,v 2.3 2003-01-25 22:33:43 erik Exp $
 //
 //  Copyright (c) 1998-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -23,7 +23,9 @@
 #define	__EDCommon_h_INCLUDE
 
 #ifdef MAC_OS_X_VERSION_10_2
+#ifndef EDCOMMON_OSXBUILD
 #define EDCOMMON_OSXBUILD
+#endif
 #endif
 
 #import <Foundation/Foundation.h>

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSObject+Extensions.m created by erik on Sun 06-Sep-1998
-//  @(#)$Id: NSObject+Extensions.m,v 2.1 2003-01-08 22:30:27 erik Exp $
+//  @(#)$Id: NSObject+Extensions.m,v 2.2 2003-01-25 22:33:49 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -21,17 +21,6 @@
 #import <Foundation/Foundation.h>
 #import "NSObject+Extensions.h"
 #import "EDObjcRuntime.h"
-
-
-@interface _EDHOMProxy : NSObject
-{
-@public
-    SEL			 op;
-    id			 collection;
-    NSEnumerator *enumerator;
-    id			 object;
-}
-@end
 
 
 //---------------------------------------------------------------------------------------
@@ -248,97 +237,6 @@ Example: Assume you have an array !{a} which contains names and an object !{phon
 
     while((object = [enumerator nextObject]) != nil)
         EDObjcMsgSend1(self, selector, object);
-}
-
-
-//---------------------------------------------------------------------------------------
-//  HIGHER ORDER MESSAGING BACKEND
-//---------------------------------------------------------------------------------------
-
-- (id)homProxyWithOp:(int)op source:(NSEnumerator *)anEnumerator representative:(id)anObject
-{
-    _EDHOMProxy	*proxy;
-
-    proxy = [[_EDHOMProxy allocWithZone:[self zone]] init];
-    proxy->collection = [self retain];
-    proxy->enumerator = [anEnumerator retain];
-    proxy->object = [anObject retain];
-
-    switch(op)
-        {
-    case EDHOMDoOp: 	 proxy->op = @selector(doInvocation:withObjects:);		break;
-    case EDHOMCollectOp: proxy->op = @selector(collectInvocation:withObjects:);	break;
-        }
-    
-    return proxy;
-}
-
-
-- (void)doInvocation:(NSInvocation *)invocation withObjects:(NSEnumerator *)anEnumerator
-{
-    id	object;
-
-    while((object = [anEnumerator nextObject]) !=  nil)
-        {
-        [invocation invokeWithTarget:object];
-        }
-}
-
-
-- (NSArray *)collectInvocation:(NSInvocation *)invocation withObjects:(NSEnumerator *)anEnumerator
-{
-    NSMutableArray	*resultArray;
-    id				object, result;
-
-    resultArray = [NSMutableArray array];
-    while((object = [anEnumerator nextObject]) !=  nil)
-        {
-        [invocation invokeWithTarget:object];
-        [invocation getReturnValue:&result];
-        [resultArray addObject:result];
-        }
-    return resultArray;
-}
-
-
-//---------------------------------------------------------------------------------------
-    @end
-//---------------------------------------------------------------------------------------
-
-
-//---------------------------------------------------------------------------------------
-    @implementation _EDHOMProxy
-//---------------------------------------------------------------------------------------
-
-- (void)dealloc
-{
-    [collection release];
-    [enumerator	release];
-    [object release];
-}
-
-
-- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
-{
-    NSMethodSignature *s;
-
-    if((s = [super methodSignatureForSelector:aSelector]) != nil)
-        return s;
-    return [object methodSignatureForSelector:aSelector];
-}
-
-
-- (BOOL)respondsToSelector:(SEL)aSelector
-{
-    if([super respondsToSelector:aSelector] == YES)
-        return YES;
-    return [object respondsToSelector:aSelector];
-}
-
-
-- (void)forwardInvocation:(NSInvocation *)invocation
-{
-    [collection performSelector:op withObject:invocation withObject:enumerator];
 }
 
 

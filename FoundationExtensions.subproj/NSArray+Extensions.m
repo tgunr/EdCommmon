@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.m created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.m,v 2.1 2003-01-08 22:30:27 erik Exp $
+//  @(#)$Id: NSArray+Extensions.m,v 2.2 2003-01-25 22:33:49 erik Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -309,31 +309,6 @@ static EDObjcMethodInfo myFirstObjectMethod;
         [pool release];
         }
     return paths;
-}
-
-//---------------------------------------------------------------------------------------
-
-- (id)do
-{
-    return [self homProxyWithOp:EDHOMDoOp source:[self objectEnumerator] representative:[self firstObject]];
-}
-
-
-- (id)collect
-{
-    return [self homProxyWithOp:EDHOMCollectOp source:[self objectEnumerator] representative:[self firstObject]];
-}
-
-
-- (id)select
-{
-    return [self homProxyWithOp:EDHOMDoOp source:[self objectEnumerator] representative:[self firstObject]];
-}
-
-
-- (id)reject
-{
-    return [self homProxyWithOp:EDHOMDoOp source:[self objectEnumerator] representative:[self firstObject]];
 }
 
 

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjcRuntime.h created by znek on Mon 18-Mar-2002
-//  @(#)$Id: EDObjcRuntime.h,v 2.0 2002-08-16 18:12:43 erik Exp $
+//  @(#)$Id: EDObjcRuntime.h,v 2.1 2003-01-25 22:33:43 erik Exp $
 //
 //  Copyright (c) 1997-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -33,6 +33,8 @@
 /*" Portable runtime functions. Should be used instead of the corresponding NeXT or GNUStep runtime functions. "*/
 #define EDObjcMsgSend(obj, sel) objc_msgSend((obj), (sel))
 #define EDObjcMsgSend1(obj, sel, obj1) objc_msgSend((obj), (sel), (obj1))
+#define EDObjcMsgSend2(obj, sel, obj1, obj2) objc_msgSend((obj), (sel), (obj1), (obj2))
+#define EDObjcMsgSend3(obj, sel, obj1, obj2, obj3) objc_msgSend((obj), (sel), (obj1), (obj2), (obj3))
 /*" Defines for runtime types and functions. Should be used instead of the corresponding NeXT and GNUStep runtime functions. (First set is for NeXT, second set for GNU runtimes.)"*/
 #define EDObjcMethodInfo Method
 #define EDObjcClassGetInstanceMethod class_getInstanceMethod
@@ -47,6 +49,8 @@
 
 #define EDObjcMsgSend(obj, sel) objc_msg_lookup((obj), (sel))((obj), (sel))
 #define EDObjcMsgSend1(obj, sel, obj1) objc_msg_lookup((obj), (sel))((obj), (sel), (obj1))
+#define EDObjcMsgSend2(obj, sel, obj1, obj2) objc_msg_lookup((obj), (sel))((obj), (sel), (obj1), (obj2))
+#define EDObjcMsgSend3(obj, sel, obj1, obj2, obj3) objc_msg_lookup((obj), (sel))((obj), (sel), (obj1), (obj2), (obj3))
 #define EDObjcMethodInfo Method_t
 #define EDObjcClassGetInstanceMethod class_get_instance_method
 #define EDObjcClassGetClassMethod class_get_class_method
