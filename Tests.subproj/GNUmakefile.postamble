@@ -4,12 +4,17 @@
 # NOTE: In order for this to run, you need the excellent OCUnit testing framework
 # from SEN:TE available at http://www.sente.ch/software/ocunit/
 #
-# $Id: GNUmakefile.postamble,v 1.1 2003-05-28 01:19:21 znek Exp $
+# $Id: GNUmakefile.postamble,v 1.2 2003-06-06 15:45:20 znek Exp $
 
 
 after-EDCommonTests-all::
 	@ ( \
 	OTEST_TARGET="`pwd`/$(GNUSTEP_OBJ_DIR)/EDCommonTests" ; \
-	echo "=== Running otest on $$OTEST_TARGET ===" ; \
-	otest $$OTEST_TARGET ; \
+	echo "=== Running tests ===" ; \
+	$$OTEST_TARGET ; \
 	)
+
+clean::
+	rm -f EDCommonTests.core
+
+distclean:: clean
