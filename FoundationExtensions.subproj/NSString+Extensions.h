@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+printf.m created by erik on Sat 27-Sep-1997
-//  @(#)$Id: NSString+Extensions.h,v 1.5 2002-04-14 14:57:57 znek Exp $
+//  @(#)$Id: NSString+Extensions.h,v 1.6 2002-04-14 15:07:34 znek Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -45,9 +45,11 @@
 
 - (BOOL)isEmpty;
 
+#ifndef WIN32
 - (NSString *)encryptedString;
 - (NSString *)encryptedStringWithSalt:(const char *)salt;
 - (BOOL)isValidEncryptionOfString:(NSString *)aString;
+#endif
 
 - (NSString *)sharedInstance;
 
