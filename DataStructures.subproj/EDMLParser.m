@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 2.10 2003-04-08 17:01:36 znek Exp $
+//  @(#)$Id: EDMLParser.m,v 2.11 2003-04-22 18:25:50 znek Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -502,41 +502,6 @@ static NSString *readquotedstring(unichar *charp, NSDictionary *entityTable, int
 }
 
 
-static NSString *readboundedstring(unichar *charp, unichar *endp, NSDictionary *entityTable)
-{
-    NSMutableString	*string;
-    unichar			*start, *chunkstart, endchar;
-    int				entitylen;
-
-    endchar = *charp;
-    start = chunkstart = charp;
-    string = nil;
-    while(charp < endp)
-    {
-        if(*charp == '&')
-        {
-            if(string == nil)
-                string = [NSMutableString stringWithCharacters:chunkstart length:(charp - chunkstart)];
-            else
-                [string appendString:[NSString stringWithCharacters:chunkstart length:(charp - chunkstart)]];
-            [string appendString:readentity(charp, entityTable, &entitylen)];
-            charp += entitylen;
-            chunkstart = charp;
-        }
-        else
-        {
-            charp = nextchar(charp, YES);
-        }
-    }
-    if(string == nil)
-        string = (id)[NSString stringWithCharacters:start length:(charp - chunkstart)];
-    else
-        [string appendString:[NSString stringWithCharacters:chunkstart length:(charp - chunkstart)]];
-
-    return string;
-}
-
-
 - (EDMLToken *)_nextToken
 {
     EDMLToken	*token;
@@ -598,7 +563,7 @@ static NSString *readboundedstring(unichar *charp, unichar *endp, NSDictionary *
                 if(start == charp) // not at end and neither a text nor a switch char
                     [NSException raise:EDMLParserException format:@"Found invalid character \\u%x at pos %d.", (int)*charp, (charp - source)];
                 token = [EDMLToken tokenWithType:EDMLPT_STRING];
-                [token setValue:readboundedstring(start, charp, entityTable)];
+                [token setValue:[NSString stringWithCharacters:start length:(charp - start)]];
                 }
             break;
 
