@@ -9,7 +9,10 @@
 			buildRules = (
 			);
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DEPLOYMENT_POSTPROCESSING = NO;
+				DSTROOT = /;
 				OPTIMIZATION_CFLAGS = "-O0";
 			};
 			isa = PBXBuildStyle;
@@ -19,7 +22,10 @@
 			buildRules = (
 			);
 			buildSettings = {
-				COPY_PHASE_STRIP = YES;
+				DEBUGGING_SYMBOLS = NO;
+				DEPLOYMENT_LOCATION = YES;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				DSTROOT = /;
 				OPTIMIZATION_CFLAGS = "-O3";
 			};
 			isa = PBXBuildStyle;
@@ -977,6 +983,7 @@
 				DYLIB_CURRENT_VERSION = 32;
 				FRAMEWORK_SEARCH_PATHS = "";
 				FRAMEWORK_VERSION = A;
+				INSTALL_MODE_FLAG = "u+w,go-w,o+rX";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				OTHER_CFLAGS = "-DEDCOMMON_OSXBUILD -Winline";
 				OTHER_LDFLAGS = "-seg1addr 0x35000000";
@@ -2435,10 +2442,16 @@
 			buildRules = (
 			);
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				INSTALL_PATH = "@executable_path/../Frameworks";
+				DEBUGGING_SYMBOLS = YES;
+				DEPLOYMENT_LOCATION = NO;
+				DEPLOYMENT_POSTPROCESSING = NO;
+				DSTROOT = /;
+				DYLIB_INSTALL_NAME_BASE = "@executable_path/../Frameworks";
+				FRAMEWORK_SEARCH_PATHS = "";
 				OPTIMIZATION_CFLAGS = "-O0";
 				SKIP_INSTALL = YES;
+				SYMROOT = "$(USER_LIBRARY_DIR)/EmbeddedDevelopmentFrameworks";
+				TEMP_DIR = "$(SYMROOT)/$(PROJECT_NAME).build";
 			};
 			isa = PBXBuildStyle;
 			name = "Appwrapper Development";
@@ -2447,10 +2460,16 @@
 			buildRules = (
 			);
 			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				INSTALL_PATH = "@executable_path/../Frameworks";
+				DEBUGGING_SYMBOLS = NO;
+				DEPLOYMENT_LOCATION = NO;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				DSTROOT = /;
+				DYLIB_INSTALL_NAME_BASE = "@executable_path/../Frameworks";
+				FRAMEWORK_SEARCH_PATHS = "";
 				OPTIMIZATION_CFLAGS = "-O3";
 				SKIP_INSTALL = YES;
+				SYMROOT = "$(USER_LIBRARY_DIR)/EmbeddedFrameworks";
+				TEMP_DIR = "$(SYMROOT)/$(PROJECT_NAME).build";
 			};
 			isa = PBXBuildStyle;
 			name = "Appwrapper Deployment";
