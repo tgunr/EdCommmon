@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  deallocnotif-next.h created by erik on Mon Jul 15 2002
-//  @(#)$Id: deallocnotif.m,v 2.2 2003-04-08 16:51:35 znek Exp $
+//  @(#)$Id: deallocnotif.m,v 2.3 2003-06-30 17:22:24 znek Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -81,7 +81,7 @@ void EDAddObserverForObject(id observer, id object)
         NSMapRemove(observerTable, object);
 
         observerList = NSZoneRealloc(NULL, observerList, newSize);
-        bzero(&(observerList[i]), newSize - oldSize);
+        memset(&(observerList[i]), 0, newSize - oldSize);
         observerList[(i + 1) * 2 - 1] = END_OF_OBSERVER_LIST;
 
         NSMapInsert(observerTable, object, observerList);
