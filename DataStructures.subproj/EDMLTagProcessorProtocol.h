@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------------------
-//  EDMLToken.h created by erik
-//  @(#)$Id: EDMLToken.h,v 1.3 2002-07-09 16:02:18 erik Exp $
+//  EDMLTagProcessorProtocol.h created by erik
+//  @(#)$Id: EDMLTagProcessorProtocol.h,v 1.1 2002-07-09 16:02:18 erik Exp $
 //
-//  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -19,25 +19,32 @@
 //---------------------------------------------------------------------------------------
 
 
-#ifndef	__EDMLToken_h_INCLUDE
-#define	__EDMLToken_h_INCLUDE
+#ifndef	__EDMLTagProcessorProtocol_h_INCLUDE
+#define	__EDMLTagProcessorProtocol_h_INCLUDE
 
 
-/*" Private helper class for EDMLParser. Do not use directly. "*/
+#import "EDCommonDefines.h"
 
-@interface EDMLToken : NSObject
+@class EDObjectPair;
+
+/*" Used to classify elements. See #{typeOfElementForTag:attributeList:} for details. "*/
+typedef enum
 {
-    int 		type;
-    id			value;
-}
+    EDMLUnknownTag,
+    EDMLSingleElement,
+    EDMLContainerElement
+} EDMLElementType;
 
-+ (EDMLToken *)tokenWithType:(int)aType;
-- (id)initWithType:(int)aType;
-- (int)type;
-- (void)setValue:(id)aValue;
-- (id)value;
 
+@protocol EDMLTagProcessor < NSObject >
+- (NSString *)defaultNamespace;
+- (BOOL)spaceIsString;
+- (EDMLElementType)typeOfElementForTag:(EDObjectPair *)tagName attributeList:(NSArray *)attrList;
+- (id)elementForTag:(EDObjectPair *)tagName attributeList:(NSArray *)attrList;
+- (id)elementForTag:(EDObjectPair *)tagName attributeList:(NSArray *)attrList containedElements:(NSArray *)containedElements;
+- (id)objectForText:(NSString *)string;
+- (id)objectForSpace:(NSString *)string;
 @end
 
-#endif	/* __EDMLToken_h_INCLUDE */
 
+#endif	/* __EDMLTagProcessorProtocol_h_INCLUDE */

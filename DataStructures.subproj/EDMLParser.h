@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.h created by erik
-//  @(#)$Id: EDMLParser.h,v 1.5 2002-04-14 14:57:55 znek Exp $
+//  @(#)$Id: EDMLParser.h,v 1.6 2002-07-09 16:02:18 erik Exp $
 //
-//  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -24,50 +24,48 @@
 
 
 #import "EDCommonDefines.h"
-
-
-@protocol EDMarkupElement
-- (void)takeValue:(id)value forAttribute:(NSString *)attribute;
-@end
-
-@protocol EDMarkupContainerElement <EDMarkupElement>
-- (void)setContainedElements:(NSArray *)elements;
-@end
+#import "EDMLTagProcessorProtocol.h"
 
 
 @interface EDMLParser : NSObject
 {
-    struct {
-        unsigned		preservesWhitespace : 1;
-        unsigned 		acceptsUnknownAttributes : 1;
-    }				flags;
-    NSDictionary	*tagDefinitions;
-    NSDictionary	*stringElementDefinition;
-    NSDictionary	*spaceElementDefinition;
-    unichar		 	*source;
-    unichar		 	*charp;
-    unsigned int 	lexmode;
-    id				peekedToken;
-    NSMutableArray	*stack;
+    BOOL					preservesWhitespace;	/*" All instance variables are private. "*/
+    id <EDMLTagProcessor>	tagProcessor;			/*" "*/
+    unichar		 			*source;				/*" "*/
+    unichar		 			*charp;					/*" "*/
+    unsigned int 			lexmode;				/*" "*/
+    id						peekedToken;			/*" "*/
+    NSMutableArray			*stack;					/*" "*/
+    NSMutableArray			*namespaceStack;		/*" "*/
 }
 
-+ (id)parserWithTagDefinitions:(NSDictionary *)someTagDefinitions;
+/*" Creating parser instances "*/
++ (id)parserWithTagProcessor:(id <EDMLTagProcessor>)aTagProcessor;
 
-- (id)initWithTagDefinitions:(NSDictionary *)someTagDefinitions;
+- (id)init;
+- (id)initWithTagProcessor:(id <EDMLTagProcessor>)aTagProcessor;
 
+/*" Assigning a tag processor "*/
+- (void)setTagProcessor:(id <EDMLTagProcessor>)aTagProcessor;
+- (id <EDMLTagProcessor>)tagProcessor;
+
+/*" Configuring the parser "*/
 - (void)setPreservesWhitespace:(BOOL)flag;
 - (BOOL)preservesWhitespace;
 
-- (void)setAcceptsUnknownAttributes:(BOOL)flag;
-- (BOOL)acceptsUnknownAttributes;
-
+/*" Parsing a string "*/
 - (NSArray *)parseString:(NSString *)aString;
 
-// for subclassers
-- (NSDictionary *)tagDefinitionForTagNamed:(NSString *)tagName;
+/*" Relevant character sets "*/
++ (NSCharacterSet *)spaceCharacterSet;
++ (NSCharacterSet *)idCharacterSet;
++ (NSCharacterSet *)textCharacterSet;
++ (NSCharacterSet *)attrStopCharacterSet;
 
 @end
 
+
+/*" Exception thrown when the parser encounters an error; generally a syntax error. "*/
 
 EDCOMMON_EXTERN NSString *EDMLParserException;
 

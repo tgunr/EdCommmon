@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCommon.h created by erik on Sat 05-Sep-1998
-//  @(#)$Id: EDCommon.h,v 1.9 2002-04-14 14:57:53 znek Exp $
+//  @(#)$Id: EDCommon.h,v 1.10 2002-07-09 16:02:16 erik Exp $
 //
 //  Copyright (c) 1998-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -46,7 +46,6 @@
 #import "EDLightWeightLock.h"
 #import "EDLRUCache.h"
 #import "EDNumberSet.h"
-#import "EDMLParser.h"
 #import "EDObjectPair.h"
 #import "EDObjectReference.h"
 #import "EDRange.h"
@@ -54,6 +53,10 @@
 #import "EDSparseClusterArray.h"
 #import "EDStack.h"
 #import "EDStringScanner.h"
+
+#import "EDMLParser.h"
+#import "EDMLTagProcessorProtocol.h"
+#import "EDAOMTagProcessor.h"
 
 
 #ifndef EDCOMMON_WOBUILD
