@@ -1,5 +1,5 @@
 # DataStructures.subproj
-# $Id: GNUmakefile,v 2.0 2002-08-16 18:12:46 erik Exp $
+# $Id: GNUmakefile,v 2.1 2002-08-17 17:40:03 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -19,15 +19,15 @@ SUBPROJECT_NAME = DataStructures.subproj
 
 
 DataStructures.subproj_HEADER_FILES = \
-EDBitmapCharset.h                       EDObjectPair.h \
-EDIRCObject.h                           EDObjectReference.h \
-EDLRUCache.h                            EDRange.h \
-EDLightWeightLock.h                     EDRedBlackTree+Private.h \
-EDAOMTagProcessor.h               	EDRedBlackTree.h \
-EDMLParser.h                            EDSparseClusterArray.h \
-EDMLTagProcessorProtocol.h              EDStack.h \
-EDStringScanner.h                       EDNumberSet.h \
-EDMUtableObjectPair.h
+EDAOMTagProcessor.h             EDNumberSet.h \
+EDBitmapCharset.h               EDObjectPair.h \
+EDIRCObject.h                   EDObjectReference.h \
+EDLRUCache.h                    EDRange.h \
+EDLightWeightLock.h             EDRedBlackTree+Private.h \
+EDMLParser.h                    EDRedBlackTree.h \
+EDMLTagProcessorProtocol.h      EDSparseClusterArray.h \
+EDMLToken.h                     EDStack.h \
+EDMutableObjectPair.h           EDStringScanner.h
 
 
 DataStructures.subproj_OBJC_FILES = \
