@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+printf.m created by erik on Sat 27-Sep-1997
-//  @(#)$Id: NSString+Extensions.m,v 1.4 2000-12-06 14:36:50 erik Exp $
+//  @(#)$Id: NSString+Extensions.m,v 1.5 2001-02-19 21:47:26 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -53,7 +53,7 @@ static NSCharacterSet *iwsSet = nil;
 
 - (NSString *)stringByRemovingSurroundingWhitespace
 {
-    NSRange				  start, end, result;
+    NSRange		start, end, result;
 
     if(iwsSet == nil)
         iwsSet = [[[NSCharacterSet whitespaceCharacterSet] invertedSet] retain];
@@ -131,6 +131,7 @@ static NSCharacterSet *iwsSet = nil;
 }
 
 
+#ifndef WIN32 // [TRH 2001/01/18] quick hack: disabled since Windows does not have crypt() -- not needed for EDInternet anyway.
 //---------------------------------------------------------------------------------------
 //	CRYPTING
 //---------------------------------------------------------------------------------------
@@ -182,7 +183,7 @@ static NSCharacterSet *iwsSet = nil;
   salt[2] = '\0';
   return [self isEqualToString:[aString encryptedStringWithSalt:salt]];
 }
-
+#endif // !defined(WIN32)
 
 //---------------------------------------------------------------------------------------
 //	SHARING STRING INSTANCES (USE WITH CAUTION!)
@@ -265,6 +266,29 @@ static NSCharacterSet *iwsSet = nil;
 //=======================================================================================
     @implementation NSMutableString(EDExtensions)
 //=======================================================================================
+
+- (void)removeSurroundingWhitespace
+{
+    NSRange		start, end;
+
+    if(iwsSet == nil)
+        iwsSet = [[[NSCharacterSet whitespaceCharacterSet] invertedSet] retain];
+
+    start = [self rangeOfCharacterFromSet:iwsSet];
+    if(start.length == 0)
+        {
+        [self setString:@""];  // string is empty or consists of whitespace only
+        return;
+        }
+
+    if(start.location > 0)
+        [self deleteCharactersInRange:NSMakeRange(0, start.location)];
+    
+    end = [self rangeOfCharacterFromSet:iwsSet options:NSBackwardsSearch];
+    if(end.location < [self length] - 1)
+        [self deleteCharactersInRange:NSMakeRange(NSMaxRange(end), [self length] - NSMaxRange(end))];
+}
+
 
 - (void)removeWhitespace
 {
