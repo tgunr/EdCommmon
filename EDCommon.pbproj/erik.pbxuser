@@ -16,9 +16,9 @@
 					Frame = "{{0, 23}, {1007, 664}}";
 					Split0 = {
 						ActiveTab = 2;
-						Frame = "{{260, 0}, {747, 664}}";
+						Frame = "{{253, 0}, {754, 664}}";
 						Split0 = {
-							Frame = "{{0, 217}, {747, 447}}";
+							Frame = "{{0, 217}, {754, 447}}";
 						};
 						SplitCount = 1;
 						Tab0 = {
@@ -54,9 +54,9 @@
 							};
 						};
 						Tab2 = {
-							BuildMessageFrame = "{{0, 0}, {749, 71}}";
-							BuildTranscriptFrame = "{{0, 80}, {749, 114}}";
-							Frame = "{{0, 0}, {747, 192}}";
+							BuildMessageFrame = "{{0, 0}, {756, 71}}";
+							BuildTranscriptFrame = "{{0, 80}, {756, 114}}";
+							Frame = "{{0, 0}, {754, 192}}";
 						};
 						Tab3 = {
 							Frame = "{{0, 0}, {747, 295}}";
@@ -65,28 +65,36 @@
 					};
 					SplitCount = 1;
 					Tab0 = {
-						Frame = "{{0, 0}, {235, 664}}";
+						Frame = "{{0, 0}, {228, 664}}";
 					};
 					Tab1 = {
+						ClassesFrame = "{{0, 0}, {202, 348}}";
 						Frame = "{{0, 0}, {200, 664}}";
+						MembersFrame = "{{0, 357}, {202, 307}}";
+						OptionsSetName = "Hierarchy, project classes";
 					};
 					Tab2 = {
-						Frame = "{{0, 0}, {200, 676}}";
+						Frame = "{{0, 0}, {200, 100}}";
+					};
+					Tab3 = {
+						Frame = "{{0, 0}, {200, 664}}";
 						Split0 = {
-							Frame = "{{0, 0}, {200, 329}}";
+							Frame = "{{0, 0}, {200, 323}}";
 						};
 						Split1 = {
-							Frame = "{{0, 338}, {200, 338}}";
+							Frame = "{{0, 332}, {200, 332}}";
 						};
 						SplitCount = 2;
 					};
-					Tab3 = {
+					Tab4 = {
 						Frame = "{{0, 0}, {250, 664}}";
 					};
-					TabCount = 4;
+					TabCount = 5;
 				};
 			};
 		};
+		wantsIndex = 1;
+		wantsSCM = -1;
 	};
 	1AA34D480090839C7F000001 = {
 		activeExec = 0;
