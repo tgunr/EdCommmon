@@ -146,13 +146,18 @@ VERSION_INFO_PREFIX =
 # Non standard build variables:
 #    PUBLIC_PRECOMPILED_HEADERS: List of public header files that will be 
 #   precompiled. Note that this requires extra rules in a postamble file.
+#    PUBLIC_PRECOMPILED_HEADERS_CFLAGS: Flags to be used during precompilation 
+#   of the headers in $(PUBLIC_PRECOMPILED_HEADERS)
 #    BUILD_WO_VERSION: Build a version without AppKit dependencies. 
 PUBLIC_PRECOMPILED_HEADERS = EDCommon.h
+PUBLIC_PRECOMPILED_HEADERS_CFLAGS += $(DEBUG_BUILD_CFLAGS)
 BUILD_WO_VERSION =
 
 
 # Include some additional definitions from parent project (if possible)
 -include ../Makefiles/common.make.preamble
+# Include YOUR custom definitions (if you did provide such)
+-include Makefile.preamble.local
 
 
 # Postprocessing to set variables derived from above settings. 
@@ -173,6 +178,17 @@ FILTER = Widgets.subproj AppKitExtensions.subproj
 FULL_SUBPROJECTS := $(SUBPROJECTS)
 SUBPROJECTS := $(filter-out $(FILTER), $(FULL_SUBPROJECTS))
 endif
+
+# Building on Rhapsody requires EOControl.framework (EOKeyValueCoding)
+ifeq "$(OS)" "NEXTSTEP"
+FRAMEWORKS += EOControl
+endif
+
+# Solaris specialty
+ifeq "$(OS)" "SOLARIS"
+FRAMEWORK_SHLIB_INSTALLDIR=$(INSTALLDIR)/../SharedLibraries
+endif
+
 
 # GNUstep compatibility
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""

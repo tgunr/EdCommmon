@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.m created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.m,v 1.5 2002-04-14 14:57:57 znek Exp $
+//  @(#)$Id: NSArray+Extensions.m,v 1.6 2002-04-28 22:16:49 znek Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -21,6 +21,10 @@
 #import <Foundation/Foundation.h>
 #import "NSArray+Extensions.h"
 #import "EDObjcRuntime.h"
+
+#if (!defined(EDCOMMON_OSXBUILD) && !defined(GNUSTEP))
+#import <EOControl/EOKeyValueCoding.h>
+#endif
 
 #ifdef WIN32
 #define random() rand()

@@ -38,6 +38,7 @@ PROF_LIBS = $(LIBS)
 
 NEXTSTEP_PB_LDFLAGS = -seg1addr 0x50000000
 WINDOWS_PB_CFLAGS = -D_BUILDING_EDCOMMON_DLL
+PDO_UNIX_PB_CFLAGS = -D__EXTENSIONS__
 FRAMEWORKS = -framework AppKit -framework Foundation
 PUBLIC_HEADERS = EDCommon.h EDCommonDefines.h EDObjcRuntime.h
 

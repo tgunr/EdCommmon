@@ -102,7 +102,7 @@ OPTIMIZE_BUILD_CFLAGS = -O2 -DOPTIMIZED
 #
 
 # Add awk for solaris
-ifeq "$(PLATFORM_OS)" "solaris"
+ifeq "$(OS)" "SOLARIS"
 ifeq "$(AWK)" ""
 AWK = /usr/bin/nawk
 endif
@@ -111,6 +111,8 @@ endif
 
 # Include some additional definitions from parent project (if possible)
 -include ../Makefiles/common.make.postamble
+# Include YOUR custom definitions (if you did provide such)
+-include Makefile.postamble.local
 
 
 # Rules fix/precompile installed headers
@@ -142,11 +144,13 @@ endif
 precompile-headers:
 	$(SILENT) ( \
 	  $(ECHO) "Precompiling public headers... (non-apple extension)" ; \
+	  $(CHMOD) u+w $(DSTROOT)$(PUBLIC_HDR_INSTALLDIR)$(PUBLIC_HEADER_DIR_SUFFIX) ; \
 	  for pph in $(PUBLIC_PRECOMPILED_HEADERS) ; \
 	  do \
 	    h_path=$(DSTROOT)$(PUBLIC_HDR_INSTALLDIR)$(PUBLIC_HEADER_DIR_SUFFIX)/$$pph ; \
 	    p_path=$(DSTROOT)$(PUBLIC_HDR_INSTALLDIR)$(PUBLIC_HEADER_DIR_SUFFIX)/`basename $$pph .h`.p ; \
-	    $(ECHO) "$(CC) -precomp $(PUBLIC_PRECOMPILED_HEADERS_CFLAGS) $(DEBUG_BUILD_CFLAGS) -o $$p_path $$h_path" ; \
-	    $(CC) -precomp $(PUBLIC_PRECOMPILED_HEADERS_CFLAGS) $(DEBUG_BUILD_CFLAGS) -o $$p_path $$h_path ; \
+	    $(ECHO) "$(CC) -precomp $(PUBLIC_PRECOMPILED_HEADERS_CFLAGS) -o $$p_path $$h_path" ; \
+	    $(CC) -precomp $(PUBLIC_PRECOMPILED_HEADERS_CFLAGS) -o $$p_path $$h_path ; \
 	  done ; \
+	  $(CHMOD) $(INSTALL_PERMISSIONS) $(DSTROOT)$(PUBLIC_HDR_INSTALLDIR)$(PUBLIC_HEADER_DIR_SUFFIX) ; \
 	  )
