@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 1.14 2002-07-14 14:42:31 znek Exp $
+//  @(#)$Id: EDMLParser.m,v 1.15 2002-07-14 17:15:42 znek Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -164,7 +164,7 @@ NSCharacterSet *colonNSCharset;
 {
     NSMutableCharacterSet *tempCharset;
 
-    tempCharset = [[[NSCharacterSet whitespaceCharacterSet] mutableCopy] autorelease];
+    tempCharset = [[[NSCharacterSet whitespaceAndNewlineCharacterSet] mutableCopy] autorelease];
     [tempCharset addCharactersInString:@"=>"];
     return tempCharset;
 }
