@@ -100,11 +100,19 @@ WARNING_CFLAGS = -Wall
 # derived files should go.
 #
 
+# Add awk for solaris
+ifeq "$(PLATFORM_OS)" "solaris"
+ifeq "$(AWK)" ""
+AWK = /usr/bin/nawk
+endif
+endif
+
+
 # Include some additional definitions from parent project (if possible)
 -include ../Makefiles/common.make.postamble
 
 
-
+# Rules fix/precompile installed headers
 fix-headers:
 ifeq "$(BUILD_WO_VERSION)" "YES"
 	$(SILENT) ( \

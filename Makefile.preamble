@@ -17,6 +17,10 @@
 #    MAKEFILEDIR: Directory in which to find $(MAKEFILE)
 #    MAKEFILE: Top level mechanism Makefile (e.g., app.make, bundle.make)
 
+# Include some additional definitions from parent project (if possible)
+-include ../Makefiles/common.make.preamble
+
+
 # Compiler/linker flags added to the defaults:  The OTHER_* variables will be 
 # inherited by all nested sub-projects, but the LOCAL_ versions of the same
 # variables will not.  Put your -I, -D, -U, and -L flags in ProjectBuilder's
@@ -175,8 +179,4 @@ endif
 # Additional targets to fix/precompile headers
 AFTER_INSTALLHDRS = fix-headers
 AFTER_INSTALL = precompile-headers
-
-
-# Include some additional definitions from parent project (if possible)
--include ../Makefiles/common.make.preamble
 
