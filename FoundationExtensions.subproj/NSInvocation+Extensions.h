@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSInvocation+Extensions.h created by erik on Sun 27-May-2001
-//  @(#)$Id: NSInvocation+Extensions.h,v 1.1 2001-06-11 01:08:27 erik Exp $
+//  @(#)$Id: NSInvocation+Extensions.h,v 1.2 2002-04-14 14:57:57 znek Exp $
 //
 //  Copyright (c) 2001 by Erik Doernenburg. All rights reserved.
 //
@@ -18,9 +18,16 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__NSInvocation_Extensions_h_INCLUDE
+#define	__NSInvocation_Extensions_h_INCLUDE
+
+
 @interface NSInvocation(EDExtensions)
 
 + (NSInvocation *)invocationWithTarget:(id)object method:(SEL)selector;
 + (NSInvocation *)invocationWithTarget:(id)object method:(SEL)selector argument:(void *)argument;
 
 @end
+
+#endif	/* __NSInvocation_Extensions_h_INCLUDE */

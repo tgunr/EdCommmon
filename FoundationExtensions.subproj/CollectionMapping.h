@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCollectionMapping.h created by erik on Wed 17-Mar-1999
-//  @(#)$Id: CollectionMapping.h,v 1.2 2000-12-06 14:36:49 erik Exp $
+//  @(#)$Id: CollectionMapping.h,v 1.3 2002-04-14 14:57:56 znek Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -18,7 +18,13 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__CollectionMapping_h_INCLUDE
+#define	__CollectionMapping_h_INCLUDE
+
+
 #import <Foundation/Foundation.h>
+
 
 @interface NSArray(EDCollectionMapping)
 - (NSArray *)arrayByMappingWithDictionary:(NSDictionary *)mapping;
@@ -38,3 +44,5 @@
 - (void)performSelector:(SEL)selector withObjects:(NSArray *)objectList;
 - (void)performSelector:(SEL)selector withObjectsEnumeratedBy:(NSEnumerator *)enumerator;
 @end
+
+#endif	/* __CollectionMapping_h_INCLUDE */

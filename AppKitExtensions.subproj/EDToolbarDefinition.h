@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDToolbarDefinition.h created by erik on Sat 06-Jun-2001
-//  @(#)$Id: EDToolbarDefinition.h,v 1.2 2001-08-05 20:38:00 erik Exp $
+//  @(#)$Id: EDToolbarDefinition.h,v 1.3 2002-04-14 14:57:54 znek Exp $
 //
 //  Copyright (c) 2001 by Erik Doernenburg. All rights reserved.
 //
@@ -18,7 +18,12 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#ifndef EDCOMMON_OSXSBUILD
+
+#ifndef	__EDToolbarDefinition_h_INCLUDE
+#define	__EDToolbarDefinition_h_INCLUDE
+
+
+#ifdef EDCOMMON_OSXBUILD
 
 #import <AppKit/AppKit.h>
 
@@ -44,3 +49,6 @@
 @end
 
 #endif
+
+#endif	/* __EDToolbarDefinition_h_INCLUDE */
+

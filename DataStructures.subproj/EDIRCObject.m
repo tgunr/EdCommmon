@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDIRCObject.m created by erik
-//  @(#)$Id: EDIRCObject.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDIRCObject.m,v 1.2 2002-04-14 14:57:55 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -61,8 +61,11 @@ static EDLightWeightLock retainLock;
 {
     EDLWLLock(&retainLock);
 
+#ifndef GNUSTEP
     if(NSKeepAllocationStatistics)
         NSRecordAllocationEvent(NSObjectInternalRefIncrementedEvent, self, NULL, NULL, NULL);
+#endif
+
     retainCount += 1;
 
     EDLWLUnlock(&retainLock);
@@ -74,8 +77,11 @@ static EDLightWeightLock retainLock;
 {
     EDLWLLock(&retainLock);
 
+#ifndef GNUSTEP
     if(NSKeepAllocationStatistics) 
         NSRecordAllocationEvent(NSObjectInternalRefDecrementedEvent, self, NULL, NULL, NULL);
+#endif
+
     if(retainCount == 0)
         {
         EDLWLUnlock(&retainLock);

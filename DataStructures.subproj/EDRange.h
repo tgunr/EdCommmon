@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  Created by znek on Fri 31-Oct-1997
-//  @(#)$Id: EDRange.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDRange.h,v 1.2 2002-04-14 14:57:55 znek Exp $
 //
 //  Copyright (c) 1997,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -17,6 +17,11 @@
 //  DAMAGES WHATSOEVER RESULTING DIRECTLY OR INDIRECTLY FROM THE USE OF THIS SOFTWARE
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
+
+
+#ifndef	__EDRange_h_INCLUDE
+#define	__EDRange_h_INCLUDE
+
 
 #import "EDIRCObject.h"
 
@@ -49,3 +54,5 @@
 - (NSComparisonResult)compareLocation:(EDRange *)otherRange;
 
 @end
+
+#endif	/* __EDRange_h_INCLUDE */

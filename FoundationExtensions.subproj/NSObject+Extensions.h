@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSObject+Extensions.h created by erik on Sun 06-Sep-1998
-//  @(#)$Id: NSObject+Extensions.h,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: NSObject+Extensions.h,v 1.2 2002-04-14 14:57:57 znek Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,7 +18,13 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__NSObject_Extensions_h_INCLUDE
+#define	__NSObject_Extensions_h_INCLUDE
+
+
 #import <Foundation/NSObject.h>
+
 
 @interface NSObject(EDExtensions)
 
@@ -33,3 +39,5 @@
 
 BOOL EDClassIsSuperclassOfClass(Class aClass, Class subClass);
 NSArray *EDSubclassesOfClass(Class aClass);
+
+#endif	/* __NSObject_Extensions_h_INCLUDE */

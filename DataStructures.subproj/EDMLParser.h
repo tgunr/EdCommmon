@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.h created by erik
-//  @(#)$Id: EDMLParser.h,v 1.4 2001-06-27 21:55:33 erik Exp $
+//  @(#)$Id: EDMLParser.h,v 1.5 2002-04-14 14:57:55 znek Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -17,6 +17,11 @@
 //  DAMAGES WHATSOEVER RESULTING DIRECTLY OR INDIRECTLY FROM THE USE OF THIS SOFTWARE
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
+
+
+#ifndef	__EDMLParser_h_INCLUDE
+#define	__EDMLParser_h_INCLUDE
+
 
 #import "EDCommonDefines.h"
 
@@ -65,3 +70,5 @@
 
 
 EDCOMMON_EXTERN NSString *EDMLParserException;
+
+#endif	/* __EDMLParser_h_INCLUDE */

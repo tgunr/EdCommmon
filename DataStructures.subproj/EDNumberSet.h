@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDNumberSet.h created by erik on Sun 04-Jul-1999
-//  @(#)$Id: EDNumberSet.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDNumberSet.h,v 1.2 2002-04-14 14:57:55 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -18,7 +18,13 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__EDNumberSet_h_INCLUDE
+#define	__EDNumberSet_h_INCLUDE
+
+
 #import <Foundation/Foundation.h>
+
 
 @class EDRedBlackTree, EDRange;
 
@@ -46,3 +52,5 @@
 - (NSArray *)uncoveredRangesInRange:(EDRange *)range;
 
 @end
+
+#endif	/* __EDNumberSet_h_INCLUDE */

@@ -6,12 +6,12 @@
         CLASSES = (); 
         FRAMEWORKS = (AppKit.framework, Foundation.framework); 
         FRAMEWORKSEARCH = (); 
-        H_FILES = (EDCommon.h, EDCommonDefines.h); 
+        H_FILES = (EDCommon.h, EDCommonDefines.h, EDObjcRuntime.h); 
         OTHER_LINKED = (useful.m, framework.m); 
         OTHER_SOURCES = (Makefile.preamble, Makefile, Makefile.postamble, h.template, m.template); 
         PRECOMPILED_HEADERS = (); 
-        PROJECT_HEADERS = (EDCommonDefines.h); 
-        PUBLIC_HEADERS = (EDCommon.h, EDCommonDefines.h); 
+        PROJECT_HEADERS = (EDCommonDefines.h, EDObjcRuntime.h); 
+        PUBLIC_HEADERS = (EDCommon.h, EDCommonDefines.h, EDObjcRuntime.h); 
         SUBPROJECTS = (
             FoundationExtensions.subproj, 
             DataStructures.subproj, 

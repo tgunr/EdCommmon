@@ -12,7 +12,7 @@ NAME = EDCommon
 PROJECTVERSION = 2.8
 PROJECT_TYPE = Framework
 
-HFILES = EDCommon.h EDCommonDefines.h
+HFILES = EDCommon.h EDCommonDefines.h EDObjcRuntime.h
 
 MFILES = useful.m framework.m
 
@@ -39,9 +39,9 @@ PROF_LIBS = $(LIBS)
 NEXTSTEP_PB_LDFLAGS = -seg1addr 0x50000000
 WINDOWS_PB_CFLAGS = -D_BUILDING_EDCOMMON_DLL
 FRAMEWORKS = -framework AppKit -framework Foundation
-PUBLIC_HEADERS = EDCommon.h EDCommonDefines.h
+PUBLIC_HEADERS = EDCommon.h EDCommonDefines.h EDObjcRuntime.h
 
-PROJECT_HEADERS = EDCommonDefines.h
+PROJECT_HEADERS = EDCommonDefines.h EDObjcRuntime.h
 
 
 

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSAttributedString+Extensions.h created by erik on Tue 05-Oct-1999
-//  @(#)$Id: NSAttributedString+AppKitExtensions.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: NSAttributedString+AppKitExtensions.h,v 1.2 2002-04-14 14:57:54 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -17,6 +17,11 @@
 //  DAMAGES WHATSOEVER RESULTING DIRECTLY OR INDIRECTLY FROM THE USE OF THIS SOFTWARE
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
+
+
+#ifndef	__NSAttributedString_AppKitExtensions_h_INCLUDE
+#define	__NSAttributedString_AppKitExtensions_h_INCLUDE
+
 
 @interface NSAttributedString(EDAppKitExtensions)
 
@@ -37,3 +42,5 @@
 - (void)urlifyWithLinkColor:(NSColor *)linkColor range:(NSRange)range;
 
 @end
+
+#endif	/* __NSAttributedString_AppKitExtensions_h_INCLUDE */

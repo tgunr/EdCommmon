@@ -156,8 +156,8 @@ BUILD_WO_VERSION =
 
 
 # Postprocessing to set variables derived from above settings. 
-ifneq "$(OS)" "MACOS"
-OTHER_CFLAGS += -DEDCOMMON_OSXSBUILD
+ifeq "$(OS)" "MACOS"
+OTHER_CFLAGS += -DEDCOMMON_OSXBUILD
 endif
 
 ifeq "$(BUILD_WO_VERSION)" "YES"
@@ -174,9 +174,19 @@ FULL_SUBPROJECTS := $(SUBPROJECTS)
 SUBPROJECTS := $(filter-out $(FILTER), $(FULL_SUBPROJECTS))
 endif
 
+# GNUstep compatibility
+ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
+OTHER_CFLAGS += -DNeXT_RUNTIME
+endif
 
 # Additional targets to fix/precompile headers
 AFTER_INSTALLHDRS += fix-headers
-ifneq "$(PUBLIC_PRECOMPILED_HEADERS)" "" 
+
+ifneq "$(PUBLIC_PRECOMPILED_HEADERS)" ""
+ifeq "$(OS)" "NEXTSTEP"
 AFTER_INSTALL += precompile-headers
+endif
+ifeq "$(OS)" "MACOS"
+AFTER_INSTALL += precompile-headers
+endif
 endif

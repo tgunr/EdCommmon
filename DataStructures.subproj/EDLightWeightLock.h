@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDLWLock.h created by erik on Sun 21-May-2000
-//  $Id: EDLightWeightLock.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  $Id: EDLightWeightLock.h,v 1.2 2002-04-14 14:57:55 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -17,6 +17,11 @@
 //  DAMAGES WHATSOEVER RESULTING DIRECTLY OR INDIRECTLY FROM THE USE OF THIS SOFTWARE
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
+
+
+#ifndef	__EDLightWeightLock_h_INCLUDE
+#define	__EDLightWeightLock_h_INCLUDE
+
 
 // On Mac OS X and PDO Solaris we use pthreads.
 
@@ -44,6 +49,32 @@ static __inline__ void EDLWLLock(EDLightWeightLock *mutex)
 static __inline__ void EDLWLUnlock(EDLightWeightLock *mutex)
 {
     pthread_mutex_unlock(mutex);
+}
+
+
+#elif defined(GNU_RUNTIME)
+
+
+typedef struct objc_mutex EDLightWeightLock;
+
+static __inline__ void EDLWLInit(EDLightWeightLock *mutex)
+{
+    mutex = objc_mutex_allocate();
+}
+
+static __inline__ void EDLWLDispose(EDLightWeightLock *mutex)
+{
+    objc_mutex_deallocate(mutex);
+}
+
+static __inline__ void EDLWLLock(EDLightWeightLock *mutex)
+{
+    objc_mutex_lock(mutex);
+}
+
+static __inline__ void EDLWLUnlock(EDLightWeightLock *mutex)
+{
+    objc_mutex_unlock(mutex);
 }
 
 
@@ -76,3 +107,5 @@ static __inline__ void EDLWLUnlock(EDLightWeightLock *mutex)
 
 
 #endif
+
+#endif	/* __EDLightWeightLock_h_INCLUDE */

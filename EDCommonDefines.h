@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCommonDefines.h created by erik on Fri 28-Mar-1997
-//  @(#)$Id: EDCommonDefines.h,v 1.4 2001-11-03 18:01:35 znek Exp $
+//  @(#)$Id: EDCommonDefines.h,v 1.5 2002-04-14 14:57:53 znek Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,8 +18,9 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#ifndef _EDCOMMON_DEFINES
-#define _EDCOMMON_DEFINES 1
+
+#ifndef	__EDCommonDefines_h_INCLUDE
+#define	__EDCommonDefines_h_INCLUDE
 
 // Defines to handle extern declarations on different platforms
 
@@ -49,7 +50,7 @@
 #endif
 
 
-#elif defined(__svr4__) || defined(sun) || defined(hpux)
+#else
 
 #ifdef __cplusplus
 #  define EDCOMMON_EXTERN		extern "C"
@@ -126,4 +127,4 @@ EDCOMMON_EXTERN void (*_EDLogFunction)(NSString *);
 #define EDLog3(l, f, arg1, arg2, arg3)			EDLogBody((l), (f), arg1, arg2, arg3, 0)
 #define EDLog4(l, f, arg1, arg2, arg3, arg4)	EDLogBody((l), (f), arg1, arg2, arg3, arg4)
 
-#endif
+#endif	/* __EDCommonDefines_h_INCLUDE */

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDSwapView.h created by erik
-//  @(#)$Id: EDSwapView.h,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: EDSwapView.h,v 1.2 2002-04-14 14:57:57 znek Exp $
 //
 //  Copyright (c) 1997-1998 by Erik Doernenburg. All rights reserved.
 //
@@ -18,7 +18,13 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__EDSwapView_h_INCLUDE
+#define	__EDSwapView_h_INCLUDE
+
+
 #import <AppKit/NSView.h>
+
 
 struct EDSVFlags
 {
@@ -86,3 +92,5 @@ struct EDSVFlags
 - (void)swapView:(EDSwapView *)swapView didSwapinView:(NSView *)view;
 - (void)swapView:(EDSwapView *)swapView willSwapoutView:(NSView *)view;
 @end
+
+#endif	/* __EDSwapView_h_INCLUDE */

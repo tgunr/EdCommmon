@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSAttributedString+Extensions.h created by erik on Tue 05-Oct-1999
-//  $Id: NSAttributedString+Extensions.h,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  $Id: NSAttributedString+Extensions.h,v 1.2 2002-04-14 14:57:57 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -18,9 +18,16 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__NSAttributedString_Extensions_h_INCLUDE
+#define	__NSAttributedString_Extensions_h_INCLUDE
+
+
 @interface NSMutableAttributedString(EDExtensions)
 
 - (void)appendString:(NSString *)string;
 - (void)appendString:(NSString *)string withAttributes:(NSDictionary *)attributes;
 
 @end
+
+#endif	/* __NSAttributedString_Extensions_h_INCLUDE */

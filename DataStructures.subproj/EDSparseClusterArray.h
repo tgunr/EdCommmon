@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDSparseClusterArray.h created by erik on Fri 28-May-1999
-//  @(#)$Id: EDSparseClusterArray.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDSparseClusterArray.h,v 1.2 2002-04-14 14:57:55 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -17,6 +17,11 @@
 //  DAMAGES WHATSOEVER RESULTING DIRECTLY OR INDIRECTLY FROM THE USE OF THIS SOFTWARE
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
+
+
+#ifndef	__EDSparseClusterArray_h_INCLUDE
+#define	__EDSparseClusterArray_h_INCLUDE
+
 
 #import <Foundation/Foundation.h>
 
@@ -38,3 +43,5 @@
 - (NSArray *)allObjects;
 
 @end
+
+#endif	/* __EDSparseClusterArray_h_INCLUDE */

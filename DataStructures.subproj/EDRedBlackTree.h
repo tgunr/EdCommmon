@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDRedBlackTree.h created by erik on Sun 13-Sep-1998
-//  @(#)$Id: EDRedBlackTree.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDRedBlackTree.h,v 1.2 2002-04-14 14:57:55 znek Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -17,6 +17,11 @@
 //  DAMAGES WHATSOEVER RESULTING DIRECTLY OR INDIRECTLY FROM THE USE OF THIS SOFTWARE
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
+
+
+#ifndef	__EDRedBlackTree_h_INCLUDE
+#define	__EDRedBlackTree_h_INCLUDE
+
 
 #import <Foundation/Foundation.h>
 
@@ -53,3 +58,4 @@
 
 @end
 
+#endif	/* __EDRedBlackTree_h_INCLUDE */

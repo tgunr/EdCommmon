@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSDictionary+Extensions.h created by znek on Sun 02-Jan-2000
-//  @(#)$Id: NSDictionary+Extensions.h,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: NSDictionary+Extensions.h,v 1.2 2002-04-14 14:57:57 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,6 +18,11 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__NSDictionary_Extensions_h_INCLUDE
+#define	__NSDictionary_Extensions_h_INCLUDE
+
+
 @interface NSDictionary(EDExtensions)
 
 // this might be really slow...
@@ -31,3 +36,5 @@
 - (void)addObject:(id)object toArrayForKey:(id)key;
 
 @end
+
+#endif	/* __NSDictionary_Extensions_h_INCLUDE */

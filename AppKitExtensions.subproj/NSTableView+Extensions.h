@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSTableView+Extensions.h created by erik on Sun 12-Sep-1999
-//  @(#)$Id: NSTableView+Extensions.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: NSTableView+Extensions.h,v 1.2 2002-04-14 14:57:54 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,6 +18,11 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__NSTableView_Extensions_h_INCLUDE
+#define	__NSTableView_Extensions_h_INCLUDE
+
+
 #import <AppKit/NSTableView.h>
 
 
@@ -26,3 +31,5 @@
 - (void)scrollRowToTop:(int)rowIndex;
 
 @end
+
+#endif	/* __NSTableView_Extensions_h_INCLUDE */

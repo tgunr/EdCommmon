@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSSet+Extensions.h created by erik on Sat 10-Mar-2001
-//  $Id: NSSet+Extensions.h,v 1.1 2001-03-11 03:06:58 erik Exp $
+//  $Id: NSSet+Extensions.h,v 1.2 2002-04-14 14:57:57 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,7 +18,13 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__NSSet_Extensions_h_INCLUDE
+#define	__NSSet_Extensions_h_INCLUDE
+
+
 #import <Foundation/NSScanner.h>
+
 
 @interface NSSet(EDExtensions)
 
@@ -26,3 +32,5 @@
 - (NSSet *)setByAddingObjectsFromArray:(NSArray *)anArray;
 
 @end
+
+#endif	/* __NSSet_Extensions_h_INCLUDE */

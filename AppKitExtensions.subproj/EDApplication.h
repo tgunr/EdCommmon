@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDApplication.h created by erik on Sun 19-Jul-1998
-//  @(#)$Id: EDApplication.h,v 1.2 2000-12-06 14:35:53 erik Exp $
+//  @(#)$Id: EDApplication.h,v 1.3 2002-04-14 14:57:53 znek Exp $
 //
 //  Copyright (c) 1998 by Erik Doernenburg. All rights reserved.
 //
@@ -18,6 +18,11 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__EDApplication_h_INCLUDE
+#define	__EDApplication_h_INCLUDE
+
+
 #import <AppKit/AppKit.h>
 
 @interface EDApplication : NSApplication
@@ -27,3 +32,5 @@
 @end
 
 #define ED_BEEPRETURN do { NSBeep(); return; } while (0)
+
+#endif	/* __EDApplication_h_INCLUDE */

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDStringScanner.h created by erik on Mon 24-Apr-2000
-//  $Id: EDStringScanner.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  $Id: EDStringScanner.h,v 1.2 2002-04-14 14:57:55 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,7 +18,12 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-/* This is a fairly simple scanner that allows little more than retrieving individual characters from an NSString in a somewhat efficient way. The OmniFoundation has a much richer implementation but at the moment I am reluctant to use their's due to the licensing terms and depency on OmniBase. */
+
+#ifndef	__EDStringScanner_h_INCLUDE
+#define	__EDStringScanner_h_INCLUDE
+
+
+/* This is a fairly simple scanner that allows little more than retrieving individual characters from an NSString in a somewhat efficient way. The OmniFoundation has a much richer implementation but at the moment I am reluctant to use their's due to the licensing terms and dependency on OmniBase. */
 
 #import "EDCommonDefines.h"
 
@@ -45,3 +50,4 @@
 
 EDCOMMON_EXTERN unichar EDStringScannerEndOfDataCharacter;
 
+#endif	/* __EDStringScanner_h_INCLUDE */

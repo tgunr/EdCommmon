@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTableView.h created by erik on Mon 28-Jun-1999
-//  @(#)$Id: EDTableView.h,v 1.2 2001-02-19 21:42:48 erik Exp $
+//  @(#)$Id: EDTableView.h,v 1.3 2002-04-14 14:57:58 znek Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -18,8 +18,14 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__EDTableView_h_INCLUDE
+#define	__EDTableView_h_INCLUDE
+
+
 #import <AppKit/NSTableView.h>
 #import "EDCommonDefines.h"
+
 
 typedef struct _EDTVFlags {
 #ifdef __BIG_ENDIAN__
@@ -45,3 +51,4 @@ typedef struct _EDTVFlags {
 
 @end
 
+#endif	/* __EDTableView_h_INCLUDE */

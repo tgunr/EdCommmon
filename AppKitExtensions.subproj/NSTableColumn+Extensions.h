@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSTableColumn+Extensions.h created by erik on Fri 10-Sep-1999
-//  @(#)$Id: NSTableColumn+Extensions.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: NSTableColumn+Extensions.h,v 1.2 2002-04-14 14:57:54 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,6 +18,11 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__NSTableColumn_Extensions_h_INCLUDE
+#define	__NSTableColumn_Extensions_h_INCLUDE
+
+
 #import <AppKit/NSTableColumn.h>
 
 
@@ -26,3 +31,5 @@
 - (NSString *)stringValueAtRow:(int)row;
 
 @end
+
+#endif	/* __NSTableColumn_Extensions_h_INCLUDE */

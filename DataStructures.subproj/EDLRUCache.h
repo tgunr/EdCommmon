@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDLRUCache.h created by erik on Fri 29-Oct-1999
-//  @(#)$Id: EDLRUCache.h,v 1.2 2001-03-29 16:01:48 erik Exp $
+//  @(#)$Id: EDLRUCache.h,v 1.3 2002-04-14 14:57:55 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -18,6 +18,11 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__EDLRUCache_h_INCLUDE
+#define	__EDLRUCache_h_INCLUDE
+
+
 @interface EDLRUCache : NSObject
 {
     unsigned int	size;
@@ -31,3 +36,5 @@
 - (id)objectWithKey:(id)key;
 
 @end
+
+#endif	/* __EDLRUCache_h_INCLUDE */

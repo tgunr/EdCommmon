@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSApplication+Extensions.h created by erik on Sat 09-Oct-1999
-//  @(#)$Id: NSApplication+Extensions.h,v 1.2 2001-03-11 03:04:45 erik Exp $
+//  @(#)$Id: NSApplication+Extensions.h,v 1.3 2002-04-14 14:57:54 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,6 +18,11 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__NSApplication_Extensions_h_INCLUDE
+#define	__NSApplication_Extensions_h_INCLUDE
+
+
 #import <AppKit/NSApplication.h>
 
 @interface NSApplication(EDExtensions)
@@ -29,3 +34,5 @@
 - (NSMenuItem *)menuItemWithAction:(SEL)action;
 
 @end
+
+#endif	/* __NSApplication_Extensions_h_INCLUDE */

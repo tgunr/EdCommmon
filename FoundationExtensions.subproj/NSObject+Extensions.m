@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSObject+Extensions.m created by erik on Sun 06-Sep-1998
-//  @(#)$Id: NSObject+Extensions.m,v 1.2 2000-10-23 23:22:40 erik Exp $
+//  @(#)$Id: NSObject+Extensions.m,v 1.3 2002-04-14 14:57:57 znek Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,10 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <objc/objc-runtime.h>
-#import <objc/objc-class.h>
 #import "NSObject+Extensions.h"
-
+#import "EDObjcRuntime.h"
 
 //---------------------------------------------------------------------------------------
     @implementation NSObject(EDExtensions)
@@ -47,14 +45,14 @@
 - (void)methodIsObsolete:(SEL)selector hint:(NSString *)hint
 {
     static NSMutableSet *methodList = nil;
-    Method				method;
-    NSValue				*methodKey;
+    EDObjcMethodInfo method;
+    NSValue *methodKey;
 
     if(methodList == nil)
         methodList = [[NSMutableSet alloc] init];
 
-   if((method = class_getInstanceMethod(isa, selector)) == NULL)
-       method = class_getClassMethod(isa, selector);
+   if((method = EDObjcClassGetInstanceMethod(isa, selector)) == NULL)
+       method = EDObjcClassGetClassMethod(isa, selector);
 
    methodKey = [NSValue valueWithBytes:&method objCType:@encode(Method)];
    if([methodList containsObject:methodKey] == NO)
@@ -95,7 +93,8 @@ BOOL EDClassIsSuperclassOfClass(Class aClass, Class subClass)
 
 NSArray *EDSubclassesOfClass(Class aClass)
 {
-#ifndef EDCOMMON_OSXSBUILD
+#ifdef NeXT_RUNTIME
+#ifdef EDCOMMON_OSXBUILD
     NSMutableArray *subclasses;
     Class          *classes;
     int            numClasses, newNumClasses, i;
@@ -119,7 +118,7 @@ NSArray *EDSubclassesOfClass(Class aClass)
     free(classes);
 
     return subclasses;
-#else    
+#else /* OSXS_BUILD */
     NSMutableArray	*subclasses;
     NXHashTable		*subClasses;
     NXHashState 	subIterator;
@@ -134,7 +133,19 @@ NSArray *EDSubclassesOfClass(Class aClass)
             [subclasses addObject:subClass];
         }
     return subclasses;
-#endif    
+#endif
+#else /* GNU_RUNTIME */
+    NSMutableArray *subclasses;
+    Class subClass;
+    void *es = NULL;
+
+    subclasses = [NSMutableArray array];
+    while((subClass = objc_next_class(&es)) != Nil)
+        if(EDClassIsSuperclassOfClass(aClass, subClass) == YES)
+            [subclasses addObject:subClass];
+
+    return subclasses;
+#endif
 }
 
 

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCanvas.h created by erik on Sat 31-Oct-1998
-//  @(#)$Id: EDCanvas.h,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: EDCanvas.h,v 1.2 2002-04-14 14:57:57 znek Exp $
 //
 //  Copyright (c) 1998 by Erik Doernenburg. All rights reserved.
 //
@@ -18,7 +18,13 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__EDCanvas_h_INCLUDE
+#define	__EDCanvas_h_INCLUDE
+
+
 #import <AppKit/AppKit.h>
+
 
 @interface EDCanvas : NSView
 {
@@ -33,3 +39,5 @@
 - (BOOL)drawsBezel;
 
 @end
+
+#endif	/* __EDCanvas_h_INCLUDE */

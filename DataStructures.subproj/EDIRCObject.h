@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDIRCObject.h created by erik
-//  @(#)$Id: EDIRCObject.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDIRCObject.h,v 1.2 2002-04-14 14:57:55 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,6 +19,10 @@
 //---------------------------------------------------------------------------------------
 
 
+#ifndef	__EDIRCObject_h_INCLUDE
+#define	__EDIRCObject_h_INCLUDE
+
+
 /*" Use this class as superclass when you want to manage the retain count for your instances internally; hence IRC = %{internally retain counted} and not what you might have thought. "*/
 
 #import <Foundation/NSObject.h>
@@ -29,3 +33,5 @@
 }
 
 @end
+
+#endif	/* __EDIRCObject_h_INCLUDE */

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjectWell.h created by erik on Sun 11-Oct-1998
-//  @(#)$Id: EDObjectWell.h,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: EDObjectWell.h,v 1.2 2002-04-14 14:57:57 znek Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,7 +18,13 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__EDObjectWell_h_INCLUDE
+#define	__EDObjectWell_h_INCLUDE
+
+
 #import <AppKit/AppKit.h>
+
 
 typedef struct _EDOWFlags {
 #ifdef __BIG_ENDIAN__
@@ -78,3 +84,4 @@ typedef struct _EDOWFlags {
 - (void)objectWell:(EDObjectWell *)anObjectWell didAcceptPasteboard:(NSPasteboard *)pboard;
 @end
 
+#endif	/* __EDObjectWell_h_INCLUDE */

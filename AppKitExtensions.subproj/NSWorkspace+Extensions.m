@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSWorkspace+Extensions.m created by erik on Mon 19-Feb-2001
-//  $Id: NSWorkspace+Extensions.m,v 1.2 2001-04-25 20:40:06 erik Exp $
+//  $Id: NSWorkspace+Extensions.m,v 1.3 2002-04-14 14:57:55 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -26,7 +26,7 @@
     @implementation NSWorkspace(EDExtensions)
 //---------------------------------------------------------------------------------------
 
-#ifdef EDCOMMON_OSXSBUILD
+#if !defined(EDCOMMON_OSXBUILD) && !defined(GNUSTEP)
 
 - (void)openURL:(NSString *)url
 {
@@ -47,7 +47,7 @@
 
 - (void)composeMailWithSubject:(NSString *)subject recipients:(NSString *)recipients body:(NSString *)body
 {
-#ifndef EDCOMMON_OSXSBUILD
+#if defined(EDCOMMON_OSXBUILD) || defined(GNUSTEP)
     [self openURL:[NSURL URLWithString:@"mailto:erik@x101.net"]];
 #else
     [NSException raise:NSGenericException format:@"Cannot compose e-mails on Mac OS X Server"];

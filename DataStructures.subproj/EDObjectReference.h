@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjectReference.h created by erik on Thu 13-Aug-1998
-//  @(#)$Id: EDObjectReference.h,v 1.2 2001-10-14 23:12:19 erik Exp $
+//  @(#)$Id: EDObjectReference.h,v 1.3 2002-04-14 14:57:55 znek Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -18,7 +18,13 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__EDObjectReference_h_INCLUDE
+#define	__EDObjectReference_h_INCLUDE
+
+
 #import <Foundation/NSObject.h>
+
 
 @interface EDObjectReference : NSObject <NSCoding, NSCopying>
 {
@@ -31,3 +37,5 @@
 - (id)referencedObject;
 
 @end
+
+#endif	/* __EDObjectReference_h_INCLUDE */

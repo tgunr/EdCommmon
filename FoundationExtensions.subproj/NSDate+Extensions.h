@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSDate+Extensions.h created by erik on Sun 15-Aug-1999
-//  @(#)$Id: NSDate+Extensions.h,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: NSDate+Extensions.h,v 1.2 2002-04-14 14:57:57 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -18,8 +18,15 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__NSDate_Extensions_h_INCLUDE
+#define	__NSDate_Extensions_h_INCLUDE
+
+
 @interface NSDate(EDExtensions)
 
 - (BOOL)precedesDate:(NSDate *)other;
 
 @end
+
+#endif	/* __NSDate_Extensions_h_INCLUDE */

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLToken.h created by erik
-//  @(#)$Id: EDMLToken.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDMLToken.h,v 1.2 2002-04-14 14:57:55 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,6 +18,11 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__EDMLToken_h_INCLUDE
+#define	__EDMLToken_h_INCLUDE
+
+
 /*" Private helper class for EDMLParser. Do not use. "*/
 
 @interface EDMLToken : NSObject
@@ -33,3 +38,5 @@
 - (id)value;
 
 @end
+
+#endif	/* __EDMLToken_h_INCLUDE */

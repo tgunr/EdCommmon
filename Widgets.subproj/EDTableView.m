@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTableView.m created by erik on Mon 28-Jun-1999
-//  @(#)$Id: EDTableView.m,v 1.2 2001-02-19 21:42:48 erik Exp $
+//  @(#)$Id: EDTableView.m,v 1.3 2002-04-14 14:57:58 znek Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -138,7 +138,11 @@
         column = [_tableColumns objectAtIndex:clickedColumnIdx];
         cell = [column dataCell];
         cellFrame = [self frameOfCellAtColumn:clickedColumnIdx row:clickedRowIdx];
+#ifndef GNUSTEP
         if(_tvFlags.delegateWillDisplayCell)
+#else
+	if(_del_responds)
+#endif
             [_delegate tableView:self willDisplayCell:cell forTableColumn:column row:clickedRowIdx];
         while([theEvent type] != NSLeftMouseUp)
             {

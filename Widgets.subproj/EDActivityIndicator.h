@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDActivityIndicator.h created by erik on Tue 10-Nov-1998
-//  @(#)$Id: EDActivityIndicator.h,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: EDActivityIndicator.h,v 1.2 2002-04-14 14:57:57 znek Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -18,7 +18,13 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__EDActivityIndicator_h_INCLUDE
+#define	__EDActivityIndicator_h_INCLUDE
+
+
 #import <AppKit/AppKit.h>
+
 
 struct EDAIFlags
 {
@@ -66,3 +72,5 @@ struct EDAIFlags
 - (IBAction)stopAnimation:(id)sender;
 
 @end
+
+#endif	/* __EDActivityIndicator_h_INCLUDE */

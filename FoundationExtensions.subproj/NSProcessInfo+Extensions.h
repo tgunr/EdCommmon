@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSProcessInfo+Extensions.h created by znek on Sat 23-Sep-2000
-//  $Id: NSProcessInfo+Extensions.h,v 1.1 2000-10-23 23:22:40 erik Exp $
+//  $Id: NSProcessInfo+Extensions.h,v 1.2 2002-04-14 14:57:57 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,6 +18,11 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__NSProcessInfo_Extensions_h_INCLUDE
+#define	__NSProcessInfo_Extensions_h_INCLUDE
+
+
 #import <Foundation/NSProcessInfo.h>
 
 @interface NSProcessInfo (EDExtensions)
@@ -25,3 +30,5 @@
 - (int)pid;
 
 @end
+
+#endif	/* __NSProcessInfo_Extensions_h_INCLUDE */

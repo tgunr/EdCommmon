@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.h created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.h,v 1.3 2001-03-29 16:03:22 erik Exp $
+//  @(#)$Id: NSArray+Extensions.h,v 1.4 2002-04-14 14:57:56 znek Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -18,13 +18,23 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__NSArray_Extensions_h_INCLUDE
+#define	__NSArray_Extensions_h_INCLUDE
+
+
 #import <Foundation/NSArray.h>
+
 
 @interface NSArray(EDExtensions)
 
 - (id)singleObject;
 - (id)firstObject;
+#ifndef EDCOMMON_OSXBUILD
+#ifdef __MACH__
 + (void)applyFirstObjectPatch;
+#endif
+#endif
 
 - (NSArray *)shuffledArray;
 - (NSArray *)sortedArray;
@@ -47,3 +57,5 @@
 - (void)sort;
 - (void)sortByComparingAttribute:(NSString *)attributeName;
 @end
+
+#endif	/* __NSArray_Extensions_h_INCLUDE */

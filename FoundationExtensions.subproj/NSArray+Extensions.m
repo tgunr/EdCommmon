@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.m created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.m,v 1.4 2001-03-29 16:03:23 erik Exp $
+//  @(#)$Id: NSArray+Extensions.m,v 1.5 2002-04-14 14:57:57 znek Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -18,10 +18,9 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#import <objc/objc-api.h>
-#import <objc/objc-class.h>
 #import <Foundation/Foundation.h>
 #import "NSArray+Extensions.h"
+#import "EDObjcRuntime.h"
 
 #ifdef WIN32
 #define random() rand()
@@ -63,26 +62,31 @@ static NSComparisonResult compareAttributes(id object1, id object2, void *contex
 }
 
 
-static Method myFirstObjectMethod;
+#ifndef EDCOMMON_OSXBUILD
+#ifdef __MACH__
+
+static EDObjcMethodInfo myFirstObjectMethod;
 
 + (void)applyFirstObjectPatch
 {
-    myFirstObjectMethod = class_getInstanceMethod([NSArray class], @selector(firstObject));
+    myFirstObjectMethod = EDObjcClassGetInstanceMethod([NSArray class], @selector(firstObject));
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_bundleWasLoaded:) name:NSBundleDidLoadNotification object:nil];
 }
 
 + (void)_bundleWasLoaded:(NSNotification *)n
 {
-    Method	evilFirstObjectMethod;
+    EDObjcMethodInfo evilFirstObjectMethod;
 
     if([[[n object] bundlePath] hasSuffix:@"Library/PrivateFrameworks/HTML.framework"] == NO)
         return;
 
-    evilFirstObjectMethod = class_getInstanceMethod([NSArray class], @selector(firstObject));
+    evilFirstObjectMethod = EDObjcClassGetInstanceMethod([NSArray class], @selector(firstObject));
     evilFirstObjectMethod->method_imp = myFirstObjectMethod->method_imp;
     NSLog(@"Applied 'firstObject' patch to HTML framework");
 }
 
+#endif
+#endif
 
 //---------------------------------------------------------------------------------------
 

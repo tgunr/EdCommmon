@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjectPair.h created by erik on Sat 29-Aug-1998
-//  @(#)$Id: EDObjectPair.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDObjectPair.h,v 1.2 2002-04-14 14:57:55 znek Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -17,6 +17,11 @@
 //  DAMAGES WHATSOEVER RESULTING DIRECTLY OR INDIRECTLY FROM THE USE OF THIS SOFTWARE
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
+
+
+#ifndef	__EDObjectPair_h_INCLUDE
+#define	__EDObjectPair_h_INCLUDE
+
 
 @interface EDObjectPair : NSObject <NSCopying, NSCoding>
 {
@@ -36,3 +41,5 @@
 - (NSArray *)allObjects;
 
 @end
+
+#endif	/* __EDObjectPair_h_INCLUDE */

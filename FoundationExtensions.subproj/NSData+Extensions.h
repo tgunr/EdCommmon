@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSData+Extensions.h created by erik on Mon 20-Nov-2000
-//  $Id: NSData+Extensions.h,v 1.1 2000-12-06 14:36:49 erik Exp $
+//  $Id: NSData+Extensions.h,v 1.2 2002-04-14 14:57:57 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,9 +18,16 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__NSData_Extensions_h_INCLUDE
+#define	__NSData_Extensions_h_INCLUDE
+
+
 @interface NSData(EDExtensions)
 
 - (unsigned short)crc16;
 - (unsigned int)crc32;
 
 @end
+
+#endif	/* __NSData_Extensions_h_INCLUDE */

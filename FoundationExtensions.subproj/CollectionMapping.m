@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCollectionMapping.m created by erik on Wed 17-Mar-1999
-//  @(#)$Id: CollectionMapping.m,v 1.3 2001-02-19 21:56:02 erik Exp $
+//  @(#)$Id: CollectionMapping.m,v 1.4 2002-04-14 14:57:56 znek Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -20,6 +20,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CollectionMapping.h"
+#import "EDObjcRuntime.h"
 
 
 //---------------------------------------------------------------------------------------
@@ -46,7 +47,7 @@
 
     mappedArray = [[[NSMutableArray allocWithZone:[self zone]] initWithCapacity:n] autorelease];
     for(i = 0; i < n; i++)
-        [mappedArray addObject:objc_msgSend([self objectAtIndex:i], selector)];
+        [mappedArray addObject:EDObjcMsgSend([self objectAtIndex:i], selector)];
 
     return mappedArray;
 }
@@ -59,7 +60,7 @@
 
     mappedArray = [[[NSMutableArray allocWithZone:[self zone]] initWithCapacity:n] autorelease];
    for(i = 0; i < n; i++)
-        [mappedArray addObject:objc_msgSend([self objectAtIndex:i], selector, object)];
+        [mappedArray addObject:EDObjcMsgSend1([self objectAtIndex:i], selector, object)];
 
     return mappedArray;
 }
@@ -118,7 +119,7 @@
     mappedSet = [[[NSMutableSet allocWithZone:[self zone]] initWithCapacity:[self count]] autorelease];
     objectEnum = [self objectEnumerator];
     while((object = [objectEnum nextObject]) != nil)
-        [mappedSet addObject:objc_msgSend(object, selector)];
+        [mappedSet addObject:EDObjcMsgSend(object, selector)];
 
     return mappedSet;
 }
@@ -133,7 +134,7 @@
     mappedSet = [[[NSMutableSet allocWithZone:[self zone]] initWithCapacity:[self count]] autorelease];
     objectEnum = [self objectEnumerator];
     while((object = [objectEnum nextObject]) != nil)
-        [mappedSet addObject:objc_msgSend(object, selector, otherObject)];
+        [mappedSet addObject:EDObjcMsgSend1(object, selector, otherObject)];
 
     return mappedSet;
 }
@@ -156,7 +157,7 @@
 
     mappedArray = [[[NSMutableArray allocWithZone:[self zone]] initWithCapacity:n] autorelease];
     for(i = 0; i < n; i++)
-        [mappedArray addObject:objc_msgSend(self, selector, [array objectAtIndex:i])];
+        [mappedArray addObject:EDObjcMsgSend1(self, selector, [array objectAtIndex:i])];
 
     return mappedArray;
 }
@@ -167,7 +168,7 @@
     unsigned int	i, n = [array count];
 
     for(i = 0; i < n; i++)
-        objc_msgSend(self, selector, [array objectAtIndex:i]);
+        EDObjcMsgSend1(self, selector, [array objectAtIndex:i]);
 }
 
 
@@ -176,7 +177,7 @@
     id object;
 
     while((object = [enumerator nextObject]) != nil)
-        objc_msgSend(self, selector, object);
+        EDObjcMsgSend1(self, selector, object);
 }
 
 

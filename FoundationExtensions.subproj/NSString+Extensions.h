@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+printf.m created by erik on Sat 27-Sep-1997
-//  @(#)$Id: NSString+Extensions.h,v 1.4 2000-12-06 14:36:49 erik Exp $
+//  @(#)$Id: NSString+Extensions.h,v 1.5 2002-04-14 14:57:57 znek Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,7 +18,13 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__NSString_Extensions_h_INCLUDE
+#define	__NSString_Extensions_h_INCLUDE
+
+
 #import <Foundation/NSString.h>
+
 
 @class NSFileHandle;
 
@@ -60,4 +66,5 @@
 
 @end
 
+#endif	/* __NSString_Extensions_h_INCLUDE */
 

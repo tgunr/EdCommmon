@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSWindow+Extensions.h created by erik on Sun 11-Oct-1998
-//  @(#)$Id: NSWindow+Extensions.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: NSWindow+Extensions.h,v 1.2 2002-04-14 14:57:54 znek Exp $
 //
 //  Copyright (c) 1998 by Erik Doernenburg. All rights reserved.
 //
@@ -18,6 +18,11 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__NSWindow_Extensions_h_INCLUDE
+#define	__NSWindow_Extensions_h_INCLUDE
+
+
 #import <AppKit/NSWindow.h>
 
 @interface NSWindow(EDExtensions)
@@ -25,3 +30,5 @@
 - (void)endModalSessionWithCodeFromSender:(id)sender;
 
 @end
+
+#endif	/* __NSWindow_Extensions_h_INCLUDE */

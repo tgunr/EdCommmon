@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDStack.h created by erik on Sat 19-Jul-1997
-//  @(#)$Id: EDStack.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDStack.h,v 1.2 2002-04-14 14:57:55 znek Exp $
 //
 //  Copyright (c) 1997 by Erik Doernenburg. All rights reserved.
 //
@@ -17,6 +17,11 @@
 //  DAMAGES WHATSOEVER RESULTING DIRECTLY OR INDIRECTLY FROM THE USE OF THIS SOFTWARE
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
+
+
+#ifndef	__EDStack_h_INCLUDE
+#define	__EDStack_h_INCLUDE
+
 
 @interface EDStack : NSObject
 {
@@ -37,3 +42,5 @@
 
 
 @end
+
+#endif	/* __EDStack_h_INCLUDE */

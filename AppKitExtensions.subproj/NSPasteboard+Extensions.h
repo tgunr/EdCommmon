@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSPasteboard+Extensions.h created by erik on Mon 28-Jun-1999
-//  @(#)$Id: NSPasteboard+Extensions.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: NSPasteboard+Extensions.h,v 1.2 2002-04-14 14:57:54 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,6 +18,11 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__NSPasteboard_Extensions_h_INCLUDE
+#define	__NSPasteboard_Extensions_h_INCLUDE
+
+
 #import <AppKit/NSPasteboard.h>
 
 @interface NSPasteboard(EDExtensions)
@@ -31,3 +36,6 @@
 - (id)objectByReferenceForType:(NSString *)pboardType;
 
 @end
+
+#endif	/* __NSPasteboard_Extensions_h_INCLUDE */
+

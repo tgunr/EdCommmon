@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSScanner+Extensions.h created by erik
-//  @(#)$Id: NSScanner+Extensions.h,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: NSScanner+Extensions.h,v 1.2 2002-04-14 14:57:57 znek Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,7 +18,13 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__NSScanner_Extensions_h_INCLUDE
+#define	__NSScanner_Extensions_h_INCLUDE
+
+
 #import <Foundation/NSScanner.h>
+
 
 @interface NSScanner(EDExtensions)
 
@@ -26,3 +32,5 @@
 - (BOOL)scanUpToClosingBracketIntoString:(NSString **)stringRef;
 
 @end
+
+#endif	/* __NSScanner_Extensions_h_INCLUDE */

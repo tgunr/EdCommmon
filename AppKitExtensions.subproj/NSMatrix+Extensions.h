@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSMatrix+Extensions.h created by erik on Sat 04-Nov-2000
-//  $Id: NSMatrix+Extensions.h,v 1.1 2000-12-06 14:35:53 erik Exp $
+//  $Id: NSMatrix+Extensions.h,v 1.2 2002-04-14 14:57:54 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,6 +18,11 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+
+#ifndef	__NSMatrix_Extensions_h_INCLUDE
+#define	__NSMatrix_Extensions_h_INCLUDE
+
+
 #import <AppKit/NSMatrix.h>
 
 
@@ -28,3 +33,5 @@
 - (NSCell *)cellForObject:(id)object;
 
 @end
+
+#endif	/* __NSMatrix_Extensions_h_INCLUDE */
