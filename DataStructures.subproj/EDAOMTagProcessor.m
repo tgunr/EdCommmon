@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDAOMTagProcessor.m created by erik
-//  @(#)$Id: EDAOMTagProcessor.m,v 2.2 2002-12-16 22:40:24 erik Exp $
+//  @(#)$Id: EDAOMTagProcessor.m,v 2.3 2003-01-04 17:14:54 erik Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -112,6 +112,11 @@ toplevelElements = [parser parseString:myDocument];
 
 - (id)initWithTagDefinitions:(NSDictionary *)someTagDefinitions
 {
+    NSEnumerator	*tagEnum;
+    NSString		*tag;
+    NSDictionary	*tagDef;
+    Class			elementClass;
+
     [super init];
 
     flags.ignoresUnknownNamespaces = YES;
@@ -135,26 +140,21 @@ toplevelElements = [parser parseString:myDocument];
         }
     if((documentObjectDefinition = [[tagDefinitions objectForKey:@"DOCUMENT"] retain]) != nil)
         {
-        NSEnumerator	*tagEnum;
-        NSString		*className, *tag;
-        NSDictionary	*tagDef;
-        Class			elementClass;
-
-        className = [documentObjectDefinition objectForKey:@"class"];
+        NSString *className = [documentObjectDefinition objectForKey:@"class"];
         NSAssert(className != nil, @"Class name missing for DOCUMENT entry");
-
-        rootElementClasses = [[NSMutableSet alloc] init];
-        tagEnum = [tagDefinitions keyEnumerator];
-        while((tag = [tagEnum nextObject]) != nil)
-            {
-            tagDef = [tagDefinitions objectForKey:tag];
-            if(([tagDef isKindOfClass:[NSString class]]) || ([[tagDef objectForKey:@"root"] boolValue] == NO))
-                continue;
-            elementClass = NSClassFromString([tagDef objectForKey:@"class"]);
-            NSAssert1(elementClass != Nil, @"No class or invalid class for tag %@", tag);
-            [(NSMutableSet *)rootElementClasses addObject:elementClass];
-            }
-         }
+        }
+    
+    rootElementClasses = [[NSMutableSet alloc] init];
+    tagEnum = [tagDefinitions keyEnumerator];
+    while((tag = [tagEnum nextObject]) != nil)
+        {
+        tagDef = [tagDefinitions objectForKey:tag];
+        if(([tagDef isKindOfClass:[NSString class]]) || ([[tagDef objectForKey:@"root"] boolValue] == NO))
+            continue;
+        elementClass = NSClassFromString([tagDef objectForKey:@"class"]);
+        NSAssert1(elementClass != Nil, @"No class or invalid class for tag %@", tag);
+        [(NSMutableSet *)rootElementClasses addObject:elementClass];
+        }
     
     return self;
 }
