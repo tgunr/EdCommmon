@@ -1,5 +1,5 @@
 # DataStructures.subproj
-# $Id: GNUmakefile,v 2.1 2002-08-17 17:40:03 znek Exp $
+# $Id: GNUmakefile,v 2.2 2003-01-03 16:08:59 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -36,6 +36,12 @@ EDIRCObject.m             EDNumberSet.m             EDSparseClusterArray.m \
 EDLRUCache.m              EDObjectPair.m            EDStack.m \
 EDAOMTagProcessor.m 	  EDObjectReference.m       EDStringScanner.m \
 EDMLParser.m              EDRange.m                 EDMutableObjectPair.m
+
+
+DataStructures.subproj_HAS_RESOURCE_BUNDLE = yes
+
+
+DataStructures.subproj_RESOURCE_FILES = XMLEntities.plist
 
 
 -include Makefile.preamble

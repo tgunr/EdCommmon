@@ -36,11 +36,13 @@
 //013
 //014
 		0128DC9D00C1A5FB7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSInvocation+Extensions.m";
 			refType = 4;
 		};
 		0128DC9E00C1A5FB7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSInvocation+Extensions.h";
 			refType = 4;
@@ -77,6 +79,7 @@
 				EE4EDA6B027CBCCA00A80107,
 				EE4EDA6C027CBCCA00A80107,
 			);
+			hasScannedForEncodings = 1;
 			isa = PBXProject;
 			mainGroup = 1AA34CC50090839C7F000001;
 			productRefGroup = 1AA34D460090839C7F000001;
@@ -114,11 +117,13 @@
 			refType = 4;
 		};
 		1AA34CC70090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDCommon.h;
 			refType = 4;
 		};
 		1AA34CC80090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDCommonDefines.h;
 			refType = 4;
@@ -133,11 +138,13 @@
 			refType = 4;
 		};
 		1AA34CCA0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = useful.m;
 			refType = 4;
 		};
 		1AA34CCB0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = framework.m;
 			refType = 4;
@@ -180,51 +187,61 @@
 			refType = 4;
 		};
 		1AA34CD50090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSArray+Extensions.m";
 			refType = 4;
 		};
 		1AA34CD60090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSAttributedString+Extensions.m";
 			refType = 4;
 		};
 		1AA34CD70090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSData+Extensions.m";
 			refType = 4;
 		};
 		1AA34CD80090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSDate+Extensions.m";
 			refType = 4;
 		};
 		1AA34CD90090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSDictionary+Extensions.m";
 			refType = 4;
 		};
 		1AA34CDA0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSObject+Extensions.m";
 			refType = 4;
 		};
 		1AA34CDB0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSProcessInfo+Extensions.m";
 			refType = 4;
 		};
 		1AA34CDC0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSSet+Extensions.m";
 			refType = 4;
 		};
 		1AA34CDD0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSScanner+Extensions.m";
 			refType = 4;
 		};
 		1AA34CDE0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSString+Extensions.m";
 			refType = 4;
@@ -257,56 +274,67 @@
 			refType = 4;
 		};
 		1AA34CE10090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSArray+Extensions.h";
 			refType = 4;
 		};
 		1AA34CE20090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSAttributedString+Extensions.h";
 			refType = 4;
 		};
 		1AA34CE30090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSData+Extensions.h";
 			refType = 4;
 		};
 		1AA34CE40090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSDate+Extensions.h";
 			refType = 4;
 		};
 		1AA34CE50090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSDictionary+Extensions.h";
 			refType = 4;
 		};
 		1AA34CE60090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSObject+Extensions.h";
 			refType = 4;
 		};
 		1AA34CE70090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSProcessInfo+Extensions.h";
 			refType = 4;
 		};
 		1AA34CE80090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSSet+Extensions.h";
 			refType = 4;
 		};
 		1AA34CE90090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSScanner+Extensions.h";
 			refType = 4;
 		};
 		1AA34CEA0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSString+Extensions.h";
 			refType = 4;
 		};
 		1AA34CEB0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = CollectionMapping.h;
 			refType = 4;
@@ -340,63 +368,75 @@
 			refType = 4;
 		};
 		1AA34CF20090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDIRCObject.m;
 			refType = 4;
 		};
 		1AA34CF30090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDLRUCache.m;
 			refType = 4;
 		};
 		1AA34CF40090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDMLParser.m;
 			path = DataStructures.subproj/EDMLParser.m;
 			refType = 4;
 		};
 		1AA34CF50090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDMLToken.m;
 			path = DataStructures.subproj/EDMLToken.m;
 			refType = 4;
 		};
 		1AA34CF60090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDNumberSet.m;
 			refType = 4;
 		};
 		1AA34CF70090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDObjectPair.m;
 			refType = 4;
 		};
 		1AA34CF80090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDObjectReference.m;
 			refType = 4;
 		};
 		1AA34CF90090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDRange.m;
 			refType = 4;
 		};
 		1AA34CFA0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDRedBlackTree.m;
 			refType = 4;
 		};
 		1AA34CFB0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDSparseClusterArray.m;
 			refType = 4;
 		};
 		1AA34CFC0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDStack.m;
 			refType = 4;
 		};
 		1AA34CFD0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDStringScanner.m;
 			path = DataStructures.subproj/EDStringScanner.m;
@@ -423,79 +463,94 @@
 			refType = 4;
 		};
 		1AA34CFF0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDBitmapCharset.h;
 			refType = 4;
 		};
 		1AA34D000090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDIRCObject.h;
 			refType = 4;
 		};
 		1AA34D010090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDLRUCache.h;
 			refType = 4;
 		};
 		1AA34D020090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDMLParser.h;
 			path = DataStructures.subproj/EDMLParser.h;
 			refType = 4;
 		};
 		1AA34D030090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDMLToken.h;
 			path = DataStructures.subproj/EDMLToken.h;
 			refType = 4;
 		};
 		1AA34D040090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDNumberSet.h;
 			refType = 4;
 		};
 		1AA34D050090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDObjectPair.h;
 			refType = 4;
 		};
 		1AA34D060090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDObjectReference.h;
 			refType = 4;
 		};
 		1AA34D070090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDRange.h;
 			refType = 4;
 		};
 		1AA34D080090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDRedBlackTree.h;
 			refType = 4;
 		};
 		1AA34D090090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "EDRedBlackTree+Private.h";
 			refType = 4;
 		};
 		1AA34D0A0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDSparseClusterArray.h;
 			refType = 4;
 		};
 		1AA34D0B0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDStack.h;
 			refType = 4;
 		};
 		1AA34D0C0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDStringScanner.h;
 			path = DataStructures.subproj/EDStringScanner.h;
 			refType = 4;
 		};
 		1AA34D0D0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDLightWeightLock.h;
 			refType = 4;
@@ -509,6 +564,7 @@
 			refType = 4;
 		};
 		1AA34D0F0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDBitmapCharset.m;
 			refType = 4;
@@ -542,46 +598,55 @@
 			refType = 4;
 		};
 		1AA34D160090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSApplication+Extensions.m";
 			refType = 4;
 		};
 		1AA34D170090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSAttributedString+AppKitExtensions.m";
 			refType = 4;
 		};
 		1AA34D180090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSMatrix+Extensions.m";
 			refType = 4;
 		};
 		1AA34D190090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSPasteboard+Extensions.m";
 			refType = 4;
 		};
 		1AA34D1A0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSTableView+Extensions.m";
 			refType = 4;
 		};
 		1AA34D1B0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSTableColumn+Extensions.m";
 			refType = 4;
 		};
 		1AA34D1C0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSWindow+Extensions.m";
 			refType = 4;
 		};
 		1AA34D1D0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSWorkspace+Extensions.m";
 			refType = 4;
 		};
 		1AA34D1E0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDApplication.m;
 			refType = 4;
@@ -605,46 +670,55 @@
 			refType = 4;
 		};
 		1AA34D200090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSApplication+Extensions.h";
 			refType = 4;
 		};
 		1AA34D210090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSAttributedString+AppKitExtensions.h";
 			refType = 4;
 		};
 		1AA34D220090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSMatrix+Extensions.h";
 			refType = 4;
 		};
 		1AA34D230090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSPasteboard+Extensions.h";
 			refType = 4;
 		};
 		1AA34D240090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSTableView+Extensions.h";
 			refType = 4;
 		};
 		1AA34D250090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSTableColumn+Extensions.h";
 			refType = 4;
 		};
 		1AA34D260090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSWindow+Extensions.h";
 			refType = 4;
 		};
 		1AA34D270090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSWorkspace+Extensions.h";
 			refType = 4;
 		};
 		1AA34D280090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDApplication.h;
 			refType = 4;
@@ -688,31 +762,37 @@
 			refType = 4;
 		};
 		1AA34D310090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDActivityIndicator.m;
 			refType = 4;
 		};
 		1AA34D320090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDCanvas.m;
 			refType = 4;
 		};
 		1AA34D330090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDObjectWell.m;
 			refType = 4;
 		};
 		1AA34D340090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDTableView.m;
 			refType = 4;
 		};
 		1AA34D350090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDTVScrollView.m;
 			refType = 4;
 		};
 		1AA34D360090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDSwapView.m;
 			refType = 4;
@@ -731,31 +811,37 @@
 			refType = 4;
 		};
 		1AA34D380090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDActivityIndicator.h;
 			refType = 4;
 		};
 		1AA34D390090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDCanvas.h;
 			refType = 4;
 		};
 		1AA34D3A0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDObjectWell.h;
 			refType = 4;
 		};
 		1AA34D3B0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDTableView.h;
 			refType = 4;
 		};
 		1AA34D3C0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDTVScrollView.h;
 			refType = 4;
 		};
 		1AA34D3D0090839C7F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDSwapView.h;
 			refType = 4;
@@ -858,7 +944,6 @@
 </dict>
 </plist>
 ";
-			shouldUseHeadermap = 1;
 		};
 		1AA34D490090839C7F000001 = {
 			buildActionMask = 2147483647;
@@ -1753,11 +1838,13 @@
 //673
 //674
 		67460EF40259A93C00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDKeyControlWindow.m;
 			refType = 4;
 		};
 		67460EF50259A93C00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDKeyControlWindow.h;
 			refType = 4;
@@ -1826,6 +1913,7 @@
 			shellScript = "AUTODOC=`which autodoc`\nDOC_DIR=$INSTALL_DIR/EDCommon.framework/Resources/English.lproj/Documentation/Reference/ObjC_classic\nif [ \"x$AUTODOC\" != \"x\" ]; then\n    SUBPROJECTS=`'ls' -f -d *.subproj .`\n    for projdir in $SUBPROJECTS; do\n        echo $AUTODOC -allclasses -typedirs -format html -destination $DOC_DIR -project $projdir -copyright \\\"Erik Doernenburg\\\"\n        $AUTODOC -allclasses -typedirs -format html -destination $DOC_DIR -project $projdir -copyright \"Erik Doernenburg\"\n    done    \nfi\necho cp ./EDCommonIntro.html $DOC_DIR/EDCommonIntro.html\ncp ./EDCommonIntro.html $DOC_DIR/EDCommonIntro.html\necho cp ./EDCommonTOC.html $DOC_DIR/EDCommonTOC.html\ncp ./EDCommonTOC.html $DOC_DIR/EDCommonTOC.html";
 		};
 		675AF6BA02DE26F800A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = osdep.h;
 			refType = 4;
@@ -1840,11 +1928,13 @@
 			};
 		};
 		67613C7C02ECCC0F00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDMutableObjectPair.h;
 			refType = 4;
 		};
 		67613C7D02ECCC0F00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDMutableObjectPair.m;
 			refType = 4;
@@ -1865,12 +1955,14 @@
 			};
 		};
 		676FAAAC02B917CF00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDAOMTagProcessor.m;
 			path = DataStructures.subproj/EDAOMTagProcessor.m;
 			refType = 4;
 		};
 		676FAAAD02B917CF00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDAOMTagProcessor.h;
 			path = DataStructures.subproj/EDAOMTagProcessor.h;
@@ -1901,6 +1993,7 @@
 			refType = 4;
 		};
 		6795396302D4EE8A00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDMLTagProcessorProtocol.mdoc;
 			path = DataStructures.subproj/EDMLTagProcessorProtocol.mdoc;
@@ -1917,46 +2010,55 @@
 			refType = 4;
 		};
 		6798737B02DC7DCD00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDCommonIntro.html;
 			refType = 4;
 		};
 		6798737C02DC7DCD00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDCommonTOC.html;
 			refType = 4;
 		};
 		6798784602DDFC7E00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDIPSocket.h;
 			refType = 4;
 		};
 		6798784702DDFC7E00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDSocket.h;
 			refType = 4;
 		};
 		6798784802DDFC7E00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDStream.h;
 			refType = 4;
 		};
 		6798784902DDFC7E00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDTCPSocket.h;
 			refType = 4;
 		};
 		6798784A02DDFC7E00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDUDPSocket.h;
 			refType = 4;
 		};
 		6798784C02DDFC7E00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSFileHandle+Extensions.h";
 			refType = 4;
 		};
 		6798784D02DDFC7E00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSHost+Extensions.h";
 			refType = 4;
@@ -2025,36 +2127,43 @@
 			};
 		};
 		6798785602DDFCB800A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSHost+Extensions.m";
 			refType = 4;
 		};
 		6798785702DDFCB800A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDIPSocket.m;
 			refType = 4;
 		};
 		6798785802DDFCB800A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDSocket.m;
 			refType = 4;
 		};
 		6798785902DDFCB800A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDStream.m;
 			refType = 4;
 		};
 		6798785A02DDFCB800A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDTCPSocket.m;
 			refType = 4;
 		};
 		6798785B02DDFCB800A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDUDPSocket.m;
 			refType = 4;
 		};
 		6798785D02DDFCB800A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSFileHandle+Extensions.m";
 			refType = 4;
@@ -2120,6 +2229,7 @@
 			refType = 4;
 		};
 		6798787002DDFFB200A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = MIME.plist;
 			refType = 4;
@@ -2131,6 +2241,7 @@
 			};
 		};
 		6798787202DDFFBC00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = functions.m;
 			refType = 4;
@@ -2142,6 +2253,7 @@
 			};
 		};
 		6798787402DDFFC400A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = functions.h;
 			refType = 4;
@@ -2156,6 +2268,7 @@
 			};
 		};
 		6798924902BF68EE00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDMLTagProcessorProtocol.h;
 			path = DataStructures.subproj/EDMLTagProcessorProtocol.h;
@@ -2171,6 +2284,7 @@
 			};
 		};
 		67BCCE7B03A8175D00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = XMLEntities.plist;
 			path = DataStructures.subproj/XMLEntities.plist;
@@ -2191,11 +2305,13 @@
 			refType = 4;
 		};
 		67E3B5EC00D4406500000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDToolbarDefinition.m;
 			refType = 4;
 		};
 		67E3B5ED00D4406500000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDToolbarDefinition.h;
 			refType = 4;
@@ -2250,6 +2366,7 @@
 			name = "Appwrapper Deployment";
 		};
 		EE6AABC9025313F000C21B98 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDObjcRuntime.h;
 			refType = 4;

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 2.5 2002-12-16 22:40:25 erik Exp $
+//  @(#)$Id: EDMLParser.m,v 2.6 2003-01-03 16:08:59 znek Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -827,8 +827,10 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
 {
     NSString 	 *path;
     NSDictionary *xmlEntities;
+    NSBundle *bundle;
 
-    if((path = [[NSBundle bundleForClass:[self class]] pathForResource:@"XMLEntities" ofType:@"plist"]) == nil)
+    bundle = [NSBundle bundleForClass:NSClassFromString(@"EDCommonFramework")];
+    if((path = [bundle pathForResource:@"XMLEntities" ofType:@"plist"]) == nil)
         [NSException raise:NSGenericException format:@"Missing resource XMLEntities.plist in EDCommon.framework"];
     xmlEntities = [[NSString stringWithContentsOfFile:path] propertyList];
     [self setEntityTable:xmlEntities];
