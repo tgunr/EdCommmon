@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTableView.h created by erik on Mon 28-Jun-1999
-//  @(#)$Id: EDTableView.h,v 1.3 2002-04-14 14:57:58 znek Exp $
+//  @(#)$Id: EDTableView.h,v 1.4 2002-07-09 15:57:59 erik Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -27,7 +27,7 @@
 #import "EDCommonDefines.h"
 
 
-typedef struct _EDTVFlags {
+struct _EDTVFlags {
 #ifdef __BIG_ENDIAN__
     unsigned isManagingClick : 1;
     unsigned padding : 31;
@@ -35,19 +35,20 @@ typedef struct _EDTVFlags {
     unsigned padding : 31;
     unsigned isManagingClick : 1;
 #endif
-} _EDTVFlags;
+};
 
 
 @interface EDTableView : NSTableView
 {
-    _EDTVFlags		flags;
-    NSMutableSet	*clickableColumns;
-    int				clickedRowIdx, clickedColumnIdx;
+    struct _EDTVFlags	flags;
+    NSMutableSet		*clickThroughColumns;
+    int					clickedRowIdx, clickedColumnIdx;
 }
 
-- (void)addToClickableColumns:(NSTableColumn *)aColumn;
-- (void)removeFromClickableColumns:(NSTableColumn *)aColumn;
-- (NSArray *)clickableColumns;
+/*" Managing "click-through" columns "*/
+- (void)addToClickThroughColumns:(NSTableColumn *)aColumn;
+- (void)removeFromClickThroughColumns:(NSTableColumn *)aColumn;
+- (NSArray *)clickTroughColumns;
 
 @end
 

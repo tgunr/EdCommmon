@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTableView.m created by erik on Mon 28-Jun-1999
-//  @(#)$Id: EDTableView.m,v 1.3 2002-04-14 14:57:58 znek Exp $
+//  @(#)$Id: EDTableView.m,v 1.4 2002-07-09 15:57:59 erik Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -26,6 +26,8 @@
     @implementation EDTableView
 //---------------------------------------------------------------------------------------
 
+/*" Subclass of #NSTableView providing "click-through" functionality. This allows data cells to track the mouse and do whatever they do without any effect on the table view. (Normally, the table view first changes the selection to the row in which the click happened, which while being "good" behaviour is not always desirable, and then lets the cell track the mouse.) "*/
+
 
 //---------------------------------------------------------------------------------------
 //	CLASS INITIALISATION
@@ -50,7 +52,7 @@
 
 - (void)dealloc
 {
-    [clickableColumns release];
+    [clickTroughColumns release];
     [super dealloc];
 }
 
@@ -90,23 +92,31 @@
 //	ACCESSOR METHODS
 //---------------------------------------------------------------------------------------
 
-- (void)addToClickableColumns:(NSTableColumn *)aColumn
+/*" Adds %aColumn to the list of columns with click-through behaviour. Note that, of course, the column must be part of the receiver. "*/
+
+- (void)addToClickThroughColumns:(NSTableColumn *)aColumn
 {
     NSAssert([[self tableColumns] indexOfObject:aColumn] != NSNotFound, @"invalid column");
-    if(clickableColumns == nil)
-        clickableColumns = [[NSMutableSet allocWithZone:[self zone]] init];
-    [clickableColumns addObject:aColumn];
+    if(clickTroughColumns == nil)
+        clickTroughColumns = [[NSMutableSet allocWithZone:[self zone]] init];
+    [clickTroughColumns addObject:aColumn];
 }
 
-- (void)removeFromClickableColumns:(NSTableColumn *)aColumn
+
+/*" Removes %aColumn from the list of columns with click-through behaviour. Afterwards %aColumn will have normal select-and-click behaviour. "*/
+
+- (void)removeFromClickThroughColumns:(NSTableColumn *)aColumn
 {
-    NSAssert([clickableColumns containsObject:aColumn], @"invalid column");
-    [clickableColumns removeObject:aColumn];
+    NSAssert([clickTroughColumns containsObject:aColumn], @"invalid column");
+    [clickTroughColumns removeObject:aColumn];
 }
 
-- (NSArray *)clickableColumns
+
+/*" Returns the list of columns with click-through behaviour. "*/
+
+- (NSArray *)clickTroughColumns
 {
-    return [clickableColumns allObjects];
+    return [clickTroughColumns allObjects];
 }
 
 
@@ -128,7 +138,7 @@
     clickedRowIdx = [self rowAtPoint:location];
     clickedColumnIdx = [self columnAtPoint:location];
     if((clickedColumnIdx == -1) || (clickedRowIdx == -1) ||
-      ([clickableColumns containsObject:[_tableColumns objectAtIndex:clickedColumnIdx]] == NO))
+      ([clickTroughColumns containsObject:[_tableColumns objectAtIndex:clickedColumnIdx]] == NO))
         {
         [super mouseDown:theEvent];
         }
@@ -141,7 +151,7 @@
 #ifndef GNUSTEP
         if(_tvFlags.delegateWillDisplayCell)
 #else
-	if(_del_responds)
+        if(_del_responds)
 #endif
             [_delegate tableView:self willDisplayCell:cell forTableColumn:column row:clickedRowIdx];
         while([theEvent type] != NSLeftMouseUp)
