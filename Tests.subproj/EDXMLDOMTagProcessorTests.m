@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDXMLDOMTagProcessorTests.m created by erik on Sun May 25 2003
-//  @(#)$Id: EDXMLDOMTagProcessorTests.m,v 1.1 2003-05-26 19:56:13 erik Exp $
+//  @(#)$Id: EDXMLDOMTagProcessorTests.m,v 1.2 2003-06-06 02:03:54 znek Exp $
 //
 //  Copyright (c) 2003 by Erik Doernenburg. All rights reserved.
 //
@@ -37,7 +37,7 @@
    
     processor = [[[EDXMLDOMTagProcessor alloc] init] autorelease];
     parser = [EDMLParser parserWithTagProcessor:processor];
-    doc = [parser parseXMLDocumentAtPath:@"Tests.subproj/Sample.xml"];
+    doc = [parser parseXMLDocumentAtPath:EDCommonTestsPathForResourceOfType(@"Sample", @"xml")];
     should1(doc != nil, @"Failed to create a document.");
     should([doc nodeType] == EDXML_DOCUMENT_NODE);
 
@@ -75,7 +75,7 @@
 
     processor = [[[EDXMLDOMTagProcessor alloc] init] autorelease];
     parser = [EDMLParser parserWithTagProcessor:processor];
-    doc = [parser parseXMLDocumentAtPath:@"Tests.subproj/SampleWithNamespaces.xml"];
+    doc = [parser parseXMLDocumentAtPath:EDCommonTestsPathForResourceOfType(@"SampleWithNamespaces", @"xml")];
     should1(doc != nil, @"Failed to create a document.");
     should([doc nodeType] == EDXML_DOCUMENT_NODE);
 

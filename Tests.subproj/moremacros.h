@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  moremacros.h created by erik on Fri May 23 2003
-//  @(#)$Id: moremacros.h,v 1.1 2003-05-26 19:56:13 erik Exp $
+//  @(#)$Id: moremacros.h,v 1.2 2003-06-06 02:03:54 znek Exp $
 //
 //  Copyright (c) 2003 by Erik Doernenburg. All rights reserved.
 //
@@ -22,10 +22,14 @@
 #ifndef	__moremacros_h_INCLUDE
 #define	__moremacros_h_INCLUDE
 
+#ifndef GNUSTEP
+#define EDCommonTestsPathForResourceOfType(resourceName, type) [NSString stringWithFormat:@"Tests.subproj/%@.%@", (resourceName), (type)]
+#else
+#define EDCommonTestsPathForResourceOfType(resourceName, type) [[NSBundle mainBundle] pathForResource:(resourceName) ofType:(type)]
+#endif
+
 #define shouldBeEqualInt1(left,right,description)  \
     shouldBeEqual1([NSNumber numberWithInt:(left)], [NSNumber numberWithInt:(right)], description)
 #define shouldBeEqualInt(left,right)  shouldBeEqualInt1(left,right,nil)
-
-
 
 #endif	/* __moremacros_h_INCLUDE */

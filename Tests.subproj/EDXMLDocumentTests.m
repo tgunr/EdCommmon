@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDXMLDocumentTests.m created by erik on Fri May 23 2003
-//  @(#)$Id: EDXMLDocumentTests.m,v 1.1 2003-05-26 19:56:13 erik Exp $
+//  @(#)$Id: EDXMLDocumentTests.m,v 1.2 2003-06-06 02:03:54 znek Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -171,7 +171,7 @@
 {
     EDXMLDocument	*doc;
 
-    doc = [EDXMLDocument documentWithContentsOfFile:@"Tests.subproj/Sample.xml"];
+    doc = [EDXMLDocument documentWithContentsOfFile:EDCommonTestsPathForResourceOfType(@"Sample", @"xml")];
     should1(doc != nil, @"Failed to initialise document from a file.");
     should1([doc nodeType] == EDXML_DOCUMENT_NODE, @"Failed to properly initialise document from a file.");
     // No more tests regarding structure of doc, these are done in the TagProcessor tests
