@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDToolbarDefinition.h created by erik on Sat 06-Jun-2001
-//  @(#)$Id: EDToolbarDefinition.h,v 1.1 2001-06-11 01:08:24 erik Exp $
+//  @(#)$Id: EDToolbarDefinition.h,v 1.2 2001-08-05 20:38:00 erik Exp $
 //
 //  Copyright (c) 2001 by Erik Doernenburg. All rights reserved.
 //
@@ -17,6 +17,8 @@
 //  DAMAGES WHATSOEVER RESULTING DIRECTLY OR INDIRECTLY FROM THE USE OF THIS SOFTWARE
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
+
+#ifndef EDCOMMON_OSXSBUILD
 
 #import <AppKit/AppKit.h>
 
@@ -40,3 +42,5 @@
 - (NSToolbarItem *)itemWithIdentifier:(NSString *)identifier;
 
 @end
+
+#endif

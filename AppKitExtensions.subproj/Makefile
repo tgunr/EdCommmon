@@ -18,12 +18,13 @@ CLASSES = NSApplication+Extensions.m\
           NSAttributedString+AppKitExtensions.m NSMatrix+Extensions.m\
           NSPasteboard+Extensions.m NSTableView+Extensions.m\
           NSTableColumn+Extensions.m NSWindow+Extensions.m\
-          NSWorkspace+Extensions.m EDApplication.m
+          NSWorkspace+Extensions.m EDApplication.m EDToolbarDefinition.m
 
 HFILES = NSApplication+Extensions.h NSAttributedString+AppKitExtensions.h\
          NSMatrix+Extensions.h NSPasteboard+Extensions.h\
          NSTableView+Extensions.h NSTableColumn+Extensions.h\
-         NSWindow+Extensions.h NSWorkspace+Extensions.h EDApplication.h
+         NSWindow+Extensions.h NSWorkspace+Extensions.h EDApplication.h\
+         EDToolbarDefinition.h
 
 OTHERSRCS = Makefile.preamble Makefile Makefile.postamble
 

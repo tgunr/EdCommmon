@@ -11,7 +11,8 @@
             "NSTableColumn+Extensions.m", 
             "NSWindow+Extensions.m", 
             "NSWorkspace+Extensions.m", 
-            EDApplication.m
+            EDApplication.m, 
+            EDToolbarDefinition.m
         ); 
         H_FILES = (
             "NSApplication+Extensions.h", 
@@ -22,7 +23,8 @@
             "NSTableColumn+Extensions.h", 
             "NSWindow+Extensions.h", 
             "NSWorkspace+Extensions.h", 
-            EDApplication.h
+            EDApplication.h, 
+            EDToolbarDefinition.h
         ); 
         IMAGES = (arrows.tiff); 
         OTHER_SOURCES = (Makefile.preamble, Makefile, Makefile.postamble); 
