@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjectReference.m created by erik on Thu 13-Aug-1998
-//  @(#)$Id: EDObjectReference.m,v 1.3 2002-02-05 23:27:00 znek Exp $
+//  @(#)$Id: EDObjectReference.m,v 1.4 2002-02-06 13:46:16 znek Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -81,13 +81,13 @@
 }
 
 
-- (BOOL)isEqual:(id)other
+- (BOOL)isEqual:(id)otherObject
 {
     if(otherObject == nil)
         return NO;
-    else if((isa != ((EDObjectReference *)other)->isa) && ([other isKindOfClass:[EDObjectReference class]] == NO))
+else if((isa != ((EDObjectReference *)otherObject)->isa) && ([otherObject isKindOfClass:[EDObjectReference class]] == NO))
         return NO;
-    return (self->referencedObject == ((EDObjectReference *)other)->referencedObject);
+return (self->referencedObject == ((EDObjectReference *)otherObject)->referencedObject);
 }
 
 
