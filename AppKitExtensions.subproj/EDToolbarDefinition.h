@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDToolbarDefinition.h created by erik on Sat 06-Jun-2001
-//  @(#)$Id: EDToolbarDefinition.h,v 1.3 2002-04-14 14:57:54 znek Exp $
+//  @(#)$Id: EDToolbarDefinition.h,v 1.4 2002-07-09 15:56:50 erik Exp $
 //
 //  Copyright (c) 2001 by Erik Doernenburg. All rights reserved.
 //
@@ -29,22 +29,35 @@
 
 @interface EDToolbarDefinition : NSObject
 {
-    NSDictionary 		*toolbarDefinition;
-    NSString			*name;
-    id					targetForActions;
+    NSDictionary 		*toolbarDefinition;  /*" All instance variables are private. "*/
+    NSString			*name;				 /*" "*/
+    id					targetForActions;	 /*" "*/
 }
 
-- (id)initWithName:(NSString *)name;
+/*" Creating (loading) toolbar definitions "*/
++ (id)toolbarDefinitionWithName:(NSString *)aName;
 
+- (id)initWithName:(NSString *)aName;
+
+/*" Retrieving the name "*/
 - (NSString *)name;
 
+/*" Assigning a target for the toolbar items "*/
 - (void)setTargetForActions:(id)anObject;
 - (id)targetForActions;
 
+/*" Creating toolbar objects "*/
 - (NSToolbar *)toolbar;
 - (NSArray *)defaultItemIdentifiers;
 - (NSArray *)allowedItemIdentifiers;
 - (NSToolbarItem *)itemWithIdentifier:(NSString *)identifier;
+
+/*" Toolbar delegate methods "*/
+
+- (NSArray *)toolbarAllowedItemIdentifiers:(NSToolbar *)toolbar;
+- (NSArray *)toolbarDefaultItemIdentifiers:(NSToolbar *)toolbar;
+- (NSToolbarItem *)toolbar:(NSToolbar *)toolbar itemForItemIdentifier:(NSString *)itemIdentifier
+ willBeInsertedIntoToolbar:(BOOL)flag;
 
 @end
 

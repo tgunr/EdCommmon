@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDNumberSet.h created by erik on Sun 04-Jul-1999
-//  @(#)$Id: EDNumberSet.h,v 1.2 2002-04-14 14:57:55 znek Exp $
+//  @(#)$Id: EDNumberSet.h,v 1.3 2002-07-09 15:56:55 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -31,25 +31,30 @@
 
 @interface EDNumberSet : NSObject <NSCoding, NSCopying>
 {
-    EDRedBlackTree	*rangeTree;
+    EDRedBlackTree	*rangeTree;	/*" All instance variables are private. "*/
 }
 
+/*" Creating number sets "*/
+- (id)init;
+- (id)initWithNumbersInRange:(EDRange *)aRange;
 - (id)initWithRanges:(NSArray *)rangeList;
 
-- (void)addNumber:(NSNumber *)number;
-- (void)removeNumber:(NSNumber *)number;
+/*" Adding/removing numbers "*/
+- (void)addNumber:(NSNumber *)aNumber;
+- (void)removeNumber:(NSNumber *)aNumber;
+- (void)addNumbersInRange:(EDRange *)aRange;
+- (void)removeNumbersInRange:(EDRange *)aRange;
 
-- (BOOL)containsNumber:(NSNumber *)number;
+/*" Checking individual numbers "*/
+- (BOOL)containsNumber:(NSNumber *)aNumber;
 - (NSNumber *)lowestNumber;
 - (NSNumber *)highestNumber;
 
-- (void)addNumbersInRange:(EDRange *)range;
-- (void)removeNumbersInRange:(EDRange *)range;
-
+/*" Checking ranges "*/
 - (NSArray *)coveredRanges;
 - (NSEnumerator *)coveredRangeEnumerator;
-- (NSArray *)coveredRangesInRange:(EDRange *)range;
-- (NSArray *)uncoveredRangesInRange:(EDRange *)range;
+- (NSArray *)coveredRangesInRange:(EDRange *)aRange;
+- (NSArray *)uncoveredRangesInRange:(EDRange *)aRange;
 
 @end
 

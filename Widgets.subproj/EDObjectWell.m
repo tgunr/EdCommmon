@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjectWell.m created by erik on Sun 11-Oct-1998
-//  @(#)$Id: EDObjectWell.m,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: EDObjectWell.m,v 1.2 2002-07-09 15:56:59 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -31,19 +31,22 @@
     @implementation EDObjectWell
 //---------------------------------------------------------------------------------------
 
+/*" Object wells are places that provide or accept objects. A delegate/datasource specifies, in terms of pasteboard types, what kind of object is available and fills the pasteboard when the user drags the graphical representation of the objects from the well. If an object of an acceptable type is deposited on the well (and the delegate approves) the object is accepted and the delegate notified. This does not neccessarily result in anything being displayed on the well. "*/
+
+
 //---------------------------------------------------------------------------------------
 //	CLASS INITIALISATION
 //---------------------------------------------------------------------------------------
 
 + (void)initialize
 {
-   [self setVersion:3];
+    [self setVersion:3];
 }
 
 
 + (Class)cellClass
 {
-   return [NSCell class];
+    return [NSCell class];
 }
 
 

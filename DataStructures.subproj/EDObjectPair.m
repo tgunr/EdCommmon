@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDKeyValuePair.m created by erik on Sat 29-Aug-1998
-//  @(#)$Id: EDObjectPair.m,v 1.5 2002-06-18 16:37:52 erik Exp $
+//  @(#)$Id: EDObjectPair.m,v 1.6 2002-07-09 15:56:56 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -26,6 +26,9 @@
     @implementation EDObjectPair
 //---------------------------------------------------------------------------------------
 
+/*" From a purely functional point EDObjectPair does not add anything to NSArray. However, EDObjectPair can be used when a design explicitly deals with a relationship between two objects, typically an association of a value or an object with another object. An array of EDObjectPairs can be used instead of an NSDictionary when the order of key/value pairs is relevant and lookups of values by key do not need to be fast. EDObjectPairs also use less memory than NSArray and have a better hash function. (If you know LISP you probably use pairs for all sorts of other structures.) "*/
+
+
 //---------------------------------------------------------------------------------------
 //	CLASS INITIALISATION
 //---------------------------------------------------------------------------------------
@@ -40,11 +43,15 @@
 //	FACTORY
 //---------------------------------------------------------------------------------------
 
-+ (id)pairWithObjectPair:(EDObjectPair *)pair
+/*" Creates and returns a pair containing the objects in aPair. "*/
+
++ (id)pairWithObjectPair:(EDObjectPair *)aPair
 {
-    return [[[self alloc] initWithObjects:[pair firstObject]:[pair secondObject]] autorelease];
+    return [[[self alloc] initWithObjects:[aPair firstObject]:[aPair secondObject]] autorelease];
 }
 
+
+/*" Creates and returns a pair containing anObject and anotherObject. "*/
 
 + (id)pairWithObjects:(id)anObject:(id)anotherObject
 {
@@ -56,11 +63,15 @@
 //	INIT
 //---------------------------------------------------------------------------------------
 
-- (id)initWithObjectPair:(EDObjectPair *)pair
+/*" Initialises a newly allocated pair by adding the objects from %aPair to it. Objects are, of course, retained. "*/
+
+- (id)initWithObjectPair:(EDObjectPair *)aPair
 {
-    return [self initWithObjects:[pair firstObject]:[pair secondObject]];
+    return [self initWithObjects:[aPair firstObject]:[aPair secondObject]];
 }
 
+
+/*" Initialises a newly allocated pair by adding anObject and anotherObject to it. Objects are, of course, retained. "*/
 
 - (id)initWithObjects:(id)anObject:(id)anotherObject
 {
@@ -154,11 +165,15 @@
 //	ATTRIBUTES
 //---------------------------------------------------------------------------------------
 
+/*" Returns the first object. Note that this can be !{nil}. "*/
+
 - (id)firstObject
 {
     return firstObject;
 }
 
+
+/*" Returns the second object. Note that this can be !{nil}. "*/
 
 - (id)secondObject
 {
@@ -169,6 +184,8 @@
 //---------------------------------------------------------------------------------------
 //	CONVENIENCE
 //---------------------------------------------------------------------------------------
+
+/*" Returns an array containing all objects in the pair. Because a pair can contain !{nil} references, this array can have zero, one or two objects. If both objects in the pair are not !{nil} the first object preceedes the second in the array."*/
 
 - (NSArray *)allObjects
 {

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDActivityIndicator.h created by erik on Tue 10-Nov-1998
-//  @(#)$Id: EDActivityIndicator.h,v 1.3 2002-07-01 18:59:37 erik Exp $
+//  @(#)$Id: EDActivityIndicator.h,v 1.4 2002-07-09 15:56:59 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -51,34 +51,45 @@ struct EDAIFlags
 
 @interface EDActivityIndicator : NSView
 {
-    struct EDAIFlags flags;
-    NSColor			 *bgColor;
-    id				 target;
-    SEL				 action;
+    struct EDAIFlags flags;				/*" All instance variables are private. "*/
+    NSColor			 *bgColor;			/*" "*/
+    id				 target;			/*" "*/
+    SEL				 action;			/*" "*/
 
-    float			 xpos;    
-    NSTimer			 *animationTimer;
+    float			 xpos;    			/*" "*/
+    NSTimer			 *animationTimer;	/*" "*/
 }
 
-- (void)setTarget:(id)aTarget;
-- (id)target;
-- (void)setAction:(SEL)aSelector;
-- (SEL)action;
+/*" Animation image "*/
++ (NSImage *)animation;
+
+/*" Changing the indicator's appearance "*/
 - (void)setBackgroundColor:(NSColor *)aColor;
 - (NSColor *)backgroundColor;
 - (void)setDrawsBackground:(BOOL)flag;
 - (BOOL)drawsBackground;
+
+/*" Setting and getting the indicator's attributes "*/
 - (void)setHidesOnLoad:(BOOL)flag;
 - (BOOL)hidesOnLoad;
 - (void)setIsHidden:(BOOL)flag;
 - (BOOL)isHidden;
 - (void)setFrameRate:(unsigned int)value;
 - (unsigned int)frameRate;
-- (void)highlight:(BOOL)flag;
 
+/*" Setting target and action "*/
+- (void)setTarget:(id)anObject;
+- (id)target;
+- (void)setAction:(SEL)aSelector;
+- (SEL)action;
+
+/*" Managing the animation "*/
 - (IBAction)step:(id)sender;
 - (IBAction)startAnimation:(id)sender;
 - (IBAction)stopAnimation:(id)sender;
+
+/*" Drawing and highlighting the activity indicator "*/
+- (void)highlight:(BOOL)flag;
 
 @end
 

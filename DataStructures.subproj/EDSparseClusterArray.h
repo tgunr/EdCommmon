@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDSparseClusterArray.h created by erik on Fri 28-May-1999
-//  @(#)$Id: EDSparseClusterArray.h,v 1.2 2002-04-14 14:57:55 znek Exp $
+//  @(#)$Id: EDSparseClusterArray.h,v 1.3 2002-07-09 15:56:56 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -28,16 +28,19 @@
 
 @interface EDSparseClusterArray : NSObject
 {
-    NSMapTable		*pageTable;
-    unsigned int	pageSize;
+    NSMapTable		*pageTable;		/*" All instance variables are private. "*/
+    unsigned int	pageSize;		/*" "*/
 }
 
+/*" Creating sparse cluster arrays "*/
 - (id)init;
 
+/*" Adding and removing objects "*/
 - (void)setObject:(id)anObject atIndex:(unsigned int)index;
 - (void)removeObjectAtIndex:(unsigned int)index;
 - (id)objectAtIndex:(unsigned int)index;
 
+/*" Querying the array "*/
 - (unsigned int)count;
 - (NSEnumerator *)indexEnumerator;
 - (NSArray *)allObjects;

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDNumberSet.m created by erik on Sun 04-Jul-1999
-//  @(#)$Id: EDNumberSet.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDNumberSet.m,v 1.2 2002-07-09 15:56:56 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -31,6 +31,8 @@
     @implementation EDNumberSet
 //---------------------------------------------------------------------------------------
 
+/*" #EDNumberSet is a data structure that stores large sets of numbers efficiently. (#NSSet with instances of #NSNumber might be a tad inefficient when you reach a couple of thousand numbers.) As an addeded bonus it also provides operations dealing with ranges that are covered, i.e. all numbers inbetween a a start and an end number are also in the set. The set {7,3,8,9,2} covers two ranges, namely [2..3] and [7..9]. All operations are efficient in that they run in O(lg %n) or less. "*/
+
 //---------------------------------------------------------------------------------------
 //	CLASS INITIALISATION
 //---------------------------------------------------------------------------------------
@@ -45,6 +47,8 @@
 //	INIT & DEALLOC
 //---------------------------------------------------------------------------------------
 
+/*" Initialises a newly allocated number set. "*/
+
 - (id)init
 {
     [super init];
@@ -52,6 +56,18 @@
     return self;
 }
 
+
+/*" Initialises a newly allocated number set by adding all numbers in %aRange to it. "*/
+
+- (id)initWithNumbersInRange:(EDRange *)aRange
+{
+    [self init];
+    [self addNumbersInRange:aRange];
+    return self;
+}
+
+
+/*" Initialises a newly allocated number set by adding all numbers in the ranges in %rangeList to it. "*/
 
 - (id)initWithRanges:(NSArray *)rangeList
 {
@@ -135,29 +151,37 @@
 //	NUMBER ACCESSORS
 //---------------------------------------------------------------------------------------
 
-- (void)addNumber:(NSNumber *)number
+/*" Adds %aNumber to the set. The number object itself is not neccessarily used and retained. "*/
+
+- (void)addNumber:(NSNumber *)aNumber
 {
-    [self addNumbersInRange:[EDRange rangeWithLocation:[number unsignedIntValue] length:1]];
+    [self addNumbersInRange:[EDRange rangeWithLocation:[aNumber unsignedIntValue] length:1]];
 }
 
 
-- (void)removeNumber:(NSNumber *)number
+/*" Removes %aNumber from the set. "*/
+
+- (void)removeNumber:(NSNumber *)aNumber
 {
-    [self removeNumbersInRange:[EDRange rangeWithLocation:[number unsignedIntValue] length:1]];
+    [self removeNumbersInRange:[EDRange rangeWithLocation:[aNumber unsignedIntValue] length:1]];
 }
 
 
-- (BOOL)containsNumber:(NSNumber *)number
+/*" Returns YES if %number is in the set, NO otherwise. "*/
+
+- (BOOL)containsNumber:(NSNumber *)aNumber
 {
     unsigned int uival;
     EDRange 	 *member;
 
-    uival = [number unsignedIntValue];
+    uival = [aNumber unsignedIntValue];
     member = [rangeTree smallerOrEqualMember:[EDRange rangeWithLocation:uival length:1]];
 
     return [member isLocationInRange:uival];
 }
 
+
+/*" Returns the lowest number in the set. "*/
 
 - (NSNumber *)lowestNumber
 {
@@ -168,6 +192,8 @@
     return [NSNumber numberWithInt:[member location]];
 }
 
+
+/*" Returns the highest number in the set. "*/
 
 - (NSNumber *)highestNumber
 {
@@ -184,26 +210,28 @@
 //	RANGE ACCESSORS
 //---------------------------------------------------------------------------------------
 
-- (void)addNumbersInRange:(EDRange *)new
+/*" Adds all numbers in %aRange to the set. "*/
+
+- (void)addNumbersInRange:(EDRange *)aRange
 {
     EDRange 		*member, *next;
     unsigned int	startLoc, endLoc;
 
-    startLoc = [new location];
-    endLoc = [new endLocation];
+    startLoc = [aRange location];
+    endLoc = [aRange endLocation];
 
-    member = [rangeTree smallerOrEqualMember:new];
+    member = [rangeTree smallerOrEqualMember:aRange];
     if(member != nil)
         {
-        if([member containsRange:new])
+        if([member containsRange:aRange])
             {
-            // new contained in members; no work to do.
+            // aRange contained in members; no work to do.
             return; 
             }
         next = [rangeTree successorForObject:member];
-        if([member endLocation] >= [new location] - 1)
+        if([member endLocation] >= [aRange location] - 1)
             {
-            // overlaps/adjacent to new; will be merged.
+            // overlaps/adjacent to aRange; will be merged.
             startLoc = [member location];
             [rangeTree removeObject:member];
             }
@@ -211,57 +239,59 @@
         }
     else
         {
-        // nothing smaller than new; just get first.
+        // nothing smaller than aRange; just get first.
         member = [rangeTree minimumObject];
         }
     
-    while((member != nil) && ([member endLocation] <= [new endLocation]))
+    while((member != nil) && ([member endLocation] <= [aRange endLocation]))
         {
         next = [rangeTree successorForObject:member];
         [rangeTree removeObject:member];
         member = next;
         }
 
-    if((member != nil) && ([member location] <= [new endLocation] + 1))
+    if((member != nil) && ([member location] <= [aRange endLocation] + 1))
         {
-        // overlaps/adjacent to new; merge.
+        // overlaps/adjacent to aRange; merge.
         endLoc = [member endLocation];
         [rangeTree removeObject:member];
         }
 
-    new = RWL(startLoc, endLoc);
-    [rangeTree addObject:new];
+    aRange = RWL(startLoc, endLoc);
+    [rangeTree addObject:aRange];
 }
 
 
-- (void)removeNumbersInRange:(EDRange *)del
+/*" Removes all numbers in %aRange from the set. "*/
+
+- (void)removeNumbersInRange:(EDRange *)aRange
 {
     EDRange 		*member, *next, *mod;
 
-    member = [rangeTree smallerOrEqualMember:del];
+    member = [rangeTree smallerOrEqualMember:aRange];
     if(member != nil)
         {
         next = [rangeTree successorForObject:member];
-        if([member endLocation] >= [del location])
+        if([member endLocation] >= [aRange location])
             {
-            // member overlaps del; must be modified
+            // member overlaps aRange; must be modified
             [[member retain] autorelease];
             [rangeTree removeObject:member];
-            if([member isEqualToRange:del])
+            if([member isEqualToRange:aRange])
                 {
                 // nothing more to do
                 return;
                 }
-            if([member location] < [del location])
+            if([member location] < [aRange location])
                 {
-                // add section before del
-                mod = RWL([member location], [del location] - 1);
+                // add section before aRange
+                mod = RWL([member location], [aRange location] - 1);
                 [rangeTree addObject:mod];
                 }
-            if([member endLocation] > [del endLocation])
+            if([member endLocation] > [aRange endLocation])
                 {
-                // member contained del; add rest and return
-                mod = RWL([del endLocation] + 1, [member endLocation]);
+                // member contained aRange; add rest and return
+                mod = RWL([aRange endLocation] + 1, [member endLocation]);
                 [rangeTree addObject:mod];
                 return; 
                 }
@@ -273,21 +303,23 @@
         member = [rangeTree minimumObject];
         }
     
-    while((member != nil) && ([member endLocation] <= [del endLocation]))
+    while((member != nil) && ([member endLocation] <= [aRange endLocation]))
         {
         next = [rangeTree successorForObject:member];
         [rangeTree removeObject:member];
         member = next;
         }
     
-    if((member != nil) && ([member location] <= [del endLocation]))
+    if((member != nil) && ([member location] <= [aRange endLocation]))
         {
-        mod = RWL([del endLocation] + 1, [member endLocation]);
+        mod = RWL([aRange endLocation] + 1, [member endLocation]);
         [rangeTree removeObject:member];
         [rangeTree addObject:mod];
         }
 }
 
+
+/*" Returns an array containing EDRange objects for all ranges covered by the numbers in the set. "*/
 
 - (NSArray *)coveredRanges
 {
@@ -295,22 +327,26 @@
 }
 
 
+/*" Returns an enumerator for all EDRange objects for all ranges covered by the numbers in the set. "*/
+
 - (NSEnumerator *)coveredRangeEnumerator
 {
     return [rangeTree objectEnumerator];
 }
 
 
-- (NSArray *)coveredRangesInRange:(EDRange *)range
+/*" Returns an array containing EDRange objects for all ranges covered by the numbers in the set within %aRange. "*/
+
+- (NSArray *)coveredRangesInRange:(EDRange *)aRange
 {
     NSMutableArray	*resultSet;
     EDRange 		*member;
 
     resultSet = [NSMutableArray array];
-    member =  [rangeTree smallerOrEqualMember:range];
+    member =  [rangeTree smallerOrEqualMember:aRange];
     if(member != nil)
         {
-        if([member endLocation] < [range location])
+        if([member endLocation] < [aRange location])
             member = [rangeTree successorForObject:member];
         }
     else
@@ -318,9 +354,9 @@
         member = [rangeTree minimumObject];
         }
 
-    while((member != nil) && ([member location] <= [range endLocation]))
+    while((member != nil) && ([member location] <= [aRange endLocation]))
         {
-        [resultSet addObject:[member intersectionRange:range]];
+        [resultSet addObject:[member intersectionRange:aRange]];
         member = [rangeTree successorForObject:member];
         }
 
@@ -328,21 +364,23 @@
 }
 
 
-- (NSArray *)uncoveredRangesInRange:(EDRange *)range
+/*" Returns an array containing EDRange objects for all ranges not covered by the numbers in the set within %aRange. "*/
+
+- (NSArray *)uncoveredRangesInRange:(EDRange *)aRange
 {
     NSMutableArray	*resultSet;
     EDRange 		*member, *uncovered;
     unsigned int	startLoc;
 
     resultSet = [NSMutableArray array];
-    member =  [rangeTree smallerOrEqualMember:range];
-    startLoc = [range location];
+    member =  [rangeTree smallerOrEqualMember:aRange];
+    startLoc = [aRange location];
     if(member != nil)
         {
-        if([member endLocation] >= [range endLocation])
+        if([member endLocation] >= [aRange endLocation])
             return nil;
         
-        if([member endLocation] >= [range location])
+        if([member endLocation] >= [aRange location])
             startLoc = [member endLocation] + 1;
         member = [rangeTree successorForObject:member];
         }
@@ -351,7 +389,7 @@
         member = [rangeTree minimumObject];
         }
 
-    while((member != nil) && ([member location] <= [range endLocation]))
+    while((member != nil) && ([member location] <= [aRange endLocation]))
         {
         uncovered = RWL(startLoc, [member location] - 1);
         [resultSet addObject:uncovered];
@@ -359,9 +397,9 @@
         member = [rangeTree successorForObject:member];
         }
 
-    if(startLoc <= [range endLocation])
+    if(startLoc <= [aRange endLocation])
         {
-        uncovered = RWL(startLoc, [range endLocation]);
+        uncovered = RWL(startLoc, [aRange endLocation]);
         [resultSet addObject:uncovered];
         }
     

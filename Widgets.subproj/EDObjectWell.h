@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjectWell.h created by erik on Sun 11-Oct-1998
-//  @(#)$Id: EDObjectWell.h,v 1.2 2002-04-14 14:57:57 znek Exp $
+//  @(#)$Id: EDObjectWell.h,v 1.3 2002-07-09 15:56:59 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -26,7 +26,7 @@
 #import <AppKit/AppKit.h>
 
 
-typedef struct _EDOWFlags {
+struct _EDOWFlags {
 #ifdef __BIG_ENDIAN__
     unsigned drawsBezel : 1;
     unsigned delaysRequestingData : 1;
@@ -42,36 +42,40 @@ typedef struct _EDOWFlags {
     unsigned delaysRequestingData : 1;
     unsigned drawsBezel : 1;
 #endif
-} _EDOWFlags;
+};
 
 
 @interface EDObjectWell : NSControl
 {
-    _EDOWFlags	 flags;
-    NSDictionary *imageDictionary;
-    NSArray		 *currentTypes;
-    NSArray		 *acceptableTypes;
-    IBOutlet id  delegate;
+    struct _EDOWFlags	flags;				/*" These instance variables are private. "*/ 
+    NSDictionary		*imageDictionary;	/*" "*/
+    NSArray		 		*currentTypes;		/*" "*/
+    NSArray		 		*acceptableTypes;	/*" "*/
+    IBOutlet id  		delegate;			/*" Connect in Interface Builder. "*/
 }
 
+/*" Changing the well's appearance "*/
 - (void)setDrawsBezel:(BOOL)flag;
 - (BOOL)drawsBezel;
-
-- (void)setDelaysRequestingData:(BOOL)flag;
-- (BOOL)delaysRequestingData;
 
 - (void)setImageDictionary:(NSDictionary *)someImages;
 - (NSDictionary *)imageDictionary;
 
+/*" Setting and getting the well's attributes "*/
+- (void)setDelaysRequestingData:(BOOL)flag;
+- (BOOL)delaysRequestingData;
+
+/*" Assigning a delegate "*/
 - (void)setDelegate:(id)anObject;
 - (id)delegate;
 
+/*" Setting and getting object types "*/
 - (void)setCurrentTypes:(NSArray *)types;
 - (NSArray *)currentTypes;
-
 - (void)setAcceptableTypes:(NSArray *)types;
 - (NSArray *)acceptableTypes;
 
+/*" Setting the image displayed "*/
 - (void)setImage:(NSImage *)anImage;
 - (NSImage *)image;
 

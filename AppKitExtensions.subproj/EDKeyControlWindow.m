@@ -1,11 +1,21 @@
 //---------------------------------------------------------------------------------------
-//  ALXReaderWindow.m created by erik on Sat 14-Aug-1999
-//  @(#)$Id: EDKeyControlWindow.m,v 1.1 2002-04-02 08:43:36 erik Exp $
+//  EDKeyControlWindow.m created by erik on Sat 14-Aug-1999
+//  @(#)$Id: EDKeyControlWindow.m,v 1.2 2002-07-09 15:56:50 erik Exp $
 //
-//  This file is part of the Alexandra Newsreader Project. ALX3000 and the supporting
-//  ALX frameworks are free software; you can redistribute and/or modify them under
-//  the terms of the GNU General Public License, version 2 as published by the Free
-//  Software Foundation.
+//  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
+//
+//  Permission to use, copy, modify and distribute this software and its documentation
+//  is hereby granted, provided that both the copyright notice and this permission
+//  notice appear in all copies of the software, derivative works or modified versions,
+//  and any portions thereof, and that both notices appear in supporting documentation,
+//  and that credit is given to Erik Doernenburg in all documents and publicity
+//  pertaining to direct or indirect use of this code or its derivatives.
+//
+//  THIS IS EXPERIMENTAL SOFTWARE AND IT IS KNOWN TO HAVE BUGS, SOME OF WHICH MAY HAVE
+//  SERIOUS CONSEQUENCES. THE COPYRIGHT HOLDER ALLOWS FREE USE OF THIS SOFTWARE IN ITS
+//  "AS IS" CONDITION. THE COPYRIGHT HOLDER DISCLAIMS ANY LIABILITY OF ANY KIND FOR ANY
+//  DAMAGES WHATSOEVER RESULTING DIRECTLY OR INDIRECTLY FROM THE USE OF THIS SOFTWARE
+//  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
 #import <AppKit/AppKit.h>
@@ -24,6 +34,27 @@
 //---------------------------------------------------------------------------------------
     @implementation EDKeyControlWindow
 //---------------------------------------------------------------------------------------
+
+/*" Allows selectors to be sent up the responder chain in response to keystrokes.
+
+The exact behaviour is determined by a "key binding" dictionary which is loaded from a file named !{KeyBindings.dict} in the application's main bundle. This can be overriden by a file in any of the applications library directories.
+
+The dictionary uses the keyboard key as key and the selector as value. A tilde character preceeding the key name is interpreted as !{ALT} modifier and a caret as !{CTRL} modifier. Alternatively, the value can be another dictionary in which case this sub dictionary becomes active after the corresponding key was pressed. When a key not defined in the sub dictionary is pressed, the main dictionary becomes active again. If a sub directory contains the key !{"prompt"} the corresponding value is displayed in the prompt field when the sub directory becomes active.
+
+Example: Consider the following file: !{
+
+    {
+        n = "gotoNext:";
+        "^x" = {
+            prompt = "x-tras";
+            s = "save:";
+        }
+    }
+}
+
+If the user presses !{n} the selector !{gotoNext:} is sent. If the user presses !{CTRL-x} the prompt field appears and shows the text "x-tras". Pressing !{s} now results in the selector !{save:} being sent.
+
+"*/
 
 //---------------------------------------------------------------------------------------
 //	INIT & DEALLOC

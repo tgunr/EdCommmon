@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDStack.h created by erik on Sat 19-Jul-1997
-//  @(#)$Id: EDStack.h,v 1.3 2002-06-18 14:47:57 erik Exp $
+//  @(#)$Id: EDStack.h,v 1.4 2002-07-09 15:56:56 erik Exp $
 //
 //  Copyright (c) 1997 by Erik Doernenburg. All rights reserved.
 //
@@ -25,18 +25,22 @@
 
 @interface EDStack : NSObject
 {
-    NSMutableArray	*storage;
+    NSMutableArray	*storage; /*" All instance variables are private. "*/
 }
 
+/*" Creating stacks "*/
 + (EDStack *)stack;
-+ (EDStack *)stackWithObject:(id)object;
++ (EDStack *)stackWithObject:(id)anObject;
 
 - (id)init;
-- (id)initWithObject:(id)object;
+- (id)initWithObject:(id)anObject;
 
-- (void)pushObject:(id)object;
+/*" Adding/removing objects "*/
+- (void)pushObject:(id)anObject;
 - (id)popObject;
 - (void)clear;
+
+/*" Querying the stack "*/
 - (id)topObject;
 - (NSArray *)topObjects:(int)count;
 - (unsigned int)count;

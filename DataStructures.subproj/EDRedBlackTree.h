@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDRedBlackTree.h created by erik on Sun 13-Sep-1998
-//  @(#)$Id: EDRedBlackTree.h,v 1.2 2002-04-14 14:57:55 znek Exp $
+//  @(#)$Id: EDRedBlackTree.h,v 1.3 2002-07-09 15:56:55 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -28,33 +28,38 @@
 
 @interface EDRedBlackTree : NSObject
 {
-    SEL		comparator;
-    void	*sentinel;
-    void 	*rootNode;
-    void 	*minimumNode;
+    SEL		comparator;		/*" All instance variables are private. "*/
+    void	*sentinel;		/*" "*/
+    void 	*rootNode;		/*" "*/
+    void 	*minimumNode;	/*" "*/
 }
 
+/*" Creating red-black trees "*/
+- (id)init;
 - (id)initWithComparisonSelector:(SEL)aSelector;
-- (SEL)comparisonSelector;
 
+/*" Adding and removing objects "*/
+- (void)addObject:(id)anObject;
+- (void)addObjectsFromArray:(NSArray *)someObjects;
+- (void)removeObject:(id)anObject;
+- (void)removeObjectAtIndex:(unsigned int)index;
+
+/*" Querying the tree "*/
+- (unsigned int)count;
+- (id)minimumObject;
+- (id)maximumObject;
 - (BOOL)containsObject:(id)anObject;
 - (id)member:(id)anObject;
 - (id)smallerOrEqualMember:(id)anObject;
 - (id)successorForObject:(id)anObject;
-- (id)minimumObject;
-- (id)maximumObject;
-
+- (id)objectAtIndex:(unsigned int)index;
+- (unsigned int)indexOfObject:(id)anObject;
 - (NSEnumerator *)objectEnumerator;
 - (NSArray *)allObjects;
 
-- (void)addObject:(id)anObject;
-- (void)addObjectsFromArray:(NSArray *)someObjects;
-- (void)removeObject:(id)anObject;
+/*" Retrieving the comparison selector "*/
+- (SEL)comparisonSelector;
 
-- (id)objectAtIndex:(unsigned int)index;
-- (unsigned int)indexOfObject:(id)anObject;
-- (void)removeObjectAtIndex:(unsigned int)index;
-- (unsigned int)count;
 
 @end
 

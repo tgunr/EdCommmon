@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDStringScanner.m created by erik on Mon 24-Apr-2000
-//  $Id: EDStringScanner.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  $Id: EDStringScanner.m,v 1.2 2002-07-09 15:56:56 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -35,9 +35,13 @@ unichar EDStringScannerEndOfDataCharacter = '\0';
     @implementation EDStringScanner
 //---------------------------------------------------------------------------------------
 
+/*" This is a fairly simple scanner that allows little more than retrieving individual characters from an NSString in a somewhat efficient way. The OmniFoundation has a much richer implementation but at the moment I am reluctant to use their's due to the licensing terms and dependency on OmniBase. "*/
+ 
 //---------------------------------------------------------------------------------------
 //	FACTORY
 //---------------------------------------------------------------------------------------
+
+/*" Creates and returns a scanner ready to scan %aString. "*/
 
 + (id)scannerWithString:(NSString *)aString
 {
@@ -48,6 +52,8 @@ unichar EDStringScannerEndOfDataCharacter = '\0';
 //---------------------------------------------------------------------------------------
 //	INIT & DEALLOC
 //---------------------------------------------------------------------------------------
+
+/*" Initialises a newly allocated scanner to scan %aString. "*/
 
 - (id)initWithString:(NSString *)aString
 {
@@ -92,6 +98,8 @@ unichar EDStringScannerEndOfDataCharacter = '\0';
 }
 
 
+/*" Returns the character at the current scan location and advances the latter. Returns !{EDStringScannerEndOfDataCharacter} when the end of the string has been reached. "*/
+
 - (unichar)getCharacter
 {
     unichar	c;
@@ -101,6 +109,8 @@ unichar EDStringScannerEndOfDataCharacter = '\0';
     return c;
 }
 
+
+/*" Returns the character at the current scan location. Returns !{EDStringScannerEndOfDataCharacter} when the end of the string has been reached. "*/
 
 - (unichar)peekCharacter
 {
@@ -117,6 +127,8 @@ unichar EDStringScannerEndOfDataCharacter = '\0';
 //---------------------------------------------------------------------------------------
 //	SCAN LOCATION
 //---------------------------------------------------------------------------------------
+
+/*" Returns the current scan location. "*/
 
 - (unsigned int)scanLocation
 {

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCanvas.m created by erik on Sat 31-Oct-1998
-//  @(#)$Id: EDCanvas.m,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: EDCanvas.m,v 1.2 2002-07-09 15:56:59 erik Exp $
 //
 //  Copyright (c) 1998 by Erik Doernenburg. All rights reserved.
 //
@@ -24,6 +24,8 @@
 //---------------------------------------------------------------------------------------
     @implementation EDCanvas
 //---------------------------------------------------------------------------------------
+
+/*" This view simply fills its entire bounds with the color specified. It can also draw a bezel but this functionality is obsoleted by the Aqua design guidelines."*/
 
 //---------------------------------------------------------------------------------------
 //	CLASS INITIALISATION
@@ -98,6 +100,8 @@
 //	ACCESSOR METHODS
 //---------------------------------------------------------------------------------------
 
+/*" Sets the receiver's color to %aColor and redraws it if neccessary. "*/
+
 - (void)setColor:(NSColor *)aColor
 {
     id old = color;
@@ -106,16 +110,24 @@
     [self setNeedsDisplay:YES];
 }
 
+
+/*" Returns the receiver's color. "*/
+
 - (NSColor *)color
 {
     return color;
 }
 
 
+/*" If set to YES the receiver draws a gray bezel along its bounds, if NO it just fills its bounds with the color. "*/
+
 - (void)setDrawsBezel:(BOOL)flag
 {
     drawsBezel = flag;
 }
+
+
+/*" Returns whether the receiver draws a gray bezel along its bounds. "*/
 
 - (BOOL)drawsBezel
 {

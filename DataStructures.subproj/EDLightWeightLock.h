@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDLWLock.h created by erik on Sun 21-May-2000
-//  $Id: EDLightWeightLock.h,v 1.2 2002-04-14 14:57:55 znek Exp $
+//  $Id: EDLightWeightLock.h,v 1.3 2002-07-09 15:56:56 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -83,7 +83,12 @@ static __inline__ void EDLWLUnlock(EDLightWeightLock *mutex)
 
 #import <mach/cthreads.h>
 
+/*" Datatype for a light-weight lock, different implementations are used on the supported platforms. In GNUStep builds we use the runtime lock wrapper, on Mac OS X and Solaris pthreads, and mach mutexes on the rest. %{<<What about Windows?!>>}"*/
+
 typedef struct mutex EDLightWeightLock;
+
+
+/*" Under certain circumstances even the low overhead of NSLocks is too much and direct access to the platform's locks is required. These four functions initialise a lock, dispose of it and allow to lock and unlock it. "*/
 
 static __inline__ void EDLWLInit(EDLightWeightLock *mutex)
 {
@@ -104,6 +109,7 @@ static __inline__ void EDLWLUnlock(EDLightWeightLock *mutex)
 {
     mutex_unlock(mutex);
 }
+
 
 
 #endif

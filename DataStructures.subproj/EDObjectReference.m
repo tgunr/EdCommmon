@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjectReference.m created by erik on Thu 13-Aug-1998
-//  @(#)$Id: EDObjectReference.m,v 1.4 2002-02-06 13:46:16 znek Exp $
+//  @(#)$Id: EDObjectReference.m,v 1.5 2002-07-09 15:56:56 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -26,9 +26,13 @@
     @implementation EDObjectReference
 //---------------------------------------------------------------------------------------
 
+/*" Object references provide a reference an object that in itself is an object. The references retain their objects. Reference objects can be useful when you want to use heavy-weight objects as keys in Dictionaries (and the object's equality is defined by pointer equality, e.g. Fonts) or you need to pass references on the pasteboard. (Adding and retrieving an object from the pasteboard normally effectively copies it.) Note that there is a convenience method on NSPasteboard that does something similar but does not retain the referenced objects. "*/
+
 //---------------------------------------------------------------------------------------
 //	FACTORY
 //---------------------------------------------------------------------------------------
+
+/*" Creates and returns a new reference to %anObject. Note that %anObject is retained by the reference. "*/
 
 + (id)referenceToObject:(id)anObject
 {
@@ -110,6 +114,8 @@ return (self->referencedObject == ((EDObjectReference *)otherObject)->referenced
 //	ACCESSOR METHODS
 //---------------------------------------------------------------------------------------
 
+// for compatibility only
+
 - (void)setReferencedObject:(id)anObject
 {
     id old = referencedObject;
@@ -117,6 +123,8 @@ return (self->referencedObject == ((EDObjectReference *)otherObject)->referenced
     [old release];
 }
 
+
+/*" Returns the object. "*/
 
 - (id)referencedObject
 {

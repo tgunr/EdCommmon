@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDStack.m created by erik on Sat 19-Jul-1997
-//  @(#)$Id: EDStack.m,v 1.2 2002-06-18 14:47:57 erik Exp $
+//  @(#)$Id: EDStack.m,v 1.3 2002-07-09 15:56:56 erik Exp $
 //
 //  Copyright (c) 1997 by Erik Doernenburg. All rights reserved.
 //
@@ -26,21 +26,32 @@
     @implementation EDStack
 //---------------------------------------------------------------------------------------
 
+/*" From a purely functional point EDStack do not add anything to NSArray. However, EDStack clarifies the indended use of the datastructure. Note that it is not a subclass of NSMutableArray; something you might expect if you are familiar with Java.
+
+This datastructure does not implement the copying and coding protocols as stacks are usually required in the context of algorithms, rather than data storage. "*/
+
+
+/*" Creates and returns an empty stack. "*/
+
 + (EDStack *)stack
 {
     return [[[self alloc] init] autorelease];
 }
 
-+ (EDStack *)stackWithObject:(id)object
-{
-    return [[[self alloc] initWithObject:object] autorelease];
-}
 
+/*" Creates and returns a stack with a single object on it. "*/
+
++ (EDStack *)stackWithObject:(id)anObject
+{
+    return [[[self alloc] initWithObject:anObject] autorelease];
+}
 
 
 //---------------------------------------------------------------------------------------
 //	constructors / destructors
 //---------------------------------------------------------------------------------------
+
+/*" Initialises a newly allocated stack. "*/
 
 - (id)init
 {
@@ -49,10 +60,13 @@
     return self;
 }
 
-- (id)initWithObject:(id)object
+
+/*" Initialises a newly allocated stack by adding anObject to it. The object receives a #retain message. "*/
+
+- (id)initWithObject:(id)anObject
 {
     [self init];
-    [storage addObject:object];
+    [storage addObject:anObject];
     return self;
 }
 
@@ -67,10 +81,14 @@
 //	push / pop
 //---------------------------------------------------------------------------------------
 
-- (void)pushObject:(id)object
+/*" Pushes %anObject onto the stack. The object receives a #retain message. "*/
+
+- (void)pushObject:(id)anObject
 {
-    [storage addObject:object];
+    [storage addObject:anObject];
 }
+
+/*" Removes and returns the topmost object from the stack. The object receives a #release message. If the stack is empty this method returns !{nil}."*/
 
 - (id)popObject
 {
@@ -78,6 +96,9 @@
     [storage removeLastObject];
     return object;
 }
+
+
+/*" Removes all objects from the stack. Each removed object is sent a #release message. "*/
 
 - (void)clear
 {
@@ -89,15 +110,23 @@
 //	peeking around
 //---------------------------------------------------------------------------------------
 
+/*" Returns the topmost object on the stack, or !{nil} if the stack is empty. "*/
+
 - (id)topObject
 {
     return [storage lastObject];
 }
 
+
+/*" Returns an array containing the %n topmost object on the stack. Raises an exception if %n is greater than the value returned by #count."*/
+
 - (NSArray *)topObjects:(int)count
 {
     return [storage subarrayWithRange:NSMakeRange([storage count] - count , count)];
 }
+
+
+/*" Returns the number of objects on the stack."*/
 
 - (unsigned int)count
 {

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDSwapView.m created by erik
-//  @(#)$Id: EDSwapView.m,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: EDSwapView.m,v 1.2 2002-07-09 15:56:59 erik Exp $
 //
 //  Copyright (c) 1997-1998 by Erik Doernenburg. All rights reserved.
 //
@@ -29,6 +29,11 @@
 //---------------------------------------------------------------------------------------
     @implementation EDSwapView
 //---------------------------------------------------------------------------------------
+
+/*" Swap views are very similar to #NSTabViews in that they allow to switch between several views in one place. They differ in that EDSwapView never contains the widget to switch between views and it allows more than one view to be visible; usually with different positions in the swap view. This is useful in inspectors that have multiple switching areas.
+
+The main advantage of EDSwapView are the instance variables and methods dealing with view numbers, allowing the developer to wire up the entire interface in IB. (Zero code approach.) "*/
+
 
 //---------------------------------------------------------------------------------------
 //	CLASS INITIALISATION
@@ -119,50 +124,78 @@
 //	ACCESSOR METHODS
 //---------------------------------------------------------------------------------------
 
+/*" Sets view0 to %aView and adds it to the receiver's list of views. If aView is an #NSBox its contents are used instead. "*/
+
 - (void)setView0:(NSView *)aView
 {
     [self _setViewVar:&view0 toView:aView];
 }
+
+/*" Returns view0, or !{nil} if this has not been set. "*/
 
 - (NSView *)view0
 {
     return view0;
 }
 
+
+/*" Sets view1 to %aView and adds it to the receiver's list of views. If aView is an #NSBox its contents are used instead. "*/
+
 - (void)setView1:(NSView *)aView
 {
     [self _setViewVar:&view1 toView:aView];
 }
+
+
+/*" Returns view1, or !{nil} if this has not been set. "*/
 
 - (NSView *)view1
 {
     return view1;
 }
 
+
+/*" Sets view2 to %aView and adds it to the receiver's list of views. If aView is an #NSBox its contents are used instead. "*/
+
 - (void)setView2:(NSView *)aView
 {
     [self _setViewVar:&view2 toView:aView];
 }
+
+
+/*" Returns view2, or !{nil} if this has not been set. "*/
 
 - (NSView *)view2
 {
     return view2;
 }
 
+
+/*" Sets view3 to %aView and adds it to the receiver's list of views. If aView is an #NSBox its contents are used instead. "*/
+
 - (void)setView3:(NSView *)aView
 {
     [self _setViewVar:&view3 toView:aView];
 }
+
+
+/*" Returns view3, or !{nil} if this has not been set. "*/
 
 - (NSView *)view3
 {
     return view3;
 }
 
+
+/*" Sets view4 to %aView and adds it to the receiver's list of views. If aView is an #NSBox its contents are used instead. "*/
+
 - (void)setView4:(NSView *)aView
 {
     [self _setViewVar:&view4 toView:aView];
 }
+
+
+/*" Returns view4, or !{nil} if this has not been set. "*/
 
 - (NSView *)view4
 {
@@ -187,6 +220,8 @@
 }
 
 
+/*" Sets the receiver's delegate to anObject. "*/
+
 - (void)setDelegate:(id)anObject
 {
     delegate = anObject;
@@ -199,8 +234,10 @@
         if([delegate respondsToSelector:@selector(swapView:didSwapoutView:)])
             flags.delegateWantsSwapoutNotif = YES;
         }
- }
+}
 
+
+/*" Returns the receiver's delegate. "*/
 
 - (id)delegate
 {
@@ -212,29 +249,35 @@
 //	ADDING AND REMOVING VIEWS
 //---------------------------------------------------------------------------------------
 
-- (void)addView:(NSView *)view
+/*" Calls #{addView:atPoint:} with !{NSZeroPoint}. "*/
+
+- (void)addView:(NSView *)aView
 {
-    [self addView:view atPoint:NSZeroPoint];
+    [self addView:aView atPoint:NSZeroPoint];
 }
 
 
-- (void)addView:(NSView *)view atPoint:(NSPoint)point
+/*" Adds %aView to the receiver's list of views to be displayed at %point. This does not make the view visible. It does remove the view from it's superview; provided it had one before. None if the %viewX variables are affected. "*/
+
+- (void)addView:(NSView *)aView atPoint:(NSPoint)point
 {
-    if([views containsObject:view])
-        [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Attempt to add view <%@ 0x%x> more than once.", NSStringFromClass(isa), NSStringFromSelector(_cmd), [view class], view];
-    [views addObject:view];
-    [view setFrameOrigin:point];
-    [view removeFromSuperview];
+    if([views containsObject:aView])
+        [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Attempt to add view <%@ 0x%x> more than once.", NSStringFromClass(isa), NSStringFromSelector(_cmd), [aView class], aView];
+    [views addObject:aView];
+    [aView setFrameOrigin:point];
+    [aView removeFromSuperview];
 }
 
 
-- (void)removeView:(NSView *)view
+/*" Removes %aView from the receiver's list of views. If the view was visible it is hidden first. "*/
+
+- (void)removeView:(NSView *)aView
 {
-    if([views containsObject:view] == NO)
-        [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Attempt to remove unknown view <%@ 0x%x>.", NSStringFromClass(isa), NSStringFromSelector(_cmd), [view class], view];
-    if([self isShowingView:view])
-        [self hideView:view];
-    [views removeObject:view];
+    if([views containsObject:aView] == NO)
+        [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Attempt to remove unknown view <%@ 0x%x>.", NSStringFromClass(isa), NSStringFromSelector(_cmd), [aView class], aView];
+    if([self isShowingView:aView])
+        [self hideView:aView];
+    [views removeObject:aView];
 }
 
 
@@ -278,42 +321,47 @@
 //	ACTIONS: SHOW AND HIDE INDIVIDUAL VIEWS
 //---------------------------------------------------------------------------------------
 
-- (void)showView:(NSView *)view
-{
-    if([views containsObject:view] == NO)
-        [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Attempt to show unknown view <%@ 0x%x>.", NSStringFromClass(isa), NSStringFromSelector(_cmd), [view class], view];
+/*" Ensures that %aView is visible. If the view needs to be swapped in and a delegate exists and implements #{swapView:didSwapinView:} this method is called after the view is swapped in but before the window is flushed. "*/
 
-    if([visibleViews containsObject:view])
+- (void)showView:(NSView *)aView
+{
+    if([views containsObject:aView] == NO)
+        [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Attempt to show unknown view <%@ 0x%x>.", NSStringFromClass(isa), NSStringFromSelector(_cmd), [aView class], aView];
+
+    if([visibleViews containsObject:aView])
         return;
 
     [[self window] disableFlushWindow];
 
-    [self addSubview:view];
-    [visibleViews addObject:view];
-    [view display];
+    [self addSubview:aView];
+    [visibleViews addObject:aView];
+    [aView display];
     
     if(flags.delegateWantsSwapinNotif)
-        [delegate swapView:self didSwapinView:view];
+        [delegate swapView:self didSwapinView:aView];
 
     [[self window] enableFlushWindow];
     [[self window] flushWindowIfNeeded];
 }
 
 
-- (void)hideView:(NSView *)view
-{
-    if([views containsObject:view] == NO)
-        [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Attempt to hide unknown view <%@ 0x%x>.", NSStringFromClass(isa), NSStringFromSelector(_cmd), [view class], view];
+/*" Ensures that %aView is not visible. If the view needs to be swapped out and a delegate exists and implements #{swapView:willSwapoutView:} this method is called before the view is swapped out but after window flushing is disabled. "*/
 
-    if([visibleViews containsObject:view] == NO)
+- (void)hideView:(NSView *)aView
+{
+    if([views containsObject:aView] == NO)
+        [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Attempt to hide unknown view <%@ 0x%x>.", NSStringFromClass(isa), NSStringFromSelector(_cmd), [aView class], aView];
+
+    if([visibleViews containsObject:aView] == NO)
         return;
 
-    if(flags.delegateWantsSwapoutNotif)
-        [delegate swapView:self willSwapoutView:view];
-    
     [[self window] disableFlushWindow];
-    [view removeFromSuperview];
-    [visibleViews removeObject:view];
+
+    if(flags.delegateWantsSwapoutNotif)
+        [delegate swapView:self willSwapoutView:aView];
+    
+    [aView removeFromSuperview];
+    [visibleViews removeObject:aView];
     [[self window] enableFlushWindow];
     [[self window] flushWindowIfNeeded];
 }
@@ -323,33 +371,37 @@
 //	ACTIONS: SHOW AND HIDE ALL VIEWS
 //---------------------------------------------------------------------------------------
 
-- (void)switchToView:(NSView *)view
+/*" Ensures that only %aView is visible. If any view needs to be swapped in or out the corresponding delegate methods are called. "*/
+
+- (void)switchToView:(NSView *)aView
 {
     NSView 	*visView;
     BOOL	wasVisible = NO;
     
-    if([views containsObject:view] == NO)
-        [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Attempt to switch to unknown view <%@ 0x%x>.", NSStringFromClass(isa), NSStringFromSelector(_cmd), [view class], view];
+    if([views containsObject:aView] == NO)
+        [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Attempt to switch to unknown view <%@ 0x%x>.", NSStringFromClass(isa), NSStringFromSelector(_cmd), [aView class], aView];
 
-    if([visibleViews containsObject:view])
+    if([visibleViews containsObject:aView])
         {
         if([visibleViews count] == 1)
            return;
         wasVisible = YES;
-        [visibleViews removeObject:view];
+        [visibleViews removeObject:aView];
         }	
 
     [[self window] disableFlushWindow];
     while((visView = [visibleViews anyObject]) != nil)
         [self hideView:visView];
     if(wasVisible == YES)
-        [visibleViews addObject:view];
+        [visibleViews addObject:aView];
     else
-        [self showView:view];
+        [self showView:aView];
     [[self window] enableFlushWindow];
     [[self window] flushWindowIfNeeded];
 }
 
+
+/*" Ensures that no views are visible. If any view needs to be swapped out the corresponding delegate method is called. "*/
 
 - (void)hideAllViews
 {
@@ -367,6 +419,8 @@
 //	ACTIONS: SHOW VIEWS BY NUMBER
 //---------------------------------------------------------------------------------------
 
+/*" Calls #{switchToView:} with the corresponding view from the %viewX instance variables. "*/
+
 - (void)switchToViewNumber:(int)viewnum
 {
    switch(viewnum)
@@ -381,6 +435,8 @@
        }
 }
 
+
+/*" Calls #{switchToViewNumber:} with the view number taken from the sender. If this is an #NSPopUpButton or #NSMatrix the tag of the selected item/cell is used, if it is an NSButton this method returns 1 if the button's state is !{NSOnState} and zero otherwise, and in all other cases it returns the tag of the sender. "*/
 
 - (void)takeViewNumber:(id)sender
 {
@@ -403,10 +459,15 @@
 //	QUERIES
 //---------------------------------------------------------------------------------------
 
-- (BOOL)isShowingView:(NSView *)view
+/*" Returns YES if %aView is currently visible. "*/
+
+- (BOOL)isShowingView:(NSView *)aView
 {
-    return [visibleViews containsObject:view];
+    return [visibleViews containsObject:aView];
 }
+
+
+/*" Returns an array containing all views that are currently visible. "*/
 
 - (NSArray *)visibleViews
 {

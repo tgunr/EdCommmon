@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDSparseClusterArray.m created by erik on Fri 28-May-1999
-//  @(#)$Id: EDSparseClusterArray.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDSparseClusterArray.m,v 1.2 2002-07-09 15:56:56 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -58,10 +58,13 @@ typedef struct
     @implementation EDSparseClusterArray
 //---------------------------------------------------------------------------------------
 
+/*" NSArrays do not allow "gaps" between the objects. This can be worked around with a dedicated marker object for empty positions but when these gaps become large storage and the count operation become inefficient. #EDSparseClusterArray solves these problems to a certain extent. It works well when larger groups of objects, i.e. a few hundred objects, are separated by few small gaps and these groups (or clusters) are separated by arbitrarily large gaps. Hence the name EDSparse%{Cluster}Array. "*/
 
 //---------------------------------------------------------------------------------------
 //	INIT & DEALLOC
 //---------------------------------------------------------------------------------------
+
+/*" Initialises a newly allocated sparse cluster array. "*/
 
 - init
 {
@@ -111,6 +114,12 @@ typedef struct
 //	STORING/RETRIEVING OBJECTS BY INDEX
 //---------------------------------------------------------------------------------------
 
+/*" Stores anObject in the slot %index of the receiver. Index can be arbitrarily large without affecting performance. The object receives a #retain message. 
+
+If the slot is already occupied, the object at the index is removed and receives a #release message.
+
+This method raises an NSInvalidArgumentException if anObject is !{nil}."*/
+
 - (void)setObject:(id)anObject atIndex:(unsigned int)index
 {
     unsigned int	pnum, eidx;
@@ -138,6 +147,10 @@ typedef struct
 }
 
 
+/*" Removes the object stored in  slot %index from the receiver. The object receives a #release message.
+
+This method raises an NSInvalidArgumentException if the slot was empty."*/
+
 - (void)removeObjectAtIndex:(unsigned int)index
 {
     unsigned int	pnum, eidx;
@@ -158,6 +171,8 @@ typedef struct
 }
 
 
+/*" Returns the object located at index, or !{nil} if the slot was empty. "*/
+
 - (id)objectAtIndex:(unsigned int)index
 {
     unsigned int	pnum, eidx;
@@ -177,6 +192,8 @@ typedef struct
 //	ACCESSING THE OBJECT SET
 //---------------------------------------------------------------------------------------
 
+/*" Returns the number of objects in the receiver. "*/
+
 - (unsigned int)count
 {
     NSMapEnumerator	mapEnum;
@@ -192,11 +209,15 @@ typedef struct
 }
 
 
+/*"  Returns an enumerator object that lets you access all indeces for occupied slots in the receiver, in order, starting with the smallest index. You should not modify the receiver while using the enumerator. For a more detailed explanation and sample code see the description of #keyEnumerator in #NSDictionary. "*/
+
 - (NSEnumerator *)indexEnumerator
 {
     return [[[_EDSCAEnumerator allocWithZone:[self zone]] initWithSparseClusterArray:self] autorelease];
 }
 
+
+/*" Returns an array containing the receiver's objects, or an empty array if the receiver has no objects. The order of the objects in the array is the same as in the receiver. "*/
 
 - (NSArray *)allObjects
 {

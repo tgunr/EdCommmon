@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDApplication.m created by erik on Sun 19-Jul-1998
-//  @(#)$Id: EDApplication.m,v 1.3 2002-07-02 16:25:01 erik Exp $
+//  @(#)$Id: EDApplication.m,v 1.4 2002-07-09 15:56:50 erik Exp $
 //
 //  Copyright (c) 1998 by Erik Doernenburg. All rights reserved.
 //
@@ -34,6 +34,11 @@ NSLocalizedString(@"Such is life", "For buttons unexpected error panel.")
 //---------------------------------------------------------------------------------------
     @implementation EDApplication
 //---------------------------------------------------------------------------------------
+
+/*" This class provides no callable methods (they are in the NSApplication category in this framework) but setting the main application class is  to EDApplication makes factory defaults automatic and will also ensure that some feedback is provided to the user if an exception comes through uncaught. (Not that the user can't do anything about it but they can be warned to save their work and quit the application.) It also sets the uncaught exception handler so that it can be retrieved and used it if necessary.
+
+Setting of the factory defaults uses the #registerFactoryDefaults method and happens just before #applicationWillFinishLaunching is called."*/
+
 
 //---------------------------------------------------------------------------------------
 //	OVERRIDES

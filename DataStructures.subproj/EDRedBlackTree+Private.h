@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDRedBlackTree+Private.h created by erik on Tue 15-Sep-1998
-//  @(#)$Id: EDRedBlackTree+Private.h,v 1.2 2002-04-14 14:57:55 znek Exp $
+//  @(#)$Id: EDRedBlackTree+Private.h,v 1.3 2002-07-09 15:56:56 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -25,16 +25,8 @@
 
 #import "EDRedBlackTree.h"
 
-/*"
 
-Some random notes:
-- This could be in EDRedBlackTree.m but by making the interface available it is possible
-  to subclass the tree.
-- I am not using a struct for performance reasons. That gain is neglible. The reason is
-  as simple as saving 4 bytes per object in the tree.
-
-*/
-
+/*" This structure is used to represent nodes. It's a struct and not an object because latter would use yet another 4 bytes for the isa pointer. "*/
 
 typedef struct _EDRedBlackTreeNode
 {
@@ -47,6 +39,7 @@ typedef struct _EDRedBlackTreeNode
 } EDRedBlackTreeNode;
 
 
+/*" Some private methods made available for the benefit of subclassers. "*/
 
 @interface EDRedBlackTree(Private)
 
@@ -74,6 +67,7 @@ typedef struct _EDRedBlackTreeNode
 @end
 
 
+/*" Private subclass of #NSEnumerator for use with #EDRedBlackTrees. You never instantiate objects of this class directly. In fact, you don't even have the interface unless you specifically include it. "*/
 
 @interface _EDRedBlackTreeEnumerator : NSEnumerator
 {

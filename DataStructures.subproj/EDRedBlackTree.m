@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDRedBlackTree.m created by erik on Sun 13-Sep-1998
-//  @(#)$Id: EDRedBlackTree.m,v 1.2 2000-07-31 20:38:13 erik Exp $
+//  @(#)$Id: EDRedBlackTree.m,v 1.3 2002-07-09 15:56:56 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -29,11 +29,20 @@
     @implementation EDRedBlackTree
 //=======================================================================================
 
+/*" Binary search trees can be considered as "always sorted" arrays. Whenever an object is added to the tree it automagically ends up at the "correct" index; as defined by the comparison selector.
+
+This behaviour can be emulated, of course, using NSMutableArrays and (binary) search but EDRedBlackTree has better performance characteristics. When objects are inserted into ordered collections, O(lg %n) instead of O(%n). Contains and index-of tests can also be carried out in O(lg %n) instead of O(%n). Inserting/removing at the end and retrieving objects by index is marginally slower, O(lg %n) instead of O(1). NSSets are even faster at contains tests, O(1), but they do no support ordered collections. The main disadvantage of binary search trees is their memory usage, 20 bytes per object rather than 4 to 8 in an array.
+
+A final note: NSArrays are implemented extremely well and in collections with less than at least about 3000 objects performance gains are negligible; NSArray might even be faster! However, beyond a certain size the performance difference is more than noticeable. In the end, you might still want to use the trees unless you already have the binary search insert written somewhere else. "*/
+
+
 //---------------------------------------------------------------------------------------
 //	INIT & DEALLOC
 //---------------------------------------------------------------------------------------
 
-- init
+/*" Initialises a newly allocated red-black tree with #{compare:} as comparison selector. "*/
+
+- (id)init
 {
     [super init];
     sentinel = [self _allocNodeForObject:nil];
@@ -43,6 +52,8 @@
     return self;
 }
 
+
+/*" Initialises a newly allocated red-black tree with %aSelector as comparison selector. "*/
 
 - (id)initWithComparisonSelector:(SEL)aSelector
 {
@@ -64,6 +75,8 @@
 //---------------------------------------------------------------------------------------
 //	ACCESSOR METHODS FOR IMMUTABLE ATTRIBUTES
 //---------------------------------------------------------------------------------------
+
+/*" Returns the selector that is used to compare objects in the tree. "*/
 
 - (SEL)comparisonSelector
 {
@@ -548,11 +561,15 @@
 //	QUERIES (PUBLIC API)
 //---------------------------------------------------------------------------------------
 
-- (BOOL)containsObject:(id)object
+/*" Returns YES if %anObject is present in the receiver, NO otherwise. "*/
+
+- (BOOL)containsObject:(id)anObject
 {
-    return NIL([self _nodeForObject:object]) == NO;
+    return NIL([self _nodeForObject:anObject]) == NO;
 }
 
+
+/*" If %anObject is present in the receiver (as determined by the comparison selector), the instance in the receiver is returned. Otherwise, returns !{nil}. "*/
 
 - (id)member:(id)anObject
 {
@@ -566,6 +583,8 @@
 }
 
 
+/*" If %anObject is present in the receiver (as determined by the comparison selector), the instance in the receiver is returned. Otherwise, returns the greatest object smaller than %anObject, or !{nil} if no such object exists. "*/
+
 - (id)smallerOrEqualMember:(id)anObject
 {
     EDRedBlackTreeNode *x;
@@ -577,6 +596,8 @@
     return x->object;
 }
 
+
+/*" Returns the object directly following %anObject in the order defined by the comparison selector or !{nil} if %anObject is the largest object. "*/
 
 - (id)successorForObject:(id)anObject
 {
@@ -592,6 +613,8 @@
 }
 
 
+/*" Returns the smallest object (as defined by the comparison selector) in the receiver. "*/
+
 - (id)minimumObject
 {
     if(NIL(rootNode) == YES)
@@ -599,6 +622,8 @@
     return ((EDRedBlackTreeNode *)minimumNode)->object;
 }
 
+
+/*" Returns the largest object (as defined by the comparison selector) in the receiver. "*/
 
 - (id)maximumObject
 {
@@ -608,11 +633,15 @@
 }
 
 
+/*" Returns the number of objects in the receiver. "*/
+
 - (unsigned int)count
 {
     return ((EDRedBlackTreeNode *)rootNode)->f.size;
 }
 
+
+/*" Returns the object located at index. If index is too large, i.e. if index is greater than or equal to the value returned by count, an NSInvalidArgumentException is raised. "*/
 
 - (id)objectAtIndex:(unsigned int)index
 {
@@ -622,6 +651,8 @@
     return [self _nodeWithRank:index + 1]->object;
 }
 
+
+/*" Returns the lowest index whose corresponding object is equal to %anObject. Objects are considered equal if invoking the comparison method in one with the other as parameter returns !{NSOrderedSame}. If none of the objects in the receiver are equal to anObject, #{indexOfObject:} returns !{NSNotFound}. "*/
 
 - (unsigned int)indexOfObject:(id)anObject
 {
@@ -639,11 +670,15 @@
 //	ALL OBJECTS
 //---------------------------------------------------------------------------------------
 
+/*"  Returns an enumerator object that lets you access each object in the receiver, in order, starting with the element at index 0. You should not modify the receiver while using the enumerator. For a more detailed explanation and sample code see the description of the same method in #NSArray. "*/
+
 - (NSEnumerator *)objectEnumerator
 {
     return [[[_EDRedBlackTreeEnumerator alloc] initWithTree:self] autorelease];
 }
 
+
+/*" Returns an array containing the receiver's objects, or an empty array if the receiver has no objects. The order of the objects in the array is the same as in the receiver. "*/
 
 - (NSArray *)allObjects
 {
@@ -668,14 +703,18 @@
 //	MUTATORS
 //---------------------------------------------------------------------------------------
 
-- (void)addObject:(id)object
+/*" Adds the specified object to the receiver. anObject is sent a #retain message as it is added to the receiver. "*/
+
+- (void)addObject:(id)anObject
 {
     EDRedBlackTreeNode *z;
 
-    z = [self _allocNodeForObject:object];
+    z = [self _allocNodeForObject:anObject];
     [self _insertNode:z];
 }
 
+
+/*" Adds each object contained in someObjects to the receiver. The objects are sent a #retain message. "*/
 
 - (void)addObjectsFromArray:(NSArray *)someObjects
 {
@@ -685,6 +724,10 @@
         [self addObject:[someObjects objectAtIndex:i]];
 }
 
+
+/*" Removes %anObject from the receiver. The removed object is sent a #release message. This method raises an exception if anObject was not in the tree before.
+
+Note that it is possible to have several objects that compare as equal in the tree. This method will remove any one of them."*/
 
 - (void)removeObject:(id)anObject
 {
@@ -698,7 +741,9 @@
 }
 
 
-- (void)removeObjectAtIndex:(unsigned int)index;
+/*" Removes the object at index. The removed object receives a #release message. If index is too large, i.e. if index is greater than or equal to the value returned by count, an NSInvalidArgumentException is raised. "*/
+
+- (void)removeObjectAtIndex:(unsigned int)index
 {
     EDRedBlackTreeNode *x;
     
@@ -707,7 +752,7 @@
 
     x =  [self _nodeWithRank:index + 1];
     [self _deleteNode:x];
-#warning ** should dealloc node, right?    
+    [self _deallocNode:x];
 }
 
 

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTVScrollView.m created by erik on Mon 28-Jun-1999
-//  @(#)$Id: EDTVScrollView.m,v 1.2 2001-02-19 21:42:48 erik Exp $
+//  @(#)$Id: EDTVScrollView.m,v 1.3 2002-07-09 15:56:59 erik Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -19,16 +19,13 @@
 //---------------------------------------------------------------------------------------
 
 #import <AppKit/AppKit.h>
-#import "EDTableView.h"
 #import "EDTVScrollView.h"
 
 //---------------------------------------------------------------------------------------
     @implementation EDTVScrollView
 //---------------------------------------------------------------------------------------
 
-// This class handled some of the dragging functionality. Since this is not required 
-// anymore in OS X there's nothing much to do here but for compatibility reasons with
-// NIB files this class should stay around.
+/*" This class handled some of the dragging functionality. Since this is not required anymore in OS X there's nothing much to do here but for compatibility reasons with NIB files this class should stay around. "*/
 
 
 //---------------------------------------------------------------------------------------

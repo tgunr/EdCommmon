@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  Created by znek on Fri 31-Oct-1997
-//  @(#)$Id: EDRange.m,v 1.2 2002-02-05 23:27:00 znek Exp $
+//  @(#)$Id: EDRange.m,v 1.3 2002-07-09 15:56:56 erik Exp $
 //
 //  Copyright (c) 1997,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -26,6 +26,8 @@
     @implementation EDRange
 //---------------------------------------------------------------------------------------
 
+/*" Range objects provide an object-oriented wrapper around NSSRanges; especially useful when you want to store them in collections. "*/
+
 //---------------------------------------------------------------------------------------
 //	CLASS INITIALISATION
 //---------------------------------------------------------------------------------------
@@ -40,17 +42,23 @@
 //	FACTORY
 //---------------------------------------------------------------------------------------
 
+/*" Creates and returns a range object with starting at loc and ranging len indices. "*/
+
 + (id)rangeWithLocation:(unsigned int)loc length:(unsigned int)len
 {
     return [[[self alloc] initWithLocation:loc length:len] autorelease];
 }
 
 
+/*" Creates and returns a range object with starting at startLoc and ending at endLoc. "*/
+
 + (id)rangeWithLocations:(unsigned int)startLoc:(unsigned int)endLoc
 {
     return [[[self alloc] initWithLocations:startLoc:endLoc] autorelease];
 }
 
+
+/*" Creates and returns a range object for the NSRange aRangeValue. "*/
     
 + (id)rangeWithRangeValue:(NSRange)aRangeValue
 {
@@ -62,6 +70,8 @@
 //	INIT
 //---------------------------------------------------------------------------------------
 
+/*" Initialises a newly allocated range with the NSRange aRangeValue. "*/
+
 - (id)initWithRangeValue:(NSRange)aRangeValue
 {
     [super init];
@@ -70,11 +80,15 @@
 }
 
 
+/*" Initialises a newly allocated range by setting its starting location to loc and its range to len. "*/
+
 - (id)initWithLocation:(unsigned int)loc length:(unsigned int)len
 {
     return [self initWithRangeValue:NSMakeRange(loc, len)];
 }
 
+
+/*" Initialises a newly allocated range by setting its starting location to startLoc and its end location to endLoc. "*/
 
 - (id)initWithLocations:(unsigned int)startLoc:(unsigned int)endLoc
 {
@@ -145,11 +159,15 @@
 }
 
 
+/*" Returns YES if otherRange is equivalent to the receiver, NO otherwise. When you know both objects are ranges, this method is a faster way to check equality than #{isEqual:}. "*/
+
 - (BOOL)isEqualToRange:(EDRange *)otherRange
 {
     return NSEqualRanges(range, otherRange->range);
 }
 
+
+/*" Returns !{NSOrderedAscending} if the start location of the receiver is greater than the one of %otherRange, !{NSOrderedSame} if both have the same start location and !{NSOrderedDescending} otherwise. "*/
 
 - (NSComparisonResult)compareLocation:(EDRange *)otherRange
 {
@@ -165,11 +183,15 @@
 //	ATTRIBUTES
 //---------------------------------------------------------------------------------------
 
+/*" Returns the (start) location of the range. "*/
+
 - (unsigned int)location
 {
     return range.location;
 }
 
+
+/*" Returns the length of the range. "*/
 
 - (unsigned int)length
 {
@@ -177,17 +199,23 @@
 }
 
 
+/*" Returns YES if %index is in the range, i.e. startLocation <= index <= endLocation. "*/
+
 - (BOOL)isLocationInRange:(unsigned int)index
 {
     return NSLocationInRange(index, range);
 }
 
 
+/*" Returns the end location of the range, i.e. startLocation + length - 1. "*/
+
 - (unsigned int)endLocation
 {
     return NSMaxRange(range) - 1;
 }
 
+
+/*" Returns the corresponding NSRange. "*/
 
 - (NSRange)rangeValue
 {
@@ -198,6 +226,8 @@
 //---------------------------------------------------------------------------------------
 //	DERIVED RANGES
 //---------------------------------------------------------------------------------------
+
+/*" Returns a range object describing the intersection of the receiver and %otherRange, i.e. a range containing the indices that exist in both ranges, !{nil} if the intersection is empty. "*/
 
 - (EDRange *)intersectionRange:(EDRange *)otherRange
 {
@@ -211,6 +241,8 @@
 }
 
 
+/*" Returns a range object describing the union of the receiver and %otherRange, i.e. a range containing the indices in and between both ranges. "*/
+
 - (EDRange *)unionRange:(EDRange *)otherRange
 {
     NSRange	result;
@@ -220,6 +252,8 @@
     return [[[[self class] allocWithZone:[self zone]] initWithRangeValue:result] autorelease];
 }
 
+
+/*" Returns YES if %otherRange is fully contained in the receiver, i.e. the union of both is equivalent to the receiver. "*/
 
 - (BOOL)containsRange:(EDRange *)otherRange
 {

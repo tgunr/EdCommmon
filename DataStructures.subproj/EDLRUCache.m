@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDLRUCache.m created by erik on Fri 29-Oct-1999
-//  @(#)$Id: EDLRUCache.m,v 1.3 2002-06-11 18:21:03 erik Exp $
+//  @(#)$Id: EDLRUCache.m,v 1.4 2002-07-09 15:56:56 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -27,15 +27,20 @@
     @implementation EDLRUCache
 //---------------------------------------------------------------------------------------
 
+/*" A simple Last-Recently-Used cache. When the cache is full, as defined by by its size, and an object is added, the object that has not been accessed for the longest time is automatically removed. Currently, only very basic operations are supported but implementing additions should be straightforward when requried. "*/
+
+
 //---------------------------------------------------------------------------------------
 //	INIT & DEALLOC
 //---------------------------------------------------------------------------------------
 
-- (id)initWithCacheSize:(unsigned int)value
+/*" Initialises a newly allocated LRU cache to store count items. "*/
+
+- (id)initWithCacheSize:(unsigned int)count
 {
     [super init];
-    NSParameterAssert(value > 0);
-    size = value;
+    NSParameterAssert(count > 0);
+    size = count;
     entries = [[NSMutableDictionary allocWithZone:[self zone]] initWithCapacity:size];
     timestamps = [[NSMutableDictionary allocWithZone:[self zone]] initWithCapacity:size];
     return self;
@@ -53,6 +58,8 @@
 //---------------------------------------------------------------------------------------
 //	ACCESSOR METHODS
 //---------------------------------------------------------------------------------------
+
+/*" Adds an entry to the receiver, consisting of newKey and its corresponding value object newObject. For details on the operation please see the discussion in #NSDictionary. "*/
 
 - (void)addObject:(id)newObject withKey:(id)newKey
 {
@@ -83,12 +90,14 @@
 }
 
 
-- (id)objectWithKey:(id)key
+/*" Returns an entry's value given its key, or !{nil} if no value is associated with %aKey. "*/
+
+- (id)objectWithKey:(id)aKey
 {
     id	object;
 
-    if((object = [entries objectForKey:key]) != nil)
-        [timestamps setObject:[NSDate date] forKey:key];
+    if((object = [entries objectForKey:aKey]) != nil)
+        [timestamps setObject:[NSDate date] forKey:aKey];
     return object;
 }
 

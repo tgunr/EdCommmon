@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  Created by znek on Fri 31-Oct-1997
-//  @(#)$Id: EDRange.h,v 1.2 2002-04-14 14:57:55 znek Exp $
+//  @(#)$Id: EDRange.h,v 1.3 2002-07-09 15:56:55 erik Exp $
 //
 //  Copyright (c) 1997,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -28,9 +28,10 @@
 
 @interface EDRange : EDIRCObject <NSCoding, NSCopying>
 {
-    NSRange		 range;
+    NSRange		 range; 	/*" The corresponding NSRange. "*/
 }
 
+/*" Creating new range objects "*/
 + (id)rangeWithLocation:(unsigned int)loc length:(unsigned int)len;
 + (id)rangeWithLocations:(unsigned int)startLoc:(unsigned int)endLoc;
 + (id)rangeWithRangeValue:(NSRange)aRangeValue;
@@ -39,19 +40,23 @@
 - (id)initWithLocation:(unsigned int)loc length:(unsigned int)len;
 - (id)initWithLocations:(unsigned int)startLoc:(unsigned int)endLoc;
 
+/*" Retrieving elements "*/
 - (unsigned int)location;
 - (unsigned int)length;
-
-- (BOOL)isLocationInRange:(unsigned int)index;
 - (unsigned int)endLocation;
 - (NSRange)rangeValue;
 
-- (EDRange *)intersectionRange:(EDRange *)otherRange;
-- (EDRange *)unionRange:(EDRange *)otherRange;
+/*" "Contains" tests "*/
+- (BOOL)isLocationInRange:(unsigned int)index;
 - (BOOL)containsRange:(EDRange *)otherRange;
 
+/*" Comparing ranges "*/
 - (BOOL)isEqualToRange:(EDRange *)otherRange;
 - (NSComparisonResult)compareLocation:(EDRange *)otherRange;
+
+/*" Combining ranges "*/
+- (EDRange *)intersectionRange:(EDRange *)otherRange;
+- (EDRange *)unionRange:(EDRange *)otherRange;
 
 @end
 

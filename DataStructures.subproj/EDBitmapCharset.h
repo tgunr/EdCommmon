@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDBitmapCharset.h created by erik on Fri 08-Oct-1999
-//  @(#)$Id: EDBitmapCharset.h,v 1.2 2002-04-14 14:57:55 znek Exp $
+//  @(#)$Id: EDBitmapCharset.h,v 1.3 2002-07-09 15:56:55 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -25,6 +25,7 @@
 
 #import "EDCommonDefines.h"
 
+/*" The datastructure behind EDBitmapCharsets. Use these instead of NSCharacterSet objects when you need a lot of contains tests; and you want them to be as fast as possible. "*/
 
 typedef struct
 {
@@ -33,11 +34,15 @@ typedef struct
 } EDBitmapCharset;
 
 
+/*" Returns YES if the character is in the charset. This is the only operation currently supported on EDBitmapCharsets. "*/
+
 static __inline__ BOOL EDBitmapCharsetContainsCharacter(EDBitmapCharset *charset, unichar character)
 {
     return ((charset->bytes)[character >> 3] & (((unsigned int)1) << (character & 0x7)));
 }
 
+
+/*" Create and release (dealloc) an EDBitmapCharset. "*/
 
 EDCOMMON_EXTERN EDBitmapCharset *EDBitmapCharsetFromCharacterSet(NSCharacterSet *charset);
 EDCOMMON_EXTERN void EDReleaseBitmapCharset(EDBitmapCharset *charset);
