@@ -117,42 +117,42 @@ endif
 fix-headers:
 ifneq "$(OS)" "MACOS"
 	$(SILENT) ( \
-	  for ph in $(PUBLIC_HEADERS); \
-	  do \
-	    h_path=$(DSTROOT)$(PUBLIC_HDR_INSTALLDIR)$(PUBLIC_HEADER_DIR_SUFFIX)/$$ph; \
-		$(AWK) '/#ifndef.*EDCOMMON_OSXSBUILD/, /#endif.*WOBUILD/ { next; } { print $0; }' $$h_path >> $$h_path.fixed; \
-		$(MV) $$h_path.fixed $$h_path; \
-	  done ; \
-	  $(ECHO) "Fixed for WO build $(PUBLIC_HEADERS)"; \
-	  )
+		for ph in $(PUBLIC_HEADERS); \
+		do \
+			h_path=$(DSTROOT)$(PUBLIC_HDR_INSTALLDIR)$(PUBLIC_HEADER_DIR_SUFFIX)/$$ph; \
+			$(AWK) '/#ifndef.*EDCOMMON_OSXSBUILD/, /#endif.*EDCOMMON_OSXSBUILD/ { next; } { print $0; }' $$h_path >> $$h_path.fixed; \
+			$(MV) $$h_path.fixed $$h_path; \
+		done ; \
+		$(ECHO) "Fixed for WO build $(PUBLIC_HEADERS)"; \
+		)
 endif
 ifeq "$(BUILD_WO_VERSION)" "YES"
 	$(SILENT) ( \
-	  for ph in $(PUBLIC_HEADERS); \
+		for ph in $(PUBLIC_HEADERS); \
 	  do \
-	    h_path=$(DSTROOT)$(PUBLIC_HDR_INSTALLDIR)$(PUBLIC_HEADER_DIR_SUFFIX)/$$ph; \
-		$(AWK) '/#ifndef.*WOBUILD/, /#endif.*WOBUILD/ { next; } { print $0; }' $$h_path >> $$h_path.fixed; \
-		$(MV) $$h_path.fixed $$h_path; \
-	  done ; \
-	  $(ECHO) "Fixed for WO build $(PUBLIC_HEADERS)"; \
-	  )
+			h_path=$(DSTROOT)$(PUBLIC_HDR_INSTALLDIR)$(PUBLIC_HEADER_DIR_SUFFIX)/$$ph; \
+			$(AWK) '/#ifndef.*WOBUILD/, /#endif.*WOBUILD/ { next; } { print $0; }' $$h_path >> $$h_path.fixed; \
+			$(MV) $$h_path.fixed $$h_path; \
+		done ; \
+		$(ECHO) "Fixed for WO build $(PUBLIC_HEADERS)"; \
+		)
 endif
 
+
+ifeq "$(OS)" "NEXTSTEP"
+PUBLIC_PRECOMPILED_HEADERS_CFLAGS += -DEDCOMMON_OSXSBUILD
+endif
 
 precompile-headers:
 ifeq "$(OS)" "NEXTSTEP"
-PUBLIC_PRECOMPILED_HEADERS_CFLAGS += -DEDCOMMON_OSXSBUILD
-ifneq "" "$(PUBLIC_PRECOMPILED_HEADERS)"
 	$(SILENT) ( \
-	  $(ECHO) "Precompiling public headers... (non-apple extension)"; \
-	  for pph in $(PUBLIC_PRECOMPILED_HEADERS); \
+	  $(ECHO) "Precompiling public headers... (non-apple extension)" ; \
+	  for pph in $(PUBLIC_PRECOMPILED_HEADERS) ; \
 	  do \
-	    h_path=$(DSTROOT)$(PUBLIC_HDR_INSTALLDIR)$(PUBLIC_HEADER_DIR_SUFFIX)/$$pph; \
+	    h_path=$(DSTROOT)$(PUBLIC_HDR_INSTALLDIR)$(PUBLIC_HEADER_DIR_SUFFIX)/$$pph ; \
 	    p_path=$(DSTROOT)$(PUBLIC_HDR_INSTALLDIR)$(PUBLIC_HEADER_DIR_SUFFIX)/`basename $$pph .h`.p ; \
 	    $(ECHO) "$(CC) -precomp $(PUBLIC_PRECOMPILED_HEADERS_CFLAGS) $(DEBUG_BUILD_CFLAGS) -o $$p_path $$h_path" ; \
-	    $(CC) -precomp $(PUBLIC_PRECOMPILED_HEADERS_CFLAGS) $(DEBUG_BUILD_CFLAGS) -o $$p_path $$h_path; \
+	    $(CC) -precomp $(PUBLIC_PRECOMPILED_HEADERS_CFLAGS) $(DEBUG_BUILD_CFLAGS) -o $$p_path $$h_path ; \
 	  done ; \
 	  )
 endif
-endif
-

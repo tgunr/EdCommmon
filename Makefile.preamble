@@ -176,6 +176,7 @@ endif
 
 
 # Additional targets to fix/precompile headers
-AFTER_INSTALLHDRS = fix-headers
-AFTER_INSTALL = precompile-headers
-
+AFTER_INSTALLHDRS += fix-headers
+ifneq "$(PUBLIC_PRECOMPILED_HEADERS)" "" 
+AFTER_INSTALL += precompile-headers
+endif
