@@ -14,16 +14,16 @@ PROJECT_TYPE = Component
 
 CLASSES = NSArray+Extensions.m NSAttributedString+Extensions.m\
           NSData+Extensions.m NSDate+Extensions.m\
-          NSDictionary+Extensions.m NSObject+Extensions.m\
-          NSProcessInfo+Extensions.m NSSet+Extensions.m\
-          NSScanner+Extensions.m NSString+Extensions.m\
-          CollectionMapping.m
+          NSDictionary+Extensions.m NSInvocation+Extensions.m\
+          NSObject+Extensions.m NSProcessInfo+Extensions.m\
+          NSSet+Extensions.m NSScanner+Extensions.m\
+          NSString+Extensions.m CollectionMapping.m
 
 HFILES = NSArray+Extensions.h NSAttributedString+Extensions.h\
          NSData+Extensions.h NSDate+Extensions.h\
-         NSDictionary+Extensions.h NSObject+Extensions.h\
-         NSProcessInfo+Extensions.h NSSet+Extensions.h\
-         NSScanner+Extensions.h NSString+Extensions.h\
+         NSDictionary+Extensions.h NSInvocation+Extensions.h\
+         NSObject+Extensions.h NSProcessInfo+Extensions.h\
+         NSSet+Extensions.h NSScanner+Extensions.h NSString+Extensions.h\
          CollectionMapping.h
 
 OTHERSRCS = Makefile.preamble Makefile Makefile.postamble

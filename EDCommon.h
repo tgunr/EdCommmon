@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCommon.h created by erik on Sat 05-Sep-1998
-//  @(#)$Id: EDCommon.h,v 1.4 2001-03-11 03:18:22 erik Exp $
+//  @(#)$Id: EDCommon.h,v 1.5 2001-06-11 01:08:23 erik Exp $
 //
 //  Copyright (c) 1998-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -26,6 +26,7 @@
 #import "NSAttributedString+Extensions.h"
 #import "NSData+Extensions.h"
 #import "NSDate+Extensions.h"
+#import "NSInvocation+Extensions.h"
 #import "NSObject+Extensions.h"
 #import "NSProcessInfo+Extensions.h"
 #import "NSScanner+Extensions.h"
@@ -61,7 +62,9 @@
 #import "NSWindow+Extensions.h"
 #import "NSWorkspace+Extensions.h"
 #import "EDApplication.h"
-
+#ifndef EDCOMMON_OSXSBUILD
+#import "EDToolbarDefinition.h"
+#endif
 #import "EDActivityIndicator.h"
 #import "EDCanvas.h"
 #import "EDObjectWell.h"
