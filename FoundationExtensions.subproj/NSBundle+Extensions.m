@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSBundle+Extensions.m created by erik on Sat Jan 04 2003
-//  @(#)$Id: NSBundle+Extensions.m,v 1.1 2003-01-08 22:28:36 erik Exp $
+//  @(#)$Id: NSBundle+Extensions.m,v 1.2 2003-01-13 20:04:29 erik Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -53,6 +53,7 @@
     pathEnum = [searchPaths objectEnumerator];
     while((path = [pathEnum nextObject]) != nil)
         {
+        path = [[libraryPath stringByAppendingPathComponent:frameworkName];
         if((bundle = [NSBundle bundleWithPath:path]) != nil)
             return bundle;
         }
