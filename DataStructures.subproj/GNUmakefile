@@ -1,5 +1,5 @@
 # DataStructures.subproj
-# $Id: GNUmakefile,v 1.1 2002-04-14 14:57:55 znek Exp $
+# $Id: GNUmakefile,v 1.2 2002-07-09 16:08:41 erik Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -15,21 +15,21 @@ ADDITIONAL_INCLUDE_DIRS = -I.. -I../FoundationExtensions.subproj
 
 
 DataStructures.subproj_OBJC_FILES = \
-EDBitmapCharset.m       EDNumberSet.m           EDSparseClusterArray.m \
-EDIRCObject.m           EDObjectPair.m          EDStack.m \
-EDLRUCache.m            EDObjectReference.m     EDStringScanner.m \
-EDMLParser.m            EDRange.m \
-EDMLToken.m             EDRedBlackTree.m
+EDBitmapCharset.m         EDMLToken.m               EDRedBlackTree.m \
+EDIRCObject.m             EDNumberSet.m             EDSparseClusterArray.m \
+EDLRUCache.m              EDObjectPair.m            EDStack.m \
+EDAOMTagProcessor.m 	  EDObjectReference.m       EDStringScanner.m \
+EDMLParser.m              EDRange.m
 
 DataStructures.subproj_HEADER_FILES = \
-EDBitmapCharset.h               EDObjectReference.h \
-EDIRCObject.h                   EDRange.h \
-EDLRUCache.h                    EDRedBlackTree+Private.h \
-EDLightWeightLock.h             EDRedBlackTree.h \
-EDMLParser.h                    EDSparseClusterArray.h \
-EDMLToken.h                     EDStack.h \
-EDNumberSet.h                   EDStringScanner.h \
-EDObjectPair.h
+EDBitmapCharset.h                       EDObjectPair.h \
+EDIRCObject.h                           EDObjectReference.h \
+EDLRUCache.h                            EDRange.h \
+EDLightWeightLock.h                     EDRedBlackTree+Private.h \
+EDAOMTagProcessor.h               	EDRedBlackTree.h \
+EDMLParser.h                            EDSparseClusterArray.h \
+EDMLTagProcessorProtocol.h              EDStack.h \
+EDStringScanner.h                       EDNumberSet.h
 
 
 -include Makefile.preamble

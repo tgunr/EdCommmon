@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 34;
+	objectVersion = 38;
 	objects = {
 		00F9505A0093182B7F000001 = {
 			buildRules = (
@@ -83,14 +83,18 @@
 			projectDirPath = "";
 			targets = (
 				1AA34D480090839C7F000001,
+				6786B7DB02D1E0E000A8C007,
 			);
 		};
 		1AA34CC50090839C7F000001 = {
 			children = (
 				1AA34CC60090839C7F000001,
+				1AA34CD30090839C7F000001,
+				1AA34CF00090839C7F000001,
+				674AF33802D471E300A8C007,
+				1AA34D140090839C7F000001,
+				1AA34D2F0090839C7F000001,
 				1AA34CC90090839C7F000001,
-				1AA34CCC0090839C7F000001,
-				1AA34CD20090839C7F000001,
 				1AA34D420090839C7F000001,
 				1AA34D460090839C7F000001,
 			);
@@ -105,7 +109,7 @@
 				EE6AABC9025313F000C21B98,
 			);
 			isa = PBXGroup;
-			name = Headers;
+			name = "Global Headers";
 			refType = 4;
 		};
 		1AA34CC70090839C7F000001 = {
@@ -137,59 +141,10 @@
 			path = framework.m;
 			refType = 4;
 		};
-		1AA34CCC0090839C7F000001 = {
-			children = (
-				1AA34CCD0090839C7F000001,
-				1AA34CCE0090839C7F000001,
-				1AA34CCF0090839C7F000001,
-				1AA34CD00090839C7F000001,
-				1AA34CD10090839C7F000001,
-			);
-			isa = PBXGroup;
-			name = "Supporting Files";
-			refType = 4;
-		};
-		1AA34CCD0090839C7F000001 = {
-			isa = PBXFileReference;
-			path = Makefile.preamble;
-			refType = 4;
-		};
-		1AA34CCE0090839C7F000001 = {
-			isa = PBXFileReference;
-			path = Makefile;
-			refType = 4;
-		};
-		1AA34CCF0090839C7F000001 = {
-			isa = PBXFileReference;
-			path = Makefile.postamble;
-			refType = 4;
-		};
-		1AA34CD00090839C7F000001 = {
-			isa = PBXFileReference;
-			path = h.template;
-			refType = 4;
-		};
-		1AA34CD10090839C7F000001 = {
-			isa = PBXFileReference;
-			path = m.template;
-			refType = 4;
-		};
-		1AA34CD20090839C7F000001 = {
-			children = (
-				1AA34CD30090839C7F000001,
-				1AA34CF00090839C7F000001,
-				1AA34D140090839C7F000001,
-				1AA34D2F0090839C7F000001,
-			);
-			isa = PBXGroup;
-			name = Subprojects;
-			refType = 4;
-		};
 		1AA34CD30090839C7F000001 = {
 			children = (
-				1AA34CD40090839C7F000001,
 				1AA34CE00090839C7F000001,
-				1AA34CEC0090839C7F000001,
+				1AA34CD40090839C7F000001,
 			);
 			isa = PBXGroup;
 			name = FoundationExtensions;
@@ -209,7 +164,6 @@
 				1AA34CDC0090839C7F000001,
 				1AA34CDD0090839C7F000001,
 				1AA34CDE0090839C7F000001,
-				1AA34CDF0090839C7F000001,
 			);
 			isa = PBXGroup;
 			name = Classes;
@@ -263,11 +217,6 @@
 		1AA34CDE0090839C7F000001 = {
 			isa = PBXFileReference;
 			path = "NSString+Extensions.m";
-			refType = 4;
-		};
-		1AA34CDF0090839C7F000001 = {
-			isa = PBXFileReference;
-			path = CollectionMapping.m;
 			refType = 4;
 		};
 		1AA34CE00090839C7F000001 = {
@@ -344,49 +293,21 @@
 			path = CollectionMapping.h;
 			refType = 4;
 		};
-		1AA34CEC0090839C7F000001 = {
-			children = (
-				1AA34CED0090839C7F000001,
-				1AA34CEE0090839C7F000001,
-				1AA34CEF0090839C7F000001,
-			);
-			isa = PBXGroup;
-			name = "Supporting Files";
-			refType = 4;
-		};
-		1AA34CED0090839C7F000001 = {
-			isa = PBXFileReference;
-			path = Makefile.preamble;
-			refType = 4;
-		};
-		1AA34CEE0090839C7F000001 = {
-			isa = PBXFileReference;
-			path = Makefile;
-			refType = 4;
-		};
-		1AA34CEF0090839C7F000001 = {
-			isa = PBXFileReference;
-			path = Makefile.postamble;
-			refType = 4;
-		};
 		1AA34CF00090839C7F000001 = {
 			children = (
-				1AA34CF10090839C7F000001,
 				1AA34CFE0090839C7F000001,
+				1AA34CF10090839C7F000001,
 				1AA34D0E0090839C7F000001,
-				1AA34D100090839C7F000001,
 			);
 			isa = PBXGroup;
 			name = DataStructures;
 			path = DataStructures.subproj;
-			refType = 4;
+			refType = 2;
 		};
 		1AA34CF10090839C7F000001 = {
 			children = (
 				1AA34CF20090839C7F000001,
 				1AA34CF30090839C7F000001,
-				1AA34CF40090839C7F000001,
-				1AA34CF50090839C7F000001,
 				1AA34CF60090839C7F000001,
 				1AA34CF70090839C7F000001,
 				1AA34CF80090839C7F000001,
@@ -412,12 +333,14 @@
 		};
 		1AA34CF40090839C7F000001 = {
 			isa = PBXFileReference;
-			path = EDMLParser.m;
+			name = EDMLParser.m;
+			path = DataStructures.subproj/EDMLParser.m;
 			refType = 4;
 		};
 		1AA34CF50090839C7F000001 = {
 			isa = PBXFileReference;
-			path = EDMLToken.m;
+			name = EDMLToken.m;
+			path = DataStructures.subproj/EDMLToken.m;
 			refType = 4;
 		};
 		1AA34CF60090839C7F000001 = {
@@ -465,8 +388,6 @@
 				1AA34CFF0090839C7F000001,
 				1AA34D000090839C7F000001,
 				1AA34D010090839C7F000001,
-				1AA34D020090839C7F000001,
-				1AA34D030090839C7F000001,
 				1AA34D040090839C7F000001,
 				1AA34D050090839C7F000001,
 				1AA34D060090839C7F000001,
@@ -499,12 +420,14 @@
 		};
 		1AA34D020090839C7F000001 = {
 			isa = PBXFileReference;
-			path = EDMLParser.h;
+			name = EDMLParser.h;
+			path = DataStructures.subproj/EDMLParser.h;
 			refType = 4;
 		};
 		1AA34D030090839C7F000001 = {
 			isa = PBXFileReference;
-			path = EDMLToken.h;
+			name = EDMLToken.h;
+			path = DataStructures.subproj/EDMLToken.h;
 			refType = 4;
 		};
 		1AA34D040090839C7F000001 = {
@@ -570,37 +493,10 @@
 			path = EDBitmapCharset.m;
 			refType = 4;
 		};
-		1AA34D100090839C7F000001 = {
-			children = (
-				1AA34D110090839C7F000001,
-				1AA34D120090839C7F000001,
-				1AA34D130090839C7F000001,
-			);
-			isa = PBXGroup;
-			name = "Supporting Files";
-			refType = 4;
-		};
-		1AA34D110090839C7F000001 = {
-			isa = PBXFileReference;
-			path = Makefile.preamble;
-			refType = 4;
-		};
-		1AA34D120090839C7F000001 = {
-			isa = PBXFileReference;
-			path = Makefile;
-			refType = 4;
-		};
-		1AA34D130090839C7F000001 = {
-			isa = PBXFileReference;
-			path = Makefile.postamble;
-			refType = 4;
-		};
 		1AA34D140090839C7F000001 = {
 			children = (
-				1AA34D150090839C7F000001,
 				1AA34D1F0090839C7F000001,
-				1AA34D290090839C7F000001,
-				1AA34D2B0090839C7F000001,
+				1AA34D150090839C7F000001,
 			);
 			isa = PBXGroup;
 			name = AppKitExtensions;
@@ -739,43 +635,19 @@
 			);
 			isa = PBXGroup;
 			name = Images;
-			refType = 4;
+			path = AppKitExtensions.subproj;
+			refType = 2;
 		};
 		1AA34D2A0090839C7F000001 = {
 			isa = PBXFileReference;
 			path = arrows.tiff;
 			refType = 4;
 		};
-		1AA34D2B0090839C7F000001 = {
-			children = (
-				1AA34D2C0090839C7F000001,
-				1AA34D2D0090839C7F000001,
-				1AA34D2E0090839C7F000001,
-			);
-			isa = PBXGroup;
-			name = "Supporting Files";
-			refType = 4;
-		};
-		1AA34D2C0090839C7F000001 = {
-			isa = PBXFileReference;
-			path = Makefile.preamble;
-			refType = 4;
-		};
-		1AA34D2D0090839C7F000001 = {
-			isa = PBXFileReference;
-			path = Makefile;
-			refType = 4;
-		};
-		1AA34D2E0090839C7F000001 = {
-			isa = PBXFileReference;
-			path = Makefile.postamble;
-			refType = 4;
-		};
 		1AA34D2F0090839C7F000001 = {
 			children = (
-				1AA34D300090839C7F000001,
 				1AA34D370090839C7F000001,
-				1AA34D3E0090839C7F000001,
+				1AA34D300090839C7F000001,
+				1AA34D290090839C7F000001,
 			);
 			isa = PBXGroup;
 			name = Widgets;
@@ -868,31 +740,6 @@
 			path = EDSwapView.h;
 			refType = 4;
 		};
-		1AA34D3E0090839C7F000001 = {
-			children = (
-				1AA34D3F0090839C7F000001,
-				1AA34D400090839C7F000001,
-				1AA34D410090839C7F000001,
-			);
-			isa = PBXGroup;
-			name = "Supporting Files";
-			refType = 4;
-		};
-		1AA34D3F0090839C7F000001 = {
-			isa = PBXFileReference;
-			path = Makefile.preamble;
-			refType = 4;
-		};
-		1AA34D400090839C7F000001 = {
-			isa = PBXFileReference;
-			path = Makefile;
-			refType = 4;
-		};
-		1AA34D410090839C7F000001 = {
-			isa = PBXFileReference;
-			path = Makefile.postamble;
-			refType = 4;
-		};
 		1AA34D420090839C7F000001 = {
 			children = (
 				1AA34D430090839C7F000001,
@@ -917,6 +764,7 @@
 		1AA34D460090839C7F000001 = {
 			children = (
 				1AA34D470090839C7F000001,
+				6786B7DC02D1E0E000A8C007,
 			);
 			isa = PBXGroup;
 			name = Products;
@@ -942,8 +790,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				FRAMEWORK_VERSION = A;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				OPTIMIZATION_CFLAGS = "-O0";
-				OTHER_CFLAGS = "-DNeXT_RUNTIME -DEDCOMMON_OSXBUILD";
+				OTHER_CFLAGS = "-DNeXT_RUNTIME -DEDCOMMON_OSXBUILD -Winline";
 				OTHER_LDFLAGS = "-seg1addr 0x35000000";
 				OTHER_LIBTOOL_FLAGS = "";
 				OTHER_REZFLAGS = "";
@@ -1013,6 +860,7 @@
 				1AA34D570090839C7F000001,
 				1AA34D580090839C7F000001,
 				1AA34D590090839C7F000001,
+				676FAAAE02B917CF00A8C007,
 				1AA34D5A0090839C7F000001,
 				1AA34D5B0090839C7F000001,
 				1AA34D5C0090839C7F000001,
@@ -1034,6 +882,7 @@
 				1AA34D6C0090839C7F000001,
 				1AA34D6D0090839C7F000001,
 				1AA34D6E0090839C7F000001,
+				67460EF60259A93C00A8C007,
 				67E3B5EE00D4406500000001,
 				1AA34D6F0090839C7F000001,
 				1AA34D700090839C7F000001,
@@ -1042,10 +891,9 @@
 				1AA34D730090839C7F000001,
 				1AA34D740090839C7F000001,
 				EE6AABCA025313F000C21B98,
-				67460EF60259A93C00A8C007,
+				6798924A02BF68EE00A8C007,
 			);
 			isa = PBXHeadersBuildPhase;
-			name = Headers;
 		};
 		1AA34D4A0090839C7F000001 = {
 			fileRef = 1AA34CC70090839C7F000001;
@@ -1445,7 +1293,6 @@
 				1AA34D760090839C7F000001,
 			);
 			isa = PBXResourcesBuildPhase;
-			name = "Bundle Resources";
 		};
 		1AA34D760090839C7F000001 = {
 			fileRef = 1AA34D2A0090839C7F000001;
@@ -1469,9 +1316,9 @@
 				1AA34D810090839C7F000001,
 				1AA34D820090839C7F000001,
 				1AA34D830090839C7F000001,
-				1AA34D840090839C7F000001,
 				1AA34D850090839C7F000001,
 				1AA34D860090839C7F000001,
+				676FAAAF02B917CF00A8C007,
 				1AA34D870090839C7F000001,
 				1AA34D880090839C7F000001,
 				1AA34D890090839C7F000001,
@@ -1492,6 +1339,7 @@
 				1AA34D980090839C7F000001,
 				1AA34D990090839C7F000001,
 				1AA34D9A0090839C7F000001,
+				67460EF70259A93C00A8C007,
 				67E3B5EF00D4406500000001,
 				1AA34D9B0090839C7F000001,
 				1AA34D9C0090839C7F000001,
@@ -1499,10 +1347,8 @@
 				1AA34D9E0090839C7F000001,
 				1AA34D9F0090839C7F000001,
 				1AA34DA00090839C7F000001,
-				67460EF70259A93C00A8C007,
 			);
 			isa = PBXSourcesBuildPhase;
-			name = Sources;
 		};
 		1AA34D780090839C7F000001 = {
 			fileRef = 1AA34CCA0090839C7F000001;
@@ -1594,14 +1440,6 @@
 		};
 		1AA34D830090839C7F000001 = {
 			fileRef = 1AA34CDE0090839C7F000001;
-			isa = PBXBuildFile;
-			settings = {
-				ATTRIBUTES = (
-				);
-			};
-		};
-		1AA34D840090839C7F000001 = {
-			fileRef = 1AA34CDF0090839C7F000001;
 			isa = PBXBuildFile;
 			settings = {
 				ATTRIBUTES = (
@@ -1839,7 +1677,6 @@
 				1AA34DA30090839C7F000001,
 			);
 			isa = PBXFrameworksBuildPhase;
-			name = "Frameworks & Libraries";
 		};
 		1AA34DA20090839C7F000001 = {
 			fileRef = 1AA34D430090839C7F000001;
@@ -1858,7 +1695,6 @@
 			files = (
 			);
 			isa = PBXRezBuildPhase;
-			name = "ResourceManager Resources";
 		};
 //1A0
 //1A1
@@ -1893,6 +1729,134 @@
 			fileRef = 67460EF40259A93C00A8C007;
 			isa = PBXBuildFile;
 			settings = {
+			};
+		};
+		674AF33802D471E300A8C007 = {
+			children = (
+				674AF33902D4720100A8C007,
+				674AF33A02D4720900A8C007,
+				6795396202D4EE3400A8C007,
+			);
+			isa = PBXGroup;
+			name = Miscellaneous;
+			refType = 4;
+		};
+		674AF33902D4720100A8C007 = {
+			children = (
+				1AA34D020090839C7F000001,
+				1AA34D030090839C7F000001,
+				6798924902BF68EE00A8C007,
+				676FAAAD02B917CF00A8C007,
+			);
+			isa = PBXGroup;
+			name = Headers;
+			refType = 4;
+		};
+		674AF33A02D4720900A8C007 = {
+			children = (
+				1AA34CF40090839C7F000001,
+				1AA34CF50090839C7F000001,
+				676FAAAC02B917CF00A8C007,
+			);
+			isa = PBXGroup;
+			name = Classes;
+			path = "";
+			refType = 4;
+		};
+		676FAAAC02B917CF00A8C007 = {
+			isa = PBXFileReference;
+			name = EDAOMTagProcessor.m;
+			path = DataStructures.subproj/EDAOMTagProcessor.m;
+			refType = 4;
+		};
+		676FAAAD02B917CF00A8C007 = {
+			isa = PBXFileReference;
+			name = EDAOMTagProcessor.h;
+			path = DataStructures.subproj/EDAOMTagProcessor.h;
+			refType = 4;
+		};
+		676FAAAE02B917CF00A8C007 = {
+			fileRef = 676FAAAD02B917CF00A8C007;
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					Public,
+				);
+			};
+		};
+		676FAAAF02B917CF00A8C007 = {
+			fileRef = 676FAAAC02B917CF00A8C007;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		6786B7DB02D1E0E000A8C007 = {
+			buildPhases = (
+				6786B7DE02D1E0ED00A8C007,
+			);
+			buildSettings = {
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = Documentation;
+				REZ_EXECUTABLE = YES;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+			};
+			dependencies = (
+			);
+			isa = PBXToolTarget;
+			name = Documentation;
+			productInstallPath = /usr/local/bin;
+			productName = Documentation;
+			productReference = 6786B7DC02D1E0E000A8C007;
+			shouldUseHeadermap = 0;
+		};
+		6786B7DC02D1E0E000A8C007 = {
+			isa = PBXExecutableFileReference;
+			path = Documentation;
+			refType = 3;
+		};
+		6786B7DE02D1E0ED00A8C007 = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			generatedFileNames = (
+			);
+			isa = PBXShellScriptBuildPhase;
+			neededFileNames = (
+			);
+			shellPath = /bin/sh;
+			shellScript = "autodoc -combine -allclasses -typedirs -format html -destination Documentation -project . -copyright \"Erik Doernenburg\"";
+		};
+		6795396202D4EE3400A8C007 = {
+			children = (
+				6795396302D4EE8A00A8C007,
+			);
+			isa = PBXGroup;
+			name = "Additional Documentation";
+			path = "";
+			refType = 4;
+		};
+		6795396302D4EE8A00A8C007 = {
+			isa = PBXFileReference;
+			name = EDMLTagProcessorProtocol.mdoc;
+			path = DataStructures.subproj/EDMLTagProcessorProtocol.mdoc;
+			refType = 4;
+		};
+		6798924902BF68EE00A8C007 = {
+			isa = PBXFileReference;
+			name = EDMLTagProcessorProtocol.h;
+			path = DataStructures.subproj/EDMLTagProcessorProtocol.h;
+			refType = 4;
+		};
+		6798924A02BF68EE00A8C007 = {
+			fileRef = 6798924902BF68EE00A8C007;
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					Public,
+				);
 			};
 		};
 		67E3B5EC00D4406500000001 = {

@@ -4,6 +4,7 @@
         CLASSES = (
             EDIRCObject.m, 
             EDLRUCache.m, 
+            EDAOMTagProcessor.m, 
             EDMLParser.m, 
             EDMLToken.m, 
             EDNumberSet.m, 
@@ -19,19 +20,21 @@
         H_FILES = (
             EDBitmapCharset.h, 
             EDIRCObject.h, 
+            EDLightWeightLock.h, 
             EDLRUCache.h, 
+            EDAOMTagProcessor.h, 
             EDMLParser.h, 
+            EDMLTagProcessorProtocol.h, 
             EDMLToken.h, 
             EDNumberSet.h, 
             EDObjectPair.h, 
             EDObjectReference.h, 
             EDRange.h, 
-            EDRedBlackTree.h, 
             "EDRedBlackTree+Private.h", 
+            EDRedBlackTree.h, 
             EDSparseClusterArray.h, 
             EDStack.h, 
-            EDStringScanner.h, 
-            EDLightWeightLock.h
+            EDStringScanner.h
         ); 
         OTHER_LINKED = (EDBitmapCharset.m); 
         OTHER_SOURCES = (Makefile.preamble, Makefile, Makefile.postamble); 
@@ -51,13 +54,15 @@
             EDMLParser.h, 
             EDStack.h, 
             EDStringScanner.h, 
-            EDLightWeightLock.h
+            EDLightWeightLock.h, 
+            EDAOMTagProcessor.h, 
+            EDMLTagProcessorProtocol.h
         ); 
         SUBPROJECTS = (); 
     }; 
     LANGUAGE = English; 
     MAKEFILEDIR = "$(MAKEFILEPATH)/pb_makefiles"; 
-    NEXTSTEP_BUILDTOOL = /bin/gnumake; 
+    NEXTSTEP_BUILDTOOL = /usr/bin/gnumake; 
     NEXTSTEP_INSTALLDIR = "$(LOCAL_LIBRARY_DIR)/Frameworks"; 
     NEXTSTEP_JAVA_COMPILER = /usr/bin/javac; 
     NEXTSTEP_OBJCPLUS_COMPILER = /usr/bin/cc; 
