@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSData+Extensions.h created by erik on Mon 20-Nov-2000
-//  $Id: NSData+Extensions.h,v 2.0 2002-08-16 18:12:48 erik Exp $
+//  $Id: NSData+Extensions.h,v 2.1 2002-08-18 19:18:09 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -32,6 +32,13 @@
 /*" Calculating CRCs "*/
 - (unsigned short)crc16;
 - (unsigned int)crc32;
+
+
+/*" Base64 encoding "*/
+
+- (NSData *)decodeBase64;
+- (NSData *)encodeBase64;
+- (NSData *)encodeBase64WithLineLength:(unsigned int)lineLength andNewlineAtEnd:(BOOL)endWithNL;
 
 @end
 
