@@ -1,0 +1,14 @@
+V33:
+
+* Improved the EDMLParser. Parser can parse CDATA now, which will be transparently returned as NSStrings. Also, enhanced the lexicallizer loop a bit and introduced new lexer modes, thus processing of processing instructions and comments (including special CDATA) is much cleaner now.
+
+* Added a new protocol describing a class that can write text. EDStream is one, EDStringWriter another.
+
+* Added new, optional methods that tell the tag processor when the parser is beginning with a parse and when it is finished.
+
+* Added  very lightweight DOM2 implementation. Only the most essential classes have been implemented. These should, however, be sufficient for 90% of all XML applications. Most of the node classes were copied from Helge's Skyrix XML framework; with kind permission.
+
+Note that the classes simply implement the methods described in DOM2-Core. I have passed on creating a formal DOM protocol set that concrete classes implement. If you are using stuff from Skyrix XML you can simply cast the EDXML classes to the corresponding DOM protocols defined there...
+
+* Added a new test subproject for unit testing using Sente's SenTestingKit. If you don't have it no problem, it is only used when you build the 'Tests' target.
+
