@@ -1,7 +1,7 @@
 # EDCommon.framework
 # GNUmakefile
 #
-# $Id: GNUmakefile,v 2.2 2003-10-21 16:26:38 znek Exp $
+# $Id: GNUmakefile,v 2.3 2003-11-08 20:04:45 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -52,6 +52,15 @@ ifeq "$(GNUSTEP_HOST_OS)" "freebsd"
 EDCommon_LIBRARIES_DEPEND_UPON += -lcrypt
 endif
 
+# Mac OS X
+ifneq ($(findstring darwin, $(GNUSTEP_HOST_OS)),)
+  EDCommon_LDFLAGS += -seg1addr 0x35000000
+
+  # Mac OS X 10.3
+  ifneq ($(findstring darwin7, $(GNUSTEP_HOST_OS)),)
+    EDCommon_LIBRARIES_DEPEND_UPON += -lresolv
+  endif
+endif
 
 
 include Version

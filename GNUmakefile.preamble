@@ -1,8 +1,10 @@
 # EDCommon.framework
 # GNUmakefile.preamble
 #
-# $Id: GNUmakefile.preamble,v 2.0 2002-08-16 18:12:43 erik Exp $
+# $Id: GNUmakefile.preamble,v 2.1 2003-11-08 20:04:45 znek Exp $
 
+
+-include GNUmakefile.preamble.local
 
 NAME = EDCommon
 PATCH_HEADERS = EDCommon.h

@@ -1,5 +1,5 @@
-# EDGNUstepBuild
-# $Id: GNUstepBuild,v 2.1 2003-10-21 16:26:38 znek Exp $
+# GNUstepBuild
+# $Id: GNUstepBuild,v 2.2 2003-11-08 20:04:45 znek Exp $
 
 
 ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
@@ -14,12 +14,17 @@ endif
 # Target specific section
 # EDCommon build global definitions that apply to specific targets 
 
-# Mac OS X 10.2
-ifeq "$(GNUSTEP_HOST_OS)" "darwin6"
-ADDITIONAL_OBJCFLAGS += -DMAC_OS_X_VERSION_10_2 -DEDCOMMON_OSXBUILD
-endif
+# Mac OS X
+ifneq ($(findstring darwin, $(GNUSTEP_HOST_OS)),)
+  ADDITIONAL_OBJCFLAGS += -DEDCOMMON_OSXBUILD
 
-# Mac OS X 10.3
-ifeq "$(GNUSTEP_HOST_OS)" "darwin7"
-ADDITIONAL_OBJCFLAGS += -DMAC_OS_X_VERSION_10_3 -DEDCOMMON_OSXBUILD
+  # Mac OS X 10.2
+  ifneq ($(findstring darwin6, $(GNUSTEP_HOST_OS)),)
+    ADDITIONAL_OBJCFLAGS += -DMAC_OS_X_VERSION_10_2
+  endif
+
+  # Mac OS X 10.3
+  ifneq ($(findstring darwin7, $(GNUSTEP_HOST_OS)),)
+    ADDITIONAL_OBJCFLAGS += -DMAC_OS_X_VERSION_10_3
+  endif
 endif
