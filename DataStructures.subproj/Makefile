@@ -12,17 +12,20 @@ NAME = DataStructures
 PROJECTVERSION = 2.8
 PROJECT_TYPE = Component
 
+GLOBAL_RESOURCES = XMLEntities.plist
+
 CLASSES = EDIRCObject.m EDLRUCache.m EDAOMTagProcessor.m EDMLParser.m\
           EDMLToken.m EDMutableObjectPair.m EDNumberSet.m\
-          EDObjectPair.m EDObjectReference.m EDRange.m EDRedBlackTree.m\
-          EDSparseClusterArray.m EDStack.m EDStringScanner.m
+          EDObjectPair.m EDObjectReference.m EDRange.m\
+          EDSparseClusterArray.m EDStack.m EDStringScanner.m\
+          EDSortedArray.m
 
 HFILES = EDBitmapCharset.h EDIRCObject.h EDLightWeightLock.h\
          EDLRUCache.h EDAOMTagProcessor.h EDMLParser.h\
          EDMLTagProcessorProtocol.h EDMLToken.h EDMutableObjectPair.h\
          EDNumberSet.h EDObjectPair.h EDObjectReference.h EDRange.h\
-         EDRedBlackTree+Private.h EDRedBlackTree.h\
-         EDSparseClusterArray.h EDStack.h EDStringScanner.h
+         EDSparseClusterArray.h EDStack.h EDStringScanner.h\
+         EDSortedArray.h EDSortedArray+Private.h
 
 MFILES = EDBitmapCharset.m
 
@@ -39,12 +42,11 @@ PROF_LIBS = $(LIBS)
 
 
 PUBLIC_HEADERS = EDIRCObject.h EDNumberSet.h EDObjectPair.h\
-                 EDObjectReference.h EDRange.h EDRedBlackTree.h\
-                 EDRedBlackTree+Private.h EDSparseClusterArray.h\
+                 EDObjectReference.h EDRange.h EDSparseClusterArray.h\
                  EDBitmapCharset.h EDLRUCache.h EDMLParser.h EDStack.h\
                  EDStringScanner.h EDLightWeightLock.h\
                  EDAOMTagProcessor.h EDMLTagProcessorProtocol.h\
-                 EDMutableObjectPair.h
+                 EDMutableObjectPair.h EDSortedArray.h
 
 PROJECT_HEADERS = EDStack.h EDStringScanner.h EDLightWeightLock.h
 
