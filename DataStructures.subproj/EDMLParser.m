@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 1.9 2001-08-15 16:08:58 znek Exp $
+//  @(#)$Id: EDMLParser.m,v 1.10 2001-08-17 20:11:53 znek Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -197,6 +197,9 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
 {
     NSArray			*result;
     unsigned int 	length;
+
+    lexmode = EDMLPTextMode;
+    [stack removeAllObjects];
 
     length = [aString length];
     source = NSZoneMalloc([self zone], sizeof(unichar) * (length + 1));
