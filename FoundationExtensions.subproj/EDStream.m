@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDStream.m created by erik
-//  @(#)$Id: EDStream.m,v 2.1 2003-04-08 16:51:35 znek Exp $
+//  @(#)$Id: EDStream.m,v 2.2 2003-04-21 23:25:11 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -63,6 +63,40 @@ static NSData	*linebreakSequences[3];
 + (id)streamWithFileHandle:(NSFileHandle *)aFileHandle
 {
     return [[[self alloc] initWithFileHandle:aFileHandle] autorelease];
+}
+
+
+/*" Creates and returns a stream initialised for reading at path. The file pointer is set to the beginning of the file. If no file exists at path the method returns !{nil}. "*/
+
++ (id)streamForReadingAtPath:(NSString *)path
+{
+    NSFileHandle *handle;
+
+    if((handle = [NSFileHandle fileHandleForReadingAtPath:path]) == nil)
+        return nil;
+    return [[[self alloc] initWithFileHandle:handle] autorelease];
+}
+
+/*" Creates and returns a stream initialised for writing at path. The file pointer is set to the beginning of the file. If no file exists at path the method returns !{nil}. "*/
+
++ (id)streamForWritingAtPath:(NSString *)path
+{
+    NSFileHandle *handle;
+
+    if((handle = [NSFileHandle fileHandleForWritingAtPath:path]) == nil)
+        return nil;
+    return [[[self alloc] initWithFileHandle:handle] autorelease];
+}
+
+/*" Creates and returns a stream initialised for reading and writing at path. The file pointer is set to the beginning of the file. If no file exists at path the method returns !{nil}. "*/
+
++ (id)streamForUpdatingAtPath:(NSString *)path
+{
+    NSFileHandle *handle;
+
+    if((handle = [NSFileHandle fileHandleForUpdatingAtPath:path]) == nil)
+        return nil;
+    return [[[self alloc] initWithFileHandle:handle] autorelease];
 }
 
 
@@ -246,6 +280,14 @@ The linebreak style can be change during normal operation if required. "*/
 - (void)close
 {
     [fileHandle closeFile];
+}
+
+
+/*" Causes all in-memory data to be written to permanent storage. This method should be invoked by programs that require a file to always be in a known state. An invocation of this method does not return until memory is flushed. "*/
+
+- (void)flush
+{
+    [fileHandle synchronizeFile];
 }
 
 
