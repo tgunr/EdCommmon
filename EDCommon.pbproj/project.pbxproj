@@ -786,9 +786,9 @@
 				6798738302DC810500A8C007,
 			);
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DYLIB_COMPATIBILITY_VERSION = 25;
-				DYLIB_CURRENT_VERSION = 29;
+				DYLIB_CURRENT_VERSION = 30;
 				FRAMEWORK_SEARCH_PATHS = "";
 				FRAMEWORK_VERSION = A;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -836,7 +836,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>28</string>
+	<string>30</string>
 </dict>
 </plist>
 ";
