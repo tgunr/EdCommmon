@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSObject+Extensions.m created by erik on Sun 06-Sep-1998
-//  @(#)$Id: NSObject+Extensions.m,v 1.3 2002-04-14 14:57:57 znek Exp $
+//  @(#)$Id: NSObject+Extensions.m,v 1.4 2002-06-11 18:21:04 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -32,7 +32,7 @@
 
 - (volatile void)methodIsAbstract:(SEL)selector
 {
-    [NSException raise:NSInternalInconsistencyException format:@"*** -[%@ %@]: Abstract definition must be overriden.", NSStringFromClass(isa), NSStringFromSelector(selector)];
+    [NSException raise:NSInternalInconsistencyException format:@"*** -[%@ %@]: Abstract definition must be overriden.", NSStringFromClass([self class]), NSStringFromSelector(selector)];
 }
 
 

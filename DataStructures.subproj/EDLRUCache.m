@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDLRUCache.m created by erik on Fri 29-Oct-1999
-//  @(#)$Id: EDLRUCache.m,v 1.2 2001-03-29 16:01:48 erik Exp $
+//  @(#)$Id: EDLRUCache.m,v 1.3 2002-06-11 18:21:03 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -63,6 +63,7 @@
     while([entries count] >= size)
         {
         earliestDate = nil;
+        keyForEarliestDate = nil; // keep compiler happy
         keyEnum = [timestamps keyEnumerator];
         while((key = [keyEnum nextObject]) != nil)
             {
