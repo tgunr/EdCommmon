@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSObject+Extensions.m created by erik on Sun 06-Sep-1998
-//  @(#)$Id: NSObject+Extensions.m,v 1.6 2002-07-09 15:53:52 erik Exp $
+//  @(#)$Id: NSObject+Extensions.m,v 1.7 2002-07-18 23:49:47 znek Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -102,7 +102,7 @@ BOOL EDClassIsSuperclassOfClass(Class aClass, Class subClass)
 
 NSArray *EDSubclassesOfClass(Class aClass)
 {
-#ifdef NeXT_RUNTIME
+#ifndef GNU_RUNTIME
 #ifdef EDCOMMON_OSXBUILD
     NSMutableArray *subclasses;
     Class          *classes;

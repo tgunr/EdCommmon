@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 38;
+	objectVersion = 34;
 	objects = {
 		00F9505A0093182B7F000001 = {
 			buildRules = (
@@ -792,7 +792,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				FRAMEWORK_VERSION = A;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				OTHER_CFLAGS = "-DNeXT_RUNTIME -DEDCOMMON_OSXBUILD -Winline";
+				OTHER_CFLAGS = "-DEDCOMMON_OSXBUILD -Winline";
 				OTHER_LDFLAGS = "-seg1addr 0x35000000";
 				OTHER_LIBTOOL_FLAGS = "";
 				OTHER_REZFLAGS = "";

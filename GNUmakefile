@@ -1,7 +1,7 @@
 # EDCommon.framework
 # GNUmakefile
 #
-# $Id: GNUmakefile,v 1.1 2002-04-14 14:57:53 znek Exp $
+# $Id: GNUmakefile,v 1.2 2002-07-18 23:49:44 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -33,6 +33,10 @@ ifneq "$(GUI_LIB)" "nil"
 EDCommon_SUBPROJECTS += AppKitExtensions.subproj Widgets.subproj
 else
 ADDITIONAL_OBJCFLAGS += -DEDCOMMON_WOBUILD
+endif
+
+ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
+ADDITIONAL_OBJCFLAGS += -DGNU_RUNTIME
 endif
 
 

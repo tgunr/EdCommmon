@@ -1,5 +1,5 @@
 # FoundationExtensions.subproj
-# $Id: GNUmakefile,v 1.3 2002-07-14 13:50:08 znek Exp $
+# $Id: GNUmakefile,v 1.4 2002-07-18 23:49:46 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -15,6 +15,10 @@ ADDITIONAL_INCLUDE_DIRS = -I..
 
 ifeq "$(GUI_LIB)" "nil"
 ADDITIONAL_OBJCFLAGS += -DEDCOMMON_WOBUILD
+endif
+
+ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
+ADDITIONAL_OBJCFLAGS += -DGNU_RUNTIME
 endif
 
 

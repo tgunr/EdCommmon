@@ -190,11 +190,6 @@ FRAMEWORK_SHLIB_INSTALLDIR=$(INSTALLDIR)/../SharedLibraries
 endif
 
 
-# GNUstep compatibility
-ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
-OTHER_CFLAGS += -DNeXT_RUNTIME
-endif
-
 # Additional targets to fix/precompile headers
 AFTER_INSTALLHDRS += fix-headers
 

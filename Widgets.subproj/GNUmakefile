@@ -1,5 +1,5 @@
 # Widgets.subproj
-# $Id: GNUmakefile,v 1.1 2002-04-14 14:57:58 znek Exp $
+# $Id: GNUmakefile,v 1.2 2002-07-18 23:49:47 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -12,6 +12,10 @@ include $(GNUSTEP_MAKEFILES)/common.make
 SUBPROJECT_NAME = Widgets.subproj
 
 ADDITIONAL_INCLUDE_DIRS = -I..
+
+ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
+ADDITIONAL_OBJCFLAGS += -DGNU_RUNTIME
+endif
 
 
 Widgets.subproj_HEADER_FILES = \

@@ -1,5 +1,5 @@
 # AppKitExtensions.subproj
-# $Id: GNUmakefile,v 1.1 2002-04-14 14:57:54 znek Exp $
+# $Id: GNUmakefile,v 1.2 2002-07-18 23:49:45 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -12,6 +12,10 @@ include $(GNUSTEP_MAKEFILES)/common.make
 SUBPROJECT_NAME = AppKitExtensions.subproj
 
 ADDITIONAL_INCLUDE_DIRS = -I.. -I../FoundationExtensions.subproj
+
+ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
+ADDITIONAL_OBJCFLAGS += -DGNU_RUNTIME
+endif
 
 
 AppKitExtensions.subproj_HEADER_FILES = \
