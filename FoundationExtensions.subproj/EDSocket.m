@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDSocket.m created by erik
-//  @(#)$Id: EDSocket.m,v 2.2 2003-05-07 11:10:38 znek Exp $
+//  @(#)$Id: EDSocket.m,v 2.3 2003-10-20 16:55:08 znek Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -208,7 +208,7 @@ Note that some socket related functionality is implemented in a category on NSFi
 
 - (void)seekToFileOffset:(unsigned long long)offset
 {
-    return [realHandle seekToFileOffset:offset];
+    [realHandle seekToFileOffset:offset];
 }
 
 
@@ -220,7 +220,7 @@ Note that some socket related functionality is implemented in a category on NSFi
 
 - (void)synchronizeFile
 {
-    return [realHandle synchronizeFile];
+    [realHandle synchronizeFile];
 }
 
 
