@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjcRuntime.h created by znek on Mon 18-Mar-2002
-//  @(#)$Id: EDObjcRuntime.h,v 1.1 2002-04-14 14:57:53 znek Exp $
+//  @(#)$Id: EDObjcRuntime.h,v 1.2 2002-07-02 15:33:42 erik Exp $
 //
 //  Copyright (c) 1997-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -30,6 +30,7 @@
 #import <objc/objc-api.h>
 #import <objc/objc-class.h>
 
+/*" Protable runtime functions. Works on Darwin and GNUStep. "*/
 #define EDObjcMsgSend(obj, sel) objc_msgSend((obj), (sel))
 #define EDObjcMsgSend1(obj, sel, obj1) objc_msgSend((obj), (sel), (obj1))
 #define EDObjcMethodInfo Method
