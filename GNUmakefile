@@ -1,7 +1,7 @@
 # EDCommon.framework
 # GNUmakefile
 #
-# $Id: GNUmakefile,v 2.0 2002-08-16 18:12:43 erik Exp $
+# $Id: GNUmakefile,v 2.1 2003-09-04 14:35:12 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -31,6 +31,9 @@ osdep.h
 EDCommon_OBJC_FILES = \
 framework.m \
 useful.m
+
+
+EDCommon_LIBRARIES_DEPEND_UPON += -lcrypt
 
 
 EDCommon_SUBPROJECTS = \
