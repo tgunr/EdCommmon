@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 2.0 2002-08-16 18:12:45 erik Exp $
+//  @(#)$Id: EDMLParser.m,v 2.1 2002-09-01 17:43:07 erik Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -153,7 +153,7 @@ NSCharacterSet *colonNSCharset;
     NSMutableCharacterSet	*tempCharset;
 
     tempCharset = [[[NSCharacterSet illegalCharacterSet] mutableCopy] autorelease];
-    [tempCharset addCharactersInString:@"<>"];
+    [tempCharset addCharactersInString:@"<>&"];
     [tempCharset formUnionWithCharacterSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     [tempCharset invert];
     return tempCharset;
@@ -258,6 +258,34 @@ Note that the tag processor can specify that whitespace within text, i.e. betwee
 }
 
 
+/*" Set the "entity table" for the parser. This table maps entities of the form !{&ename;} to another string, usually a single characters. Entities are only replaced within text, not within tags. !{
+
+Example table: !{
+    {
+        lt = "<";
+        gt = ">";
+        amp = "&";
+    }
+    
+}
+"*/
+
+- (void)setEntityTable:(NSDictionary *)aDictionary
+{
+    [aDictionary retain];
+    [entityTable release];
+    entityTable = aDictionary;
+}
+
+
+/*" Returns the parser's entity table. See #{setEntityTable:} for details. "*/
+
+- (NSDictionary *)entityTable
+{
+    return entityTable;
+}
+
+
 //---------------------------------------------------------------------------------------
 //	PUBLIC ENTRY INTO PARSER
 //---------------------------------------------------------------------------------------
@@ -352,7 +380,7 @@ static __inline__ unichar *nextchar(unichar *charp, BOOL raiseOnEnd)
 {
     EDMLToken	*token;
     id			tvalue;
-    unichar		*start;
+    unichar		*start, c;
 
     if(peekedToken != nil)
         {
@@ -392,6 +420,30 @@ static __inline__ unichar *nextchar(unichar *charp, BOOL raiseOnEnd)
                 {
                 lexmode = EDMLPSpaceMode;
                 return [self _nextToken];
+                }
+            else if(*charp == '&')
+                {
+                charp = nextchar(charp, YES);
+                start = charp;
+                while((*charp != ';') && ((charp - start) < 50))
+                    charp = nextchar(charp, YES);
+                if(*start == '#')
+                    { // convert using unicode char code
+                    if((*(start + 1) == 'x') || (*(start + 1) == 'X'))
+                        c = [[NSString stringWithCharacters:(start + 2) length:(charp - (start + 2))] intValueForHex];
+                    else
+                        c = [[NSString stringWithCharacters:(start + 1) length:(charp - (start + 1))] intValue];
+                    tvalue = (c > 0) ? [NSString stringWithCharacters:&c length:1] : nil;
+                    }
+                else if(entityTable != nil)
+                    { // convert using entity table
+                    tvalue = [entityTable objectForKey:[NSString stringWithCharacters:start length:(charp - start)]];
+                    }
+                charp = nextchar(charp, NO);
+                if(tvalue == nil) 
+                    [NSException raise:EDMLParserException format:@"Found invalid entity '%@' at pos %d.", [NSString stringWithCharacters:(start - 1) length:(charp - start + 1)], (start - source)];
+                token = [EDMLToken tokenWithType:EDMLPT_STRING];
+                [token setValue:tvalue];
                 }
             else
                 {

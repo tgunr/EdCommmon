@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.h created by erik
-//  @(#)$Id: EDMLParser.h,v 2.0 2002-08-16 18:12:45 erik Exp $
+//  @(#)$Id: EDMLParser.h,v 2.1 2002-09-01 17:43:07 erik Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -31,6 +31,7 @@
 {
     BOOL					preservesWhitespace;	/*" All instance variables are private. "*/
     id <EDMLTagProcessor>	tagProcessor;			/*" "*/
+    NSDictionary			*entityTable;			/*" "*/
     unichar		 			*source;				/*" "*/
     unichar		 			*charp;					/*" "*/
     unsigned int 			lexmode;				/*" "*/
@@ -52,6 +53,8 @@
 /*" Configuring the parser "*/
 - (void)setPreservesWhitespace:(BOOL)flag;
 - (BOOL)preservesWhitespace;
+- (void)setEntityTable:(NSDictionary *)aDictionary;
+- (NSDictionary *)entityTable;
 
 /*" Parsing "*/
 - (NSArray *)parseString:(NSString *)aString;
