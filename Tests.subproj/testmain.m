@@ -1,10 +1,7 @@
 #import <Foundation/Foundation.h>
+#import <SenTestingKit/SenTestingKit.h>
 
-int main (int argc, const char * argv[]) {
-    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-
-    // insert code here...
-    NSLog(@"Hello, World!");
-    [pool release];
-    return 0;
+int main (int argc, const char * argv[])
+{
+    return SenSelfTestMain();
 }

@@ -3,7 +3,7 @@
 # NOTE: In order for this to run, you need the excellent OCUnit testing framework
 # from SEN:TE available at http://www.sente.ch/software/ocunit/
 #
-# $Id: GNUmakefile,v 1.1 2003-05-28 01:19:21 znek Exp $
+# $Id: GNUmakefile,v 1.2 2003-06-30 17:25:10 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -44,6 +44,12 @@ endif
 ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
 ADDITIONAL_OBJCFLAGS += -DGNU_RUNTIME
 endif
+
+
+EDCommonTests_HAS_RESOURCE_BUNDLE = yes
+
+
+EDCommonTests_RESOURCE_FILES = Sample.xml SampleWithNamespaces.xml
 
 
 -include Makefile.preamble
