@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDAOMTagProcessor.m created by erik
-//  @(#)$Id: EDAOMTagProcessor.m,v 2.0 2002-08-16 18:12:45 erik Exp $
+//  @(#)$Id: EDAOMTagProcessor.m,v 2.1 2002-08-19 00:50:47 erik Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -32,13 +32,56 @@
 
 /*" Application Object Model tag processor. (For use with the EDMLParser.) This tag processor creates an object model of the original document in which the node classes are application specific. A "tag definition dictionary" describes the mapping.
 
-The tag definition dictionary contains the elements' namespace (optional), the model classes to be used for text and for whitespace (optional) as well as the ones to be used for elements. Text objects must implement the #{setText:} method while Space objects may implement it to get the exact space string. (This also requires to set #preservesWhitespace in the parser as otherwise the space string will always be !{@" "}.) All elements must implement #{takeValue:forAttribute:} which is called once for each attribute and all container elements must implement #{setContainedObjects:} which will be called after #{takeValue:forAttribute:} to set the elements, and text/space objects, that were found between the start and end tags. The array is !{nil} if the element was empty.
+The tag definition dictionary contains the elements' namespace (optional), the model classes to be used for text and for whitespace (optional) as well as the ones to be used for elements.
+
+Text objects must implement the #{setText:} method while Space objects may implement it to get the exact space string. (This also requires to set #preservesWhitespace in the parser as otherwise the space string will always be !{@" "}.) All elements must implement #{takeValue:forAttribute:} which is called once for each attribute and all container elements must implement #{setContainedObjects:} which will be called after #{takeValue:forAttribute:} to set the elements, and text/space objects, that were found between the start and end tags. The array is !{nil} if the element was empty.
 
 Note that if #acceptsUnknownTags is YES and multiple namespaces occur in the document #{takeValue:forAttribute:} will be called for %all attributes without indiciation of the attribute's namespace. Note also that if this is the case and additionally no namespace is defined for the elements, they will be asked to take values for attributes that correspond to the namespace definition, e.g. for the tag !{<mytag xmlns:t="...">} the element representing !{mytag} will be asked to take a value for the attribute t. The obvious workaround is to define a namespace for your elements; not a bad idea anyway when dealing with XML.
 
-See !{TagDefinitions.html} for a detailed description of the tag definition dictionary. (Sorry, but autodoc doesn't allow custom hyperlinks.)
 
-The processor implements the #EDTagProcessorProtocol as follows: It returns the namespace defined in the tag definition dictionary, or !{nil} if there is none, as #{defaultNamespace}. If a space object was defined it returns YES in #spaceIsString, otherwise it returns NO which will make the parser treat all space between tags as text. The remaining four methods to create text and space objects as well as elements simply instantiate a corresponding object, set all properties and return it to the parser.
+The namespace declaration in the tag definition must be a string stored under the key !{XMLNS}: !{
+
+    XMLNS = %URI;
+}
+
+The classes for text and space are defined as follows: !{
+
+    "*" = {
+        class = %ClassName;
+    };
+
+    "_" = {
+        class = %ClassName;
+    };    
+}
+
+Model classes for elements are defined in a similar way but have more parameters: !{
+
+    %{tag-name} = {
+        class = %ClassName;
+        container = YES or NO;
+        required = ( %{attribute-name}, %{attribute-name}, ... );
+        optional = ( %{attribute-name}, %{attribute-name}, ... );
+        implicit = ( { %{attribute-name} = %value; } , { %{attribute-name} = %value; }, ... );
+    };
+}
+
+If a tag is parsed that does not have all attributes in %required or it has attributes other than the ones listed in %required and %optional an exception is raised. The latter can be suppressed by using #{setIgnoresUnknownAttributes:} or #{setAcceptsUnknownAttributes:} The %implicit list allows to pass attributes to the objects in addition to the ones defined in the document. This can be used, for example, to turn %br tags (for linebreaks) into a space object as in the example from the EDStyleSheet framework: !{
+
+    "_" = {
+        class = EDSLSpace;
+    };
+
+    br = {
+        class = EDSLSpace;
+        implicit = ( { text = "\012"; } );
+    };
+}
+
+Note that this results in !{takeValue:@"\012" forAttribute:@"text"} being called; not !{setText:@"\012"}.
+
+
+The processor implements the #EDTagProcessorProtocol as follows: It returns the namespace defined in the tag definition dictionary, or !{nil} if there is none, as #{defaultNamespace}. If a space object was defined it returns NO in #spaceIsString, otherwise it returns YES which will make the parser treat all space between tags as text. The remaining four methods to create text and space objects as well as elements simply instantiate a corresponding object, set all properties and return it to the parser.
 
 A convenience method is provided to use the EDMLParser with this processor. This reduces the code required to set up a parser to: !{  
 
