@@ -139,10 +139,6 @@ ifeq "$(BUILD_WO_VERSION)" "YES"
 endif
 
 
-ifeq "$(OS)" "NEXTSTEP"
-PUBLIC_PRECOMPILED_HEADERS_CFLAGS += -DEDCOMMON_OSXSBUILD
-endif
-
 precompile-headers:
 ifeq "$(OS)" "NEXTSTEP"
 	$(SILENT) ( \
