@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.h created by erik
-//  @(#)$Id: EDMLParser.h,v 1.6 2002-07-09 16:02:18 erik Exp $
+//  @(#)$Id: EDMLParser.h,v 2.0 2002-08-16 18:12:45 erik Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -53,8 +53,9 @@
 - (void)setPreservesWhitespace:(BOOL)flag;
 - (BOOL)preservesWhitespace;
 
-/*" Parsing a string "*/
+/*" Parsing "*/
 - (NSArray *)parseString:(NSString *)aString;
+- (NSArray *)parseXMLDocument:(NSData *)xmlData;
 
 /*" Relevant character sets "*/
 + (NSCharacterSet *)spaceCharacterSet;

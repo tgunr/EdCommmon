@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.h created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.h,v 1.6 2002-07-09 15:53:52 erik Exp $
+//  @(#)$Id: NSArray+Extensions.h,v 2.0 2002-08-16 18:12:48 erik Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -46,6 +46,7 @@
 - (unsigned int)indexOfSubarray:(NSArray *)other;
 
 /*" Rearranging the array "*/
+- (NSArray *)reversedArray;
 - (NSArray *)shuffledArray;
 - (NSArray *)sortedArray;
 - (NSArray *)sortedArrayByComparingAttribute:(NSString *)attributeName;

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDAOMTagProcessor.m created by erik
-//  @(#)$Id: EDAOMTagProcessor.m,v 1.1 2002-07-09 16:08:41 erik Exp $
+//  @(#)$Id: EDAOMTagProcessor.m,v 2.0 2002-08-16 18:12:45 erik Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //

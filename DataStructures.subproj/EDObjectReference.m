@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjectReference.m created by erik on Thu 13-Aug-1998
-//  @(#)$Id: EDObjectReference.m,v 1.5 2002-07-09 15:56:56 erik Exp $
+//  @(#)$Id: EDObjectReference.m,v 2.0 2002-08-16 18:12:46 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //

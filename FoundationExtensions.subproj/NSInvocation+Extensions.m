@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSInvocation+Extensions.m created by erik on Sun 27-May-2001
-//  @(#)$Id: NSInvocation+Extensions.m,v 1.2 2002-07-02 15:05:32 erik Exp $
+//  @(#)$Id: NSInvocation+Extensions.m,v 2.0 2002-08-16 18:12:49 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //

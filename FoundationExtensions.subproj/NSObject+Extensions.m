@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSObject+Extensions.m created by erik on Sun 06-Sep-1998
-//  @(#)$Id: NSObject+Extensions.m,v 1.7 2002-07-18 23:49:47 znek Exp $
+//  @(#)$Id: NSObject+Extensions.m,v 2.0 2002-08-16 18:12:49 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -84,6 +84,34 @@
 //---------------------------------------------------------------------------------------
 //	EXTENDED INTROSPECTION 
 //---------------------------------------------------------------------------------------
+
+IMP EDGetFirstUnusedIMPForSelector(Class aClass, SEL aSelector, BOOL isClassMethod)
+{
+#ifndef GNU_RUNTIME
+    IMP						activeIMP;
+    struct objc_method_list	*mlist;
+    void					*iterator;
+    int						i;
+
+    if(isClassMethod)
+        aClass = aClass->isa;
+    iterator = 0;
+    activeIMP = [aClass instanceMethodForSelector:aSelector];
+    while((mlist = class_nextMethodList(aClass, &iterator)) != NULL)
+        {
+        for(i = 0; i < mlist->method_count; i++)
+            {
+            if((mlist->method_list[i].method_name == aSelector) && (mlist->method_list[i].method_imp != activeIMP))
+                return mlist->method_list[i].method_imp;
+            }
+        }
+    return NULL;
+#else /* GNU_RUNTIME */
+#warning ** implementation missing for GNU runtime
+    return NULL;
+#endif
+}
+
 
 BOOL EDClassIsSuperclassOfClass(Class aClass, Class subClass)
 {

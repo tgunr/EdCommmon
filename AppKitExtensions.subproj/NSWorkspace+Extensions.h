@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSWorkspace+Extensions.h created by erik on Mon 19-Feb-2001
-//  $Id: NSWorkspace+Extensions.h,v 1.5 2002-07-02 16:25:26 erik Exp $
+//  $Id: NSWorkspace+Extensions.h,v 2.0 2002-08-16 18:12:44 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //

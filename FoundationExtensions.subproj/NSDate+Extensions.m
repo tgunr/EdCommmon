@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSDate+Extensions.m created by erik on Sun 15-Aug-1999
-//  @(#)$Id: NSDate+Extensions.m,v 1.3 2002-07-09 15:53:52 erik Exp $
+//  @(#)$Id: NSDate+Extensions.m,v 2.0 2002-08-16 18:12:48 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+printf.m created by erik on Sat 27-Sep-1997
-//  @(#)$Id: NSString+Extensions.m,v 1.7 2002-07-09 15:53:52 erik Exp $
+//  @(#)$Id: NSString+Extensions.m,v 2.0 2002-08-16 18:12:49 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -21,8 +21,12 @@
 #ifndef EDCOMMON_WOBUILD
 #import <AppKit/AppKit.h>
 #endif
+#ifdef EDCOMMON_OSXBUILD
+#import <CoreFoundation/CoreFoundation.h>
+#endif
 #import <Foundation/Foundation.h>
 #import "NSString+Extensions.h"
+#import "EDObjectPair.h"
 
 #ifndef WIN32
 #import <unistd.h>
@@ -30,12 +34,41 @@
 #define random() rand()
 #endif
 
+@interface NSString(EDExtensionsPrivateAPI)
++ (NSDictionary *)_contentTypeExtensionMapping;
+@end
+
+
 
 //=======================================================================================
     @implementation NSString(EDExtensions)
 //=======================================================================================
 
 /*" Various common extensions to #NSString. "*/
+
+NSString *MIMEAsciiStringEncoding = @"us-ascii";
+NSString *MIMELatin1StringEncoding = @"iso-8859-1";
+NSString *MIMELatin2StringEncoding = @"iso-8859-2";
+NSString *MIME2022JPStringEncoding = @"iso-2022";
+NSString *MIMEUTF8StringEncoding = @"utf-8";
+
+NSString *MIMEApplicationContentType = @"application";
+NSString *MIMEImageContentType		 = @"image";
+NSString *MIMEAudioContentType		 = @"audio";
+NSString *MIMEMessageContentType 	 = @"message";
+NSString *MIMEMultipartContentType 	 = @"multipart";
+NSString *MIMETextContentType 		 = @"text";
+NSString *MIMEVideoContentType       = @"video";
+
+NSString *MIMEAlternativeMPSubtype 	 = @"alternative";
+NSString *MIMEMixedMPSubtype 		 = @"mixed";
+NSString *MIMEParallelMPSubtype 	 = @"parallel";
+NSString *MIMEDigestMPSubtype 		 = @"digest";
+NSString *MIMERelatedMPSubtype 		 = @"related";
+
+NSString *MIMEInlineContentDisposition = @"inline";
+NSString *MIMEAttachmentContentDisposition = @"attachment";
+
 
 static NSFileHandle *stdoutFileHandle = nil;
 static NSLock *printfLock = nil;
@@ -199,7 +232,300 @@ static NSCharacterSet *iwsSet = nil;
 }
 
 
-#ifndef WIN32 // [TRH 2001/01/18] quick hack: disabled since Windows does not have crypt() -- not needed for EDInternet anyway.
+//---------------------------------------------------------------------------------------
+//	FACTORY METHODS
+//---------------------------------------------------------------------------------------
+
+/*" Creates and returns a string by converting the bytes in data using the string encoding described by %charsetName. If no NSStringEncoding corresponds to %charsetName this method returns !{nil}. "*/
+
++ (NSString *)stringWithData:(NSData *)data MIMEEncoding:(NSString *)charsetName
+{
+    return [[[NSString alloc] initWithData:data MIMEEncoding:charsetName] autorelease];
+}
+
+
+/*" Creates and returns a string by copying %length characters from %buffer and coverting these into a string using the string encoding described by %charsetName. If no NSStringEncoding corresponds to %charsetName this method returns !{nil}. "*/
+
++ (NSString *)stringWithBytes:(const void *)buffer length:(unsigned int)length MIMEEncoding:(NSString *)charsetName
+{
+    return [[[NSString alloc] initWithData:[NSData dataWithBytes:buffer length:length] MIMEEncoding:charsetName] autorelease];
+}
+
+
+//---------------------------------------------------------------------------------------
+//	Converting to/from byte representations
+//---------------------------------------------------------------------------------------
+
+/*" Initialises a newly allocated string by converting the bytes in buffer using the string encoding described by %charsetName. If no NSStringEncoding corresponds to %charsetName this method returns !{nil}. "*/
+
+- (id)initWithData:(NSData *)buffer MIMEEncoding:(NSString *)charsetName
+{
+    NSStringEncoding encoding;
+
+    if((encoding = [NSString stringEncodingForMIMEEncoding:charsetName]) == 0)
+        return nil; // Behaviour has changed (2001/08/03).
+    return [self initWithData:buffer encoding:encoding];
+}
+
+
+/*" Returns an NSData object containing a representation of the receiver in the encoding described by %charsetName. If no NSStringEncoding corresponds to %charsetName this method returns !{nil}. "*/
+
+- (NSData *)dataUsingMIMEEncoding:(NSString *)charsetName
+{
+    NSStringEncoding encoding;
+
+    if((encoding = [NSString stringEncodingForMIMEEncoding:charsetName]) == 0)
+        return nil;
+    return [self dataUsingEncoding:encoding];
+}
+
+
+//---------------------------------------------------------------------------------------
+//	NSStringEncoding vs. MIME Encoding
+//---------------------------------------------------------------------------------------
+
+#ifdef EDCOMMON_OSXBUILD
+
++ (NSStringEncoding)stringEncodingForMIMEEncoding:(NSString *)charsetName
+{
+    CFStringEncoding cfEncoding;
+
+    if(charsetName == nil)
+        return 0;
+
+    charsetName = [charsetName lowercaseString];
+    cfEncoding = CFStringConvertIANACharSetNameToEncoding((CFStringRef)charsetName);
+    if(cfEncoding == kCFStringEncodingInvalidId)
+        return 0;
+    return CFStringConvertEncodingToNSStringEncoding(cfEncoding);
+}
+
+
++ (NSString *)MIMEEncodingForStringEncoding:(NSStringEncoding)nsEncoding
+{
+    CFStringEncoding cfEncoding;
+
+    cfEncoding = CFStringConvertNSStringEncodingToEncoding(nsEncoding);
+    return (NSString *)CFStringConvertEncodingToIANACharSetName(cfEncoding);
+}
+
+
+- (NSString *)recommendedMIMEEncoding
+{
+    static NSStringEncoding preferredEncodings[] = {
+        NSASCIIStringEncoding, NSISOLatin1StringEncoding, NSISOLatin2StringEncoding,
+        // no constants available for ISO8859-3 through ISO8859-15
+        2147484163U, 2147484164U, 2147484165U, 2147484166U, 2147484167U,
+        2147484168U, 2147484169U, 2147484170U, 2147484171U, 2147484173U,
+        2147484174U, 2147484175U, 0 };
+    NSStringEncoding *encodingPtr;
+
+    for(encodingPtr = preferredEncodings; *encodingPtr != 0; encodingPtr++)
+        {
+        if([self canBeConvertedToEncoding:*encodingPtr])
+            return [NSString MIMEEncodingForStringEncoding:*encodingPtr];
+        }
+
+    return [NSString MIMEEncodingForStringEncoding:[self smallestEncoding]];
+}
+
+#else
+
+/*" Returns the NSStringEncoding corresponding to the MIME character set %charsetName or 0 if no such encoding exists. On Mac OS X this wraps #CFStringConvertIANACharSetNameToEncoding and on other platforms hardcoded tables are used. "*/
+
++ (NSStringEncoding)stringEncodingForMIMEEncoding:(NSString *)encoding
+{
+    static NSMutableDictionary	*table = nil;
+
+    if(table == nil)
+        {
+        table = [NSMutableDictionary dictionary];
+        [table setObject:[NSNumber numberWithUnsignedInt:NSASCIIStringEncoding] forKey:MIMEAsciiStringEncoding];
+        [table setObject:[NSNumber numberWithUnsignedInt:NSISOLatin1StringEncoding] forKey:MIMELatin1StringEncoding];
+        [table setObject:[NSNumber numberWithUnsignedInt:NSISOLatin2StringEncoding] forKey:MIMELatin2StringEncoding];
+        [table setObject:[NSNumber numberWithUnsignedInt:NSISO2022JPStringEncoding] forKey:MIME2022JPStringEncoding];
+        [table setObject:[NSNumber numberWithUnsignedInt:NSUTF8StringEncoding] forKey:MIMEUTF8StringEncoding];
+        [table setObject:[NSNumber numberWithUnsignedInt:NSWindowsCP1252StringEncoding] forKey:@"windows-1252"];
+        table = [table copy];
+        }
+    return [[table objectForKey:[encoding lowercaseString]] unsignedIntValue];
+}
+
+
+/*" Returns the MIME character set corresponding to the NSStringEncoding or !{nil} if no such encoding exists. On Mac OS X this wraps #CFStringConvertEncodingToIANACharSetName and on other platforms hardcoded tables are used. "*/
+
++ (NSString *)MIMEEncodingForStringEncoding:(NSStringEncoding)encoding
+{
+    static NSMutableDictionary	*table = nil;
+
+    if(table == nil)
+        {
+        table = [NSMutableDictionary dictionary];
+        [table setObject:MIMEAsciiStringEncoding forKey:[NSNumber numberWithUnsignedInt:NSASCIIStringEncoding]];
+        [table setObject:MIMELatin1StringEncoding forKey:[NSNumber numberWithUnsignedInt:NSISOLatin1StringEncoding]];
+        [table setObject:MIMELatin2StringEncoding forKey:[NSNumber numberWithUnsignedInt:NSISOLatin2StringEncoding]];
+        [table setObject:MIME2022JPStringEncoding forKey:[NSNumber numberWithUnsignedInt:NSISO2022JPStringEncoding]];
+        [table setObject:MIMEUTF8StringEncoding forKey:[NSNumber numberWithUnsignedInt:NSUTF8StringEncoding]];
+        [table setObject:@"windows-1252" forKey:[NSNumber numberWithUnsignedInt:NSWindowsCP1252StringEncoding]];
+        table = [table copy];
+        }
+    return [table objectForKey:[NSNumber numberWithUnsignedInt:encoding]];
+}
+
+
+/*" Returns the encoding, specified as a MIME character set, that the receiver should be converted to when being transferred on the Internet. This method prefers ASCII over ISO-Latin over the smallest encoding. "*/
+
+- (NSString *)recommendedMIMEEncoding
+{
+    if([self canBeConvertedToEncoding:NSASCIIStringEncoding])
+        return MIMEAsciiStringEncoding;
+    if([self canBeConvertedToEncoding:NSISOLatin1StringEncoding])
+        return MIMELatin1StringEncoding;
+    if([self canBeConvertedToEncoding:NSISOLatin2StringEncoding])
+        return MIMELatin2StringEncoding;
+    if([self canBeConvertedToEncoding:NSISO2022JPStringEncoding])
+        return MIME2022JPStringEncoding;
+    if([self canBeConvertedToEncoding:NSUTF8StringEncoding])
+        return MIMEUTF8StringEncoding;
+    return nil;
+}
+
+#endif
+
+
+//---------------------------------------------------------------------------------------
+//	TYPE / FILENAME EXTENSION MAPPING
+//---------------------------------------------------------------------------------------
+
+static NSMutableDictionary *teTable = nil;
+
+
++ (NSDictionary *)_contentTypeExtensionMapping
+{
+    NSString *path;
+
+    if(teTable == nil)
+        {
+        path = [[NSBundle bundleForClass:NSClassFromString(@"EDCommonFramework")] pathForResource:@"MIME" ofType:@"plist"];
+        teTable = [[[NSString stringWithContentsOfFile:path] propertyList] retain];
+        NSAssert([teTable isKindOfClass:[NSDictionary class]], @"Problem with MIME.plist");
+        }
+    return teTable;
+}
+
+
+/*" Adds a mapping between a MIME content type/subtype and a file extension to the internal table; the MIME type/subtype being the first object and the file extension the second object in the pair. Note that one MIME type might be represented by several file extensions but a file extension must always map to exactly one MIME type; for example "image/jpeg" maps to "jpg" and "jpeg." A fairly extensive table is available by default. "*/
+
++ (void)addContentTypePathExtensionPair:(EDObjectPair *)tePair
+{
+    [self _contentTypeExtensionMapping];
+    if([teTable isKindOfClass:[NSMutableDictionary class]] == NO)
+        {
+        [teTable autorelease];
+        teTable = [[NSMutableDictionary alloc] initWithDictionary:teTable];
+        }
+    [teTable setObject:[tePair secondObject] forKey:[tePair firstObject]];
+}
+
+
+/*" Returns a file extension that is used for files of the MIME content type/subtype. Note that one MIME type might be represented by several file extensions. "*/
+
++ (NSString *)pathExtensionForContentType:(NSString *)contentType
+{
+    NSDictionary   	*table;
+    NSEnumerator	*extensionEnum;
+    NSString		*extension;
+
+    contentType = [contentType lowercaseString];
+    table = [self _contentTypeExtensionMapping];
+    extensionEnum = [table keyEnumerator];
+    while((extension = [extensionEnum nextObject]) != nil)
+        {
+        if([[table objectForKey:extension] isEqualToString:contentType])
+            break;
+        }
+    return extension;
+}
+
+
+/*" Returns the MIME content type/subtype for extension "*/
+
++ (NSString *)contentTypeForPathExtension:(NSString *)extension
+{
+    return [[self _contentTypeExtensionMapping] objectForKey:[extension lowercaseString]];
+}
+
+
+//---------------------------------------------------------------------------------------
+//	XML DOCUMENT ENCODING
+//---------------------------------------------------------------------------------------
+
+/*" Examines %xmlData and searches for an XML processing directive that specifies the document's encoding. If found returns the encoding, specified as a MIME character set, otherwise returns !{nil}. "*/
+
++ (NSString *)MIMEEncodingOfXMLDocument:(NSData *)xmlData
+{
+    NSScanner			*scanner;
+    NSString			*pd, *encoding;
+    NSRange				pdRange;
+    const char 			*p, *pmax, *pdStart;
+    short				inQuotes;
+
+    p = [xmlData bytes];
+    pmax = p + [xmlData length];
+
+    // skip initial whitespace, return *nil* if document is completely empty
+    while((p < pmax) && (isspace(*p)))
+        p += 1;
+    if(p == pmax)
+        return nil;
+
+    // grab processing directive
+    if((p + 6 >= pmax) || (*p != '<') || (*p == '?'))
+        [NSException raise:NSGenericException format:@"Could not find processing directive in XML doc."];
+    pdStart = p + 2;
+    inQuotes = 0;
+    for(p = pdStart;p < pmax; p++)
+        {
+        if(*p == '"')
+            inQuotes ^= 1;
+        else if((*p == '>') && (inQuotes == 0))
+            break;
+        }
+    if((p == pmax) || (*(p - 1) != '?'))
+        [NSException raise:NSGenericException format:@"Malformed processing directive in XML doc."];
+    pdRange = NSMakeRange((int)pdStart - (int)[xmlData bytes], (int)p - 1 - (int)pdStart);
+    pd = [NSString stringWithData:[xmlData subdataWithRange:pdRange] encoding:NSASCIIStringEncoding];
+
+    // analyse and find encoding value
+    scanner = [NSScanner scannerWithString:pd];
+    if([scanner scanString:@"xml" intoString:NULL] == NO)
+        [NSException raise:NSGenericException format:@"Could not find processing directive in XML doc."];
+    if([scanner scanUpToString:@"encoding" intoString:NULL] == NO || [scanner isAtEnd])
+        {
+        encoding = MIMEUTF8StringEncoding;
+        }
+    else
+        {
+        [scanner scanString:@"encoding" intoString:NULL];
+        if(([scanner scanString:@"=" intoString:NULL] == NO) ||
+           ([scanner scanString:@"\"" intoString:NULL] == NO) ||
+           ([scanner scanUpToString:@"\"" intoString:&encoding] == NO))
+            [NSException raise:NSGenericException format:@"Malformed processing directive in XML doc."];
+        }
+    return encoding;
+}
+
+
+/*" Examines %xmlData and searches for an XML processing directive that specifies the document's encoding. If found returns the encoding, specified as an NSStringEncoding, otherwise returns 0. "*/
+
++ (NSStringEncoding)encodingOfXMLDocument:(NSData *)xmlData
+{
+    return [self stringEncodingForMIMEEncoding:[self MIMEEncodingOfXMLDocument:xmlData]];
+}
+
+
+
+#ifndef WIN32 // [TRH 2001/01/18] quick hack: disabled since Windows does not have crypt()
 //---------------------------------------------------------------------------------------
 //	CRYPTING
 //---------------------------------------------------------------------------------------
@@ -271,11 +597,12 @@ Note: This method is not available on Windows NT platforms. "*/
 }
 #endif // !defined(WIN32)
 
+
 //---------------------------------------------------------------------------------------
-//	SHARING STRING INSTANCES (USE WITH CAUTION!)
+//	SHARING STRING INSTANCES
 //---------------------------------------------------------------------------------------
 
-/*" Maintains a global pool of string instances. Returns the instance stored in the pool or adds the receiver if no such string was in the pool before. This can be used to allow for equality tests using #{==} instead of #{isEqual:} but this "leaks" all string instances that are ever shared. "*/
+/*" Maintains a global pool of string instances. Returns the instance stored in the pool or adds the receiver if no such string was in the pool before. This can be used to allow for equality tests using #{==} instead of #{isEqual:} but this "leaks" all string instances that are ever shared and, hence, should be used with caution. "*/
 
 - (NSString *)sharedInstance
 {

@@ -1,6 +1,6 @@
 <HTML><HEAD><TITLE></TITLE></HEAD>
 <BODY BGCOLOR="#FFFFFF">
-
+<a href="EDCommonTOC.html">[UP]</a>
 
 <BR><BR><FONT COLOR="#000066"><H1><A NAME="">The EDCommon Framework</A></H1></FONT><BR>
 
@@ -17,7 +17,7 @@
 <h3>Introduction</h3>
 <p>This framework contains a collection of useful Foundation and AppKit extensions, data structures and widgets. An InterfaceBuilder palette is provided as well.</p>
 
-<p>For use in WebObjects 4 projects and/or on platforms that do not have AppKit, Solaris for example, a version without AppKit dependencies can be built by changing one build setting.</p> 
+<p>For use in WebObjects 4 projects and/or on platforms that do not have AppKit, Solaris for example, a version without AppKit dependencies can be built by changing one build setting in the PBWO makefiles (which are included by the GNUStep makefiles.) Non-AppKit builds are currently not supported from PBX.</p> 
 
 
 <h3>Collections</h3>
@@ -36,6 +36,12 @@
 <h3>Foundation Classes</h3>
 <p>Most of the functionality in the Foundation framework is implemented in Objective-C classes but certain parts use C structures and functions. There are certainly good reasons for the design choices made but sometimes the corresponding counterparts can be useful. <b>EDRange</b> is a straightforward implementation of NSRange and associated functions. It is most useful when collections of ranges must be processed. <b>EDLightWeightLock</b> and <b>EDBitmapCharacterSet</b> provide fast but simple implementations of parts of the functionality offered by NSLock and NSCharacterSet.</p>
 
+
+<h3>Socket Classes</h3>
+<p>For some strange reason NeXT, and later Apple, never provided an object-oriented interface for socket programming (except maybe WXSocket in the old WOExamples framework but that one works with <code>char*</code> and friends.) Of course, there are several implementions now, most of them available as source code. The most well-known one is probably OmniGroup's OmniNetworking framework. Compared to Omni's classes the socket classes in this framework are probably a bit more "modern" in the sense that they make use of the few networking classes and methods that were introduced to the Foundation kit. The EDSocket classes also allows for localisation of most of the common networking errors.</p>
+
+<p>The class-hierarchy is fairly straightforward: <b>EDSocket</b> inherits from NSFileHandle and acts as a common base class. This is a fairly natural choice as a socket is really a special file handle and NSFileHandle actually contains some useful methods to deal with socket functionality. At the moment there is only on subclass, namely EDIPSocket representing the protocol family <code>inet</code>. <b>EDIPSocket</b> provides methods for basic IP funtionality: binding to a port, connecting to an address, setting popular socket options, etc. It is not meant to be instantiated, though. This is left to its two sublasses <b>EDTCPSocket</b> and <b>EDUDPSocket</b>. Note that some (IP) socket related functionality is implemented in a category on NSFileHandle.
+</p>
 
 
 <h3>Markup Language Parser</h3>
@@ -56,13 +62,13 @@
 
 
 <h3>Foundation and AppKit Extensions</h3>
-<p>The usual categories. Some extensions, sometimes just convenience methods that Apple forgot. Favourites might be removing whitespace around strings, appending all sorts off stuff to an attributed string and retrieving an object with a case insensitive string key.</p>
+<p>The usual categories. Some extensions, sometimes just convenience methods that Apple forgot. Favourites might be removing whitespace around strings, appending all sorts off stuff to an attributed string and retrieving an object with a case insensitive string key. The string category has some methods to map file extensions to MIME types and vice versa and to work with MIME character set names instead of NSStringEncodings.</p>
 
 <p>AppKit extensions are not always implemented as categories. <b>EDTableView</b> is a subclass that allows more control of the click process in table cells and <b>EDKeyControlWindow</b> is a window subclass that simplifies implemented keyboard shortcuts. <b>EDToolbarDefinition</b> is a standalone class that can create and manage NSToolbars defined in an external text file; format is the Omni not the Apple one.</p>
 
-<p>Finally, the attributed string category in the AppKit subproject contains a method that finds URLs and applies the "usual" formatting to them</p>
+<p>Finally, the attributed string category in the AppKit subproject contains a method that finds URLs and applies the "usual" formatting to them; the "URLifier."</p>
 
 <P><HR>
-Copyright &copy;2002 by Erik Doernenburg.  All Rights Reserved.  
+Copyright &copy; 2002 by Erik Doernenburg.  All Rights Reserved.  
 <P>
 </BODY></HTML>

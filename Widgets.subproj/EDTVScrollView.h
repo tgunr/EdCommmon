@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTVScrollView.h created by erik on Mon 28-Jun-1999
-//  @(#)$Id: EDTVScrollView.h,v 1.3 2002-04-14 14:57:58 znek Exp $
+//  @(#)$Id: EDTVScrollView.h,v 2.0 2002-08-16 18:12:50 erik Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //

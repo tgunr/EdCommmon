@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDLRUCache.m created by erik on Fri 29-Oct-1999
-//  @(#)$Id: EDLRUCache.m,v 1.5 2002-07-10 17:26:46 erik Exp $
+//  @(#)$Id: EDLRUCache.m,v 2.0 2002-08-16 18:12:45 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //

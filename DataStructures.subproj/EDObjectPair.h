@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjectPair.h created by erik on Sat 29-Aug-1998
-//  @(#)$Id: EDObjectPair.h,v 1.3 2002-07-09 15:56:55 erik Exp $
+//  @(#)$Id: EDObjectPair.h,v 2.0 2002-08-16 18:12:46 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -23,13 +23,14 @@
 #define	__EDObjectPair_h_INCLUDE
 
 
-@interface EDObjectPair : NSObject <NSCopying, NSCoding>
+@interface EDObjectPair : NSObject <NSCopying, NSMutableCopying, NSCoding>
 {
     id 	firstObject;	/*" First object of the pair. "*/
     id 	secondObject;   /*" Second object of the pair. "*/
 }
 
 /*" Creating new pair objects "*/
++ (id)pair;
 + (id)pairWithObjectPair:(EDObjectPair *)aPair;
 + (id)pairWithObjects:(id)anObject:(id)anotherObject;
 

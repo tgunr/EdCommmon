@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSScanner+Extensions.h created by erik
-//  @(#)$Id: NSScanner+Extensions.h,v 1.3 2002-07-02 15:05:32 erik Exp $
+//  @(#)$Id: NSScanner+Extensions.h,v 2.0 2002-08-16 18:12:49 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDStringScanner.h created by erik on Mon 24-Apr-2000
-//  $Id: EDStringScanner.h,v 1.3 2002-07-09 15:56:56 erik Exp $
+//  $Id: EDStringScanner.h,v 2.0 2002-08-16 18:12:46 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDBitmapCharset.h created by erik on Fri 08-Oct-1999
-//  @(#)$Id: EDBitmapCharset.h,v 1.4 2002-07-09 16:17:02 znek Exp $
+//  @(#)$Id: EDBitmapCharset.h,v 2.0 2002-08-16 18:12:45 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //

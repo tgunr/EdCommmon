@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCollectionMapping.h created by erik on Wed 17-Mar-1999
-//  @(#)$Id: CollectionMapping.h,v 1.5 2002-07-09 15:53:52 erik Exp $
+//  @(#)$Id: CollectionMapping.h,v 2.0 2002-08-16 18:12:47 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCommonDefines.h created by erik on Fri 28-Mar-1997
-//  @(#)$Id: EDCommonDefines.h,v 1.7 2002-07-09 15:58:58 erik Exp $
+//  @(#)$Id: EDCommonDefines.h,v 2.0 2002-08-16 18:12:43 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //

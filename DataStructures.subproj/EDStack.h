@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDStack.h created by erik on Sat 19-Jul-1997
-//  @(#)$Id: EDStack.h,v 1.4 2002-07-09 15:56:56 erik Exp $
+//  @(#)$Id: EDStack.h,v 2.0 2002-08-16 18:12:46 erik Exp $
 //
 //  Copyright (c) 1997 by Erik Doernenburg. All rights reserved.
 //

@@ -12,15 +12,15 @@ NAME = DataStructures
 PROJECTVERSION = 2.8
 PROJECT_TYPE = Component
 
-CLASSES = EDIRCObject.m EDLRUCache.m EDAOMTagProcessor.m\
-          EDMLParser.m EDMLToken.m EDNumberSet.m EDObjectPair.m\
-          EDObjectReference.m EDRange.m EDRedBlackTree.m\
+CLASSES = EDIRCObject.m EDLRUCache.m EDAOMTagProcessor.m EDMLParser.m\
+          EDMLToken.m EDMutableObjectPair.m EDNumberSet.m\
+          EDObjectPair.m EDObjectReference.m EDRange.m EDRedBlackTree.m\
           EDSparseClusterArray.m EDStack.m EDStringScanner.m
 
 HFILES = EDBitmapCharset.h EDIRCObject.h EDLightWeightLock.h\
          EDLRUCache.h EDAOMTagProcessor.h EDMLParser.h\
-         EDMLTagProcessorProtocol.h EDMLToken.h EDNumberSet.h\
-         EDObjectPair.h EDObjectReference.h EDRange.h\
+         EDMLTagProcessorProtocol.h EDMLToken.h EDMutableObjectPair.h\
+         EDNumberSet.h EDObjectPair.h EDObjectReference.h EDRange.h\
          EDRedBlackTree+Private.h EDRedBlackTree.h\
          EDSparseClusterArray.h EDStack.h EDStringScanner.h
 
@@ -43,7 +43,8 @@ PUBLIC_HEADERS = EDIRCObject.h EDNumberSet.h EDObjectPair.h\
                  EDRedBlackTree+Private.h EDSparseClusterArray.h\
                  EDBitmapCharset.h EDLRUCache.h EDMLParser.h EDStack.h\
                  EDStringScanner.h EDLightWeightLock.h\
-                 EDAOMTagProcessor.h EDMLTagProcessorProtocol.h
+                 EDAOMTagProcessor.h EDMLTagProcessorProtocol.h\
+                 EDMutableObjectPair.h
 
 PROJECT_HEADERS = EDStack.h EDStringScanner.h EDLightWeightLock.h
 

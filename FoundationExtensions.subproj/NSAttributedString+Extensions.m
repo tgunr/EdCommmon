@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSAttributedString+Extensions.h created by erik on Tue 05-Oct-1999
-//  $Id: NSAttributedString+Extensions.m,v 1.2 2002-07-02 15:05:32 erik Exp $
+//  $Id: NSAttributedString+Extensions.m,v 2.0 2002-08-16 18:12:48 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //

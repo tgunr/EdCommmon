@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 1.15 2002-07-14 17:15:42 znek Exp $
+//  @(#)$Id: EDMLParser.m,v 2.0 2002-08-16 18:12:45 erik Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -20,6 +20,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NSArray+Extensions.h"
+#import "NSString+Extensions.h"
 #import "EDBitmapCharset.h"
 #import "EDObjectPair.h"
 #import "EDMLToken.h"
@@ -28,6 +29,7 @@
 
 
 @interface EDMLParser(PrivateAPI)
++ (void)_initializeCharacterSets;
 - (void)_parserLoop;
 - (EDMLToken *)_nextToken;
 - (EDMLToken *)_peekedToken;
@@ -102,11 +104,11 @@ Typically, a parser with a custom tag processor is used as follows: !{
     toplevelElements = [parser parseString:myDocument];
 }
 
-Note that there is a category in EDInternet to conveniently load XML files. "*/
+Note that there is a convenience method to parse XML files. "*/
 
 
 NSString *EDMLParserException = @"EDMLParserException";
-EDBitmapCharset *idCharset, *spaceCharset, *textCharset, *attrStopCharset;
+EDBitmapCharset *idCharset, *spaceCharset = NULL, *textCharset, *attrStopCharset;
 NSCharacterSet *colonNSCharset;
 
 
@@ -114,7 +116,7 @@ NSCharacterSet *colonNSCharset;
 //	CLASS INITIALISATION
 //---------------------------------------------------------------------------------------
 
-+ (void)initialize
++ (void)_initializeCharacterSets
 {
     spaceCharset = EDBitmapCharsetFromCharacterSet([self spaceCharacterSet]);
     textCharset = EDBitmapCharsetFromCharacterSet([self textCharacterSet]);
@@ -268,6 +270,9 @@ Note that the tag processor can specify that whitespace within text, i.e. betwee
     id				result;
     NSException		*parserException;
 
+    if(textCharset == NULL)
+        [[self class] _initializeCharacterSets];
+    
     length = [aString length];
     source = NSZoneMalloc([self zone], sizeof(unichar) * (length + 1));
     [aString getCharacters:source];
@@ -276,11 +281,11 @@ Note that the tag processor can specify that whitespace within text, i.e. betwee
 
     [namespaceStack addObject:[NSDictionary dictionaryWithObjectsAndKeys:[tagProcessor defaultNamespace], DEFAULTNSKEY, nil]];
     lexmode = EDMLPTextMode;
+    result = nil; // keep compiler happy
+    parserException = nil;
 
     NS_DURING
 
-    result = nil; // keep compiler happy
-    parserException = nil;
     [self _parserLoop];
     if([stack count] > 1)
         [NSException raise:EDMLParserException format:@"Unexpected end of source."];
@@ -302,6 +307,15 @@ Note that the tag processor can specify that whitespace within text, i.e. betwee
 
     return result;
 }
+
+
+/*" Determines the string encoding of the %xmlData, converts it into a string and calls #{parseString:}. "*/
+
+- (NSArray *)parseXMLDocument:(NSData *)xmlData
+{
+    return [self parseString:[NSString stringWithData:xmlData MIMEEncoding:[NSString MIMEEncodingOfXMLDocument:xmlData]]];
+}
+
 
 
 //---------------------------------------------------------------------------------------
@@ -412,57 +426,57 @@ static __inline__ unichar *nextchar(unichar *charp, BOOL raiseOnEnd)
                 [NSException raise:EDMLParserException format:@"Syntax Error at pos. %d; found `<' in a tag.", (charp - source)];
                 token = nil;  // keep compiler happy
                 }
-                else if(*charp == '>')
-                    {
-                    charp = nextchar(charp, NO);
-                    token = [EDMLToken tokenWithType:EDMLPT_GT];
-                    lexmode = EDMLPTextMode;
-                    }
-                else if(*charp == '/' && *(charp - 1) != '=') // this handles corrupt HTML as in <body background=/path/to/image.jpg>
+            else if(*charp == '>')
+                {
+                charp = nextchar(charp, NO);
+                token = [EDMLToken tokenWithType:EDMLPT_GT];
+                lexmode = EDMLPTextMode;
+                }
+            else if(*charp == '/' && *(charp - 1) != '=') // this handles corrupt HTML as in <body background=/path/to/image.jpg>
+                {
+                charp = nextchar(charp, YES);
+                token = [EDMLToken tokenWithType:EDMLPT_SLASH];
+                }
+            else if(*charp == '=')
+                {
+                charp = nextchar(charp, YES);
+                token = [EDMLToken tokenWithType:EDMLPT_EQ];
+                }
+            else
+                {
+                if(*charp == '"')
                     {
                     charp = nextchar(charp, YES);
-                    token = [EDMLToken tokenWithType:EDMLPT_SLASH];
+                    start = charp;
+                    while(*charp != '"')
+                        charp = nextchar(charp, YES);
+                    tvalue = [NSString stringWithCharacters:start length:(charp - start)];
+                    charp = nextchar(charp, YES);
                     }
-                else if(*charp == '=')
+                else if(*charp == '\'')
                     {
                     charp = nextchar(charp, YES);
-                    token = [EDMLToken tokenWithType:EDMLPT_EQ];
+                    start = charp;
+                    while(*charp != '\'')
+                        charp = nextchar(charp, YES);
+                    tvalue = [NSString stringWithCharacters:start length:(charp - start)];
+                    charp = nextchar(charp, YES);
                     }
                 else
                     {
-                    if(*charp == '"')
-                        {
+                    start = charp;
+                    while(EDBitmapCharsetContainsCharacter(attrStopCharset, *charp) == NO)
                         charp = nextchar(charp, YES);
-                        start = charp;
-                        while(*charp != '"')
-                            charp = nextchar(charp, YES);
-                        tvalue = [NSString stringWithCharacters:start length:(charp - start)];
-                        charp = nextchar(charp, YES);
-                        }
-                    else if(*charp == '\'')
-                        {
-                        charp = nextchar(charp, YES);
-                        start = charp;
-                        while(*charp != '\'')
-                            charp = nextchar(charp, YES);
-                        tvalue = [NSString stringWithCharacters:start length:(charp - start)];
-                        charp = nextchar(charp, YES);
-                        }
-                    else
-                        {
-                        start = charp;
-                        while(EDBitmapCharsetContainsCharacter(attrStopCharset, *charp) == NO)
-                            charp = nextchar(charp, YES);
-                        if(charp == start)
-                            [NSException raise:EDMLParserException format:@"Syntax error at pos. %d; expected either `>' or a tag attribute/value. (Note that tag attribute values must be quoted if they contain anything other than alphanumeric characters.)", (charp - source)];
-                        if(*(charp - 1) == '/')
-                            charp -= 1;
-                        tvalue = [NSString stringWithCharacters:start length:(charp - start)];
-                        }
-                    token = [EDMLToken tokenWithType:EDMLPT_TSTRING];
-                    [token setValue:tvalue];
+                    if(charp == start)
+                        [NSException raise:EDMLParserException format:@"Syntax error at pos. %d; expected either `>' or a tag attribute/value. (Note that tag attribute values must be quoted if they contain anything other than alphanumeric characters.)", (charp - source)];
+                    if(*(charp - 1) == '/')
+                        charp -= 1;
+                    tvalue = [NSString stringWithCharacters:start length:(charp - start)];
                     }
-                break;
+                token = [EDMLToken tokenWithType:EDMLPT_TSTRING];
+                [token setValue:tvalue];
+                }
+            break;
 
         default: // keep compiler happy
             token = nil;

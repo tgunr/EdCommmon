@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSObject+Extensions.h created by erik on Sun 06-Sep-1998
-//  @(#)$Id: NSObject+Extensions.h,v 1.4 2002-07-09 15:53:52 erik Exp $
+//  @(#)$Id: NSObject+Extensions.h,v 2.0 2002-08-16 18:12:49 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -47,6 +47,7 @@
 @end
 
 
+IMP EDGetFirstUnusedIMPForSelector(Class aClass, SEL aSelector, BOOL isClassMethod);
 BOOL EDClassIsSuperclassOfClass(Class aClass, Class subClass);
 NSArray *EDSubclassesOfClass(Class aClass);
 

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSFileHandle+NetExt.m created by erik
-//  @(#)$Id: NSFileHandle+Extensions.m,v 1.1 2002-08-16 18:10:45 erik Exp $
+//  @(#)$Id: NSFileHandle+Extensions.m,v 2.0 2002-08-16 18:12:48 erik Exp $
 //
 //  Copyright (c) 1997,1999 by Erik Doernenburg. All rights reserved.
 //

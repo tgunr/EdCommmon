@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSProcessInfo+Extensions.m created by znek on Sat 23-Sep-2000
-//  $Id: NSProcessInfo+Extensions.m,v 1.2 2002-07-02 15:05:32 erik Exp $
+//  $Id: NSProcessInfo+Extensions.m,v 2.0 2002-08-16 18:12:49 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //

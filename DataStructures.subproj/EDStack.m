@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDStack.m created by erik on Sat 19-Jul-1997
-//  @(#)$Id: EDStack.m,v 1.4 2002-07-10 17:26:47 erik Exp $
+//  @(#)$Id: EDStack.m,v 2.0 2002-08-16 18:12:46 erik Exp $
 //
 //  Copyright (c) 1997 by Erik Doernenburg. All rights reserved.
 //
@@ -26,7 +26,7 @@
     @implementation EDStack
 //---------------------------------------------------------------------------------------
 
-/*" From a purely functional point EDStack does not add anything to NSArray. However, EDStack clarifies the indended use of the datastructure. Note that it is not a subclass of NSMutableArray; something you might expect if you are familiar with Java.
+/*" From a purely functional point EDStack does not add anything to NSArray. However, EDStack clarifies the indended use of the datastructure. Note that it is not a subclass of NSMutableArray; something you might expect if you are familiar with Java. (See Martin Fowler "Refactoring" p. 352 for a good explanation why the Java way is "wrong.")
 
 This datastructure does not implement the copying and coding protocols as stacks are usually required in the context of algorithms, rather than data storage. "*/
 

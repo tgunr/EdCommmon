@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.m created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.m,v 1.8 2002-07-09 15:53:52 erik Exp $
+//  @(#)$Id: NSArray+Extensions.m,v 2.0 2002-08-16 18:12:48 erik Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -97,6 +97,14 @@ static EDObjcMethodInfo myFirstObjectMethod;
 #endif
 
 //---------------------------------------------------------------------------------------
+
+/*" Returns a new array that is a copy of the receiver with the objects arranged in reverse. "*/
+
+- (NSArray *)reversedArray
+{
+    return [[self reverseObjectEnumerator] allObjects];
+}
+
 
 /*" Returns a new array that is a copy of the receiver with the objects rearranged randomly. "*/
 

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSData+Extensions.m created by erik on Mon 20-Nov-2000
-//  $Id: NSData+Extensions.m,v 1.2 2002-07-02 15:05:32 erik Exp $
+//  $Id: NSData+Extensions.m,v 2.0 2002-08-16 18:12:48 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //

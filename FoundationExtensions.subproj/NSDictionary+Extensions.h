@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSDictionary+Extensions.h created by znek on Sun 02-Jan-2000
-//  @(#)$Id: NSDictionary+Extensions.h,v 1.3 2002-07-02 15:05:32 erik Exp $
+//  @(#)$Id: NSDictionary+Extensions.h,v 2.0 2002-08-16 18:12:48 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //

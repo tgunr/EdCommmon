@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTableView.m created by erik on Mon 28-Jun-1999
-//  @(#)$Id: EDTableView.m,v 1.5 2002-07-09 17:02:42 erik Exp $
+//  @(#)$Id: EDTableView.m,v 2.0 2002-08-16 18:12:50 erik Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //

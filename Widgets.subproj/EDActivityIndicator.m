@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDActivityIndicator.m created by erik on Tue 10-Nov-1998
-//  @(#)$Id: EDActivityIndicator.m,v 1.4 2002-07-09 17:02:42 erik Exp $
+//  @(#)$Id: EDActivityIndicator.m,v 2.0 2002-08-16 18:12:49 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //

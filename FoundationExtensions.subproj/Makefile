@@ -12,19 +12,28 @@ NAME = FoundationExtensions
 PROJECTVERSION = 2.8
 PROJECT_TYPE = Component
 
-CLASSES = NSArray+Extensions.m NSAttributedString+Extensions.m\
-          NSData+Extensions.m NSDate+Extensions.m\
-          NSDictionary+Extensions.m NSInvocation+Extensions.m\
-          NSObject+Extensions.m NSProcessInfo+Extensions.m\
-          NSSet+Extensions.m NSScanner+Extensions.m\
-          NSString+Extensions.m
+GLOBAL_RESOURCES = MIME.plist
 
-HFILES = NSArray+Extensions.h NSAttributedString+Extensions.h\
-         NSData+Extensions.h NSDate+Extensions.h\
-         NSDictionary+Extensions.h NSInvocation+Extensions.h\
-         NSObject+Extensions.h NSProcessInfo+Extensions.h\
-         NSSet+Extensions.h NSScanner+Extensions.h NSString+Extensions.h\
+CLASSES = EDIPSocket.m EDSocket.m EDStream.m EDTCPSocket.m\
+          EDUDPSocket.m NSArray+Extensions.m\
+          NSAttributedString+Extensions.m NSData+Extensions.m\
+          NSDate+Extensions.m NSDictionary+Extensions.m\
+          NSFileHandle+Extensions.m NSHost+Extensions.m\
+          NSInvocation+Extensions.m NSObject+Extensions.m\
+          NSProcessInfo+Extensions.m NSSet+Extensions.m\
+          NSScanner+Extensions.m NSString+Extensions.m
+
+HFILES = EDIPSocket.h EDSocket.h EDStream.h EDUDPSocket.h\
+         EDTCPSocket.h functions.h NSArray+Extensions.h\
+         NSAttributedString+Extensions.h NSData+Extensions.h\
+         NSDate+Extensions.h NSDictionary+Extensions.h\
+         NSFileHandle+Extensions.h NSHost+Extensions.h\
+         NSInvocation+Extensions.h NSObject+Extensions.h\
+         NSProcessInfo+Extensions.h NSSet+Extensions.h\
+         NSScanner+Extensions.h NSString+Extensions.h\
          CollectionMapping.h
+
+MFILES = functions.m
 
 OTHERSRCS = Makefile.preamble Makefile Makefile.postamble
 
@@ -45,7 +54,9 @@ PUBLIC_HEADERS = NSArray+Extensions.h NSDate+Extensions.h\
                  NSDictionary+Extensions.h\
                  NSAttributedString+Extensions.h NSData+Extensions.h\
                  NSProcessInfo+Extensions.h NSSet+Extensions.h\
-                 NSInvocation+Extensions.h
+                 NSInvocation+Extensions.h EDIPSocket.h EDSocket.h\
+                 EDStream.h EDUDPSocket.h EDTCPSocket.h functions.h\
+                 NSHost+Extensions.h NSFileHandle+Extensions.h
 
 PROJECT_HEADERS = CollectionMapping.h NSString+Extensions.h\
                   NSAttributedString+Extensions.h NSSet+Extensions.h

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDIRCObject.m created by erik
-//  @(#)$Id: EDIRCObject.m,v 1.3 2002-07-09 15:56:56 erik Exp $
+//  @(#)$Id: EDIRCObject.m,v 2.0 2002-08-16 18:12:45 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -31,7 +31,7 @@
 /*" Use this class as superclass instead of NSObject when you want the retain count for your instances managed internally; hence %{I}nternal %{R}etain %{C}ount and not what you might have thought. The implementation is thread-safe and can provide allocation statistics with the NeXT/Apple runtimes. (There is no such thing in GNUStep anyway, is there?) "*/
 
 
-static EDLightWeightLock retainLock;
+static EDLightWeightLock *retainLock;
 
 
 //---------------------------------------------------------------------------------------
@@ -41,12 +41,11 @@ static EDLightWeightLock retainLock;
 + (void)initialize
 {
     static BOOL initialized = NO;
-
     if(initialized == YES)
         return;
 
     initialized = YES;
-    EDLWLInit(&retainLock);
+    retainLock = EDLWLCreate();
 }
 
 
@@ -62,7 +61,7 @@ static EDLightWeightLock retainLock;
 
 - retain
 {
-    EDLWLLock(&retainLock);
+    EDLWLLock(retainLock);
 
 #ifndef GNUSTEP
     if(NSKeepAllocationStatistics)
@@ -71,14 +70,14 @@ static EDLightWeightLock retainLock;
 
     retainCount += 1;
 
-    EDLWLUnlock(&retainLock);
+    EDLWLUnlock(retainLock);
     return self;
 }
 
 
 - (void)release
 {
-    EDLWLLock(&retainLock);
+    EDLWLLock(retainLock);
 
 #ifndef GNUSTEP
     if(NSKeepAllocationStatistics) 
@@ -87,13 +86,13 @@ static EDLightWeightLock retainLock;
 
     if(retainCount == 0)
         {
-        EDLWLUnlock(&retainLock);
+        EDLWLUnlock(retainLock);
         [self dealloc];
         return;
         }
     retainCount -= 1;
 
-    EDLWLUnlock(&retainLock);
+    EDLWLUnlock(retainLock);
 }
 
 

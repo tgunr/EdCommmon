@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMutableObjectPair.m created by erik on Tue Jul 23 2002
-//  @(#)$Id: EDMutableObjectPair.m,v 1.1 2002-08-16 18:10:44 erik Exp $
+//  @(#)$Id: EDMutableObjectPair.m,v 2.0 2002-08-16 18:12:46 erik Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDApplication.h created by erik on Sun 19-Jul-1998
-//  @(#)$Id: EDApplication.h,v 1.4 2002-07-09 15:56:50 erik Exp $
+//  @(#)$Id: EDApplication.h,v 2.0 2002-08-16 18:12:43 erik Exp $
 //
 //  Copyright (c) 1998 by Erik Doernenburg. All rights reserved.
 //

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+printf.m created by erik on Sat 27-Sep-1997
-//  @(#)$Id: NSString+Extensions.h,v 1.7 2002-07-02 15:05:33 erik Exp $
+//  @(#)$Id: NSString+Extensions.h,v 2.0 2002-08-16 18:12:49 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -24,8 +24,9 @@
 
 
 #import <Foundation/NSString.h>
+#import "EDCommonDefines.h"
 
-@class NSFileHandle;
+@class NSFileHandle, EDObjectPair;
 
 #ifndef EDCOMMON_WOBUILD
 @class NSFont;
@@ -44,12 +45,6 @@
 - (NSString *)stringByRemovingWhitespace;
 - (NSString *)stringByRemovingCharactersFromSet:(NSCharacterSet *)set;
 
-#ifndef EDCOMMON_WOBUILD
-/*" Abbreviating paths "*/
-- (NSString *)stringByAbbreviatingPathToWidth:(float)maxWidth forFont:(NSFont *)font;
-- (NSString *)stringByAbbreviatingPathToWidth:(float)maxWidth forAttributes:(NSDictionary *)attributes;
-#endif
-
 /*" Comparisons "*/
 - (BOOL)hasPrefixCaseInsensitive:(NSString *)string;
 - (BOOL)isEmpty;
@@ -58,12 +53,37 @@
 - (BOOL)boolValue;
 - (unsigned int)intValueForHex;
 
+/*" Using MIME encoding names "*/
++ (NSString *)stringWithData:(NSData *)data MIMEEncoding:(NSString *)charsetName;
++ (NSString *)stringWithBytes:(const void *)buffer length:(unsigned int)length MIMEEncoding:(NSString *)charsetName;
+
+- (id)initWithData:(NSData *)buffer MIMEEncoding:(NSString *)charsetName;
+- (NSData *)dataUsingMIMEEncoding:(NSString *)charsetName;
+
++ (NSStringEncoding)stringEncodingForMIMEEncoding:(NSString *)charsetName;
++ (NSString *)MIMEEncodingForStringEncoding:(NSStringEncoding)encoding;
+- (NSString *)recommendedMIMEEncoding;
+
+/*" Filename extensions for MIME types "*/
++ (NSString *)pathExtensionForContentType:(NSString *)contentType;
++ (NSString *)contentTypeForPathExtension:(NSString *)extension;
++ (void)addContentTypePathExtensionPair:(EDObjectPair *)tePair;
+
+/*" Determining encoding of XML documents "*/
++ (NSString *)MIMEEncodingOfXMLDocument:(NSData *)xmlData;
++ (NSStringEncoding)encodingOfXMLDocument:(NSData *)xmlData;
 
 #ifndef WIN32
 /*" Encryptions "*/
 - (NSString *)encryptedString;
 - (NSString *)encryptedStringWithSalt:(const char *)salt;
 - (BOOL)isValidEncryptionOfString:(NSString *)aString;
+#endif
+
+#ifndef EDCOMMON_WOBUILD
+/*" Abbreviating paths "*/
+- (NSString *)stringByAbbreviatingPathToWidth:(float)maxWidth forFont:(NSFont *)font;
+- (NSString *)stringByAbbreviatingPathToWidth:(float)maxWidth forAttributes:(NSDictionary *)attributes;
 #endif
 
 /*" Sharing instances "*/
@@ -77,6 +97,31 @@
 
 @end
 
+/*" String constants for common MIME string ecoding names. In Core Foundation these are referred to as IANA charset names. Unless you know a method/framework uses "shared" or "pooled" strings you must compare using #{isEqualToString:} and not the !{==} operator. "*/
+EDCOMMON_EXTERN NSString *MIMEAsciiStringEncoding;
+EDCOMMON_EXTERN NSString *MIMELatin1StringEncoding;
+EDCOMMON_EXTERN NSString *MIMELatin2StringEncoding;
+EDCOMMON_EXTERN NSString *MIME2022JPStringEncoding;
+EDCOMMON_EXTERN NSString *MIMEUTF8StringEncoding;
+
+/*" String constants for common MIME content types. Unless you know a method/framework uses "shared" or "pooled" strings you must compare using #{isEqualToString:} and not !{==}. "*/
+EDCOMMON_EXTERN NSString *MIMEApplicationContentType;
+EDCOMMON_EXTERN NSString *MIMEImageContentType;
+EDCOMMON_EXTERN NSString *MIMEAudioContentType;
+EDCOMMON_EXTERN NSString *MIMEMessageContentType;
+EDCOMMON_EXTERN NSString *MIMEMultipartContentType;
+EDCOMMON_EXTERN NSString *MIMETextContentType;
+EDCOMMON_EXTERN NSString *MIMEVideoContentType;
+
+EDCOMMON_EXTERN NSString *MIMEAlternativeMPSubtype;
+EDCOMMON_EXTERN NSString *MIMEMixedMPSubtype;
+EDCOMMON_EXTERN NSString *MIMEParallelMPSubtype;
+EDCOMMON_EXTERN NSString *MIMEDigestMPSubtype;
+EDCOMMON_EXTERN NSString *MIMERelatedMPSubtype;
+
+EDCOMMON_EXTERN NSString *MIMEInlineContentDisposition;
+EDCOMMON_EXTERN NSString *MIMEAttachmentContentDisposition;
+
 
 /*" Various common extensions to #NSMutableString. "*/
 
@@ -87,6 +132,8 @@
 - (void)removeCharactersInSet:(NSCharacterSet *)set;
 
 @end
+
+
 
 #endif	/* __NSString_Extensions_h_INCLUDE */
 

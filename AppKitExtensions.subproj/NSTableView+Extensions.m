@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSTableView+Extensions.m created by erik on Sun 12-Sep-1999
-//  @(#)$Id: NSTableView+Extensions.m,v 1.2 2002-07-02 16:25:26 erik Exp $
+//  @(#)$Id: NSTableView+Extensions.m,v 2.0 2002-08-16 18:12:44 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //

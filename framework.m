@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  framework.m created by erik on Sun 28-May-2000
-//  @(#)$Id: framework.m,v 1.4 2002-04-14 14:57:53 znek Exp $
+//  @(#)$Id: framework.m,v 2.0 2002-08-16 18:12:43 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //

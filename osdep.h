@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  osdep.h created by erik on Wed 28-Jan-1998
-//  @(#)$Id: osdep.h,v 1.1 2002-08-16 18:10:44 erik Exp $
+//  @(#)$Id: osdep.h,v 2.0 2002-08-16 18:12:43 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //

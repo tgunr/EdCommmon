@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDRedBlackTree.h created by erik on Sun 13-Sep-1998
-//  @(#)$Id: EDRedBlackTree.h,v 1.3 2002-07-09 15:56:55 erik Exp $
+//  @(#)$Id: EDRedBlackTree.h,v 2.0 2002-08-16 18:12:46 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //

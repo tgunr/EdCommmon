@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDToolbarDefinition.h created by erik on Sat 06-Jun-2001
-//  @(#)$Id: EDToolbarDefinition.m,v 1.4 2002-07-09 15:56:50 erik Exp $
+//  @(#)$Id: EDToolbarDefinition.m,v 2.0 2002-08-16 18:12:44 erik Exp $
 //
 //  Copyright (c) 2001 by Erik Doernenburg. All rights reserved.
 //

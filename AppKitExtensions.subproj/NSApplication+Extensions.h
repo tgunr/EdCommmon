@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSApplication+Extensions.h created by erik on Sat 09-Oct-1999
-//  @(#)$Id: NSApplication+Extensions.h,v 1.4 2002-07-02 16:25:26 erik Exp $
+//  @(#)$Id: NSApplication+Extensions.h,v 2.0 2002-08-16 18:12:44 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDLWLock.h created by erik on Sun 21-May-2000
-//  $Id: EDLightWeightLock.h,v 1.3 2002-07-09 15:56:56 erik Exp $
+//  $Id: EDLightWeightLock.h,v 2.0 2002-08-16 18:12:45 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -31,14 +31,17 @@
 
 typedef pthread_mutex_t EDLightWeightLock;
 
-static __inline__ void EDLWLInit(EDLightWeightLock *mutex)
+static __inline__ EDLightWeightLock *EDLWLCreate()
 {
+    EDLightWeightLock *mutex = malloc(sizeof(EDLightWeightLock));
     pthread_mutex_init(mutex, NULL);
+    return mutex;
 }
 
 static __inline__ void EDLWLDispose(EDLightWeightLock *mutex)
 {
     pthread_mutex_destroy(mutex);
+    free(mutex);
 }
 
 static __inline__ void EDLWLLock(EDLightWeightLock *mutex)
@@ -57,9 +60,9 @@ static __inline__ void EDLWLUnlock(EDLightWeightLock *mutex)
 
 typedef struct objc_mutex EDLightWeightLock;
 
-static __inline__ void EDLWLInit(EDLightWeightLock *mutex)
+static __inline__ EDLightWeightLock *EDLWLCreate()
 {
-    mutex = objc_mutex_allocate();
+    return objc_mutex_allocate();
 }
 
 static __inline__ void EDLWLDispose(EDLightWeightLock *mutex)
@@ -88,16 +91,19 @@ static __inline__ void EDLWLUnlock(EDLightWeightLock *mutex)
 typedef struct mutex EDLightWeightLock;
 
 
-/*" Under certain circumstances even the low overhead of NSLocks is too much and direct access to the platform's locks is required. These four functions initialise a lock, dispose of it and allow to lock and unlock it. "*/
+/*" Under certain circumstances even the low overhead of NSLocks is too much and direct access to the platform's locks is required. These four functions allocate, initialise and return a lock, dispose of it and allow to lock and unlock it. "*/
 
-static __inline__ void EDLWLInit(EDLightWeightLock *mutex)
+static __inline__ EDLightWeightLock *EDLWLCreate()
 {
+    EDLightWeightLock *mutex = malloc(sizeof(EDLightWeightLock));
     mutex_init(mutex);
+    return mutex;
 }
 
 static __inline__ void EDLWLDispose(EDLightWeightLock *mutex)
 {
     mutex_clear(mutex);
+    free(mutex);
 }
 
 static __inline__ void EDLWLLock(EDLightWeightLock *mutex)

@@ -1,5 +1,5 @@
 # Widgets.subproj
-# $Id: GNUmakefile,v 1.2 2002-07-18 23:49:47 znek Exp $
+# $Id: GNUmakefile,v 2.0 2002-08-16 18:12:50 erik Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -8,19 +8,20 @@ else
 
 include $(GNUSTEP_MAKEFILES)/common.make
 
-
-SUBPROJECT_NAME = Widgets.subproj
-
-ADDITIONAL_INCLUDE_DIRS = -I..
-
 ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
 ADDITIONAL_OBJCFLAGS += -DGNU_RUNTIME
 endif
+
+ADDITIONAL_INCLUDE_DIRS = -I..
+
+
+SUBPROJECT_NAME = Widgets.subproj
 
 
 Widgets.subproj_HEADER_FILES = \
 EDActivityIndicator.h   EDObjectWell.h          EDTVScrollView.h \
 EDCanvas.h              EDSwapView.h            EDTableView.h
+
 
 Widgets.subproj_OBJC_FILES = \
 EDActivityIndicator.m   EDObjectWell.m          EDTVScrollView.m \

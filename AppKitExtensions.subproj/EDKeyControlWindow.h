@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDKeyControlWindow.h created by erik on Sat 14-Aug-1999
-//  @(#)$Id: EDKeyControlWindow.h,v 1.3 2002-07-09 15:56:50 erik Exp $
+//  @(#)$Id: EDKeyControlWindow.h,v 2.0 2002-08-16 18:12:44 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //

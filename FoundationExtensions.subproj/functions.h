@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  functions.h created by erik
-//  @(#)$Id: functions.h,v 1.1 2002-08-16 18:10:45 erik Exp $
+//  @(#)$Id: functions.h,v 2.0 2002-08-16 18:12:49 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //

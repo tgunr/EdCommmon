@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDStringScanner.m created by erik on Mon 24-Apr-2000
-//  $Id: EDStringScanner.m,v 1.2 2002-07-09 15:56:56 erik Exp $
+//  $Id: EDStringScanner.m,v 2.0 2002-08-16 18:12:46 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDNumberSet.m created by erik on Sun 04-Jul-1999
-//  @(#)$Id: EDNumberSet.m,v 1.2 2002-07-09 15:56:56 erik Exp $
+//  @(#)$Id: EDNumberSet.m,v 2.0 2002-08-16 18:12:46 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //

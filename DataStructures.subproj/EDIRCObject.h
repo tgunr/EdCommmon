@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDIRCObject.h created by erik
-//  @(#)$Id: EDIRCObject.h,v 1.3 2002-07-09 15:56:55 erik Exp $
+//  @(#)$Id: EDIRCObject.h,v 2.0 2002-08-16 18:12:45 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //

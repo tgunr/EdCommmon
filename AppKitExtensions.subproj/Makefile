@@ -14,18 +14,18 @@ PROJECT_TYPE = Component
 
 GLOBAL_RESOURCES = arrows.tiff
 
-CLASSES = NSApplication+Extensions.m\
+CLASSES = EDApplication.m EDKeyControlWindow.m EDToolbarDefinition.m\
+          NSApplication+Extensions.m\
           NSAttributedString+AppKitExtensions.m NSMatrix+Extensions.m\
           NSPasteboard+Extensions.m NSTableView+Extensions.m\
           NSTableColumn+Extensions.m NSWindow+Extensions.m\
-          NSWorkspace+Extensions.m EDApplication.m EDKeyControlWindow.m\
-          EDToolbarDefinition.m
+          NSWorkspace+Extensions.m
 
-HFILES = NSApplication+Extensions.h NSAttributedString+AppKitExtensions.h\
+HFILES = EDApplication.h EDKeyControlWindow.h EDToolbarDefinition.h\
+         NSApplication+Extensions.h NSAttributedString+AppKitExtensions.h\
          NSMatrix+Extensions.h NSPasteboard+Extensions.h\
          NSTableView+Extensions.h NSTableColumn+Extensions.h\
-         NSWindow+Extensions.h NSWorkspace+Extensions.h EDApplication.h\
-         EDKeyControlWindow.h EDToolbarDefinition.h
+         NSWindow+Extensions.h NSWorkspace+Extensions.h
 
 OTHERSRCS = Makefile.preamble Makefile Makefile.postamble
 

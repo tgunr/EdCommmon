@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDLRUCache.h created by erik on Fri 29-Oct-1999
-//  @(#)$Id: EDLRUCache.h,v 1.4 2002-07-09 15:56:55 erik Exp $
+//  @(#)$Id: EDLRUCache.h,v 2.0 2002-08-16 18:12:45 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //

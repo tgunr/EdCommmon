@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDIPSocket.h created by erik
-//  @(#)$Id: EDIPSocket.h,v 1.1 2002-08-16 18:10:44 erik Exp $
+//  @(#)$Id: EDIPSocket.h,v 2.0 2002-08-16 18:12:47 erik Exp $
 //
 //  Copyright (c) 1997-2001 by Erik Doernenburg. All rights reserved.
 //

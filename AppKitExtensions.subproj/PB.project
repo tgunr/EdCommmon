@@ -3,6 +3,9 @@
     English_RESOURCES = {}; 
     FILESTABLE = {
         CLASSES = (
+            EDApplication.m, 
+            EDKeyControlWindow.m, 
+            EDToolbarDefinition.m, 
             "NSApplication+Extensions.m", 
             "NSAttributedString+AppKitExtensions.m", 
             "NSMatrix+Extensions.m", 
@@ -10,12 +13,12 @@
             "NSTableView+Extensions.m", 
             "NSTableColumn+Extensions.m", 
             "NSWindow+Extensions.m", 
-            "NSWorkspace+Extensions.m", 
-            EDApplication.m, 
-            EDKeyControlWindow.m, 
-            EDToolbarDefinition.m
+            "NSWorkspace+Extensions.m"
         ); 
         H_FILES = (
+            EDApplication.h, 
+            EDKeyControlWindow.h, 
+            EDToolbarDefinition.h, 
             "NSApplication+Extensions.h", 
             "NSAttributedString+AppKitExtensions.h", 
             "NSMatrix+Extensions.h", 
@@ -23,10 +26,7 @@
             "NSTableView+Extensions.h", 
             "NSTableColumn+Extensions.h", 
             "NSWindow+Extensions.h", 
-            "NSWorkspace+Extensions.h", 
-            EDApplication.h, 
-            EDKeyControlWindow.h, 
-            EDToolbarDefinition.h
+            "NSWorkspace+Extensions.h"
         ); 
         IMAGES = (arrows.tiff); 
         OTHER_SOURCES = (Makefile.preamble, Makefile, Makefile.postamble); 

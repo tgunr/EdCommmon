@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDRedBlackTree+Private.h created by erik on Tue 15-Sep-1998
-//  @(#)$Id: EDRedBlackTree+Private.h,v 1.3 2002-07-09 15:56:56 erik Exp $
+//  @(#)$Id: EDRedBlackTree+Private.h,v 2.0 2002-08-16 18:12:46 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //

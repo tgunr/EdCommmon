@@ -1,5 +1,5 @@
 # FoundationExtensions.subproj
-# $Id: GNUmakefile,v 1.4 2002-07-18 23:49:46 znek Exp $
+# $Id: GNUmakefile,v 2.0 2002-08-16 18:12:48 erik Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -8,35 +8,47 @@ else
 
 include $(GNUSTEP_MAKEFILES)/common.make
 
-
-SUBPROJECT_NAME = FoundationExtensions.subproj
-
-ADDITIONAL_INCLUDE_DIRS = -I..
-
-ifeq "$(GUI_LIB)" "nil"
-ADDITIONAL_OBJCFLAGS += -DEDCOMMON_WOBUILD
-endif
+ADDITIONAL_INCLUDE_DIRS = -I.. -I../DataStructures.subproj
 
 ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
 ADDITIONAL_OBJCFLAGS += -DGNU_RUNTIME
 endif
 
+ifeq "$(GUI_LIB)" "nil"
+ADDITIONAL_OBJCFLAGS += -DEDCOMMON_WOBUILD
+endif
 
-FoundationExtensions.subproj_OBJC_FILES = \
-NSArray+Extensions.m            NSObject+Extensions.m \
-NSAttributedString+Extensions.m NSProcessInfo+Extensions.m \
-NSData+Extensions.m             NSScanner+Extensions.m \
-NSDate+Extensions.m             NSSet+Extensions.m \
-NSDictionary+Extensions.m       NSString+Extensions.m \
-NSInvocation+Extensions.m
+
+SUBPROJECT_NAME = FoundationExtensions.subproj
+
 
 FoundationExtensions.subproj_HEADER_FILES = \
-CollectionMapping.h             NSInvocation+Extensions.h \
-NSArray+Extensions.h            NSObject+Extensions.h \
-NSAttributedString+Extensions.h NSProcessInfo+Extensions.h \
-NSData+Extensions.h             NSScanner+Extensions.h \
-NSDate+Extensions.h             NSSet+Extensions.h \
-NSDictionary+Extensions.h       NSString+Extensions.h
+CollectionMapping.h                     NSDictionary+Extensions.h \
+EDIPSocket.h                            NSFileHandle+Extensions.h \
+EDSocket.h                              NSHost+Extensions.h \
+EDStream.h                              NSInvocation+Extensions.h \
+EDTCPSocket.h                           NSObject+Extensions.h \
+EDUDPSocket.h                           NSProcessInfo+Extensions.h \
+NSArray+Extensions.h                    NSScanner+Extensions.h \
+NSAttributedString+Extensions.h         NSSet+Extensions.h \
+NSData+Extensions.h                     NSString+Extensions.h \
+NSDate+Extensions.h                     functions.h
+
+
+FoundationExtensions.subproj_OBJC_FILES = \
+EDIPSocket.m                            NSFileHandle+Extensions.m \
+EDSocket.m                              NSHost+Extensions.m \
+EDStream.m                              NSInvocation+Extensions.m \
+EDTCPSocket.m                           NSObject+Extensions.m \
+EDUDPSocket.m                           NSProcessInfo+Extensions.m \
+NSArray+Extensions.m                    NSScanner+Extensions.m \
+NSAttributedString+Extensions.m         NSSet+Extensions.m \
+NSData+Extensions.m                     NSString+Extensions.m \
+NSDate+Extensions.m                     functions.m \
+NSDictionary+Extensions.m
+
+
+FoundationExtensions.subproj_RESOURCE_FILES = MIME.plist
 
 
 -include Makefile.preamble

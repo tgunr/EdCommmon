@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSTableColumn+Extensions.h created by erik on Fri 10-Sep-1999
-//  @(#)$Id: NSTableColumn+Extensions.h,v 1.3 2002-07-02 16:25:26 erik Exp $
+//  @(#)$Id: NSTableColumn+Extensions.h,v 2.0 2002-08-16 18:12:44 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //

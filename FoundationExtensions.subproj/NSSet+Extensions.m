@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSSet+Extensions.m created by erik on Sat 10-Mar-2001
-//  $Id: NSSet+Extensions.m,v 1.3 2002-07-09 15:53:52 erik Exp $
+//  $Id: NSSet+Extensions.m,v 2.0 2002-08-16 18:12:49 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //

@@ -1,7 +1,7 @@
 # EDCommon.framework
 # GNUmakefile
 #
-# $Id: GNUmakefile,v 1.2 2002-07-18 23:49:44 znek Exp $
+# $Id: GNUmakefile,v 2.0 2002-08-16 18:12:43 erik Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -13,21 +13,33 @@ GNUSTEP_INSTALLATION_DIR = $(GNUSTEP_LOCAL_ROOT)
 
 include $(GNUSTEP_MAKEFILES)/common.make
 
-# include config.mak
+ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
+ADDITIONAL_OBJCFLAGS += -DGNU_RUNTIME
+endif
 
 
-# The framework to be compiled
 FRAMEWORK_NAME = EDCommon
 
-EDCommon_HEADER_FILES = EDCommon.h EDCommonDefines.h EDObjcRuntime.h
 
-EDCommon_OBJC_FILES = framework.m useful.m
+EDCommon_HEADER_FILES = \
+EDCommon.h \
+EDCommonDefines.h \
+EDObjcRuntime.h \
+osdep.h
 
 
-# Widgets.subproj should be built ONLY if library-combo
-# ends with something different than nil
+EDCommon_OBJC_FILES = \
+framework.m \
+useful.m
 
-EDCommon_SUBPROJECTS = FoundationExtensions.subproj DataStructures.subproj
+
+EDCommon_SUBPROJECTS = \
+FoundationExtensions.subproj \
+DataStructures.subproj
+
+
+# AppKitExtensions.subproj and Widgets.subproj should be built
+# ONLY if library-combo ends with something different than "nil"
 
 ifneq "$(GUI_LIB)" "nil"
 EDCommon_SUBPROJECTS += AppKitExtensions.subproj Widgets.subproj

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDSparseClusterArray.h created by erik on Fri 28-May-1999
-//  @(#)$Id: EDSparseClusterArray.h,v 1.3 2002-07-09 15:56:56 erik Exp $
+//  @(#)$Id: EDSparseClusterArray.h,v 2.0 2002-08-16 18:12:46 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //

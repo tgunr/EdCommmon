@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDAOMTagProcessor.h created by erik
-//  @(#)$Id: EDAOMTagProcessor.h,v 1.1 2002-07-09 16:02:18 erik Exp $
+//  @(#)$Id: EDAOMTagProcessor.h,v 2.0 2002-08-16 18:12:45 erik Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -28,20 +28,24 @@
 @class EDMLParser;
 
 
+struct _EDATPFlags
+{
+    unsigned 		ignoresUnknownNamespaces : 1;
+    unsigned		ignoresUnknownTags : 1;
+    unsigned		ignoresUnknownAttributes : 1;
+    unsigned		acceptsUnknownAttributes : 1;
+    unsigned		textRespondsToSetText : 1;
+    unsigned		spaceRespondsToSetText : 1;
+    unsigned		spaceIgnoresString : 1;
+};
+
+
 @interface EDAOMTagProcessor : NSObject < EDMLTagProcessor >
 {
-    struct {
-        unsigned 		ignoresUnknownNamespaces : 1;	/*" "*/
-        unsigned		ignoresUnknownTags : 1;			/*" "*/
-        unsigned		ignoresUnknownAttributes : 1;	/*" "*/
-        unsigned		acceptsUnknownAttributes : 1;	/*" "*/
-        unsigned		textRespondsToSetText : 1;		/*" "*/
-        unsigned		spaceRespondsToSetText : 1;		/*" "*/
-        unsigned		spaceIgnoresString : 1;			/*" "*/
-    }				flags;								/*" All instance variables are private. "*/	
-    NSDictionary	*tagDefinitions;					/*" "*/
-    NSDictionary	*textObjectDefinition;			/*" "*/
-    NSDictionary	*spaceObjectDefinition;			/*" "*/
+    struct _EDATPFlags	flags;							/*" All instance variables are private. "*/	
+    NSDictionary		*tagDefinitions;				/*" "*/
+    NSDictionary		*textObjectDefinition;			/*" "*/
+    NSDictionary		*spaceObjectDefinition;			/*" "*/
 }
 
 /*" Creating default tag processors "*/

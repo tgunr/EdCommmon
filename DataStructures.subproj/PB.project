@@ -7,6 +7,7 @@
             EDAOMTagProcessor.m, 
             EDMLParser.m, 
             EDMLToken.m, 
+            EDMutableObjectPair.m, 
             EDNumberSet.m, 
             EDObjectPair.m, 
             EDObjectReference.m, 
@@ -26,6 +27,7 @@
             EDMLParser.h, 
             EDMLTagProcessorProtocol.h, 
             EDMLToken.h, 
+            EDMutableObjectPair.h, 
             EDNumberSet.h, 
             EDObjectPair.h, 
             EDObjectReference.h, 
@@ -56,7 +58,8 @@
             EDStringScanner.h, 
             EDLightWeightLock.h, 
             EDAOMTagProcessor.h, 
-            EDMLTagProcessorProtocol.h
+            EDMLTagProcessorProtocol.h, 
+            EDMutableObjectPair.h
         ); 
         SUBPROJECTS = (); 
     }; 

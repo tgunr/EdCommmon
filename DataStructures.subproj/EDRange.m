@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  Created by znek on Fri 31-Oct-1997
-//  @(#)$Id: EDRange.m,v 1.3 2002-07-09 15:56:56 erik Exp $
+//  @(#)$Id: EDRange.m,v 2.0 2002-08-16 18:12:46 erik Exp $
 //
 //  Copyright (c) 1997,1999 by Erik Doernenburg. All rights reserved.
 //

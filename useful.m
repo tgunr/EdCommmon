@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  useful.m created by erik on Fri 28-Mar-1997
-//  @(#)$Id: useful.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: useful.m,v 2.0 2002-08-16 18:12:43 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSAttributedString+Extensions.m created by erik on Tue 05-Oct-1999
-//  @(#)$Id: NSAttributedString+AppKitExtensions.m,v 1.2 2002-07-02 16:25:26 erik Exp $
+//  @(#)$Id: NSAttributedString+AppKitExtensions.m,v 2.0 2002-08-16 18:12:44 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //

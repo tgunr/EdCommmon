@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLTagProcessorProtocol.h created by erik
-//  @(#)$Id: EDMLTagProcessorProtocol.h,v 1.1 2002-07-09 16:02:18 erik Exp $
+//  @(#)$Id: EDMLTagProcessorProtocol.h,v 2.0 2002-08-16 18:12:45 erik Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //

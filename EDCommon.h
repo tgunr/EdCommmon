@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCommon.h created by erik on Sat 05-Sep-1998
-//  @(#)$Id: EDCommon.h,v 1.10 2002-07-09 16:02:16 erik Exp $
+//  @(#)$Id: EDCommon.h,v 2.0 2002-08-16 18:12:43 erik Exp $
 //
 //  Copyright (c) 1998-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -33,18 +33,26 @@
 #import "NSData+Extensions.h"
 #import "NSDate+Extensions.h"
 #import "NSDictionary+Extensions.h"
+#import "NSFileHandle+Extensions.h"
+#import "NSHost+Extensions.h"
 #import "NSInvocation+Extensions.h"
 #import "NSObject+Extensions.h"
 #import "NSProcessInfo+Extensions.h"
 #import "NSScanner+Extensions.h"
 #import "NSSet+Extensions.h"
 #import "NSString+Extensions.h"
-#import "CollectionMapping.h"
+#import "EDSocket.h"
+#import "EDIPSocket.h"
+#import "EDTCPSocket.h"
+#import "EDUDPSocket.h"
+#import "EDStream.h"
+//#import "functions.h"
 
 #import "EDBitmapCharset.h"
 #import "EDIRCObject.h"
 #import "EDLightWeightLock.h"
 #import "EDLRUCache.h"
+#import "EDMutableObjectPair.h"
 #import "EDNumberSet.h"
 #import "EDObjectPair.h"
 #import "EDObjectReference.h"

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjectWell.h created by erik on Sun 11-Oct-1998
-//  @(#)$Id: EDObjectWell.h,v 1.3 2002-07-09 15:56:59 erik Exp $
+//  @(#)$Id: EDObjectWell.h,v 2.0 2002-08-16 18:12:50 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLToken.m created by erik
-//  @(#)$Id: EDMLToken.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDMLToken.m,v 2.0 2002-08-16 18:12:45 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //

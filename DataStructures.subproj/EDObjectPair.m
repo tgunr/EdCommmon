@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDKeyValuePair.m created by erik on Sat 29-Aug-1998
-//  @(#)$Id: EDObjectPair.m,v 1.6 2002-07-09 15:56:56 erik Exp $
+//  @(#)$Id: EDObjectPair.m,v 2.0 2002-08-16 18:12:46 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,6 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
+#import "EDMutableObjectPair.h" // need to know subclass for mutable copying
 #import "EDObjectPair.h"
 
 
@@ -42,6 +43,14 @@
 //---------------------------------------------------------------------------------------
 //	FACTORY
 //---------------------------------------------------------------------------------------
+
+/*" Creates and returns a pair containing !{nil} for both first and second object. "*/
+
++ (id)pair
+{
+    return [[[self alloc] init] autorelease];
+}
+
 
 /*" Creates and returns a pair containing the objects in aPair. "*/
 
@@ -125,6 +134,12 @@
     if(NSShouldRetainWithZone(self, zone))
         return [self retain];
     return [[EDObjectPair allocWithZone:zone] initWithObjects:firstObject:secondObject];
+}
+
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    return [[EDMutableObjectPair allocWithZone:zone] initWithObjects:firstObject:secondObject];
 }
 
 

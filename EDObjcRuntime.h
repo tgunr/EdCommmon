@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjcRuntime.h created by znek on Mon 18-Mar-2002
-//  @(#)$Id: EDObjcRuntime.h,v 1.4 2002-07-18 23:49:44 znek Exp $
+//  @(#)$Id: EDObjcRuntime.h,v 2.0 2002-08-16 18:12:43 erik Exp $
 //
 //  Copyright (c) 1997-2002 by Erik Doernenburg. All rights reserved.
 //

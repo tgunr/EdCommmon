@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSWindow+Extensions.h created by erik on Sun 11-Oct-1998
-//  @(#)$Id: NSWindow+Extensions.h,v 1.3 2002-07-02 16:25:26 erik Exp $
+//  @(#)$Id: NSWindow+Extensions.h,v 2.0 2002-08-16 18:12:44 erik Exp $
 //
 //  Copyright (c) 1998 by Erik Doernenburg. All rights reserved.
 //
