@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDKeyValuePair.m created by erik on Sat 29-Aug-1998
-//  @(#)$Id: EDObjectPair.m,v 1.4 2002-06-18 16:36:48 erik Exp $
+//  @(#)$Id: EDObjectPair.m,v 1.5 2002-06-18 16:37:52 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -136,13 +136,15 @@
 - (BOOL)isEqual:(id)otherObject
 {
     id otherFirstObject, otherSecondObject;
-    NSLog(@"$$$   %@ ==?== %@", self, otherObject);
+
     if(otherObject == nil)
         return NO;
     else if((isa != ((EDObjectPair *)otherObject)->isa) && ([otherObject isKindOfClass:[EDObjectPair class]] == NO))
         return NO;
+
     otherFirstObject = ((EDObjectPair *)otherObject)->firstObject;
     otherSecondObject = ((EDObjectPair *)otherObject)->secondObject;
+
     return ( (((firstObject == nil) && (otherFirstObject == nil)) || [firstObject isEqual:otherFirstObject]) &&
              (((secondObject == nil) && (otherSecondObject == nil)) || [secondObject isEqual:otherSecondObject]) );
 }
