@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 2.7 2003-01-04 17:00:30 erik Exp $
+//  @(#)$Id: EDMLParser.m,v 2.8 2003-02-17 19:18:26 erik Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -936,6 +936,11 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
         if(((namespace = [[namespaceStack lastObject] objectForKey:prefix]) == nil) && ([prefix isEqualToString:@"xmlns"] == NO))
             [NSException raise:EDMLParserException format:@"Syntax error; found undefined namespace prefix `%@'", prefix];
         name = [name substringFromIndex:NSMaxRange(colonPos)];
+        }
+    else
+        {
+        if([name isEqualToString:@"xmlns"])
+            namespace = nil;
         }
     return [EDObjectPair pairWithObjects:namespace:name];
 }
