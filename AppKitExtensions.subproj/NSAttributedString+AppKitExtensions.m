@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSAttributedString+Extensions.m created by erik on Tue 05-Oct-1999
-//  @(#)$Id: NSAttributedString+AppKitExtensions.m,v 2.1 2003-04-08 16:51:32 znek Exp $
+//  @(#)$Id: NSAttributedString+AppKitExtensions.m,v 2.2 2003-10-20 16:54:24 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -111,7 +111,7 @@
     if(name != nil)
         [wrapper setPreferredFilename:name];
     attachment = [[[NSTextAttachment alloc] initWithFileWrapper:wrapper] autorelease];
-    cell = [attachment attachmentCell];
+    cell = (NSCell *)[attachment attachmentCell];
     NSAssert([cell isKindOfClass:[NSCell class]], @"AttachmentCell must inherit from NSCell.");
     [cell setImage:[[NSWorkspace sharedWorkspace] iconForFileType:[name pathExtension]]];
     attchString = [NSAttributedString attributedStringWithAttachment:attachment];
