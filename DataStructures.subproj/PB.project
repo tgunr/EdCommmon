@@ -1,82 +1,116 @@
 {
-    "DYNAMIC_CODE_GEN" = YES; 
-    "English_RESOURCES" = {}; 
+    DYNAMIC_CODE_GEN = YES; 
+    English_RESOURCES = {}; 
     FILESTABLE = {
         CLASSES = (
-            "EDIRCObject.m", 
-            "EDLRUCache.m", 
-            "EDAOMTagProcessor.m", 
-            "EDMLParser.m", 
-            "EDMLToken.m", 
-            "EDMutableObjectPair.m", 
-            "EDNumberSet.m", 
-            "EDObjectPair.m", 
-            "EDObjectReference.m", 
-            "EDRange.m", 
-            "EDSparseClusterArray.m", 
-            "EDStack.m", 
-            "EDStringScanner.m", 
-            "EDSortedArray.m"
+            EDIRCObject.m, 
+            EDLRUCache.m, 
+            EDAOMTagProcessor.m, 
+            EDMLParser.m, 
+            EDMLToken.m, 
+            EDMutableObjectPair.m, 
+            EDNumberSet.m, 
+            EDObjectPair.m, 
+            EDObjectReference.m, 
+            EDRange.m, 
+            EDSparseClusterArray.m, 
+            EDStack.m, 
+            EDStringScanner.m, 
+            EDSortedArray.m, 
+            EDXMLAttribute.m, 
+            EDXMLCharacterData.m, 
+            EDXMLDocument.m, 
+            EDXMLDocumentFragment.m, 
+            EDXMLDOMTagProcessor.m, 
+            EDXMLElement.m, 
+            EDXMLNamedNodeMap.m, 
+            EDXMLNode.m, 
+            EDXMLNodeList.m, 
+            EDXMLText.m, 
+            EDXMLTreeWalker.m
         ); 
         HEADERSEARCH = (); 
-        "H_FILES" = (
-            "EDBitmapCharset.h", 
-            "EDIRCObject.h", 
-            "EDLightWeightLock.h", 
-            "EDLRUCache.h", 
-            "EDAOMTagProcessor.h", 
-            "EDMLParser.h", 
-            "EDMLTagProcessorProtocol.h", 
-            "EDMLToken.h", 
-            "EDMutableObjectPair.h", 
-            "EDNumberSet.h", 
-            "EDObjectPair.h", 
-            "EDObjectReference.h", 
-            "EDRange.h", 
-            "EDSparseClusterArray.h", 
-            "EDStack.h", 
-            "EDStringScanner.h", 
-            "EDSortedArray.h", 
-            "EDSortedArray+Private.h"
+        H_FILES = (
+            EDBitmapCharset.h, 
+            EDIRCObject.h, 
+            EDLightWeightLock.h, 
+            EDLRUCache.h, 
+            EDAOMTagProcessor.h, 
+            EDMLParser.h, 
+            EDMLTagProcessorProtocol.h, 
+            EDMLToken.h, 
+            EDMutableObjectPair.h, 
+            EDNumberSet.h, 
+            EDObjectPair.h, 
+            EDObjectReference.h, 
+            EDRange.h, 
+            EDSparseClusterArray.h, 
+            EDStack.h, 
+            EDStringScanner.h, 
+            EDSortedArray.h, 
+            "EDSortedArray+Private.h", 
+            EDXMLAttribute.h, 
+            EDXMLCharacterData.h, 
+            EDXMLDocument.h, 
+            EDXMLDocumentFragment.h, 
+            EDXMLDOMTagProcessor.h, 
+            EDXMLElement.h, 
+            EDXMLNamedNodeMap.h, 
+            EDXMLNode.h, 
+            "EDXMLNode+Private.h", 
+            EDXMLNodeList.h, 
+            EDXMLText.h, 
+            EDXMLTreeWalker.h
         ); 
-        "OTHER_LINKED" = ("EDBitmapCharset.m"); 
-        "OTHER_RESOURCES" = ("XMLEntities.plist"); 
-        "OTHER_SOURCES" = ("Makefile.preamble", Makefile, "Makefile.postamble"); 
-        "PRECOMPILED_HEADERS" = (); 
-        "PROJECT_HEADERS" = ("EDStack.h", "EDStringScanner.h", "EDLightWeightLock.h"); 
-        "PUBLIC_HEADERS" = (
-            "EDIRCObject.h", 
-            "EDNumberSet.h", 
-            "EDObjectPair.h", 
-            "EDObjectReference.h", 
-            "EDRange.h", 
-            "EDSparseClusterArray.h", 
-            "EDBitmapCharset.h", 
-            "EDLRUCache.h", 
-            "EDMLParser.h", 
-            "EDStack.h", 
-            "EDStringScanner.h", 
-            "EDLightWeightLock.h", 
-            "EDAOMTagProcessor.h", 
-            "EDMLTagProcessorProtocol.h", 
-            "EDMutableObjectPair.h", 
-            "EDSortedArray.h"
+        OTHER_LINKED = (EDBitmapCharset.m); 
+        OTHER_RESOURCES = (XMLEntities.plist); 
+        OTHER_SOURCES = (Makefile.preamble, Makefile, Makefile.postamble); 
+        PRECOMPILED_HEADERS = (); 
+        PROJECT_HEADERS = (EDStack.h, EDStringScanner.h, EDLightWeightLock.h); 
+        PUBLIC_HEADERS = (
+            EDIRCObject.h, 
+            EDNumberSet.h, 
+            EDObjectPair.h, 
+            EDObjectReference.h, 
+            EDRange.h, 
+            EDSparseClusterArray.h, 
+            EDBitmapCharset.h, 
+            EDLRUCache.h, 
+            EDMLParser.h, 
+            EDStack.h, 
+            EDStringScanner.h, 
+            EDLightWeightLock.h, 
+            EDAOMTagProcessor.h, 
+            EDMLTagProcessorProtocol.h, 
+            EDMutableObjectPair.h, 
+            EDSortedArray.h, 
+            EDXMLAttribute.h, 
+            EDXMLCharacterData.h, 
+            EDXMLDocument.h, 
+            EDXMLDocumentFragment.h, 
+            EDXMLDOMTagProcessor.h, 
+            EDXMLElement.h, 
+            EDXMLNamedNodeMap.h, 
+            EDXMLNode.h, 
+            EDXMLNodeList.h, 
+            EDXMLText.h, 
+            EDXMLTreeWalker.h
         ); 
         SUBPROJECTS = (); 
     }; 
     LANGUAGE = English; 
     MAKEFILEDIR = "$(MAKEFILEPATH)/pb_makefiles"; 
-    "NEXTSTEP_BUILDTOOL" = "/usr/bin/gnumake"; 
-    "NEXTSTEP_INSTALLDIR" = "$(LOCAL_LIBRARY_DIR)/Frameworks"; 
-    "NEXTSTEP_JAVA_COMPILER" = "/usr/bin/javac"; 
-    "NEXTSTEP_OBJCPLUS_COMPILER" = "/usr/bin/cc"; 
-    "PDO_UNIX_BUILDTOOL" = "$NEXT_ROOT/Developer/bin/make"; 
-    "PDO_UNIX_JAVA_COMPILER" = "$(JDKBINDIR)/javac"; 
-    "PDO_UNIX_OBJCPLUS_COMPILER" = "$(NEXTDEV_BIN)/gcc"; 
+    NEXTSTEP_BUILDTOOL = /usr/bin/gnumake; 
+    NEXTSTEP_INSTALLDIR = "$(LOCAL_LIBRARY_DIR)/Frameworks"; 
+    NEXTSTEP_JAVA_COMPILER = /usr/bin/javac; 
+    NEXTSTEP_OBJCPLUS_COMPILER = /usr/bin/cc; 
+    PDO_UNIX_BUILDTOOL = $NEXT_ROOT/Developer/bin/make; 
+    PDO_UNIX_JAVA_COMPILER = "$(JDKBINDIR)/javac"; 
+    PDO_UNIX_OBJCPLUS_COMPILER = "$(NEXTDEV_BIN)/gcc"; 
     PROJECTNAME = DataStructures; 
     PROJECTTYPE = Component; 
-    PROJECTVERSION = "2.8"; 
-    "WINDOWS_BUILDTOOL" = "$NEXT_ROOT/Developer/Executables/make"; 
-    "WINDOWS_JAVA_COMPILER" = "$(JDKBINDIR)/javac.exe"; 
-    "WINDOWS_OBJCPLUS_COMPILER" = "$(DEVDIR)/gcc"; 
+    PROJECTVERSION = 2.8; 
+    WINDOWS_BUILDTOOL = $NEXT_ROOT/Developer/Executables/make; 
+    WINDOWS_JAVA_COMPILER = "$(JDKBINDIR)/javac.exe"; 
+    WINDOWS_OBJCPLUS_COMPILER = "$(DEVDIR)/gcc"; 
 }

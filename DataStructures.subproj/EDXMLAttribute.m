@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDXMLAttribute.m created by erik on Sat Mar 29 2003
-//  @(#)$Id: EDXMLAttribute.m,v 1.2 2003-05-27 22:58:24 erik Exp $
+//  @(#)$Id: EDXMLAttribute.m,v 1.3 2003-07-01 08:23:17 znek Exp $
 //
 //  Copyright (c) 2002-2003 by Helge Hess, Erik Doernenburg. All rights reserved.
 //
@@ -99,8 +99,10 @@
 
 - (void)setValue:(NSString *)_value
 {
+    id old;
+ 
     isSpecified = YES;
-    id old = [value retain];
+    old = [value retain];
     value = [_value copyWithZone:[self zone]];
     [old release];
 }

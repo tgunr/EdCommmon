@@ -18,14 +18,21 @@ CLASSES = EDIRCObject.m EDLRUCache.m EDAOMTagProcessor.m EDMLParser.m\
           EDMLToken.m EDMutableObjectPair.m EDNumberSet.m\
           EDObjectPair.m EDObjectReference.m EDRange.m\
           EDSparseClusterArray.m EDStack.m EDStringScanner.m\
-          EDSortedArray.m
+          EDSortedArray.m EDXMLAttribute.m EDXMLCharacterData.m\
+          EDXMLDocument.m EDXMLDocumentFragment.m EDXMLDOMTagProcessor.m\
+          EDXMLElement.m EDXMLNamedNodeMap.m EDXMLNode.m\
+          EDXMLNodeList.m EDXMLText.m EDXMLTreeWalker.m
 
 HFILES = EDBitmapCharset.h EDIRCObject.h EDLightWeightLock.h\
          EDLRUCache.h EDAOMTagProcessor.h EDMLParser.h\
          EDMLTagProcessorProtocol.h EDMLToken.h EDMutableObjectPair.h\
          EDNumberSet.h EDObjectPair.h EDObjectReference.h EDRange.h\
          EDSparseClusterArray.h EDStack.h EDStringScanner.h\
-         EDSortedArray.h EDSortedArray+Private.h
+         EDSortedArray.h EDSortedArray+Private.h EDXMLAttribute.h\
+         EDXMLCharacterData.h EDXMLDocument.h EDXMLDocumentFragment.h\
+         EDXMLDOMTagProcessor.h EDXMLElement.h EDXMLNamedNodeMap.h\
+         EDXMLNode.h EDXMLNode+Private.h EDXMLNodeList.h EDXMLText.h\
+         EDXMLTreeWalker.h
 
 MFILES = EDBitmapCharset.m
 
@@ -46,7 +53,11 @@ PUBLIC_HEADERS = EDIRCObject.h EDNumberSet.h EDObjectPair.h\
                  EDBitmapCharset.h EDLRUCache.h EDMLParser.h EDStack.h\
                  EDStringScanner.h EDLightWeightLock.h\
                  EDAOMTagProcessor.h EDMLTagProcessorProtocol.h\
-                 EDMutableObjectPair.h EDSortedArray.h
+                 EDMutableObjectPair.h EDSortedArray.h EDXMLAttribute.h\
+                 EDXMLCharacterData.h EDXMLDocument.h\
+                 EDXMLDocumentFragment.h EDXMLDOMTagProcessor.h\
+                 EDXMLElement.h EDXMLNamedNodeMap.h EDXMLNode.h\
+                 EDXMLNodeList.h EDXMLText.h EDXMLTreeWalker.h
 
 PROJECT_HEADERS = EDStack.h EDStringScanner.h EDLightWeightLock.h
 

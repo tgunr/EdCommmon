@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDXMLNode.m created by erik on Sat Mar 29 2003
-//  @(#)$Id: EDXMLNode.m,v 1.2 2003-05-27 22:58:24 erik Exp $
+//  @(#)$Id: EDXMLNode.m,v 1.3 2003-07-01 08:23:17 znek Exp $
 //
 //  Copyright (c) 2002-2003 by Helge Hess, Erik Doernenburg. All rights reserved.
 //
@@ -529,11 +529,12 @@
 - (void)setPrefix:(NSString *)_prefix
 {
     NSRange r;
+    id localName;
 
     if(namespaceURI == nil)  // DOM1
         [NSException raise:NSInternalInconsistencyException format:@"Cannot set prefix for node that has no namespace"];
     r = [nodeName rangeOfString:@":"];
-    id localName = (r.location == NSNotFound) ? nodeName : [nodeName substringFromIndex:NSMaxRange(r)];
+    localName = (r.location == NSNotFound) ? nodeName : [nodeName substringFromIndex:NSMaxRange(r)];
     [nodeName autorelease];
     nodeName = [[NSString alloc] initWithFormat:@"%@:%@", _prefix, localName];
 }
