@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDApplication.m created by erik on Sun 19-Jul-1998
-//  @(#)$Id: EDApplication.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDApplication.m,v 1.2 2001-03-29 16:04:44 erik Exp $
 //
 //  Copyright (c) 1998 by Erik Doernenburg. All rights reserved.
 //
@@ -43,13 +43,13 @@ NSLocalizedString(@"Such is life", "For buttons unexpected error panel.")
 {
     [super init];
     NSSetUncaughtExceptionHandler(EDUncaughtExceptionHandler);
+    [self registerFactoryDefaults];
     return self;
 }
 
 
 - (void)finishLaunching
 {
-    [self registerFactoryDefaults];
     [super finishLaunching];
 }
 
