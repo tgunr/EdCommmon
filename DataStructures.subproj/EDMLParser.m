@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDMLParser.m,v 1.2 2000-12-07 22:35:46 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -216,12 +216,12 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
         rToken = [[[stack objectAtIndex:sc - 2] retain] autorelease];
         [[rToken value] addObject:SVAL(0)];
         }
-
     else if((mc = match(stack, 0, 0, 0, 0, EDMLPT_ELEMENT)) > 0)
         {
         rToken = [EDMLToken tokenWithType:EDMLPT_LIST];
         [rToken setValue:[NSMutableArray arrayWithObject:SVAL(0)]];
         }
+
     else if((mc = match(stack, 0, 0, EDMLPT_OTAG, EDMLPT_LIST, EDMLPT_CTAG)) > 0)
         {
         id <EDMarkupContainerElement> element;
@@ -266,6 +266,20 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
             [rToken setValue:[self _elementWithAttributeList:SVAL(1)]];
             }
         }
+    else if((mc = match(stack, 0, EDMLPT_LT, EDMLPT_TATTRLIST, EDMLPT_SLASH, EDMLPT_GT)) > 0)
+        {
+        NSString	 *tagName = [[SVAL(2) objectAtIndex:0] firstObject];
+        NSDictionary *tagDef = [tagDefinitions objectForKey:tagName];
+
+        if(tagDef == nil)
+            [NSException raise:EDMLParserException format:@"Unknown tag; found <%@>", tagName];
+        if([[tagDef objectForKey:@"container"] boolValue] == NO)
+            [NSException raise:EDMLParserException format:@"Tag <%@> is not a container tag.", tagName];
+
+        rToken = [EDMLToken tokenWithType:EDMLPT_ELEMENT];
+        [rToken setValue:[self _elementWithAttributeList:SVAL(2)]];
+        }
+     
     else if((mc = match(stack, 0, 0, 0, EDMLPT_TATTRLIST, EDMLPT_TATTR)) > 0)
         {
         rToken = [[[stack objectAtIndex:sc - 2] retain] autorelease];
@@ -392,9 +406,16 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
         if(*charp == '<')
             {
             charp = nextchar(charp, YES);
+            if((*charp == '!') || (*charp == '?')) // ignore processing directives and comments
+                {
+                while(*charp != '>')
+                    charp = nextchar(charp, YES);
+                charp = nextchar(charp, NO);
+                return [self _nextToken];
+                }
             token = [EDMLToken tokenWithType:EDMLPT_LT];
             lexmode = EDMLPTagMode;
-            break; // we're done...
+            break; // we're done and we have to skip the following ifs...
             }
         else if(*charp == '>')
             {

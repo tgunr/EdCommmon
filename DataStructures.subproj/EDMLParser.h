@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.h created by erik
-//  @(#)$Id: EDMLParser.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDMLParser.h,v 1.2 2000-12-07 22:35:46 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,11 +18,14 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+#import "EDCommonDefines.h"
+
+
 @protocol EDMarkupElement
 - (void)takeValue:(id)value forAttribute:(NSString *)attribute;
 @end
 
-@protocol EDMarkupContainerElement
+@protocol EDMarkupContainerElement <EDMarkupElement>
 - (void)setContainedElements:(NSArray *)elements;
 @end
 
