@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSObject+Extensions.m created by erik on Sun 06-Sep-1998
-//  @(#)$Id: NSObject+Extensions.m,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: NSObject+Extensions.m,v 1.2 2000-10-23 23:22:40 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -95,8 +95,33 @@ BOOL EDClassIsSuperclassOfClass(Class aClass, Class subClass)
 
 NSArray *EDSubclassesOfClass(Class aClass)
 {
-    NSMutableArray*	subclasses;
-    NXHashTable*	subClasses;
+#ifndef EDCOMMON_OSXSBUILD
+    NSMutableArray *subclasses;
+    Class          *classes;
+    int            numClasses, newNumClasses, i;
+
+    // cf. /System/Library/Frameworks/System.framework/Headers/objc/objc-runtime.h
+    numClasses = 0, newNumClasses = objc_getClassList(NULL, 0);
+    classes = NULL;
+    while (numClasses < newNumClasses)
+        {
+        numClasses = newNumClasses;
+        classes = realloc(classes, sizeof(Class) * numClasses);
+        newNumClasses = objc_getClassList(classes, numClasses);
+        }
+
+    subclasses = [NSMutableArray array];
+    for(i = 0; i < numClasses; i++)
+        {
+        if(EDClassIsSuperclassOfClass(aClass, classes[i]) == YES)
+            [subclasses addObject:classes[i]];
+        }
+    free(classes);
+
+    return subclasses;
+#else    
+    NSMutableArray	*subclasses;
+    NXHashTable		*subClasses;
     NXHashState 	subIterator;
     Class			subClass;
     
@@ -109,6 +134,7 @@ NSArray *EDSubclassesOfClass(Class aClass)
             [subclasses addObject:subClass];
         }
     return subclasses;
+#endif    
 }
 
 

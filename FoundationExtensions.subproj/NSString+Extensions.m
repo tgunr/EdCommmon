@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+printf.m created by erik on Sat 27-Sep-1997
-//  @(#)$Id: NSString+Extensions.m,v 1.2 2000-06-03 23:30:33 erik Exp $
+//  @(#)$Id: NSString+Extensions.m,v 1.3 2000-10-23 23:22:40 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -20,6 +20,13 @@
 
 #import <Foundation/Foundation.h>
 #import "NSString+Extensions.h"
+
+#ifndef WIN32
+#import <unistd.h>
+#else
+#define random() rand()
+#endif
+
 
 //---------------------------------------------------------------------------------------
     @implementation NSString(EDExtensions)
@@ -102,6 +109,59 @@ static NSCharacterSet *iwsSet = nil;
 - (BOOL)isEmpty
 {
   return [self isEqualToString:@""];
+}
+
+
+//---------------------------------------------------------------------------------------
+//	CRYPTING
+//---------------------------------------------------------------------------------------
+
+- (NSString *)encryptedString
+{
+    char 	salt[3];
+
+    salt[0] = 'A' + random() % 26;
+    salt[1] = 'A' + random() % 26;
+    salt[2] = '\0';
+
+    return [self encryptedStringWithSalt:salt];
+}
+
+
+- (NSString *)encryptedStringWithSalt:(const char *)salt
+{
+    static NSLock	*encryptLock = nil;
+    NSMutableData 	*sdata;
+    char 			*encryptedCString;
+    NSString 		*encryptedString;
+    char 			terminator = '\0';
+
+    NSParameterAssert((salt != NULL) && (strlen(salt) == 2));
+
+    if(encryptLock == nil)
+        encryptLock = [[NSLock alloc] init]; // intentional leak
+
+    sdata = [[self dataUsingEncoding:NSNonLossyASCIIStringEncoding] mutableCopy];
+    [sdata appendBytes:&terminator length:1];
+
+    [encryptLock lock];
+    encryptedCString = crypt((const char *)[sdata bytes], (const char *)salt);
+    encryptedString = [[[NSString allocWithZone:[self zone]] initWithCString:encryptedCString] autorelease];
+    [encryptLock unlock];
+
+    [sdata release];
+    
+    return encryptedString;
+}
+
+
+- (BOOL)isValidEncryptionOfString:(NSString *)aString
+{
+  char salt[3];
+
+  [self getCString:salt maxLength:2];
+  salt[2] = '\0';
+  return [self isEqualToString:[aString encryptedStringWithSalt:salt]];
 }
 
 

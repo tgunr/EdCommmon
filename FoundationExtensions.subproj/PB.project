@@ -7,6 +7,7 @@
             "NSDate+Extensions.m", 
             "NSDictionary+Extensions.m", 
             "NSObject+Extensions.m", 
+            "NSProcessInfo+Extensions.m", 
             "NSScanner+Extensions.m", 
             "NSString+Extensions.m", 
             CollectionMapping.m
@@ -18,6 +19,7 @@
             "NSDate+Extensions.h", 
             "NSDictionary+Extensions.h", 
             "NSObject+Extensions.h", 
+            "NSProcessInfo+Extensions.h", 
             "NSScanner+Extensions.h", 
             "NSString+Extensions.h", 
             CollectionMapping.h
@@ -44,8 +46,8 @@
     }; 
     LANGUAGE = English; 
     MAKEFILEDIR = "$(MAKEFILEPATH)/pb_makefiles"; 
-    NEXTSTEP_BUILDTOOL = /bin/gnumake; 
-    NEXTSTEP_INSTALLDIR = /Local/Library/Frameworks; 
+    NEXTSTEP_BUILDTOOL = /usr/bin/gnumake; 
+    NEXTSTEP_INSTALLDIR = "$(LOCAL_LIBRARY_DIR)/Frameworks"; 
     NEXTSTEP_JAVA_COMPILER = /usr/bin/javac; 
     NEXTSTEP_OBJCPLUS_COMPILER = /usr/bin/cc; 
     PDO_UNIX_BUILDTOOL = $NEXT_ROOT/Developer/bin/make; 

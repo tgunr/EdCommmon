@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.m created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.m,v 1.2 2000-09-27 15:52:47 erik Exp $
+//  @(#)$Id: NSArray+Extensions.m,v 1.3 2000-10-23 23:22:39 erik Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -82,7 +82,7 @@ static Method myFirstObjectMethod;
 
 - (NSArray *)shuffledArray
 {
-    NSMutableArray *copy = [self mutableCopyWithZone:[self zone]];
+    NSMutableArray *copy = [[self mutableCopyWithZone:[self zone]] autorelease];
     [copy shuffle];
     return copy;
 }
@@ -207,6 +207,7 @@ static Method myFirstObjectMethod;
         d = [[self objectAtIndex:i] retain];
         [self replaceObjectAtIndex:i withObject:[self objectAtIndex:j]];
         [self replaceObjectAtIndex:j withObject:d];
+        [d release];
         }
 }
 
