@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.h created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.h,v 1.2 2000-09-27 15:52:47 erik Exp $
+//  @(#)$Id: NSArray+Extensions.h,v 1.3 2001-03-29 16:03:22 erik Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -27,6 +27,8 @@
 + (void)applyFirstObjectPatch;
 
 - (NSArray *)shuffledArray;
+- (NSArray *)sortedArray;
+- (NSArray *)sortedArrayByComparingAttribute:(NSString *)attributeName;
 
 - (NSArray *)subarrayToIndex:(unsigned int)index;
 - (NSArray *)subarrayFromIndex:(unsigned int)index;
@@ -42,4 +44,6 @@
 
 @interface NSMutableArray(EDExtensions)
 - (void)shuffle;
+- (void)sort;
+- (void)sortByComparingAttribute:(NSString *)attributeName;
 @end

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.m created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.m,v 1.3 2000-10-23 23:22:39 erik Exp $
+//  @(#)$Id: NSArray+Extensions.m,v 1.4 2001-03-29 16:03:23 erik Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -26,6 +26,14 @@
 #ifdef WIN32
 #define random() rand()
 #endif
+
+
+static NSComparisonResult compareAttributes(id object1, id object2, void *context)
+{
+    // The cast of the first value to an NSString is merely to avoid a compiler warning that compare:
+    // is declared in several classes. It does not limit the attribute values to strings.
+    return [(NSString *)[object1 valueForKey:(id)context] compare:[object2 valueForKey:(id)context]];
+}
 
 
 //=======================================================================================
@@ -85,6 +93,22 @@ static Method myFirstObjectMethod;
     NSMutableArray *copy = [[self mutableCopyWithZone:[self zone]] autorelease];
     [copy shuffle];
     return copy;
+}
+
+
+/*" Returns a new array with the objects sorted objects according to their compare: method "*/
+
+- (NSArray *)sortedArray
+{
+    return [self sortedArrayUsingSelector:@selector(compare:)];
+}
+
+
+/*" Returns a new array with the objects sorted objects according to the values of their attribute %attributeName "*/
+
+- (NSArray *)sortedArrayByComparingAttribute:(NSString *)attributeName
+{
+    return [self sortedArrayUsingFunction:compareAttributes context:attributeName];
 }
 
 
@@ -209,6 +233,22 @@ static Method myFirstObjectMethod;
         [self replaceObjectAtIndex:j withObject:d];
         [d release];
         }
+}
+
+
+/*" Sort objects according to their compare: method "*/
+
+- (void)sort
+{
+    [self sortUsingSelector:@selector(compare:)];
+}
+
+
+/*" Sort objects according to the values of their attribute %attributeName "*/
+
+- (void)sortByComparingAttribute:(NSString *)attributeName
+{
+    [self sortUsingFunction:compareAttributes context:attributeName];
 }
 
 
