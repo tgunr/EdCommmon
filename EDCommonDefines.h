@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCommonDefines.h created by erik on Fri 28-Mar-1997
-//  @(#)$Id: EDCommonDefines.h,v 1.3 2001-10-16 22:06:07 erik Exp $
+//  @(#)$Id: EDCommonDefines.h,v 1.4 2001-11-03 18:01:35 znek Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -90,7 +90,7 @@ typedef unsigned char byte;
 static __inline__ id EDCast(id object, Class aClass, SEL cmd, id self, const char *file, int line)
 {
     if((object != nil) && ([object isKindOfClass:aClass] == NO))
-        [[NSAssertionHandler currentHandler] handleFailureInMethod:cmd object:self file:[NSString stringWithCString:file] lineNumber:line description:@"cast failure; cannot cast instance of %@ to %@", NSStringFromClass([object aClass]), NSStringFromClass(aClass)];
+        [[NSAssertionHandler currentHandler] handleFailureInMethod:cmd object:self file:[NSString stringWithCString:file] lineNumber:line description:@"cast failure; cannot cast instance of %@ to %@", NSStringFromClass([object class]), NSStringFromClass(aClass)];
     return object;
 }
 
