@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMutableObjectPair.h created by erik on Tue Jul 23 2002
-//  @(#)$Id: EDMutableObjectPair.h,v 2.0 2002-08-16 18:12:45 erik Exp $
+//  @(#)$Id: EDMutableObjectPair.h,v 2.1 2003-10-20 16:56:41 znek Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -18,7 +18,11 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#import <EDCommon/EDObjectPair.h>
+
+#ifndef	__EDMutableObjectPair_h_INCLUDE
+#define	__EDMutableObjectPair_h_INCLUDE
+
+#include <EDCommon/EDObjectPair.h>
 
 
 @interface EDMutableObjectPair : EDObjectPair
@@ -27,3 +31,6 @@
 - (void)setSecondObject:(id)anObject;
 
 @end
+
+#endif	/* __EDMutableObjectPair_h_INCLUDE */
+
