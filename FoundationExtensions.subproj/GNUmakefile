@@ -1,5 +1,5 @@
 # FoundationExtensions.subproj
-# $Id: GNUmakefile,v 2.2 2003-02-23 02:49:33 znek Exp $
+# $Id: GNUmakefile,v 2.3 2003-05-27 00:06:28 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -23,31 +23,33 @@ SUBPROJECT_NAME = FoundationExtensions.subproj
 
 
 FoundationExtensions.subproj_HEADER_FILES = \
-CollectionMapping.h                     NSDictionary+Extensions.h \
-EDIPSocket.h                            NSFileHandle+Extensions.h \
-EDSocket.h                              NSHost+Extensions.h \
-EDStream.h                              NSInvocation+Extensions.h \
-EDTCPSocket.h                           NSObject+Extensions.h \
-EDUDPSocket.h                           NSProcessInfo+Extensions.h \
-NSArray+Extensions.h                    NSScanner+Extensions.h \
-NSAttributedString+Extensions.h         NSSet+Extensions.h \
-NSData+Extensions.h                     NSString+Extensions.h \
-NSDate+Extensions.h                     NSBundle+Extensions.h \
-functions.h				deallocnotif.h
+CollectionMapping.h             NSDate+Extensions.h \
+EDIPSocket.h                    NSDictionary+Extensions.h \
+EDSocket.h                      NSFileHandle+Extensions.h \
+EDStream.h                      NSHost+Extensions.h \
+EDStringWriter.h                NSInvocation+Extensions.h \
+EDTCPSocket.h                   NSObject+Extensions.h \
+EDTextWriter.h                  NSProcessInfo+Extensions.h \
+EDUDPSocket.h                   NSScanner+Extensions.h \
+NSArray+Extensions.h            NSSet+Extensions.h \
+NSAttributedString+Extensions.h NSString+Extensions.h \
+NSBundle+Extensions.h           deallocnotif.h \
+NSData+Extensions.h             functions.h
 
 
 FoundationExtensions.subproj_OBJC_FILES = \
-EDIPSocket.m                            NSFileHandle+Extensions.m \
-EDSocket.m                              NSHost+Extensions.m \
-EDStream.m                              NSInvocation+Extensions.m \
-EDTCPSocket.m                           NSObject+Extensions.m \
-EDUDPSocket.m                           NSProcessInfo+Extensions.m \
-NSArray+Extensions.m                    NSScanner+Extensions.m \
-NSAttributedString+Extensions.m         NSSet+Extensions.m \
-NSData+Extensions.m                     NSString+Extensions.m \
-NSDate+Extensions.m                     NSBundle+Extensions.m \
-NSDictionary+Extensions.m \
-functions.m				deallocnotif.m
+EDIPSocket.m                    NSFileHandle+Extensions.m \
+EDSocket.m                      NSHost+Extensions.m \
+EDStream.m                      NSInvocation+Extensions.m \
+EDStringWriter.m                NSObject+Extensions.m \
+EDTCPSocket.m                   NSProcessInfo+Extensions.m \
+EDUDPSocket.m                   NSScanner+Extensions.m \
+NSArray+Extensions.m            NSSet+Extensions.m \
+NSAttributedString+Extensions.m NSString+Extensions.m \
+NSBundle+Extensions.m           NSData+Extensions.m \
+NSDate+Extensions.m             deallocnotif.m \
+NSDictionary+Extensions.m       functions.m
+
 
 ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
 FoundationExtensions.subproj_OBJC_FILES += deallocnotif-gnu.m
