@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 1.13 2002-07-09 16:08:41 erik Exp $
+//  @(#)$Id: EDMLParser.m,v 1.14 2002-07-14 14:42:31 znek Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -455,6 +455,8 @@ static __inline__ unichar *nextchar(unichar *charp, BOOL raiseOnEnd)
                             charp = nextchar(charp, YES);
                         if(charp == start)
                             [NSException raise:EDMLParserException format:@"Syntax error at pos. %d; expected either `>' or a tag attribute/value. (Note that tag attribute values must be quoted if they contain anything other than alphanumeric characters.)", (charp - source)];
+                        if(*(charp - 1) == '/')
+                            charp -= 1;
                         tvalue = [NSString stringWithCharacters:start length:(charp - start)];
                         }
                     token = [EDMLToken tokenWithType:EDMLPT_TSTRING];
