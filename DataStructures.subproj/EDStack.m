@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDStack.m created by erik on Sat 19-Jul-1997
-//  @(#)$Id: EDStack.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDStack.m,v 1.2 2002-06-18 14:47:57 erik Exp $
 //
 //  Copyright (c) 1997 by Erik Doernenburg. All rights reserved.
 //
@@ -77,6 +77,11 @@
     id object = [[[storage lastObject] retain] autorelease];
     [storage removeLastObject];
     return object;
+}
+
+- (void)clear
+{
+    [storage removeAllObjects];
 }
 
 

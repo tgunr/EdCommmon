@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDStack.h created by erik on Sat 19-Jul-1997
-//  @(#)$Id: EDStack.h,v 1.2 2002-04-14 14:57:55 znek Exp $
+//  @(#)$Id: EDStack.h,v 1.3 2002-06-18 14:47:57 erik Exp $
 //
 //  Copyright (c) 1997 by Erik Doernenburg. All rights reserved.
 //
@@ -36,6 +36,7 @@
 
 - (void)pushObject:(id)object;
 - (id)popObject;
+- (void)clear;
 - (id)topObject;
 - (NSArray *)topObjects:(int)count;
 - (unsigned int)count;
