@@ -115,6 +115,17 @@ endif
 
 # Rules fix/precompile installed headers
 fix-headers:
+ifneq "$(OS)" "MACOS"
+	$(SILENT) ( \
+	  for ph in $(PUBLIC_HEADERS); \
+	  do \
+	    h_path=$(DSTROOT)$(PUBLIC_HDR_INSTALLDIR)$(PUBLIC_HEADER_DIR_SUFFIX)/$$ph; \
+		$(AWK) '/#ifndef.*EDCOMMON_OSXSBUILD/, /#endif.*WOBUILD/ { next; } { print $0; }' $$h_path >> $$h_path.fixed; \
+		$(MV) $$h_path.fixed $$h_path; \
+	  done ; \
+	  $(ECHO) "Fixed for WO build $(PUBLIC_HEADERS)"; \
+	  )
+endif
 ifeq "$(BUILD_WO_VERSION)" "YES"
 	$(SILENT) ( \
 	  for ph in $(PUBLIC_HEADERS); \

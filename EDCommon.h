@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCommon.h created by erik on Sat 05-Sep-1998
-//  @(#)$Id: EDCommon.h,v 1.6 2001-08-12 23:54:02 znek Exp $
+//  @(#)$Id: EDCommon.h,v 1.7 2001-09-19 23:15:21 erik Exp $
 //
 //  Copyright (c) 1998-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -65,7 +65,7 @@
 #import "EDApplication.h"
 #ifndef EDCOMMON_OSXSBUILD
 #import "EDToolbarDefinition.h"
-#endif
+#endif // EDCOMMON_OSXSBUILD
 #import "EDActivityIndicator.h"
 #import "EDCanvas.h"
 #import "EDObjectWell.h"
