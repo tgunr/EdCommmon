@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.m created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.m,v 2.0 2002-08-16 18:12:48 erik Exp $
+//  @(#)$Id: NSArray+Extensions.m,v 2.1 2003-01-08 22:30:27 erik Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -20,6 +20,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NSArray+Extensions.h"
+#import "NSObject+Extensions.h"
 #import "EDObjcRuntime.h"
 
 #if (!defined(EDCOMMON_OSXBUILD) && !defined(GNUSTEP))
@@ -295,6 +296,47 @@ static EDObjcMethodInfo myFirstObjectMethod;
 }
 
 
+/*" Returns an array containing all library paths. "*/
+
++ (NSArray *)librarySearchPaths
+{
+    static NSMutableArray *paths = nil;
+
+    if(paths == nil)
+        {
+        NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+        paths = [NSSearchPathForDirectoriesInDomains(NSAllLibrariesDirectory, NSAllDomainsMask, YES) retain];
+        [pool release];
+        }
+    return paths;
+}
+
+//---------------------------------------------------------------------------------------
+
+- (id)do
+{
+    return [self homProxyWithOp:EDHOMDoOp source:[self objectEnumerator] representative:[self firstObject]];
+}
+
+
+- (id)collect
+{
+    return [self homProxyWithOp:EDHOMCollectOp source:[self objectEnumerator] representative:[self firstObject]];
+}
+
+
+- (id)select
+{
+    return [self homProxyWithOp:EDHOMDoOp source:[self objectEnumerator] representative:[self firstObject]];
+}
+
+
+- (id)reject
+{
+    return [self homProxyWithOp:EDHOMDoOp source:[self objectEnumerator] representative:[self firstObject]];
+}
+
+
 //=======================================================================================
     @end
 //=======================================================================================
@@ -345,5 +387,8 @@ static EDObjcMethodInfo myFirstObjectMethod;
 
 
 //=======================================================================================
-    @end
+   @end
 //=======================================================================================
+
+
+

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSObject+Extensions.h created by erik on Sun 06-Sep-1998
-//  @(#)$Id: NSObject+Extensions.h,v 2.0 2002-08-16 18:12:49 erik Exp $
+//  @(#)$Id: NSObject+Extensions.h,v 2.1 2003-01-08 22:30:27 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -44,11 +44,28 @@
 - (void)performSelector:(SEL)selector withObjects:(NSArray *)objectList;
 - (void)performSelector:(SEL)selector withObjectsEnumeratedBy:(NSEnumerator *)enumerator;
 
+/*" HOM Backened "*/
+- (id)homProxyWithOp:(int)op source:(NSEnumerator *)anEnumerator representative:(id)anObject;
+
+//- (id)doProxyWithEnumerator:(NSEnumerator *)anEnumerator representative:(id)anObject;
+//- (id)collectProxyWithEnumerator:(NSEnumerator *)anEnumerator representative:(id)anObject;
+
+//- (void)doInvocation:(NSInvocation *)invocation withObjects:(NSEnumerator *)anEnumerator;
+//- (NSArray *)collectInvocation:(NSInvocation *)invocation withObjects:(NSEnumerator *)anEnumerator;
+
 @end
 
 
 IMP EDGetFirstUnusedIMPForSelector(Class aClass, SEL aSelector, BOOL isClassMethod);
 BOOL EDClassIsSuperclassOfClass(Class aClass, Class subClass);
 NSArray *EDSubclassesOfClass(Class aClass);
+
+
+enum
+{
+    EDHOMDoOp,
+    EDHOMCollectOp
+};
+
 
 #endif	/* __NSObject_Extensions_h_INCLUDE */

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.h created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.h,v 2.0 2002-08-16 18:12:48 erik Exp $
+//  @(#)$Id: NSArray+Extensions.h,v 2.1 2003-01-08 22:30:27 erik Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -58,8 +58,15 @@
 - (NSArray *)arrayByMappingWithSelector:(SEL)selector withObject:(id)object;
 
 /*" List files "*/
++ (NSArray *)librarySearchPaths;
 + (NSArray *)arrayWithFilesOfType:(NSString *)type inPath:(NSString *)aPath;
 + (NSArray *)arrayWithFilesOfType:(NSString *)type inLibrary:(NSString *)libraryName;
+
+/*" Higher Order Messaging "*/
+- (id)do;
+- (id)collect;
+- (id)select;
+- (id)reject;
 
 @end
 
