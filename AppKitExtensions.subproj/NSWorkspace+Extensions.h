@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------------------
-//  NSApplication+Extensions.h created by erik on Sat 09-Oct-1999
-//  @(#)$Id: NSApplication+Extensions.h,v 1.2 2001-03-11 03:04:45 erik Exp $
+//  NSWorkspace+Extensions.h created by erik on Mon 19-Feb-2001
+//  $Id: NSWorkspace+Extensions.h,v 1.1 2001-03-11 03:04:45 erik Exp $
 //
-//  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -18,14 +18,12 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#import <AppKit/NSApplication.h>
+#import <AppKit/NSWorkspace.h>
 
-@interface NSApplication(EDExtensions)
 
-- (void)registerFactoryDefaults;
+@interface NSWorkspace(EDExtensions)
 
-- (NSString *)name;
-- (NSString *)libraryDirectory;
-- (NSMenuItem *)menuItemWithAction:(SEL)action;
+- (void)openURL:(NSString *)url;
+- (void)composeMailWithSubject:(NSString *)subject recipients:(NSString *)recipients body:(NSString *)body;
 
 @end

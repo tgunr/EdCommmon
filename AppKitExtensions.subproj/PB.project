@@ -10,6 +10,7 @@
             "NSTableView+Extensions.m", 
             "NSTableColumn+Extensions.m", 
             "NSWindow+Extensions.m", 
+            "NSWorkspace+Extensions.m", 
             EDApplication.m
         ); 
         H_FILES = (
@@ -20,6 +21,7 @@
             "NSTableView+Extensions.h", 
             "NSTableColumn+Extensions.h", 
             "NSWindow+Extensions.h", 
+            "NSWorkspace+Extensions.h", 
             EDApplication.h
         ); 
         IMAGES = (arrows.tiff); 
@@ -34,7 +36,8 @@
             "NSTableColumn+Extensions.h", 
             "NSTableView+Extensions.h", 
             "NSAttributedString+AppKitExtensions.h", 
-            "NSMatrix+Extensions.h"
+            "NSMatrix+Extensions.h", 
+            "NSWorkspace+Extensions.h"
         ); 
         SUBPROJECTS = (); 
     }; 

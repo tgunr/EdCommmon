@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSApplication+Extensions.m created by erik on Sat 09-Oct-1999
-//  @(#)$Id: NSApplication+Extensions.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: NSApplication+Extensions.m,v 1.2 2001-03-11 03:04:45 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -118,47 +118,6 @@ NSLocalizedString(@"Failed to create a folder in your library folder.", "Error m
 {
    return [self menuItemWithAction:action inMenu:[self mainMenu]];
 }
-
-
-
-- (void)openURL:(NSString *)url;
-{
-   NSPasteboard 	*pboard;
-   NSString 		*sname;
-
-   pboard = [NSPasteboard pasteboardWithName:@"URLServicePasteboard"];
-   [pboard declareTypes:[NSArray arrayWithObjects:NSStringPboardType, nil] owner:nil];
-   [pboard setString:url forType:NSStringPboardType];
-
-   if((sname = [[NSUserDefaults standardUserDefaults] stringForKey:@"URLService"]) == nil)
-       sname = @"OmniWeb/Open URL";
-   NSPerformService(sname, pboard);		
-}
-
-
-- (void)composeMailWithSubject:(NSString *)subject recipients:(NSString *)recipients body:(NSString *)body
-{
-    NSMutableArray	*arguments;
-    NSBundle		*myBundle;
-    NSString		*toolPath;
-
-    myBundle = [NSBundle bundleForClass:NSClassFromString(@"NSFramework_EDCommon")];
-    toolPath = [myBundle pathForResource:@"mvcompose" ofType:@""];
-    arguments = [NSMutableArray array];
-    if(subject != nil)
-        {
-        [arguments addObject:@"-subject"];
-        [arguments addObject:subject];
-        }
-    if(recipients != nil)
-        {
-        [arguments addObject:@"-to"];
-        [arguments addObject:recipients];
-        }
-#warning * pass body to tool    
-    [NSTask launchedTaskWithLaunchPath:toolPath arguments:arguments];
-}
-
 
 
 //---------------------------------------------------------------------------------------
