@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDIPSocket.m created by erik
-//  @(#)$Id: EDIPSocket.m,v 2.0 2002-08-16 18:12:48 erik Exp $
+//  @(#)$Id: EDIPSocket.m,v 2.1 2002-09-01 19:24:26 erik Exp $
 //
 //  Copyright (c) 1997-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -181,19 +181,19 @@ NSString *EDSocketConnectionRefusedException = @"EDSocketConnectionRefusedExcept
 - (void)connectToHost:(NSHost *)host port:(unsigned short)port
 {
     NSException 	*firstTemporaryException = nil;
-    NSArray 		*hostAddresses;
     NSEnumerator 	*hostAddressEnumerator;
     NSString		*hostAddress, *hostDesc;
+    BOOL			sawV4Address;
 
     NSAssert(flags.connectState == 0, @"already connected");
 
-    hostAddresses = [host addresses];
-    if([hostAddresses count] == 0)
-        [NSException raise:NSInvalidArgumentException format:@"Host %@ has no IP address.", host];
-
-    hostAddressEnumerator = [hostAddresses objectEnumerator];
+    sawV4Address = NO;
+    hostAddressEnumerator = [[host addresses] objectEnumerator];
     while((flags.connectState == 0) && (hostAddress = [hostAddressEnumerator nextObject]))
         {
+        if([hostAddress rangeOfString:@":"].length > 0)
+            continue; // can't deal with IPv6 addresses yet
+        sawV4Address = YES;
         NS_DURING
             hostDesc = [NSString stringWithFormat:@"%@ (%@)", [host name], hostAddress];
             [self _connectToAddress:hostAddress port:port hostDescription:hostDesc];
@@ -205,7 +205,10 @@ NSString *EDSocketConnectionRefusedException = @"EDSocketConnectionRefusedExcept
         NS_ENDHANDLER
         }
 
-     if(flags.connectState == 0)
+    if(sawV4Address == NO)
+        [NSException raise:NSInvalidArgumentException format:@"Host %@ has no IPv4 address.", host];
+
+    if(flags.connectState == 0)
         [firstTemporaryException raise];
 }
 
