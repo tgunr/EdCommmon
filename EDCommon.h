@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCommon.h created by erik on Sat 05-Sep-1998
-//  @(#)$Id: EDCommon.h,v 1.7 2001-09-19 23:15:21 erik Exp $
+//  @(#)$Id: EDCommon.h,v 1.8 2002-04-02 08:43:35 erik Exp $
 //
 //  Copyright (c) 1998-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -63,6 +63,7 @@
 #import "NSWindow+Extensions.h"
 #import "NSWorkspace+Extensions.h"
 #import "EDApplication.h"
+#import "EDKeyControlWindow.h"
 #ifndef EDCOMMON_OSXSBUILD
 #import "EDToolbarDefinition.h"
 #endif // EDCOMMON_OSXSBUILD

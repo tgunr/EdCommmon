@@ -12,6 +12,7 @@
             "NSWindow+Extensions.m", 
             "NSWorkspace+Extensions.m", 
             EDApplication.m, 
+            EDKeyControlWindow.m, 
             EDToolbarDefinition.m
         ); 
         H_FILES = (
@@ -24,6 +25,7 @@
             "NSWindow+Extensions.h", 
             "NSWorkspace+Extensions.h", 
             EDApplication.h, 
+            EDKeyControlWindow.h, 
             EDToolbarDefinition.h
         ); 
         IMAGES = (arrows.tiff); 
