@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDXMLNamedNodeMapTests.h created by erik on Mon Apr 21 2003
-//  @(#)$Id: EDXMLNamedNodeMapTests.h,v 1.1 2003-05-26 19:56:13 erik Exp $
+//  @(#)$Id: EDXMLNamedNodeMapTests.h,v 1.2 2003-05-27 17:19:38 znek Exp $
 //
 //  Copyright (c) 2003 by Erik Doernenburg. All rights reserved.
 //
@@ -36,4 +36,4 @@
 
 @end
 
-#endif	__EDXMLNamedNodeMapTests_h_INCLUDE
+#endif	/* __EDXMLNamedNodeMapTests_h_INCLUDE */
