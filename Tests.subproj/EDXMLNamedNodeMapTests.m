@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDXMLNamedNodeMapTests.m created by erik on Mon Apr 21 2003
-//  @(#)$Id: EDXMLNamedNodeMapTests.m,v 1.2 2003-05-27 17:08:50 znek Exp $
+//  @(#)$Id: EDXMLNamedNodeMapTests.m,v 1.3 2003-05-27 17:10:22 znek Exp $
 //
 //  Copyright (c) 2003 by Erik Doernenburg. All rights reserved.
 //
@@ -202,7 +202,7 @@ static NSString *NS2 = @"urn:test2";
         if(node == foo)
             foundFoo = YES;
         else if(node == bar)
-            foundBar = NO;
+            foundBar = YES;
         else
             fail1(@"Map returned that hasn't been added.");
         }
