@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 1.6 2001-07-23 05:46:47 znek Exp $
+//  @(#)$Id: EDMLParser.m,v 1.7 2001-07-26 23:18:11 erik Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -291,6 +291,8 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
         break;
 
     case EDMLPTagMode:
+        while(EDBitmapCharsetContainsCharacter(spaceCharset, *charp))
+            charp = nextchar(charp, YES);
         if(*charp == '<')
             {
             [NSException raise:EDMLParserException format:@"Syntax Error; found `<' in a tag.", (int)*charp];
@@ -313,8 +315,6 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
             }
         else
             {
-            while(EDBitmapCharsetContainsCharacter(spaceCharset, *charp))
-                charp = nextchar(charp, YES);
             if(*charp == '"')
                 {
                 charp = nextchar(charp, YES);

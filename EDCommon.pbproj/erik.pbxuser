@@ -7,7 +7,6 @@
 			1AA34D480090839C7F000001,
 		);
 		breakpoints = (
-			67F1E96000EA8C3400000001,
 		);
 		perUserDictionary = {
 			PBXWorkspaceConfiguration = {
@@ -16,9 +15,10 @@
 					ActiveTab = 0;
 					Frame = "{{0, 23}, {1007, 664}}";
 					Split0 = {
+						ActiveTab = 2;
 						Frame = "{{225, 0}, {782, 664}}";
 						Split0 = {
-							Frame = "{{0, 25}, {782, 639}}";
+							Frame = "{{0, 217}, {782, 447}}";
 						};
 						SplitCount = 1;
 						Tab0 = {
@@ -92,11 +92,5 @@
 		activeExec = 0;
 		customExecs = {
 		};
-	};
-	67F1E96000EA8C3400000001 = {
-		fileReference = 1AA34CF40090839C7F000001;
-		isa = PBXFileBreakpoint;
-		lineNumber = 118;
-		state = 2;
 	};
 }
