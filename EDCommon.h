@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------------------
 //  EDCommon.h created by erik on Sat 05-Sep-1998
-//  @(#)$Id: EDCommon.h,v 1.3 2000-12-30 18:31:01 znek Exp $
+//  @(#)$Id: EDCommon.h,v 1.4 2001-03-11 03:18:22 erik Exp $
 //
-//  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1998-2001 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -29,6 +29,7 @@
 #import "NSObject+Extensions.h"
 #import "NSProcessInfo+Extensions.h"
 #import "NSScanner+Extensions.h"
+#import "NSSet+Extensions.h"
 #import "NSString+Extensions.h"
 #import "CollectionMapping.h"
 
@@ -58,6 +59,7 @@
 #import "NSTableColumn+Extensions.h"
 #import "NSTableView+Extensions.h"
 #import "NSWindow+Extensions.h"
+#import "NSWorkspace+Extensions.h"
 #import "EDApplication.h"
 
 #import "EDActivityIndicator.h"
