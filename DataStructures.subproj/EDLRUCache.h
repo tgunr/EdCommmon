@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDLRUCache.h created by erik on Fri 29-Oct-1999
-//  @(#)$Id: EDLRUCache.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDLRUCache.h,v 1.2 2001-03-29 16:01:48 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -20,12 +20,12 @@
 
 @interface EDLRUCache : NSObject
 {
-    unsigned int		size;
+    unsigned int	size;
     NSMutableDictionary	*entries;
     NSMutableDictionary *timestamps;
 }
 
-- (id)initWithSize:(unsigned int)values;
+- (id)initWithCacheSize:(unsigned int)values;
 
 - (void)addObject:(id)object withKey:(id)key;
 - (id)objectWithKey:(id)key;

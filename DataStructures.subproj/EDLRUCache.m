@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDLRUCache.m created by erik on Fri 29-Oct-1999
-//  @(#)$Id: EDLRUCache.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDLRUCache.m,v 1.2 2001-03-29 16:01:48 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -31,7 +31,7 @@
 //	INIT & DEALLOC
 //---------------------------------------------------------------------------------------
 
-- (id)initWithSize:(unsigned int)value
+- (id)initWithCacheSize:(unsigned int)value
 {
     [super init];
     NSParameterAssert(value > 0);
