@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 1.4 2001-04-26 17:04:20 znek Exp $
+//  @(#)$Id: EDMLParser.m,v 1.5 2001-06-27 21:55:34 erik Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -114,7 +114,9 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
     [tempCharset formUnionWithCharacterSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     [tempCharset invert];
     textCharset = EDBitmapCharsetFromCharacterSet(tempCharset);
-    idCharset = EDBitmapCharsetFromCharacterSet([NSCharacterSet alphanumericCharacterSet]);
+    tempCharset = [[[NSCharacterSet alphanumericCharacterSet] mutableCopy] autorelease];
+    [tempCharset addCharactersInString:@"-"];
+    idCharset = EDBitmapCharsetFromCharacterSet(tempCharset);
 }
 
 
@@ -156,8 +158,14 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
 
 
 //---------------------------------------------------------------------------------------
-//	PUBLIC ENTRY INTO PARSER
+//	ACCESSOR METHODS
 //---------------------------------------------------------------------------------------
+
+- (NSDictionary *)tagDefinitionForTagNamed:(NSString *)tagName
+{
+	return [tagDefinitions objectForKey:tagName];
+}
+
 
 - (void)setPreservesWhitespace:(BOOL)flag
 {
@@ -412,7 +420,7 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
     else if((mc = match(stack, 0, EDMLPT_LT, EDMLPT_SLASH, EDMLPT_TATTRLIST, EDMLPT_GT)) > 0)
         {
         NSString	 *tagName = [[SVAL(1) objectAtIndex:0] firstObject];
-        NSDictionary *tagDef = [tagDefinitions objectForKey:tagName];
+        NSDictionary *tagDef = [self tagDefinitionForTagNamed:tagName];
 
         if(tagDef == nil)
             [NSException raise:EDMLParserException format:@"Unknown tag; found </%@>", tagName];
@@ -426,7 +434,7 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
     else if((mc = match(stack, 0, 0, EDMLPT_LT, EDMLPT_TATTRLIST, EDMLPT_GT)) > 0)
         {
         NSString	 *tagName = [[SVAL(1) objectAtIndex:0] firstObject];
-        NSDictionary *tagDef = [tagDefinitions objectForKey:tagName];
+        NSDictionary *tagDef = [self tagDefinitionForTagNamed:tagName];
 
         if(tagDef == nil)
             [NSException raise:EDMLParserException format:@"Unknown tag; found <%@>", tagName];
@@ -444,7 +452,7 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
     else if((mc = match(stack, 0, EDMLPT_LT, EDMLPT_TATTRLIST, EDMLPT_SLASH, EDMLPT_GT)) > 0)
         {
         NSString	 *tagName = [[SVAL(2) objectAtIndex:0] firstObject];
-        NSDictionary *tagDef = [tagDefinitions objectForKey:tagName];
+        NSDictionary *tagDef = [self tagDefinitionForTagNamed:tagName];
 
         if(tagDef == nil)
             [NSException raise:EDMLParserException format:@"Unknown tag; found <%@>", tagName];
@@ -599,7 +607,7 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
     tagName = [[parsedAttrList objectAtIndex:0] firstObject];
     if([[parsedAttrList objectAtIndex:0] secondObject] != nil)
         [NSException raise:EDMLParserException format:@"Syntax error; tag names must not have values."];
-    tagDef = [tagDefinitions objectForKey:tagName];
+    tagDef = [self tagDefinitionForTagNamed:tagName];
     NSAssert1(tagDef != nil, @"No definition for tag %@", tagName);
     className = [tagDef objectForKey:@"class"];
     NSAssert1(className != nil, @"Class entry missing for tag <%@>", tagName);

@@ -88,7 +88,6 @@
 				1AA34CCC0090839C7F000001,
 				1AA34CD20090839C7F000001,
 				1AA34D420090839C7F000001,
-				1AA34D450090839C7F000001,
 				1AA34D460090839C7F000001,
 			);
 			isa = PBXGroup;
@@ -906,12 +905,6 @@
 			isa = PBXFrameworkReference;
 			name = Foundation.framework;
 			path = /System/Library/Frameworks/Foundation.framework;
-			refType = 0;
-		};
-		1AA34D450090839C7F000001 = {
-			isa = PBXFileReference;
-			name = "Import Log.rtf";
-			path = "/Users/erik/WorkArea/Source/ed/EDCommon/Import Log.rtf";
 			refType = 0;
 		};
 		1AA34D460090839C7F000001 = {

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.h created by erik
-//  @(#)$Id: EDMLParser.h,v 1.3 2001-03-11 03:17:53 erik Exp $
+//  @(#)$Id: EDMLParser.h,v 1.4 2001-06-27 21:55:33 erik Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -57,6 +57,9 @@
 - (BOOL)acceptsUnknownAttributes;
 
 - (NSArray *)parseString:(NSString *)aString;
+
+// for subclassers
+- (NSDictionary *)tagDefinitionForTagNamed:(NSString *)tagName;
 
 @end
 

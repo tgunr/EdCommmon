@@ -6,6 +6,9 @@
 		addToTargets = (
 			1AA34D480090839C7F000001,
 		);
+		breakpoints = (
+			67F1E96000EA8C3400000001,
+		);
 		perUserDictionary = {
 			PBXWorkspaceConfiguration = {
 				ContentSize = "{1007, 687}";
@@ -89,5 +92,11 @@
 		activeExec = 0;
 		customExecs = {
 		};
+	};
+	67F1E96000EA8C3400000001 = {
+		fileReference = 1AA34CF40090839C7F000001;
+		isa = PBXFileBreakpoint;
+		lineNumber = 118;
+		state = 2;
 	};
 }
