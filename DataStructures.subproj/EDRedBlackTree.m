@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDRedBlackTree.m created by erik on Sun 13-Sep-1998
-//  @(#)$Id: EDRedBlackTree.m,v 1.3 2002-07-09 15:56:56 erik Exp $
+//  @(#)$Id: EDRedBlackTree.m,v 1.4 2002-07-10 17:26:47 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -33,7 +33,10 @@
 
 This behaviour can be emulated, of course, using NSMutableArrays and (binary) search but EDRedBlackTree has better performance characteristics. When objects are inserted into ordered collections, O(lg %n) instead of O(%n). Contains and index-of tests can also be carried out in O(lg %n) instead of O(%n). Inserting/removing at the end and retrieving objects by index is marginally slower, O(lg %n) instead of O(1). NSSets are even faster at contains tests, O(1), but they do no support ordered collections. The main disadvantage of binary search trees is their memory usage, 20 bytes per object rather than 4 to 8 in an array.
 
-A final note: NSArrays are implemented extremely well and in collections with less than at least about 3000 objects performance gains are negligible; NSArray might even be faster! However, beyond a certain size the performance difference is more than noticeable. In the end, you might still want to use the trees unless you already have the binary search insert written somewhere else. "*/
+A final note: NSArrays are implemented extremely well and in collections with less than at least about 3000 objects performance gains are negligible; NSArray might even be faster! However, beyond a certain size the performance difference is more than noticeable. In the end, you might still want to use the trees unless you already have the binary search insert written somewhere else.
+
+This datastructure does not implement the copying and coding protocols as binary searc trees are usually required in the context of algorithms, rather than data storage.
+"*/
 
 
 //---------------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSApplication+Extensions.m created by erik on Sat 09-Oct-1999
-//  @(#)$Id: NSApplication+Extensions.m,v 1.4 2002-07-09 15:55:23 erik Exp $
+//  @(#)$Id: NSApplication+Extensions.m,v 1.5 2002-07-10 17:26:46 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -36,7 +36,7 @@ NSLocalizedString(@"Failed to create a folder in your library folder.", "Error m
 
 /*" Various useful extensions to #NSApplication. "*/
 
-/*" Looks for a file called "FactoryDefaults.plist" in the main bundle, assumes it is in property list format and registers its contents as user defaults. If the file is missing or in an unreadable format and exception is raised. "*/
+/*" Looks for a file called "FactoryDefaults.plist" in the main bundle, assumes it is in property list format and registers its contents as user defaults. If the file is missing or in an unreadable format an exception is raised. "*/
 
 - (void)registerFactoryDefaults
 {

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDLRUCache.m created by erik on Fri 29-Oct-1999
-//  @(#)$Id: EDLRUCache.m,v 1.4 2002-07-09 15:56:56 erik Exp $
+//  @(#)$Id: EDLRUCache.m,v 1.5 2002-07-10 17:26:46 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -27,7 +27,11 @@
     @implementation EDLRUCache
 //---------------------------------------------------------------------------------------
 
-/*" A simple Last-Recently-Used cache. When the cache is full, as defined by by its size, and an object is added, the object that has not been accessed for the longest time is automatically removed. Currently, only very basic operations are supported but implementing additions should be straightforward when requried. "*/
+/*" A simple Last-Recently-Used cache. When the cache is full, as defined by by its size, and an object is added, the object that has not been accessed for the longest time is automatically removed. Currently, only very basic operations are supported but implementing additions should be straightforward when requried.
+
+This datastructure does not implement the copying and coding protocols as caches are usually required in the context of algorithms, rather than data storage.
+
+"*/
 
 
 //---------------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjcRuntime.h created by znek on Mon 18-Mar-2002
-//  @(#)$Id: EDObjcRuntime.h,v 1.2 2002-07-02 15:33:42 erik Exp $
+//  @(#)$Id: EDObjcRuntime.h,v 1.3 2002-07-10 17:26:46 erik Exp $
 //
 //  Copyright (c) 1997-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -30,7 +30,6 @@
 #import <objc/objc-api.h>
 #import <objc/objc-class.h>
 
-/*" Protable runtime functions. Works on Darwin and GNUStep. "*/
 #define EDObjcMsgSend(obj, sel) objc_msgSend((obj), (sel))
 #define EDObjcMsgSend1(obj, sel, obj1) objc_msgSend((obj), (sel), (obj1))
 #define EDObjcMethodInfo Method
@@ -44,8 +43,10 @@
 #import <objc/objc.h>
 #import <objc/objc-api.h>
 
+/*" Portable runtime functions. Should be used instead of the corresponding NeXT or GNUStep runtime functions. "*/
 #define EDObjcMsgSend(obj, sel) objc_msg_lookup((obj), (sel))((obj), (sel))
 #define EDObjcMsgSend1(obj, sel, obj1) objc_msg_lookup((obj), (sel))((obj), (sel), (obj1))
+/*" Defines for runtime types and functions. Should be used instead of the corresponding NeXT and GNUStep runtime functions. (First set is for NeXT, second set for GNU runtimes.)"*/
 #define EDObjcMethodInfo Method_t
 #define EDObjcClassGetInstanceMethod class_get_instance_method
 #define EDObjcClassGetClassMethod class_get_class_method
