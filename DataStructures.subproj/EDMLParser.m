@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 1.10 2001-08-17 20:11:53 znek Exp $
+//  @(#)$Id: EDMLParser.m,v 1.11 2001-08-25 16:19:47 erik Exp $
 //
 //  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -195,11 +195,9 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
 
 - (id)parseString:(NSString *)aString
 {
-    NSArray			*result;
     unsigned int 	length;
-
-    lexmode = EDMLPTextMode;
-    [stack removeAllObjects];
+    id				result;
+    NSException		*parserException;
 
     length = [aString length];
     source = NSZoneMalloc([self zone], sizeof(unichar) * (length + 1));
@@ -207,14 +205,27 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
     *(source + length) = (unichar)0;
     charp = source;
 
-    [self _parserLoop];
+    NS_DURING
 
+    lexmode = EDMLPTextMode;
+    parserException = nil;
+    [self _parserLoop];
+    if([stack count] > 1)
+        [NSException raise:EDMLParserException format:@"Unexpected end of source."];
+    result = [[[[stack lastObject] value] retain] autorelease];
+    
+    NS_HANDLER
+        parserException = [[localException retain] autorelease];
+    NS_ENDHANDLER
+    
     NSZoneFree([self zone], source);
     source = NULL;
-    result = [[[[stack lastObject] value] retain] autorelease];
     [stack removeAllObjects];
     [peekedToken release];
     peekedToken = nil;
+
+    if(parserException != nil)
+        [parserException raise];
 
     return result;
 }
@@ -377,8 +388,6 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
         while([self _reduce])
             {}
         }
-    if([stack count] > 1)
-        [NSException raise:EDMLParserException format:@"Unexpected end of source."];
 }
 
 
