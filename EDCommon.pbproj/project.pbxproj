@@ -67,6 +67,40 @@
 //012
 //013
 //014
+//030
+//031
+//032
+//033
+//034
+		03FAC9CE03C74F2600A8C007 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			path = "NSBundle+Extensions.h";
+			refType = 4;
+		};
+		03FAC9CF03C74F2600A8C007 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			path = "NSBundle+Extensions.m";
+			refType = 4;
+		};
+		03FAC9D003C74F2600A8C007 = {
+			fileRef = 03FAC9CE03C74F2600A8C007;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		03FAC9D103C74F2600A8C007 = {
+			fileRef = 03FAC9CF03C74F2600A8C007;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+//030
+//031
+//032
+//033
+//034
 //1A0
 //1A1
 //1A2
@@ -165,6 +199,7 @@
 			children = (
 				1AA34CD50090839C7F000001,
 				1AA34CD60090839C7F000001,
+				03FAC9CF03C74F2600A8C007,
 				1AA34CD70090839C7F000001,
 				1AA34CD80090839C7F000001,
 				1AA34CD90090839C7F000001,
@@ -250,6 +285,7 @@
 			children = (
 				1AA34CE10090839C7F000001,
 				1AA34CE20090839C7F000001,
+				03FAC9CE03C74F2600A8C007,
 				1AA34CE30090839C7F000001,
 				1AA34CE40090839C7F000001,
 				1AA34CE50090839C7F000001,
@@ -1007,6 +1043,7 @@
 				1AA34D740090839C7F000001,
 				EE6AABCA025313F000C21B98,
 				675AF6BC02DE26F800A8C007,
+				03FAC9D003C74F2600A8C007,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1475,6 +1512,7 @@
 				6798786502DDFCB800A8C007,
 				6798787302DDFFBC00A8C007,
 				67613C7F02ECCC0F00A8C007,
+				03FAC9D103C74F2600A8C007,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
