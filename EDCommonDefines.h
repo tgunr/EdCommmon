@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCommonDefines.h created by erik on Fri 28-Mar-1997
-//  @(#)$Id: EDCommonDefines.h,v 1.6 2002-07-02 15:33:42 erik Exp $
+//  @(#)$Id: EDCommonDefines.h,v 1.7 2002-07-09 15:58:58 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -64,7 +64,7 @@
 #endif
 
 
-/*" Use this if you want to say neither #YES nor #{NO}... "*/
+/*" Use this if you want to say neither YES nor NO... "*/
 
 #define UNKNOWN 2
 
