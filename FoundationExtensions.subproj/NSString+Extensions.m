@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+printf.m created by erik on Sat 27-Sep-1997
-//  @(#)$Id: NSString+Extensions.m,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: NSString+Extensions.m,v 1.2 2000-06-03 23:30:33 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -103,6 +103,26 @@ static NSCharacterSet *iwsSet = nil;
 {
   return [self isEqualToString:@""];
 }
+
+
+//---------------------------------------------------------------------------------------
+//	SHARING STRING INSTANCES (USE WITH CAUTION!)
+//---------------------------------------------------------------------------------------
+
+- (NSString *)sharedInstance
+{
+    static NSMutableSet *stringPool;
+    NSString *sharedInstance;
+
+    if(stringPool == nil)
+        stringPool = [[NSMutableSet alloc] init];
+
+    if((sharedInstance = [stringPool member:self]) != nil)
+        return sharedInstance;
+    [stringPool addObject:self];
+    return self;
+}
+
 
 //---------------------------------------------------------------------------------------
 //	PRINTING
