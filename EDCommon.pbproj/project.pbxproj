@@ -929,9 +929,9 @@
 				1AA34DA40090839C7F000001,
 			);
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DYLIB_COMPATIBILITY_VERSION = 25;
-				DYLIB_CURRENT_VERSION = 26;
+				DYLIB_CURRENT_VERSION = 27;
 				FRAMEWORK_SEARCH_PATHS = "";
 				FRAMEWORK_VERSION = A;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -979,7 +979,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>26</string>
+	<string>27</string>
 </dict>
 </plist>
 ";
