@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
-//  EDRedBlackTree.h created by erik on Sun 13-Sep-1998
-//  @(#)$Id: EDRedBlackTree.h,v 2.0 2002-08-16 18:12:46 erik Exp $
+//  EDSortedArray.h created by erik on Sun 13-Sep-1998
+//  @(#)$Id: EDSortedArray.h,v 2.1 2003-01-19 22:47:27 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,22 +19,22 @@
 //---------------------------------------------------------------------------------------
 
 
-#ifndef	__EDRedBlackTree_h_INCLUDE
-#define	__EDRedBlackTree_h_INCLUDE
+#ifndef	__EDSortedArray_h_INCLUDE
+#define	__EDSortedArray_h_INCLUDE
 
 
 #import <Foundation/Foundation.h>
 
 
-@interface EDRedBlackTree : NSObject
+@interface EDSortedArray : NSObject
 {
     SEL		comparator;		/*" All instance variables are private. "*/
-    void	*sentinel;		/*" "*/
+    void	*sentinel;		 /*" "*/
     void 	*rootNode;		/*" "*/
     void 	*minimumNode;	/*" "*/
 }
 
-/*" Creating red-black trees "*/
+/*" Creating sorted arrays "*/
 - (id)init;
 - (id)initWithComparisonSelector:(SEL)aSelector;
 
@@ -44,7 +44,7 @@
 - (void)removeObject:(id)anObject;
 - (void)removeObjectAtIndex:(unsigned int)index;
 
-/*" Querying the tree "*/
+/*" Querying the array "*/
 - (unsigned int)count;
 - (id)minimumObject;
 - (id)maximumObject;
@@ -63,4 +63,4 @@
 
 @end
 
-#endif	/* __EDRedBlackTree_h_INCLUDE */
+#endif	/* __EDSortedArray_h_INCLUDE */

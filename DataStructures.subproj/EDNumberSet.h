@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDNumberSet.h created by erik on Sun 04-Jul-1999
-//  @(#)$Id: EDNumberSet.h,v 2.0 2002-08-16 18:12:46 erik Exp $
+//  @(#)$Id: EDNumberSet.h,v 2.1 2003-01-19 22:47:27 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -26,12 +26,12 @@
 #import <Foundation/Foundation.h>
 
 
-@class EDRedBlackTree, EDRange;
+@class EDSortedArray, EDRange;
 
 
 @interface EDNumberSet : NSObject <NSCoding, NSCopying>
 {
-    EDRedBlackTree	*rangeTree;	/*" All instance variables are private. "*/
+    EDSortedArray	*rangeArray;	/*" All instance variables are private. "*/
 }
 
 /*" Creating number sets "*/

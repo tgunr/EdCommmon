@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDAOMTagProcessor.m created by erik
-//  @(#)$Id: EDAOMTagProcessor.m,v 2.3 2003-01-04 17:14:54 erik Exp $
+//  @(#)$Id: EDAOMTagProcessor.m,v 2.4 2003-01-19 22:47:27 erik Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -332,14 +332,14 @@ The default is not to accept unknown attributes. "*/
 
 - (id)elementForTag:(EDObjectPair *)tagName attributeList:(NSArray *)parsedAttrList
 {
-    NSString 			 *className, *attrName, *attrNamespace;
-    NSDictionary		 *tagDef, *attrDef;
-    NSArray				 *attrList;
-    NSMutableSet		 *requiredAttributes;
-    NSSet				 *knownAttributes;
-    NSEnumerator		 *attrEnum;
-    EDObjectPair		 *attr;
-    id <EDMarkupElement> element;
+    NSString 			*className, *attrName, *attrNamespace;
+    NSDictionary		*tagDef, *attrDef;
+    NSArray				*attrList;
+    NSMutableSet		*requiredAttributes;
+    NSSet				*knownAttributes;
+    NSEnumerator		*attrEnum;
+    EDObjectPair		*attr;
+    id <EDAOMElement> 	element;
 
     tagDef = [tagDefinitions objectForKey:[tagName secondObject]];
     NSAssert1(tagDef != nil, @"No definition for tag %@", [tagName secondObject]);

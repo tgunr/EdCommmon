@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDNumberSet.m created by erik on Sun 04-Jul-1999
-//  @(#)$Id: EDNumberSet.m,v 2.0 2002-08-16 18:12:46 erik Exp $
+//  @(#)$Id: EDNumberSet.m,v 2.1 2003-01-19 22:47:27 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -20,7 +20,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CollectionMapping.h"
-#import "EDRedBlackTree.h"
+#import "EDSortedArray.h"
 #import "EDRange.h"
 #import "EDNumberSet.h"
 
@@ -52,7 +52,7 @@
 - (id)init
 {
     [super init];
-    rangeTree = [[EDRedBlackTree allocWithZone:[self zone]] initWithComparisonSelector:@selector(compareLocation:)];
+    rangeArray = [[EDSortedArray allocWithZone:[self zone]] initWithComparisonSelector:@selector(compareLocation:)];
     return self;
 }
 
@@ -84,7 +84,7 @@
 
 - (void)dealloc
 {
-    [rangeTree release];
+    [rangeArray release];
     [super dealloc];
 }
 
@@ -95,7 +95,7 @@
 
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
-    [encoder encodeObject:[rangeTree allObjects]];
+    [encoder encodeObject:[rangeArray allObjects]];
 }
 
 
@@ -109,7 +109,7 @@
     version = [decoder versionForClassName:@"EDNumberSet"];
     if(version > 0)
         {
-        rangeTree = [[EDRedBlackTree allocWithZone:[self zone]] initWithComparisonSelector:@selector(compareLocation:)];
+        rangeArray = [[EDSortedArray allocWithZone:[self zone]] initWithComparisonSelector:@selector(compareLocation:)];
         rangeEnum = [[decoder decodeObject] objectEnumerator];
         while((range = [rangeEnum nextObject]) != nil)
             [self addNumbersInRange:range];
@@ -124,7 +124,7 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-   return [[EDNumberSet allocWithZone:zone] initWithRanges:[rangeTree allObjects]];
+   return [[EDNumberSet allocWithZone:zone] initWithRanges:[rangeArray allObjects]];
 }
 
 
@@ -139,7 +139,7 @@
     EDRange			*range;
 
     rangeDescs = [NSMutableArray array];
-    rangeEnum = [rangeTree objectEnumerator];
+    rangeEnum = [rangeArray objectEnumerator];
     while((range = [rangeEnum nextObject]) != nil)
         [rangeDescs addObject:[NSString stringWithFormat:@"(%d..%d)", [range location], [range endLocation]]];
 
@@ -175,7 +175,7 @@
     EDRange 	 *member;
 
     uival = [aNumber unsignedIntValue];
-    member = [rangeTree smallerOrEqualMember:[EDRange rangeWithLocation:uival length:1]];
+    member = [rangeArray smallerOrEqualMember:[EDRange rangeWithLocation:uival length:1]];
 
     return [member isLocationInRange:uival];
 }
@@ -187,7 +187,7 @@
 {
     EDRange *member;
 
-    if((member = [rangeTree minimumObject]) == nil)
+    if((member = [rangeArray minimumObject]) == nil)
         return nil;
     return [NSNumber numberWithInt:[member location]];
 }
@@ -199,7 +199,7 @@
 {
     EDRange *member;
 
-    if((member = [rangeTree maximumObject]) == nil)
+    if((member = [rangeArray maximumObject]) == nil)
         return nil;
     return [NSNumber numberWithInt:[member endLocation]];
 }
@@ -220,7 +220,7 @@
     startLoc = [aRange location];
     endLoc = [aRange endLocation];
 
-    member = [rangeTree smallerOrEqualMember:aRange];
+    member = [rangeArray smallerOrEqualMember:aRange];
     if(member != nil)
         {
         if([member containsRange:aRange])
@@ -228,25 +228,25 @@
             // aRange contained in members; no work to do.
             return; 
             }
-        next = [rangeTree successorForObject:member];
+        next = [rangeArray successorForObject:member];
         if([member endLocation] >= [aRange location] - 1)
             {
             // overlaps/adjacent to aRange; will be merged.
             startLoc = [member location];
-            [rangeTree removeObject:member];
+            [rangeArray removeObject:member];
             }
         member = next;
         }
     else
         {
         // nothing smaller than aRange; just get first.
-        member = [rangeTree minimumObject];
+        member = [rangeArray minimumObject];
         }
     
     while((member != nil) && ([member endLocation] <= [aRange endLocation]))
         {
-        next = [rangeTree successorForObject:member];
-        [rangeTree removeObject:member];
+        next = [rangeArray successorForObject:member];
+        [rangeArray removeObject:member];
         member = next;
         }
 
@@ -254,11 +254,11 @@
         {
         // overlaps/adjacent to aRange; merge.
         endLoc = [member endLocation];
-        [rangeTree removeObject:member];
+        [rangeArray removeObject:member];
         }
 
     aRange = RWL(startLoc, endLoc);
-    [rangeTree addObject:aRange];
+    [rangeArray addObject:aRange];
 }
 
 
@@ -268,15 +268,15 @@
 {
     EDRange 		*member, *next, *mod;
 
-    member = [rangeTree smallerOrEqualMember:aRange];
+    member = [rangeArray smallerOrEqualMember:aRange];
     if(member != nil)
         {
-        next = [rangeTree successorForObject:member];
+        next = [rangeArray successorForObject:member];
         if([member endLocation] >= [aRange location])
             {
             // member overlaps aRange; must be modified
             [[member retain] autorelease];
-            [rangeTree removeObject:member];
+            [rangeArray removeObject:member];
             if([member isEqualToRange:aRange])
                 {
                 // nothing more to do
@@ -286,13 +286,13 @@
                 {
                 // add section before aRange
                 mod = RWL([member location], [aRange location] - 1);
-                [rangeTree addObject:mod];
+                [rangeArray addObject:mod];
                 }
             if([member endLocation] > [aRange endLocation])
                 {
                 // member contained aRange; add rest and return
                 mod = RWL([aRange endLocation] + 1, [member endLocation]);
-                [rangeTree addObject:mod];
+                [rangeArray addObject:mod];
                 return; 
                 }
             }
@@ -300,21 +300,21 @@
         }
     else
         {
-        member = [rangeTree minimumObject];
+        member = [rangeArray minimumObject];
         }
     
     while((member != nil) && ([member endLocation] <= [aRange endLocation]))
         {
-        next = [rangeTree successorForObject:member];
-        [rangeTree removeObject:member];
+        next = [rangeArray successorForObject:member];
+        [rangeArray removeObject:member];
         member = next;
         }
     
     if((member != nil) && ([member location] <= [aRange endLocation]))
         {
         mod = RWL([aRange endLocation] + 1, [member endLocation]);
-        [rangeTree removeObject:member];
-        [rangeTree addObject:mod];
+        [rangeArray removeObject:member];
+        [rangeArray addObject:mod];
         }
 }
 
@@ -323,7 +323,7 @@
 
 - (NSArray *)coveredRanges
 {
-    return [rangeTree allObjects];
+    return [rangeArray allObjects];
 }
 
 
@@ -331,7 +331,7 @@
 
 - (NSEnumerator *)coveredRangeEnumerator
 {
-    return [rangeTree objectEnumerator];
+    return [rangeArray objectEnumerator];
 }
 
 
@@ -343,21 +343,21 @@
     EDRange 		*member;
 
     resultSet = [NSMutableArray array];
-    member =  [rangeTree smallerOrEqualMember:aRange];
+    member =  [rangeArray smallerOrEqualMember:aRange];
     if(member != nil)
         {
         if([member endLocation] < [aRange location])
-            member = [rangeTree successorForObject:member];
+            member = [rangeArray successorForObject:member];
         }
     else
         {
-        member = [rangeTree minimumObject];
+        member = [rangeArray minimumObject];
         }
 
     while((member != nil) && ([member location] <= [aRange endLocation]))
         {
         [resultSet addObject:[member intersectionRange:aRange]];
-        member = [rangeTree successorForObject:member];
+        member = [rangeArray successorForObject:member];
         }
 
     return resultSet;
@@ -373,7 +373,7 @@
     unsigned int	startLoc;
 
     resultSet = [NSMutableArray array];
-    member =  [rangeTree smallerOrEqualMember:aRange];
+    member =  [rangeArray smallerOrEqualMember:aRange];
     startLoc = [aRange location];
     if(member != nil)
         {
@@ -382,11 +382,11 @@
         
         if([member endLocation] >= [aRange location])
             startLoc = [member endLocation] + 1;
-        member = [rangeTree successorForObject:member];
+        member = [rangeArray successorForObject:member];
         }
     else
         {
-        member = [rangeTree minimumObject];
+        member = [rangeArray minimumObject];
         }
 
     while((member != nil) && ([member location] <= [aRange endLocation]))
@@ -394,7 +394,7 @@
         uncovered = RWL(startLoc, [member location] - 1);
         [resultSet addObject:uncovered];
         startLoc = [member endLocation] + 1;
-        member = [rangeTree successorForObject:member];
+        member = [rangeArray successorForObject:member];
         }
 
     if(startLoc <= [aRange endLocation])

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
-//  EDRedBlackTree+Private.h created by erik on Tue 15-Sep-1998
-//  @(#)$Id: EDRedBlackTree+Private.h,v 2.0 2002-08-16 18:12:46 erik Exp $
+//  EDSortedArray+Private.h created by erik on Tue 15-Sep-1998
+//  @(#)$Id: EDSortedArray+Private.h,v 2.1 2003-01-19 22:47:27 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,11 +19,11 @@
 //---------------------------------------------------------------------------------------
 
 
-#ifndef	__EDRedBlackTree_Private_h_INCLUDE
-#define	__EDRedBlackTree_Private_h_INCLUDE
+#ifndef	__EDSortedArray_Private_h_INCLUDE
+#define	__EDSortedArray_Private_h_INCLUDE
 
 
-#import "EDRedBlackTree.h"
+#import "EDSortedArray.h"
 
 
 /*" This structure is used to represent nodes. It's a struct and not an object because latter would use yet another 4 bytes for the isa pointer. "*/
@@ -41,7 +41,7 @@ typedef struct _EDRedBlackTreeNode
 
 /*" Some private methods made available for the benefit of subclassers. "*/
 
-@interface EDRedBlackTree(Private)
+@interface EDSortedArray(Private)
 
 - (EDRedBlackTreeNode *)_allocNodeForObject:(id)object;
 - (void)_deallocNode:(EDRedBlackTreeNode *)node;
@@ -67,16 +67,16 @@ typedef struct _EDRedBlackTreeNode
 @end
 
 
-/*" Private subclass of #NSEnumerator for use with #EDRedBlackTrees. You never instantiate objects of this class directly. In fact, you don't even have the interface unless you specifically include it. "*/
+/*" Private subclass of #NSEnumerator for use with #EDSortedArray. You never instantiate objects of this class directly. In fact, you don't even have the interface unless you specifically include it. "*/
 
-@interface _EDRedBlackTreeEnumerator : NSEnumerator
+@interface _EDSortedArrayEnumerator : NSEnumerator
 {
-    EDRedBlackTree 		*tree;
+    EDSortedArray 		*array;
     EDRedBlackTreeNode	*sentinel;
     EDRedBlackTreeNode 	*node;
 }
 
-- (id)initWithTree:(EDRedBlackTree *)aTree;
+- (id)initWithSortedArray:(EDSortedArray *)anArray;
 
 @end
 
@@ -86,6 +86,6 @@ typedef struct _EDRedBlackTreeNode
 #define NIL(X) (((EDRedBlackTreeNode *)X) == sentinel)
 
 
-#endif	/* __EDRedBlackTree_Private_h_INCLUDE */
+#endif	/* __EDSortedArray_Private_h_INCLUDE */
 
 

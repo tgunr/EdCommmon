@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
-//  EDRedBlackTree.m created by erik on Sun 13-Sep-1998
-//  @(#)$Id: EDRedBlackTree.m,v 2.1 2002-08-28 20:41:32 erik Exp $
+//  EDSortedArray.m created by erik on Sun 13-Sep-1998
+//  @(#)$Id: EDSortedArray.m,v 2.1 2003-01-19 22:47:27 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,21 +19,21 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "EDRedBlackTree.h"
-#import "EDRedBlackTree+Private.h"
+#import "EDSortedArray.h"
+#import "EDSortedArray+Private.h"
 
 #define RED 1
 #define BLACK 0
 
 //=======================================================================================
-    @implementation EDRedBlackTree
+    @implementation EDSortedArray
 //=======================================================================================
 
 /*" Binary search trees can be considered as "always sorted" arrays. Whenever an object is added to the tree it automagically ends up at the "correct" index; as defined by the comparison selector.
 
-This behaviour can be emulated, of course, using NSMutableArrays and (binary) search but EDRedBlackTree has better performance characteristics. When objects are inserted into ordered collections, O(lg %n) instead of O(%n). Contains and index-of tests can also be carried out in O(lg %n) instead of O(%n). Inserting/removing at the end and retrieving objects by index is marginally slower, O(lg %n) instead of O(1). NSSets are even faster at contains tests, O(1), but they do no support ordered collections. The main disadvantage of binary search trees is their memory usage, 20 bytes per object rather than 4 to 8 in an array.
+This behaviour can be emulated, of course, using NSMutableArrays and (binary) search but EDSortedArray, which is based on red-black trees, has better performance characteristics. When objects are inserted into ordered collections, O(lg %n) instead of O(%n). Contains and index-of tests can also be carried out in O(lg %n) instead of O(%n). Inserting/removing at the end and retrieving objects by index is marginally slower, O(lg %n) instead of O(1). NSSets are even faster at contains tests, O(1), but they do no support ordered collections. The main disadvantage of binary search trees is their memory usage, 20 bytes per object rather than 4 to 8 in an array.
 
-A final note: NSArrays are implemented extremely well and in collections with less than at least about 3000 objects performance gains are negligible; NSArray might even be faster! However, beyond a certain size the performance difference is more than noticeable. In the end, you might still want to use the trees unless you already have the binary search insert written somewhere else.
+A final note: NSArrays are implemented extremely well and in collections with less than at least about 3000 objects performance gains are negligible; NSArray might even be faster! However, beyond a certain size the performance difference is more than noticeable. In the end, you might still want to use the tree based sorted arrays unless you already have the binary search insert written somewhere else.
 
 This datastructure does not implement the copying and coding protocols as binary search trees are usually required in the context of algorithms, rather than data storage.
 "*/
@@ -677,7 +677,7 @@ This datastructure does not implement the copying and coding protocols as binary
 
 - (NSEnumerator *)objectEnumerator
 {
-    return [[[_EDRedBlackTreeEnumerator alloc] initWithTree:self] autorelease];
+    return [[[_EDSortedArrayEnumerator alloc] initWithSortedArray:self] autorelease];
 }
 
 
@@ -766,22 +766,22 @@ Note that it is possible to have several objects that compare as equal in the tr
 
 
 //=======================================================================================
-    @implementation _EDRedBlackTreeEnumerator
+    @implementation _EDSortedArrayEnumerator
 //=======================================================================================
 
-- (id)initWithTree:(EDRedBlackTree *)aTree
+- (id)initWithSortedArray:(EDSortedArray *)anArray
 {
     [super init];
-    tree = [aTree retain];
-    sentinel = [aTree _sentinel];
-    node = [tree _minimumNode];
+    array = [anArray retain];
+    sentinel = [anArray _sentinel];
+    node = [anArray _minimumNode];
     return self;
 }
 
 
 - (void)dealloc
 {
-    [tree release];
+    [array release];
     [super dealloc];
 }
 
@@ -793,7 +793,7 @@ Note that it is possible to have several objects that compare as equal in the tr
     if(NIL(node) == YES)
         return nil;
     object = node->object;
-    node = [tree _successorForNode:node];
+    node = [array _successorForNode:node];
 
     return object;
 }

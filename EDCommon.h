@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCommon.h created by erik on Sat 05-Sep-1998
-//  @(#)$Id: EDCommon.h,v 2.1 2002-09-01 19:24:26 erik Exp $
+//  @(#)$Id: EDCommon.h,v 2.2 2003-01-19 22:47:46 erik Exp $
 //
 //  Copyright (c) 1998-2001 by Erik Doernenburg. All rights reserved.
 //
@@ -60,7 +60,7 @@
 #import "EDObjectPair.h"
 #import "EDObjectReference.h"
 #import "EDRange.h"
-#import "EDRedBlackTree.h"
+#import "EDSortedArray.h"
 #import "EDSparseClusterArray.h"
 #import "EDStack.h"
 #import "EDStringScanner.h"
