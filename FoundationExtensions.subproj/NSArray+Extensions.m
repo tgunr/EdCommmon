@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.m created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.m,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: NSArray+Extensions.m,v 1.2 2000-09-27 15:52:47 erik Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -32,6 +32,8 @@
     @implementation NSArray(EDExtensions)
 //=======================================================================================
 
+//---------------------------------------------------------------------------------------
+
 /*" Return the object at index 0 and make sure that the array does only contain this object. "*/
 
 - (id)singleObject
@@ -41,6 +43,7 @@
     return [self objectAtIndex:0];
 }
 
+//---------------------------------------------------------------------------------------
 
 /*" Return the object at index 0 or %nil if the array is empty. WARNING: The method #firstObject is also implemented in the HTML framework which is sometimes loaded in AppKit applications. Unfortunately, its implemenation differs in that it raises an exception if the array is empty. (Don't ask why they did that!) So, you either live with this or call #applyFirstObjectPatch before the HTML framework is loaded. "*/
 
@@ -73,6 +76,8 @@ static Method myFirstObjectMethod;
 }
 
 
+//---------------------------------------------------------------------------------------
+
 /*" Returns a new array with the same objects as the receiver but rearranged randomly. "*/
 
 - (NSArray *)shuffledArray
@@ -83,6 +88,62 @@ static Method myFirstObjectMethod;
 }
 
 
+//---------------------------------------------------------------------------------------
+
+/*" Returns an array containing all objects from the receiver up to (not including) the object at index %index. "*/
+
+- (NSArray *)subarrayToIndex:(unsigned int)index
+{
+    return [self subarrayWithRange:NSMakeRange(0, index)];
+}
+
+
+/*" Returns an array containing all objects from the receiver starting with the object at index %index. "*/
+
+- (NSArray *)subarrayFromIndex:(unsigned int)index
+{
+    return [self subarrayWithRange:NSMakeRange(index, [self count] - index)];
+}
+
+
+//---------------------------------------------------------------------------------------
+
+/*" Returns #YES if the receiver is contained in %otherArray at offset %offset. "*/
+
+- (BOOL)isSubarrayOfArray:(NSArray *)other atOffset:(int)offset
+{
+    int	i, n = [self count];
+
+    if(n > offset + [other count])
+        return NO;
+    for(i = 0; i < n; i++)
+        if([[self objectAtIndex:i] isEqual:[other objectAtIndex:offset + i]] == NO)
+            return NO;
+    return YES;
+}
+
+//---------------------------------------------------------------------------------------
+
+/*" Returns the first index at which %otherArray is contained in the receiver; or #NSNotFound otherwise. "*/
+
+- (unsigned int)indexOfSubarray:(NSArray *)other
+{
+    int		i, n = [self count], length, location = 0;
+
+    do
+        {
+        if((length = n - location - [other count] + 1) <= 0)
+            return NSNotFound;
+        if((i = [self indexOfObject:[other objectAtIndex:0] inRange:NSMakeRange(location, length)]) == NSNotFound)
+            return NSNotFound;
+        location = i + 1;
+        }
+    while([other isSubarrayOfArray:self atOffset:i] == NO);
+
+    return i;
+}
+
+//---------------------------------------------------------------------------------------
 
 /*" Creates and returns an array of NSString objects. These refer to all files of a type specified in %type that can be found in the directory %aPath. "*/
 
@@ -134,8 +195,8 @@ static Method myFirstObjectMethod;
 
 - (void)shuffle
 {
-    unsigned int i, j, n;
-    id			 d;
+    int i, j, n;
+    id	d;
 
     n = [self count];
     for(i = n - 1; i >= 0; i--)

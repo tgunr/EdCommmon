@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.h created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.h,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: NSArray+Extensions.h,v 1.2 2000-09-27 15:52:47 erik Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -25,7 +25,14 @@
 - (id)singleObject;
 - (id)firstObject;
 + (void)applyFirstObjectPatch;
+
 - (NSArray *)shuffledArray;
+
+- (NSArray *)subarrayToIndex:(unsigned int)index;
+- (NSArray *)subarrayFromIndex:(unsigned int)index;
+
+- (BOOL)isSubarrayOfArray:(NSArray *)other atOffset:(int)offset;
+- (unsigned int)indexOfSubarray:(NSArray *)other;
 
 + (NSArray *)arrayWithFilesOfType:(NSString *)type inPath:(NSString *)aPath;
 + (NSArray *)arrayWithFilesOfType:(NSString *)type inLibrary:(NSString *)libraryName;
