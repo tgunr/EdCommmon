@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDKeyValuePair.m created by erik on Sat 29-Aug-1998
-//  @(#)$Id: EDObjectPair.m,v 1.2 2001-11-04 12:45:05 znek Exp $
+//  @(#)$Id: EDObjectPair.m,v 1.3 2002-02-05 23:27:00 znek Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -135,7 +135,9 @@
 
 - (BOOL)isEqual:(id)otherObject
 {
-    if((isa != ((EDObjectPair *)otherObject)->isa) && ([otherObject isKindOfClass:[EDObjectPair class]] == NO))
+    if(otherObject == nil)
+        return NO;
+    else if((isa != ((EDObjectPair *)otherObject)->isa) && ([otherObject isKindOfClass:[EDObjectPair class]] == NO))
         return NO;
     return [((EDObjectPair *)otherObject)->firstObject isEqual:firstObject] &&
         [((EDObjectPair *)otherObject)->secondObject isEqual:secondObject];

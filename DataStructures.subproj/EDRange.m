@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  Created by znek on Fri 31-Oct-1997
-//  @(#)$Id: EDRange.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDRange.m,v 1.2 2002-02-05 23:27:00 znek Exp $
 //
 //  Copyright (c) 1997,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -137,7 +137,9 @@
 
 - (BOOL)isEqual:(id)otherObject
 {
-    if((isa != ((EDRange *)otherObject)->isa) && ([otherObject isKindOfClass:[EDRange class]] == NO))
+    if(otherObject == nil)
+        return NO;
+    else if((isa != ((EDRange *)otherObject)->isa) && ([otherObject isKindOfClass:[EDRange class]] == NO))
         return NO;
     return NSEqualRanges(range, ((EDRange *)otherObject)->range);
 }
