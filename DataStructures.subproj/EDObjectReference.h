@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjectReference.h created by erik on Thu 13-Aug-1998
-//  @(#)$Id: EDObjectReference.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDObjectReference.h,v 1.2 2001-10-14 23:12:19 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -28,7 +28,6 @@
 
 + (id)referenceToObject:(id)anObject;
 
-- (void)setReferencedObject:(id)anObject;
 - (id)referencedObject;
 
 @end

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDObjectReference.m created by erik on Thu 13-Aug-1998
-//  @(#)$Id: EDObjectReference.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDObjectReference.m,v 1.2 2001-10-14 23:12:19 erik Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -35,7 +35,7 @@
     EDObjectReference *new;
 
     new = [[[EDObjectReference alloc] init] autorelease];
-    [new setReferencedObject:anObject];
+    new->referencedObject = [anObject retain];
 
     return new;
 }
@@ -72,6 +72,24 @@
 
 
 //---------------------------------------------------------------------------------------
+//	EQUALITY
+//---------------------------------------------------------------------------------------
+
+- (unsigned int)hash
+{
+    return [referencedObject hash];
+}
+
+
+- (BOOL)isEqual:(id)other
+{
+   if((isa != ((EDObjectReference *)other)->isa) && ([other isKindOfClass:[EDObjectReference class]] == NO))
+        return NO;
+    return (self->referencedObject == ((EDObjectReference *)other)->referencedObject);
+}
+
+
+//---------------------------------------------------------------------------------------
 //	NSCOPYING
 //---------------------------------------------------------------------------------------
 
@@ -80,7 +98,7 @@
     EDObjectReference *copy;
 
     copy = [[EDObjectReference allocWithZone:zone] init];
-    [copy setReferencedObject:referencedObject];
+    copy->referencedObject = [referencedObject retain];
 
     return copy;
 }
