@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 2.3 2002-09-09 23:57:40 znek Exp $
+//  @(#)$Id: EDMLParser.m,v 2.4 2002-09-12 22:24:02 erik Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -266,6 +266,8 @@ Example table: !{
         lt = "<";
         gt = ">";
         amp = "&";
+        apos = "'";
+        quot = "\"";
     }
     
 }
