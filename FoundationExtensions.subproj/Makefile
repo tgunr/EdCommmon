@@ -17,7 +17,7 @@ CLASSES = NSArray+Extensions.m NSAttributedString+Extensions.m\
           NSDictionary+Extensions.m NSInvocation+Extensions.m\
           NSObject+Extensions.m NSProcessInfo+Extensions.m\
           NSSet+Extensions.m NSScanner+Extensions.m\
-          NSString+Extensions.m CollectionMapping.m
+          NSString+Extensions.m
 
 HFILES = NSArray+Extensions.h NSAttributedString+Extensions.h\
          NSData+Extensions.h NSDate+Extensions.h\

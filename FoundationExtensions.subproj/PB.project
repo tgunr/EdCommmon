@@ -12,8 +12,7 @@
             "NSProcessInfo+Extensions.m", 
             "NSSet+Extensions.m", 
             "NSScanner+Extensions.m", 
-            "NSString+Extensions.m", 
-            CollectionMapping.m
+            "NSString+Extensions.m"
         ); 
         FRAMEWORKSEARCH = (); 
         H_FILES = (
