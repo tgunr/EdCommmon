@@ -1,0 +1,89 @@
+// !$*UTF8*$!
+{
+	1AA34CC40090839C7F000001 = {
+		activeBuildStyle = 00F9505A0093182B7F000001;
+		activeTarget = 1AA34D480090839C7F000001;
+		perUserDictionary = {
+			PBXWorkspaceConfiguration = {
+				ContentSize = "{950, 699}";
+				LeftSlideOut = {
+					ActiveTab = 2;
+					Frame = "{{0, 23}, {950, 676}}";
+					Split0 = {
+						ActiveTab = 2;
+						Frame = "{{225, 0}, {725, 676}}";
+						Split0 = {
+							Frame = "{{0, 217}, {725, 459}}";
+						};
+						SplitCount = 1;
+						Tab0 = {
+							Debugger = {
+								Frame = "{{0, 0}, {484, 208}}";
+								Split0 = {
+									Frame = "{{0, 25}, {484, 183}}";
+									Split0 = {
+										Frame = "{{0, 0}, {236, 183}}";
+									};
+									Split1 = {
+										Frame = "{{245, 0}, {239, 183}}";
+									};
+									SplitCount = 2;
+								};
+								SplitCount = 1;
+								Tab0 = {
+									Frame = "{{0, 0}, {100, 50}}";
+								};
+								TabCount = 1;
+							};
+							Frame = "{{0, 0}, {484, 208}}";
+							LauncherConfigVersion = 4;
+						};
+						Tab1 = {
+							Frame = "{{0, 0}, {484, 208}}";
+							LauncherConfigVersion = 3;
+							Runner = {
+								Frame = "{{0, 0}, {484, 208}}";
+							};
+						};
+						Tab2 = {
+							BuildMessageFrame = "{{0, 0}, {729, 139}}";
+							BuildTranscriptFrame = "{{0, 148}, {729, 46}}";
+							Frame = "{{0, 0}, {725, 192}}";
+						};
+						Tab3 = {
+							Frame = "{{0, 0}, {612, 295}}";
+						};
+						TabCount = 4;
+					};
+					SplitCount = 1;
+					Tab0 = {
+						Frame = "{{0, 0}, {200, 676}}";
+					};
+					Tab1 = {
+						Frame = "{{0, 0}, {200, 100}}";
+					};
+					Tab2 = {
+						Frame = "{{0, 0}, {200, 676}}";
+						Split0 = {
+							Frame = "{{0, 0}, {200, 329}}";
+						};
+						Split1 = {
+							Frame = "{{0, 338}, {200, 338}}";
+						};
+						SplitCount = 2;
+					};
+					Tab3 = {
+						Frame = "{{0, 0}, {250, 100}}";
+					};
+					TabCount = 4;
+				};
+				WindowLoc = "{128, 24}";
+			};
+		};
+	};
+	1AA34D480090839C7F000001 = {
+		activeExec = 0;
+		customExecs = {
+		};
+	};
+}

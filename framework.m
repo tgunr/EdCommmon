@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  framework.m created by erik on Sun 28-May-2000
-//  @(#)$Id: framework.m,v 1.2 2000-10-23 23:25:05 erik Exp $
+//  @(#)$Id: framework.m,v 1.3 2001-04-25 21:12:52 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -34,7 +34,7 @@
     extern void (*_EDLogFunction)(NSString *);
     _EDLogFunction = (void *)NSLog;
 #endif
-#if defined(DEBUG) && !defined(WIN32)
+#if !defined(OPTIMIZED) && !defined(WIN32)
     extern const char EDCommonVersionString[];
     static BOOL didLog = NO;
 
