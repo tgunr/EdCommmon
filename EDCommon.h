@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------------------
 //  EDCommon.h created by erik on Sat 05-Sep-1998
-//  @(#)$Id: EDCommon.h,v 2.4 2003-04-08 16:51:31 znek Exp $
+//  @(#)$Id: EDCommon.h,v 2.5 2003-05-26 19:56:11 erik Exp $
 //
-//  Copyright (c) 1998-2001 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1998-2003 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -51,6 +51,7 @@
 #include "EDTCPSocket.h"
 #include "EDUDPSocket.h"
 #include "EDStream.h"
+#include "EDTextWriter.h"
 //#include "functions.h"
 
 #include "EDBitmapCharset.h"
@@ -66,11 +67,24 @@
 #include "EDSparseClusterArray.h"
 #include "EDStack.h"
 #include "EDStringScanner.h"
+#include "EDStringWriter.h"
 
 #include "EDMLParser.h"
 #include "EDMLTagProcessorProtocol.h"
 #include "EDAOMTagProcessor.h"
 
+#include "EDXMLAttribute.h"
+#include "EDXMLCharacterData.h"
+#include "EDXMLDocument.h"
+#include "EDXMLDocumentFragment.h"
+#include "EDXMLElement.h"
+#include "EDXMLNode.h"
+#include "EDXMLText.h"
+
+#include "EDXMLDOMTagProcessor.h"
+#include "EDXMLNamedNodeMap.h"
+#include "EDXMLNodeList.h"
+#include "EDXMLTreeWalker.h"
 
 #ifndef EDCOMMON_WOBUILD
 

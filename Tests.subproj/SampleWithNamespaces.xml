@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<foo:docelement xmlns:foo="urn:foo" attr1="1">
+    <bar:elementwithchildren xmlns:bar="urn:bar">
+        <bar:childelement1 attr1="b1" foo:attr1="f1"/>
+        <foo:childelement2 attr1="b1" foo:attr1="f1">footext</foo:childelement2>
+    </bar:elementwithchildren>
+</foo:docelement>
