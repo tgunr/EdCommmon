@@ -1,5 +1,5 @@
 # AppKitExtensions.subproj
-# $Id: GNUmakefile,v 2.0 2002-08-16 18:12:44 erik Exp $
+# $Id: GNUmakefile,v 2.1 2002-09-29 23:17:55 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -32,6 +32,9 @@ NSTableColumn+Extensions.m		EDKeyControlWindow.m \
 NSApplication+Extensions.m              NSTableView+Extensions.m \
 NSAttributedString+AppKitExtensions.m   NSWindow+Extensions.m \
 NSMatrix+Extensions.m                   NSWorkspace+Extensions.m
+
+
+AppKitExtensions.subproj_HAS_RESOURCE_BUNDLE = yes
 
 
 AppKitExtensions.subproj_RESOURCE_FILES = arrows.tiff

@@ -1,5 +1,5 @@
 # FoundationExtensions.subproj
-# $Id: GNUmakefile,v 2.0 2002-08-16 18:12:48 erik Exp $
+# $Id: GNUmakefile,v 2.1 2002-09-29 23:17:56 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -46,6 +46,9 @@ NSAttributedString+Extensions.m         NSSet+Extensions.m \
 NSData+Extensions.m                     NSString+Extensions.m \
 NSDate+Extensions.m                     functions.m \
 NSDictionary+Extensions.m
+
+
+FoundationExtensions.subproj_HAS_RESOURCE_BUNDLE = yes
 
 
 FoundationExtensions.subproj_RESOURCE_FILES = MIME.plist
