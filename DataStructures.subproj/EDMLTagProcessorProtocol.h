@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLTagProcessorProtocol.h created by erik
-//  @(#)$Id: EDMLTagProcessorProtocol.h,v 2.0 2002-08-16 18:12:45 erik Exp $
+//  @(#)$Id: EDMLTagProcessorProtocol.h,v 2.1 2002-12-16 22:40:25 erik Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -37,6 +37,7 @@ typedef enum
 
 
 @protocol EDMLTagProcessor < NSObject >
+- (id)documentForElements:(NSArray *)elementList;
 - (NSString *)defaultNamespace;
 - (BOOL)spaceIsString;
 - (EDMLElementType)typeOfElementForTag:(EDObjectPair *)tagName attributeList:(NSArray *)attrList;

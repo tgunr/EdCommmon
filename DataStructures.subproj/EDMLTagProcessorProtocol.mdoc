@@ -4,6 +4,11 @@
 
 In all methods that receive a tag name and attribute list, the tag name is a "qualified" tag name represented as an object pair with the namespace URL as first object and the actual tag name as second object. The attribute list is an array of object pairs that contains the "qualified" attribute name as first object and the attribute value as second. Note that the qualified attribute name in turn is an object pair that contains the attribute's namespace as first and the attribute's name as second object. (Sorry for the mess but would you really want a class for each?)"*/
 
+- (id)documentForElements:(NSArray *)elements;
+
+/*" Must return a document object for the list of elements. This document object will be returned from #{parseDocument:} in the parser. "*/
+
+
 - (NSString *)defaultNamespace;
 
 /*" Must return the namespace that will be assigned to elements without a namespace prefix in absence of any xmlns definitions for the default namespace. If documents are not XML, this can be !{nil}. "*/

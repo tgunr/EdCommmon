@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.h created by erik
-//  @(#)$Id: EDMLParser.h,v 2.1 2002-09-01 17:43:07 erik Exp $
+//  @(#)$Id: EDMLParser.h,v 2.2 2002-12-16 22:40:25 erik Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -57,8 +57,11 @@
 - (NSDictionary *)entityTable;
 
 /*" Parsing "*/
+- (id)parseDocument:(NSString *)aString;
 - (NSArray *)parseString:(NSString *)aString;
-- (NSArray *)parseXMLDocument:(NSData *)xmlData;
+- (id)parseXMLDocumentAtPath:(NSString *)path;
+- (id)parseXMLDocument:(NSData *)xmlData;
+- (NSArray *)parseXMLFragment:(NSString *)xmlString;
 
 /*" Relevant character sets "*/
 + (NSCharacterSet *)spaceCharacterSet;

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 2.4 2002-09-12 22:24:02 erik Exp $
+//  @(#)$Id: EDMLParser.m,v 2.5 2002-12-16 22:40:25 erik Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -36,6 +36,7 @@
 - (EDMLToken *)_peekedToken;
 - (void)_shift:(EDMLToken *)aToken;
 - (BOOL)_reduce;
+- (void)_loadXMLEntityTable;
 - (void)_reportClosingTagMismatch:(EDObjectPair *)tag;
 - (void)_processNamespaceDefinitions:(NSArray *)attrList;
 - (void)_processNamespaceContextEndings:(EDObjectPair *)tagName;
@@ -105,7 +106,7 @@ Typically, a parser with a custom tag processor is used as follows: !{
     toplevelElements = [parser parseString:myDocument];
 }
 
-Note that there is a convenience method to parse XML files. "*/
+Note that there are convenience methods to parse XML. "*/
 
 
 NSString *EDMLParserException = @"EDMLParserException";
@@ -271,6 +272,9 @@ Example table: !{
     }
     
 }
+
+Note that if you use the #{parseXML...} methods the standard XML entity table is automatically set if no other entity table was provided before.
+
 "*/
 
 - (void)setEntityTable:(NSDictionary *)aDictionary
@@ -290,10 +294,58 @@ Example table: !{
 
 
 //---------------------------------------------------------------------------------------
+//	XML PARSING CONVENIENCES
+//---------------------------------------------------------------------------------------
+
+/*" Loads the file at #path and calls #{parseXMLDocument:} "*/
+
+- (id)parseXMLDocumentAtPath:(NSString *)path
+{
+    NSData	*contents;
+
+    if((contents = [NSData dataWithContentsOfFile:path]) == nil)
+        [NSException raise:NSGenericException format:@"Cannot read XML document at %@", path];
+    return [self parseXMLDocument:contents];
+}
+
+
+/*" Determines the string encoding of the %xmlData, converts it into a string and calls #{parseDocument:}. The class of the returned object depends on the tag processor.
+
+Note that this method automatically loads the standard XML entity table if no entity table is set. "*/
+
+- (id)parseXMLDocument:(NSData *)xmlData
+{
+    if(entityTable == nil)
+        [self _loadXMLEntityTable];
+    return [self parseDocument:[NSString stringWithData:xmlData MIMEEncoding:[NSString MIMEEncodingOfXMLDocument:xmlData]]];
+}
+
+
+/*" Parses the XML fragment (which has to be passed as a string) and returns an array of all top-level elements found in the string.
+
+Note that this method automatically loads the standard XML entity table if no entity table is set. "*/
+
+- (NSArray *)parseXMLFragment:(NSString *)xmlString
+{
+    if(entityTable == nil)
+        [self _loadXMLEntityTable];
+    return [self parseString:xmlString];
+}
+
+
+//---------------------------------------------------------------------------------------
 //	PUBLIC ENTRY INTO PARSER
 //---------------------------------------------------------------------------------------
 
-/*" Parses, or tries to parse, the document contained in %aString. During the process methods from the #EDTagProcessorProtocol are sent to the current tag processor. #{parseString:} returns an array of all top-level elements found in the string as created by the tag processor. Exceptions are raised when syntax errors or mismatched container tags are encountered. (If the tag processor raises any exception, the parser shuts down properly, and re-raises it.) "*/
+/*" Parses, or tries to parse, the document contained in %aString using #{parseString:}. Then creates a document object using #{documentForElements:} in the tag processor. Consequently, the class of the returned object depends on the tag processor. Please refer to the respective class documentation. "*/
+
+- (id)parseDocument:(NSString *)aString
+{
+    return [tagProcessor documentForElements:[self parseString:aString]];
+}
+
+
+/*" Parses, or tries to parse, the text contained in %aString. During the process methods from the #EDTagProcessorProtocol are sent to the current tag processor. #{parseString:} returns an array of all top-level elements found in the string as created by the tag processor. Exceptions are raised when syntax errors or mismatched container tags are encountered. (If the tag processor raises any exception, the parser shuts down properly, and re-raises it.) "*/
 
 - (id)parseString:(NSString *)aString
 {
@@ -338,15 +390,6 @@ Example table: !{
 
     return result;
 }
-
-
-/*" Determines the string encoding of the %xmlData, converts it into a string and calls #{parseString:}. "*/
-
-- (NSArray *)parseXMLDocument:(NSData *)xmlData
-{
-    return [self parseString:[NSString stringWithData:xmlData MIMEEncoding:[NSString MIMEEncodingOfXMLDocument:xmlData]]];
-}
-
 
 
 //---------------------------------------------------------------------------------------
@@ -779,6 +822,18 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
 //---------------------------------------------------------------------------------------
 //	PARSER HELPER METHODS
 //---------------------------------------------------------------------------------------
+
+- (void)_loadXMLEntityTable
+{
+    NSString 	 *path;
+    NSDictionary *xmlEntities;
+
+    if((path = [[NSBundle bundleForClass:[self class]] pathForResource:@"XMLEntities" ofType:@"plist"]) == nil)
+        [NSException raise:NSGenericException format:@"Missing resource XMLEntities.plist in EDCommon.framework"];
+    xmlEntities = [[NSString stringWithContentsOfFile:path] propertyList];
+    [self setEntityTable:xmlEntities];
+}
+
 
 - (void)_reportClosingTagMismatch:(EDObjectPair *)tag
 {

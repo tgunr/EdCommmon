@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDAOMTagProcessor.m created by erik
-//  @(#)$Id: EDAOMTagProcessor.m,v 2.1 2002-08-19 00:50:47 erik Exp $
+//  @(#)$Id: EDAOMTagProcessor.m,v 2.2 2002-12-16 22:40:24 erik Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -32,7 +32,7 @@
 
 /*" Application Object Model tag processor. (For use with the EDMLParser.) This tag processor creates an object model of the original document in which the node classes are application specific. A "tag definition dictionary" describes the mapping.
 
-The tag definition dictionary contains the elements' namespace (optional), the model classes to be used for text and for whitespace (optional) as well as the ones to be used for elements.
+The tag definition dictionary contains the elements' namespace (optional), the classes to be used for the document (optional), for text and for whitespace (optional) as well as the ones to be used for elements.
 
 Text objects must implement the #{setText:} method while Space objects may implement it to get the exact space string. (This also requires to set #preservesWhitespace in the parser as otherwise the space string will always be !{@" "}.) All elements must implement #{takeValue:forAttribute:} which is called once for each attribute and all container elements must implement #{setContainedObjects:} which will be called after #{takeValue:forAttribute:} to set the elements, and text/space objects, that were found between the start and end tags. The array is !{nil} if the element was empty.
 
@@ -42,6 +42,13 @@ Note that if #acceptsUnknownTags is YES and multiple namespaces occur in the doc
 The namespace declaration in the tag definition must be a string stored under the key !{XMLNS}: !{
 
     XMLNS = %URI;
+}
+
+The class for document objects is defined as follows. Note that this is required only if the #{parseDocument:} and/or #{parseXMLDocument:} methods in the parser are used. !{
+
+    DOCUMENT = {
+        class = %ClassName;
+    };
 }
 
 The classes for text and space are defined as follows: !{
@@ -60,13 +67,14 @@ Model classes for elements are defined in a similar way but have more parameters
     %{tag-name} = {
         class = %ClassName;
         container = YES or NO;
+        root = YES or NO;
         required = ( %{attribute-name}, %{attribute-name}, ... );
         optional = ( %{attribute-name}, %{attribute-name}, ... );
         implicit = ( { %{attribute-name} = %value; } , { %{attribute-name} = %value; }, ... );
     };
 }
 
-If a tag is parsed that does not have all attributes in %required or it has attributes other than the ones listed in %required and %optional an exception is raised. The latter can be suppressed by using #{setIgnoresUnknownAttributes:} or #{setAcceptsUnknownAttributes:} The %implicit list allows to pass attributes to the objects in addition to the ones defined in the document. This can be used, for example, to turn %br tags (for linebreaks) into a space object as in the example from the EDStyleSheet framework: !{
+The %root entry denotes whether the element can be a root element in a document. If a tag is parsed that does not have all attributes in %required or it has attributes other than the ones listed in %required and %optional an exception is raised. The latter can be suppressed by using #{setIgnoresUnknownAttributes:} or #{setAcceptsUnknownAttributes:} The %implicit list allows to pass attributes to the objects in addition to the ones defined in the document. This can be used, for example, to turn %br tags (for linebreaks) into a space object as in the example from the EDStyleSheet framework: !{
 
     "_" = {
         class = EDSLSpace;
@@ -112,19 +120,41 @@ toplevelElements = [parser parseString:myDocument];
     if((textObjectDefinition = [[tagDefinitions objectForKey:@"*"] retain]) != nil)
         {
         NSString *className = [textObjectDefinition objectForKey:@"class"];
-        NSAssert(className != nil, @"Class entry missing for text");
+        NSAssert(className != nil, @"Class name missing for text entry");
         flags.textRespondsToSetText = [NSClassFromString(className) instancesRespondToSelector:@selector(setText:)];
         }
     if((spaceObjectDefinition = [[tagDefinitions objectForKey:@"_"] retain]) != nil)
         {
         NSString *className = [spaceObjectDefinition objectForKey:@"class"];
-        NSAssert(className != nil, @"Class entry missing for space");
+        NSAssert(className != nil, @"Class name missing for space entry");
         flags.spaceRespondsToSetText = [NSClassFromString(className) instancesRespondToSelector:@selector(setText:)];
         // we allow the object to ignore the string because it can assume it is a single space
         // anyway; unless you set preservesWhitespace
         if((flags.spaceRespondsToSetText == NO) && ([spaceObjectDefinition objectForKey:@"implicit"] == nil))
             flags.spaceIgnoresString = YES;
         }
+    if((documentObjectDefinition = [[tagDefinitions objectForKey:@"DOCUMENT"] retain]) != nil)
+        {
+        NSEnumerator	*tagEnum;
+        NSString		*className, *tag;
+        NSDictionary	*tagDef;
+        Class			elementClass;
+
+        className = [documentObjectDefinition objectForKey:@"class"];
+        NSAssert(className != nil, @"Class name missing for DOCUMENT entry");
+
+        rootElementClasses = [[NSMutableSet alloc] init];
+        tagEnum = [tagDefinitions keyEnumerator];
+        while((tag = [tagEnum nextObject]) != nil)
+            {
+            tagDef = [tagDefinitions objectForKey:tag];
+            if(([tagDef isKindOfClass:[NSString class]]) || ([[tagDef objectForKey:@"root"] boolValue] == NO))
+                continue;
+            elementClass = NSClassFromString([tagDef objectForKey:@"class"]);
+            NSAssert1(elementClass != Nil, @"No class or invalid class for tag %@", tag);
+            [(NSMutableSet *)rootElementClasses addObject:elementClass];
+            }
+         }
     
     return self;
 }
@@ -135,6 +165,8 @@ toplevelElements = [parser parseString:myDocument];
     [tagDefinitions release];
     [textObjectDefinition release];
     [spaceObjectDefinition release];
+    [documentObjectDefinition release];
+    [rootElementClasses release];
     [super dealloc];
 }
 
@@ -230,6 +262,38 @@ The default is not to accept unknown attributes. "*/
 //---------------------------------------------------------------------------------------
 //	PROCESSOR PROTOCOL
 //---------------------------------------------------------------------------------------
+
+- (id)documentForElements:(NSArray *)elementList
+{
+    Class			docClass;
+    NSEnumerator	*elementEnum;
+    id				element, rootElement;
+    id				document;
+
+    NSAssert(documentObjectDefinition != nil, @"No document definition in tag definitions.");
+    docClass = NSClassFromString([documentObjectDefinition objectForKey:@"class"]);
+    NSAssert(docClass != Nil, @"No document class in tag definitions.");
+    NSAssert(rootElementClasses != Nil, @"No root class(es) for document in tag definitions.");
+    
+    rootElement = nil;
+    elementEnum = [elementList objectEnumerator];
+    while((element = [elementEnum nextObject]) != nil)
+        {
+        if([rootElementClasses containsObject:[element class]] == NO)
+            continue;
+        if(rootElement != nil)
+            [NSException raise:EDMLParserException format:@"Found more than one root element."];
+        rootElement = [element retain];
+        }
+    if(rootElement == nil)
+        [NSException raise:EDMLParserException format:@"No root element."];
+
+    document = [[[docClass alloc] init] autorelease];
+    [document setRootElement:rootElement];
+
+    return document;
+}
+
 
 - (NSString *)defaultNamespace
 {

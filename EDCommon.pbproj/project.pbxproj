@@ -1322,6 +1322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6798787102DDFFB200A8C007,
+				67BCCE7C03A8175D00A8C007,
 				1AA34D760090839C7F000001,
 			);
 			isa = PBXResourcesBuildPhase;
@@ -1780,6 +1781,7 @@
 			children = (
 				674AF33902D4720100A8C007,
 				674AF33A02D4720900A8C007,
+				67BCCE7D03A8176C00A8C007,
 				6795396202D4EE3400A8C007,
 			);
 			isa = PBXGroup;
@@ -2167,6 +2169,26 @@
 					Public,
 				);
 			};
+		};
+		67BCCE7B03A8175D00A8C007 = {
+			isa = PBXFileReference;
+			name = XMLEntities.plist;
+			path = DataStructures.subproj/XMLEntities.plist;
+			refType = 4;
+		};
+		67BCCE7C03A8175D00A8C007 = {
+			fileRef = 67BCCE7B03A8175D00A8C007;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		67BCCE7D03A8176C00A8C007 = {
+			children = (
+				67BCCE7B03A8175D00A8C007,
+			);
+			isa = PBXGroup;
+			name = Resources;
+			refType = 4;
 		};
 		67E3B5EC00D4406500000001 = {
 			isa = PBXFileReference;
