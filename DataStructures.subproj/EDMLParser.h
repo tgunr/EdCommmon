@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.h created by erik
-//  @(#)$Id: EDMLParser.h,v 1.2 2000-12-07 22:35:46 erik Exp $
+//  @(#)$Id: EDMLParser.h,v 1.3 2001-03-11 03:17:53 erik Exp $
 //
-//  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -32,7 +32,13 @@
 
 @interface EDMLParser : NSObject
 {
+    struct {
+        unsigned		preservesWhitespace : 1;
+        unsigned 		acceptsUnknownAttributes : 1;
+    }				flags;
     NSDictionary	*tagDefinitions;
+    NSDictionary	*stringElementDefinition;
+    NSDictionary	*spaceElementDefinition;
     unichar		 	*source;
     unichar		 	*charp;
     unsigned int 	lexmode;
@@ -43,6 +49,12 @@
 + (id)parserWithTagDefinitions:(NSDictionary *)someTagDefinitions;
 
 - (id)initWithTagDefinitions:(NSDictionary *)someTagDefinitions;
+
+- (void)setPreservesWhitespace:(BOOL)flag;
+- (BOOL)preservesWhitespace;
+
+- (void)setAcceptsUnknownAttributes:(BOOL)flag;
+- (BOOL)acceptsUnknownAttributes;
 
 - (NSArray *)parseString:(NSString *)aString;
 

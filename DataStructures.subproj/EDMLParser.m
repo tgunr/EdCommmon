@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 1.2 2000-12-07 22:35:46 erik Exp $
+//  @(#)$Id: EDMLParser.m,v 1.3 2001-03-11 03:17:53 erik Exp $
 //
-//  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -19,6 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
+#import "NSSet+Extensions.h"
 #import "EDBitmapCharset.h"
 #import "EDObjectPair.h"
 #import "EDMLToken.h"
@@ -33,8 +34,8 @@
 - (EDMLToken *)_peekedToken;
 - (EDMLToken *)_nextToken;
 - (id <EDMarkupElement>)_elementWithString:(NSString *)string;
+- (id <EDMarkupElement>)_elementWithSpace:(NSString *)string;
 - (id <EDMarkupElement>)_elementWithAttributeList:(NSArray *)parsedAttrList;
-- (EDObjectPair *)_attributeWithName:(NSString *)attrName inList:(NSArray *)attrList;
 @end
 
 
@@ -47,7 +48,7 @@ enum
 
 enum
 {
-    EDMLPT_STRING = 1,	
+    EDMLPT_STRING = 1,
     EDMLPT_SPACE = 2,
     EDMLPT_LT = 3,
     EDMLPT_GT = 4,
@@ -136,6 +137,9 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
     [super init];
     stack = [[NSMutableArray allocWithZone:[self zone]] init];
     tagDefinitions = [someTagDefinitions retain];
+    stringElementDefinition = [[tagDefinitions objectForKey:@"*"] retain];
+    spaceElementDefinition = [[tagDefinitions objectForKey:@"_"] retain];
+    
     return self;
 }
 
@@ -145,7 +149,35 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
     [peekedToken release];
     [stack release];
     [tagDefinitions release];
+    [stringElementDefinition release];
+    [spaceElementDefinition release];
     [super dealloc];
+}
+
+
+//---------------------------------------------------------------------------------------
+//	PUBLIC ENTRY INTO PARSER
+//---------------------------------------------------------------------------------------
+
+- (void)setPreservesWhitespace:(BOOL)flag
+{
+    flags.preservesWhitespace = flag;
+}
+
+- (BOOL)preservesWhitespace
+{
+    return flags.preservesWhitespace;
+}
+
+
+- (void)setAcceptsUnknownAttributes:(BOOL)flag
+{
+    flags.acceptsUnknownAttributes = flag;
+}
+
+- (BOOL)acceptsUnknownAttributes
+{
+    return flags.acceptsUnknownAttributes;
 }
 
 
@@ -174,6 +206,140 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
     peekedToken = nil;
 
     return result;
+}
+
+
+//---------------------------------------------------------------------------------------
+//	TOKENIZER (LEXER)
+//---------------------------------------------------------------------------------------
+
+- (EDMLToken *)_nextToken
+{
+    EDMLToken	*token;
+    id			tvalue;
+    unichar		*start;
+
+    if(peekedToken != nil)
+        {
+        token = peekedToken;
+        peekedToken = nil;
+        return [token autorelease];
+        }
+
+    if(*charp == (unichar)0)
+        return nil;
+
+    NSAssert((lexmode == EDMLPTextMode) || (lexmode == EDMLPSpaceMode) || (lexmode == EDMLPTagMode), @"Invalid lexicalizer mode");
+
+    switch(lexmode)
+        {
+    case EDMLPTextMode:
+        if(*charp == '<')
+            {
+            charp = nextchar(charp, YES);
+            if((*charp == '!') || (*charp == '?')) // ignore processing directives and comments
+                {
+                while(*charp != '>')
+                    charp = nextchar(charp, YES);
+                charp = nextchar(charp, NO);
+                return [self _nextToken];
+                }
+            token = [EDMLToken tokenWithType:EDMLPT_LT];
+            lexmode = EDMLPTagMode;
+            break; // we're done and we have to skip the following ifs...
+            }
+        else if(*charp == '>')
+            {
+            [NSException raise:EDMLParserException format:@"Syntax Error; found stray `>'.", (int)*charp];
+            }
+        else if(EDBitmapCharsetContainsCharacter(spaceCharset, *charp))
+            {
+            lexmode = EDMLPSpaceMode;
+            return [self _nextToken];
+            }
+        else
+            {
+            start = charp;
+            while(EDBitmapCharsetContainsCharacter(textCharset, *charp))
+                charp = nextchar(charp, NO);
+            if(start == charp) // not at end and neither a text nor a switch char
+                [NSException raise:EDMLParserException format:@"Found invalid character \\u%x.", (int)*charp];
+            token = [EDMLToken tokenWithType:EDMLPT_STRING];
+            [token setValue:[NSString stringWithCharacters:start length:(charp - start)]];
+            }
+        break;
+
+    case EDMLPSpaceMode:
+        start = charp;
+        while(EDBitmapCharsetContainsCharacter(spaceCharset, *charp))
+            charp = nextchar(charp, NO);
+        lexmode = EDMLPTextMode;
+        NSAssert(charp != start, @"Entered space mode when not located at a sequence of spaces.");
+        token = [EDMLToken tokenWithType:(spaceElementDefinition != nil) ? EDMLPT_SPACE : EDMLPT_STRING];
+        if(flags.preservesWhitespace == YES)
+            [token setValue:[NSString stringWithCharacters:start length:(charp - start)]];
+        else
+            [token setValue:@" "];
+        break;
+
+    case EDMLPTagMode:
+        if(*charp == '<')
+            {
+            [NSException raise:EDMLParserException format:@"Syntax Error; found `<' in a tag.", (int)*charp];
+            }
+        else if(*charp == '>')
+            {
+            charp = nextchar(charp, NO);
+            token = [EDMLToken tokenWithType:EDMLPT_GT];
+            lexmode = EDMLPTextMode;
+            }
+        else if(*charp == '/')
+            {
+            charp = nextchar(charp, YES);
+            token = [EDMLToken tokenWithType:EDMLPT_SLASH];
+            }
+        else if(*charp == '=')
+            {
+            charp = nextchar(charp, YES);
+            token = [EDMLToken tokenWithType:EDMLPT_EQ];
+            }
+        else
+            {
+            while(EDBitmapCharsetContainsCharacter(spaceCharset, *charp))
+                charp = nextchar(charp, YES);
+            if(*charp == '"')
+                {
+                charp = nextchar(charp, YES);
+                start = charp;
+                while(*charp != '"')
+                    charp = nextchar(charp, YES);
+                tvalue = [NSString stringWithCharacters:start length:(charp - start)];
+                charp = nextchar(charp, YES);
+                }
+            else
+                {
+                start = charp;
+                while((EDBitmapCharsetContainsCharacter(idCharset, *charp)))
+                    charp = nextchar(charp, YES);
+                if(charp == start)
+                    [NSException raise:EDMLParserException format:@"Syntax error; expected either `>' or a tag attribute/value. (Note that tag attribute values must be quoted if they contain anything other than alphanumeric characters.)"];
+                tvalue = [NSString stringWithCharacters:start length:(charp - start)];
+                }
+            token = [EDMLToken tokenWithType:EDMLPT_TSTRING];
+            [token setValue:tvalue];
+            }
+        break;
+        }
+
+    return token;
+}
+
+
+- (EDMLToken *)_peekedToken
+{
+    if(peekedToken == nil)
+        peekedToken = [[self _nextToken] retain];
+    return peekedToken;
 }
 
 
@@ -244,7 +410,7 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
         else if([[tagDef objectForKey:@"container"] boolValue] == NO)
             [NSException raise:EDMLParserException format:@"Tag <%@> is not a container tag.", tagName];
         else if([SVAL(1) count] != 1)
-            [NSException raise:EDMLParserException format:@"Closing tags must not have attributes."];
+            [NSException raise:EDMLParserException format:@"Syntax Error; found closing tag with attributes."];
         rToken = [EDMLToken tokenWithType:EDMLPT_CTAG];
         [rToken setValue:[[SVAL(1) objectAtIndex:0] firstObject]];
         }
@@ -319,19 +485,11 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
         }
     else if((mc = match(stack, 0, 0, 0, 0, EDMLPT_SPACE)) > 0)
         {
-        // maybe allow for a special space handling element class...
-        if([SVAL(0) hasSuffix:@"\n"] == NO)
-            {
-            id <EDMarkupElement>	element;
+        id <EDMarkupElement>	element;
 
-            element = [self _elementWithString:@" "];
-            rToken = [EDMLToken tokenWithType:EDMLPT_ELEMENT];
-            [rToken setValue:element];
-            }
-        else
-            {
-            rToken = nil;
-            }
+        element = [self _elementWithSpace:SVAL(0)];
+        rToken = [EDMLToken tokenWithType:EDMLPT_ELEMENT];
+        [rToken setValue:element];
         }
     else
         {
@@ -368,144 +526,13 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
 
     if(token != nil)
         {
-        [NSException raise:EDMLParserException format:@"Found </%@> without matching opening tag. It looks like you forgot a </%@> somewhere.", tag, [[[token value] objectAtIndex:0] firstObject]];
+        [NSException raise:EDMLParserException format:@"Syntax error; found </%@> without matching opening tag. It looks like a </%@> is missing somewhere.", tag, [[[token value] objectAtIndex:0] firstObject]];
         }
     else
         {
-        [NSException raise:EDMLParserException format:@"Found <%@> without matching opening tag.", tag];
+        [NSException raise:EDMLParserException format:@"Syntax error; found <%@> without matching opening tag.", tag];
         }
 
-}
-
-
-//---------------------------------------------------------------------------------------
-//	TOKENIZER (LEXER)
-//---------------------------------------------------------------------------------------
-
-- (EDMLToken *)_nextToken
-{
-    EDMLToken	*token;
-    id			tvalue;
-    unichar		*start;
-
-    if(peekedToken != nil)
-        {
-        token = peekedToken;
-        peekedToken = nil;
-        return [token autorelease];
-        }
-
-    if(*charp == (unichar)0)
-        return nil;
-
-    NSAssert((lexmode == EDMLPTextMode) || (lexmode == EDMLPSpaceMode) || (lexmode == EDMLPTagMode), @"Invalid lexicalizer mode");
-
-    switch(lexmode)
-        {
-    case EDMLPTextMode:
-        if(*charp == '<')
-            {
-            charp = nextchar(charp, YES);
-            if((*charp == '!') || (*charp == '?')) // ignore processing directives and comments
-                {
-                while(*charp != '>')
-                    charp = nextchar(charp, YES);
-                charp = nextchar(charp, NO);
-                return [self _nextToken];
-                }
-            token = [EDMLToken tokenWithType:EDMLPT_LT];
-            lexmode = EDMLPTagMode;
-            break; // we're done and we have to skip the following ifs...
-            }
-        else if(*charp == '>')
-            {
-            [NSException raise:EDMLParserException format:@"Found stray `>'.", (int)*charp];
-            }
-        else if(EDBitmapCharsetContainsCharacter(spaceCharset, *charp))
-            {
-            lexmode = EDMLPSpaceMode;
-            return [self _nextToken];
-            }
-        else
-            {
-            start = charp;
-            while(EDBitmapCharsetContainsCharacter(textCharset, *charp))
-                charp = nextchar(charp, NO);
-            if(start == charp) // not at end and neither a text nor a switch char
-                [NSException raise:EDMLParserException format:@"Found invalid character \\u%x.", (int)*charp];
-            token = [EDMLToken tokenWithType:EDMLPT_STRING];
-            [token setValue:[NSString stringWithCharacters:start length:(charp - start)]];
-            }
-        break;
-
-    case EDMLPSpaceMode:
-        start = charp;
-        while(EDBitmapCharsetContainsCharacter(spaceCharset, *charp))
-            charp = nextchar(charp, NO);
-        lexmode = EDMLPTextMode;
-        NSAssert(charp != start, @"Entered space mode when not located at a sequence of spaces.");
-        token = [EDMLToken tokenWithType:EDMLPT_SPACE];
-        [token setValue:[NSString stringWithCharacters:start length:(charp - start)]];
-        break;
-
-    case EDMLPTagMode:
-        if(*charp == '<')
-            {
-            [NSException raise:EDMLParserException format:@"Syntax error; found `<' in a tag.", (int)*charp];
-            }
-        else if(*charp == '>')
-            {
-            charp = nextchar(charp, NO);
-            token = [EDMLToken tokenWithType:EDMLPT_GT];
-            lexmode = EDMLPTextMode;
-            }
-        else if(*charp == '/')
-            {
-            charp = nextchar(charp, YES);
-            token = [EDMLToken tokenWithType:EDMLPT_SLASH];
-            }
-        else if(*charp == '=')
-            {
-            charp = nextchar(charp, YES);
-            token = [EDMLToken tokenWithType:EDMLPT_EQ];
-            }
-        else
-            {
-            while(EDBitmapCharsetContainsCharacter(spaceCharset, *charp))
-                charp = nextchar(charp, YES);
-            if(*charp == '"')
-                {
-                charp = nextchar(charp, YES);
-                start = charp;
-                while(*charp != '"')
-                    charp = nextchar(charp, YES);
-                tvalue = [NSString stringWithCharacters:start length:(charp - start)];
-                charp = nextchar(charp, YES);
-                }
-            else
-                {
-                start = charp;
-                while((EDBitmapCharsetContainsCharacter(idCharset, *charp)))
-                    charp = nextchar(charp, YES);
-                if(charp == start)
-                    [NSException raise:EDMLParserException format:@"Syntax error. Expected either `>' or a tag attribute/value. (Note that tag attribute values must be quoted if they contain anything other than alphanumeric characters.)"];
-                tvalue = [NSString stringWithCharacters:start length:(charp - start)];
-                }
-            token = [EDMLToken tokenWithType:EDMLPT_TSTRING];
-            [token setValue:tvalue];
-            }
-        break;
-        }
-
-    return token;
-}
-
-
-- (EDMLToken *)_peekedToken
-{
-    if(peekedToken == nil)
-        peekedToken = [[self _nextToken] retain];
-    return peekedToken;
 }
 
 
@@ -516,17 +543,34 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
 - (id <EDMarkupElement>)_elementWithString:(NSString *)string
 {
     NSString 			 *className, *attrName;
-    NSDictionary		 *tagDef;
     id <EDMarkupElement> element;
 
-    tagDef = [tagDefinitions objectForKey:@"*"];
-    NSAssert(tagDef != nil, @"No definition for string element.");
-    className = [tagDef objectForKey:@"class"];
+    NSAssert(stringElementDefinition != nil, @"No definition for string element.");
+    className = [stringElementDefinition objectForKey:@"class"];
     NSAssert(className != nil, @"Class entry missing for string element");
     element = [[[NSClassFromString(className) allocWithZone:[self zone]] init] autorelease];
     NSAssert(element != nil, @"Cannot instantiate string element");
-    attrName = [tagDef objectForKey:@"implicit"];
+    attrName = [stringElementDefinition objectForKey:@"implicit"];
     [element takeValue:string forAttribute:attrName];
+
+    return element;
+}
+
+
+- (id <EDMarkupElement>)_elementWithSpace:(NSString *)string
+{
+    NSString 			 *className, *attrName;
+    id <EDMarkupElement> element;
+
+    NSAssert(spaceElementDefinition != nil, @"No definition for space element.");
+    className = [spaceElementDefinition objectForKey:@"class"];
+    NSAssert(className != nil, @"Class entry missing for space element");
+    element = [[[NSClassFromString(className) allocWithZone:[self zone]] init] autorelease];
+    NSAssert(element != nil, @"Cannot instantiate space element");
+    // we allow the element to ignore the string because it can assume it is a single space
+    // anyway; unless you set preservesWhitespace
+    if((attrName = [spaceElementDefinition objectForKey:@"implicit"]) != nil)
+        [element takeValue:string forAttribute:attrName];
 
     return element;
 }
@@ -537,6 +581,8 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
     NSString 			 *tagName, *className, *attrName;
     NSDictionary		 *tagDef, *attrDef;
     NSArray				 *attrList;
+    NSMutableSet		 *requiredAttributes;
+    NSSet				 *knownAttributes;
     NSEnumerator		 *attrEnum;
     EDObjectPair		 *attr;
     id <EDMarkupElement> element;
@@ -544,7 +590,6 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
     tagName = [[parsedAttrList objectAtIndex:0] firstObject];
     if([[parsedAttrList objectAtIndex:0] secondObject] != nil)
         [NSException raise:EDMLParserException format:@"Syntax error; tag names must not have values."];
-
     tagDef = [tagDefinitions objectForKey:tagName];
     NSAssert1(tagDef != nil, @"No definition for tag %@", tagName);
     className = [tagDef objectForKey:@"class"];
@@ -561,46 +606,36 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
             [element takeValue:[attrDef objectForKey:attrName] forAttribute:attrName];
             }
         }
+
+    knownAttributes = requiredAttributes = nil;
     if((attrList = [tagDef objectForKey:@"required"]) != nil)
         {
-        attrEnum = [attrList objectEnumerator];
-        while((attrName = [attrEnum nextObject]) != nil)
-            {
-            if((attr = [self _attributeWithName:attrName inList:parsedAttrList]) != nil)
-                [element takeValue:[attr secondObject] forAttribute:attrName];
-            else
-                [NSException raise:EDMLParserException format:@"Required attribute \"%@\" missing in tag <%@>", attrName, tagName];
-            }
+        requiredAttributes = [NSMutableSet setWithArray:attrList];
+        if(flags.acceptsUnknownAttributes == NO)
+            knownAttributes = [NSSet setWithSet:requiredAttributes];
         }
-    if((attrList = [tagDef objectForKey:@"optional"]) != nil)
+    if((flags.acceptsUnknownAttributes == NO) && ((attrList = [tagDef objectForKey:@"optional"]) != nil))
         {
-        attrEnum = [attrList objectEnumerator];
-        while((attrName = [attrEnum nextObject]) != nil)
-            {
-            if((attr = [self _attributeWithName:attrName inList:parsedAttrList]) != nil)
-                [element takeValue:[attr secondObject] forAttribute:attrName];
-            }
+        if(knownAttributes == nil)
+            knownAttributes = [NSSet setWithArray:attrList];
+        else
+            knownAttributes = [knownAttributes setByAddingObjectsFromArray:attrList];
         }
+    attrEnum = [parsedAttrList objectEnumerator];
+    [attrEnum nextObject];
+    while((attr = [attrEnum nextObject]) != nil)
+        {
+        attrName = [attr firstObject];
+        if((flags.acceptsUnknownAttributes == NO) && ([knownAttributes containsObject:attrName] == NO))
+            [NSException raise:EDMLParserException format:@"Invalid attribute \"%@\" for tag <%@>.", attrName, tagName];
+        [requiredAttributes removeObject:attrName];
+        [element takeValue:[attr secondObject] forAttribute:attrName];
+        }
+
+    if((requiredAttributes != nil) && ([requiredAttributes count] > 0))
+        [NSException raise:EDMLParserException format:@"Required attribute(s) \"%@\" missing in tag <%@>", [[requiredAttributes allObjects] componentsJoinedByString:@", "], tagName];
 
     return element;
-}
-
-
-- (EDObjectPair *)_attributeWithName:(NSString *)attrName inList:(NSArray *)attrList
-{
-    unsigned int	n, i;
-    EDObjectPair	*attr;
-
-    /* This might seem to be a poor implementation but I think(!) that the attribute lists will remains short and this will still be faster than turning the attr list into a dictionary and then do look-ups in O(1)... */
-
-    for(i = 1, n = [attrList count]; i < n; i++)
-        {
-        attr = [attrList objectAtIndex:i];
-        if([[attr firstObject] isEqualToString:attrName])
-            return attr;
-        }
-
-    return nil;
 }
 
 
