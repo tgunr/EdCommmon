@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDXMLAttribute.m created by erik on Sat Mar 29 2003
-//  @(#)$Id: EDXMLAttribute.m,v 1.1 2003-05-26 19:52:35 erik Exp $
+//  @(#)$Id: EDXMLAttribute.m,v 1.2 2003-05-27 22:58:24 erik Exp $
 //
 //  Copyright (c) 2002-2003 by Helge Hess, Erik Doernenburg. All rights reserved.
 //
@@ -114,7 +114,7 @@
 
 - (EDXMLElement *)ownerElement
 {
-    return CAST([self parentNode], EDXMLElement);
+    return (EDXMLElement *)[self parentNode];
 }
 
 
