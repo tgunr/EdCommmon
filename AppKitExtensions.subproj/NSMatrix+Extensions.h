@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------------------
-//  EDApplication.h created by erik on Sun 19-Jul-1998
-//  @(#)$Id: EDApplication.h,v 1.2 2000-12-06 14:35:53 erik Exp $
+//  NSMatrix+Extensions.h created by erik on Sat 04-Nov-2000
+//  $Id: NSMatrix+Extensions.h,v 1.1 2000-12-06 14:35:53 erik Exp $
 //
-//  Copyright (c) 1998 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -18,12 +18,13 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#import <AppKit/AppKit.h>
+#import <AppKit/NSMatrix.h>
 
-@interface EDApplication : NSApplication
-{
-}
+
+@interface NSMatrix(EDExtensions)
+
+- (void)selectCell:(NSCell *)cell;
+- (void)selectCellForObject:(id)object;
+- (NSCell *)cellForObject:(id)object;
 
 @end
-
-#define ED_BEEPRETURN do { NSBeep(); return; } while (0)

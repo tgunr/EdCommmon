@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+printf.m created by erik on Sat 27-Sep-1997
-//  @(#)$Id: NSString+Extensions.m,v 1.3 2000-10-23 23:22:40 erik Exp $
+//  @(#)$Id: NSString+Extensions.m,v 1.4 2000-12-06 14:36:50 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -28,9 +28,9 @@
 #endif
 
 
-//---------------------------------------------------------------------------------------
+//=======================================================================================
     @implementation NSString(EDExtensions)
-//---------------------------------------------------------------------------------------
+//=======================================================================================
 
 static NSFileHandle *stdoutFileHandle = nil;
 static NSLock *printfLock = nil;
@@ -79,6 +79,25 @@ static NSCharacterSet *iwsSet = nil;
 
     return ([self rangeOfCharacterFromSet:iwsSet].length == 0);
 
+}
+
+
+- (NSString *)stringByRemovingWhitespace
+{
+    return [self stringByRemovingCharactersFromSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+
+
+- (NSString *)stringByRemovingCharactersFromSet:(NSCharacterSet *)set
+{
+    NSMutableString	*temp;
+
+    if([self rangeOfCharacterFromSet:set options:NSLiteralSearch].length == 0)
+        return self;
+    temp = [[self mutableCopyWithZone:[self zone]] autorelease];
+    [temp removeCharactersInSet:set];
+
+    return temp;
 }
 
 
@@ -238,6 +257,50 @@ static NSCharacterSet *iwsSet = nil;
 }
 
 
-//---------------------------------------------------------------------------------------
+//=======================================================================================
     @end
-//---------------------------------------------------------------------------------------
+//=======================================================================================
+
+
+//=======================================================================================
+    @implementation NSMutableString(EDExtensions)
+//=======================================================================================
+
+- (void)removeWhitespace
+{
+    [self removeCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+
+
+- (void)removeCharactersInSet:(NSCharacterSet *)set
+{
+    NSRange			matchRange, searchRange, replaceRange;
+    unsigned int    length;
+
+    length = [self length];
+    matchRange = [self rangeOfCharacterFromSet:set options:NSLiteralSearch range:NSMakeRange(0, length)];
+    while(matchRange.length > 0)
+        {
+        replaceRange = matchRange;
+        searchRange.location = NSMaxRange(replaceRange);
+        searchRange.length = length - searchRange.location;
+        for(;;)
+            {
+            matchRange = [self rangeOfCharacterFromSet:set options:NSLiteralSearch range:searchRange];
+            if((matchRange.length == 0) || (matchRange.location != searchRange.location))
+                break;
+            replaceRange.length += matchRange.length;
+            searchRange.length -= matchRange.length;
+            searchRange.location += matchRange.length;
+            }
+        [self deleteCharactersInRange:replaceRange];
+        matchRange.location -= replaceRange.length;
+        length -= replaceRange.length;
+        }
+}
+
+
+//=======================================================================================
+    @end
+//=======================================================================================
+

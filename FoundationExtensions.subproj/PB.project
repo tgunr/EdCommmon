@@ -4,6 +4,7 @@
         CLASSES = (
             "NSArray+Extensions.m", 
             "NSAttributedString+Extensions.m", 
+            "NSData+Extensions.m", 
             "NSDate+Extensions.m", 
             "NSDictionary+Extensions.m", 
             "NSObject+Extensions.m", 
@@ -16,6 +17,7 @@
         H_FILES = (
             "NSArray+Extensions.h", 
             "NSAttributedString+Extensions.h", 
+            "NSData+Extensions.h", 
             "NSDate+Extensions.h", 
             "NSDictionary+Extensions.h", 
             "NSObject+Extensions.h", 
@@ -40,7 +42,8 @@
             "NSString+Extensions.h", 
             CollectionMapping.h, 
             "NSDictionary+Extensions.h", 
-            "NSAttributedString+Extensions.h"
+            "NSAttributedString+Extensions.h", 
+            "NSData+Extensions.h"
         ); 
         SUBPROJECTS = (); 
     }; 

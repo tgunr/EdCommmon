@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCollectionMapping.h created by erik on Wed 17-Mar-1999
-//  @(#)$Id: CollectionMapping.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: CollectionMapping.h,v 1.2 2000-12-06 14:36:49 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -25,6 +25,12 @@
 - (NSArray *)arrayByMappingWithSelector:(SEL)selector; // similar to valueForKey:
 - (NSArray *)arrayByMappingWithSelector:(SEL)selector withObject:(id)object;
 - (NSArray *)flattenedArray; // doesn't really belong here...
+@end
+
+@interface NSSet(EDCollectionMapping)
+- (NSSet *)setByMappingWithDictionary:(NSDictionary *)mapping;
+- (NSSet *)setByMappingWithSelector:(SEL)selector; // similar to valueForKey:
+- (NSSet *)setByMappingWithSelector:(SEL)selector withObject:(id)object;
 @end
 
 @interface NSObject(EDCollectionMapping)

@@ -3,21 +3,23 @@
     English_RESOURCES = {}; 
     FILESTABLE = {
         CLASSES = (
+            "NSApplication+Extensions.m", 
             "NSAttributedString+AppKitExtensions.m", 
+            "NSMatrix+Extensions.m", 
             "NSPasteboard+Extensions.m", 
             "NSTableView+Extensions.m", 
             "NSTableColumn+Extensions.m", 
             "NSWindow+Extensions.m", 
-            "NSApplication+Extensions.m", 
             EDApplication.m
         ); 
         H_FILES = (
-            "NSPasteboard+Extensions.h", 
+            "NSApplication+Extensions.h", 
             "NSAttributedString+AppKitExtensions.h", 
+            "NSMatrix+Extensions.h", 
+            "NSPasteboard+Extensions.h", 
             "NSTableView+Extensions.h", 
             "NSTableColumn+Extensions.h", 
             "NSWindow+Extensions.h", 
-            "NSApplication+Extensions.h", 
             EDApplication.h
         ); 
         IMAGES = (arrows.tiff); 
@@ -31,14 +33,15 @@
             "NSApplication+Extensions.h", 
             "NSTableColumn+Extensions.h", 
             "NSTableView+Extensions.h", 
-            "NSAttributedString+AppKitExtensions.h"
+            "NSAttributedString+AppKitExtensions.h", 
+            "NSMatrix+Extensions.h"
         ); 
         SUBPROJECTS = (); 
     }; 
     LANGUAGE = English; 
     MAKEFILEDIR = "$(MAKEFILEPATH)/pb_makefiles"; 
-    NEXTSTEP_BUILDTOOL = /bin/gnumake; 
-    NEXTSTEP_INSTALLDIR = /Local/Library/Frameworks; 
+    NEXTSTEP_BUILDTOOL = /usr/bin/gnumake; 
+    NEXTSTEP_INSTALLDIR = "$(LOCAL_LIBRARY_DIR)/Frameworks"; 
     NEXTSTEP_JAVA_COMPILER = /usr/bin/javac; 
     NEXTSTEP_OBJCPLUS_COMPILER = /usr/bin/cc; 
     PDO_UNIX_BUILDTOOL = $NEXT_ROOT/Developer/bin/make; 

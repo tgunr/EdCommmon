@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCommon.h created by erik on Sat 05-Sep-1998
-//  @(#)$Id: EDCommon.h,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: EDCommon.h,v 1.2 2000-12-06 14:37:54 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -24,6 +24,7 @@
 
 #import "NSArray+Extensions.h"
 #import "NSAttributedString+Extensions.h"
+#import "NSData+Extensions.h"
 #import "NSDate+Extensions.h"
 #import "NSObject+Extensions.h"
 #import "NSScanner+Extensions.h"
@@ -51,6 +52,7 @@
 
 #import "NSApplication+Extensions.h"
 #import "NSAttributedString+AppKitExtensions.h"
+#import "NSMatrix+Extensions.h"
 #import "NSPasteboard+Extensions.h"
 #import "NSTableColumn+Extensions.h"
 #import "NSTableView+Extensions.h"

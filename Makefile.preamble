@@ -17,10 +17,6 @@
 #    MAKEFILEDIR: Directory in which to find $(MAKEFILE)
 #    MAKEFILE: Top level mechanism Makefile (e.g., app.make, bundle.make)
 
-# Include some additional definitions from parent project (if possible)
--include ../Makefiles/common.make.preamble
-
-
 # Compiler/linker flags added to the defaults:  The OTHER_* variables will be 
 # inherited by all nested sub-projects, but the LOCAL_ versions of the same
 # variables will not.  Put your -I, -D, -U, and -L flags in ProjectBuilder's
@@ -141,22 +137,25 @@ PREINDEX_FRAMEWORK = NO
 # and "" on other systems.
 DSTROOT = $(NEXT_ROOT)
 
-
-# Public header files that will be precompiled. Note that this does not work
-# out of the box; you need the additional pre/postamble files.
-PUBLIC_PRECOMPILED_HEADERS = EDCommon.h
-
-
-# Versioning
-CURRENT_PROJECT_VERSION = 23
+# Variables for versioning system
+CURRENT_PROJECT_VERSION = 24
 COMPATIBILITY_PROJECT_VERSION = 20
 VERSIONING_SYSTEM = apple-generic
 VERSION_INFO_PREFIX =
 
-
-# Build a version without AppKit dependencies
+# Non standard build variables:
+#    PUBLIC_PRECOMPILED_HEADERS: List of public header files that will be 
+#   precompiled. Note that this requires extra rules in a postamble file.
+#    BUILD_WO_VERSION: Build a version without AppKit dependencies. 
+PUBLIC_PRECOMPILED_HEADERS = EDCommon.h
 BUILD_WO_VERSION =
 
+
+# Include some additional definitions from parent project (if possible)
+-include ../Makefiles/common.make.preamble
+
+
+# Postprocessing to set variables derived from above settings. 
 ifeq "$(BUILD_WO_VERSION)" "YES"
 OTHER_CFLAGS += -DEDCOMMON_WOBUILD
 

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCollectionMapping.m created by erik on Wed 17-Mar-1999
-//  @(#)$Id: CollectionMapping.m,v 1.1.1.1 2000-05-29 00:09:39 erik Exp $
+//  @(#)$Id: CollectionMapping.m,v 1.2 2000-12-06 14:36:49 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -83,6 +83,61 @@
 
     return flattenedArray;
 }
+
+
+//---------------------------------------------------------------------------------------
+    @end
+//---------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------
+    @implementation NSSet(EDCollectionMapping)
+//---------------------------------------------------------------------------------------
+
+- (NSSet *)setByMappingWithDictionary:(NSDictionary *)mapping
+{
+    NSMutableSet	*mappedSet;
+    NSEnumerator	*objectEnum;
+    id				object;
+    
+    mappedSet = [[NSMutableSet allocWithZone:[self zone]] initWithCapacity:[self count]];
+    objectEnum = [self objectEnumerator];
+    while((object = [objectEnum nextObject]) != nil)
+        [mappedSet addObject:[mapping objectForKey:object]];
+
+    return mappedSet;
+}
+
+
+- (NSSet *)setByMappingWithSelector:(SEL)selector
+{
+    NSMutableSet	*mappedSet;
+    NSEnumerator	*objectEnum;
+    id				object;
+
+    mappedSet = [[NSMutableSet allocWithZone:[self zone]] initWithCapacity:[self count]];
+    objectEnum = [self objectEnumerator];
+    while((object = [objectEnum nextObject]) != nil)
+        [mappedSet addObject:objc_msgSend(object, selector)];
+
+    return mappedSet;
+}
+
+
+- (NSSet *)setByMappingWithSelector:(SEL)selector withObject:(id)otherObject
+{
+    NSMutableSet	*mappedSet;
+    NSEnumerator	*objectEnum;
+    id				object;
+
+    mappedSet = [[NSMutableSet allocWithZone:[self zone]] initWithCapacity:[self count]];
+    objectEnum = [self objectEnumerator];
+    while((object = [objectEnum nextObject]) != nil)
+        [mappedSet addObject:objc_msgSend(object, selector, otherObject)];
+
+    return mappedSet;
+}
+
 
 //---------------------------------------------------------------------------------------
     @end

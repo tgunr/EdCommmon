@@ -13,16 +13,16 @@ PROJECTVERSION = 2.8
 PROJECT_TYPE = Component
 
 CLASSES = NSArray+Extensions.m NSAttributedString+Extensions.m\
-          NSDate+Extensions.m NSDictionary+Extensions.m\
-          NSObject+Extensions.m NSProcessInfo+Extensions.m\
-          NSScanner+Extensions.m NSString+Extensions.m\
-          CollectionMapping.m
+          NSData+Extensions.m NSDate+Extensions.m\
+          NSDictionary+Extensions.m NSObject+Extensions.m\
+          NSProcessInfo+Extensions.m NSScanner+Extensions.m\
+          NSString+Extensions.m CollectionMapping.m
 
 HFILES = NSArray+Extensions.h NSAttributedString+Extensions.h\
-         NSDate+Extensions.h NSDictionary+Extensions.h\
-         NSObject+Extensions.h NSProcessInfo+Extensions.h\
-         NSScanner+Extensions.h NSString+Extensions.h\
-         CollectionMapping.h
+         NSData+Extensions.h NSDate+Extensions.h\
+         NSDictionary+Extensions.h NSObject+Extensions.h\
+         NSProcessInfo+Extensions.h NSScanner+Extensions.h\
+         NSString+Extensions.h CollectionMapping.h
 
 OTHERSRCS = Makefile.preamble Makefile Makefile.postamble
 
@@ -41,7 +41,7 @@ PUBLIC_HEADERS = NSArray+Extensions.h NSDate+Extensions.h\
                  NSObject+Extensions.h NSScanner+Extensions.h\
                  NSString+Extensions.h CollectionMapping.h\
                  NSDictionary+Extensions.h\
-                 NSAttributedString+Extensions.h
+                 NSAttributedString+Extensions.h NSData+Extensions.h
 
 PROJECT_HEADERS = CollectionMapping.h NSString+Extensions.h\
                   NSAttributedString+Extensions.h

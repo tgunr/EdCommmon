@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+printf.m created by erik on Sat 27-Sep-1997
-//  @(#)$Id: NSString+Extensions.h,v 1.3 2000-10-23 23:22:40 erik Exp $
+//  @(#)$Id: NSString+Extensions.h,v 1.4 2000-12-06 14:36:49 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -29,6 +29,8 @@
 
 - (NSString *)stringByRemovingSurroundingWhitespace;
 - (BOOL)isWhitespace;
+- (NSString *)stringByRemovingWhitespace;
+- (NSString *)stringByRemovingCharactersFromSet:(NSCharacterSet *)set;
 
 - (BOOL)hasPrefixCaseInsensitive:(NSString *)string;
 
@@ -49,3 +51,13 @@
 - (void)fprintf:(NSFileHandle *)fileHandle;
 
 @end
+
+
+@interface NSMutableString(EDExtensions)
+
+- (void)removeWhitespace;
+- (void)removeCharactersInSet:(NSCharacterSet *)set;
+
+@end
+
+
