@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  framework.m created by erik on Sun 28-May-2000
-//  @(#)$Id: framework.m,v 2.0 2002-08-16 18:12:43 erik Exp $
+//  @(#)$Id: framework.m,v 2.1 2002-08-18 20:38:28 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -33,19 +33,6 @@
 #if defined(WIN32)
     extern void (*_EDLogFunction)(NSString *);
     _EDLogFunction = (void *)NSLog;
-#endif
-#if !defined(OPTIMIZED) && !defined(WIN32) && !defined(GNUSTEP)
-    extern const char EDCommonVersionString[];
-    static BOOL didLog = NO;
-
-    if(didLog == YES)
-        return;
-    didLog = YES;
-#if defined(EDCOMMON_WOBUILD)
-    NSLog(@"Loaded: %s (WOBUILD)", EDCommonVersionString);
-#else
-    NSLog(@"Loaded: %s", EDCommonVersionString);
-#endif
 #endif
 }
 
