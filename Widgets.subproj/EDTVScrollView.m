@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------------------
 //  EDTVScrollView.m created by erik on Mon 28-Jun-1999
-//  @(#)$Id: EDTVScrollView.m,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: EDTVScrollView.m,v 1.2 2001-02-19 21:42:48 erik Exp $
 //
-//  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -22,129 +22,13 @@
 #import "EDTableView.h"
 #import "EDTVScrollView.h"
 
-@interface EDTableView(PrivateAPI)
-- (BOOL)_shouldAcceptPasteboardContents:(NSPasteboard *)pboard;
-- (void)_takePasteboardContents:(NSPasteboard *)pboard atRow:(int)row;
-- (BOOL)_putSelectionOntoPasteboard:(NSPasteboard *)pboard;
-@end
-
-
-@interface EDTVScrollView(PrivateAPI)
-- (BOOL)_shouldAcceptPasteboardContents:(NSPasteboard *)pasteboard;
-@end
-
-
 //---------------------------------------------------------------------------------------
     @implementation EDTVScrollView
 //---------------------------------------------------------------------------------------
 
-//---------------------------------------------------------------------------------------
-//	INITIALISATION
-//---------------------------------------------------------------------------------------
-
-- (void)awakeFromNib
-{
-    cacheChangeCount = -1;
-    tableView = [self documentView];
-    NSAssert1([tableView isKindOfClass:[EDTableView class]], @"wrong document view class; found %@, should be an EDTableView or a subclass of it.", NSStringFromClass([tableView class]));
-}
-
-
-//---------------------------------------------------------------------------------------
-//	DRAGGIN DESTINATION PROTOCOL
-//---------------------------------------------------------------------------------------
-
-- (unsigned int)draggingEntered:(id <NSDraggingInfo>)sender
-{
-    BOOL	ok;
-
-    ok = [self _shouldAcceptPasteboardContents:[sender draggingPasteboard]];
-    return ok ? [sender draggingSourceOperationMask] & NSDragOperationGeneric : NSDragOperationNone;
-}
-
-
-- (unsigned int)draggingUpdated:(id <NSDraggingInfo>)sender
-{
-    NSPoint	point;
-    NSRect	visRect;
-    NSRect	scrollRect;
-    float	rowHeight;
-    int 	aRow;
-    BOOL	ok;
-
-    ok = [self _shouldAcceptPasteboardContents:[sender draggingPasteboard]];
-    if(ok == NO)
-        return NSDragOperationNone;
-
-    point = [tableView convertPoint:[sender draggingLocation] fromView:nil];
-    visRect = [tableView visibleRect];
-    rowHeight = [tableView rowHeight];
-    aRow = [tableView rowAtPoint:point];
-
-    if((aRow == 0) || (aRow == [tableView numberOfRows] - 1))
-        {
-        [tableView scrollRowToVisible:aRow];
-        }
-    else if (point.y < visRect.origin.y + rowHeight / 4)
-        {
-        // we need to scroll at top
-        scrollRect = NSMakeRect(visRect.origin.x, (visRect.origin.y - rowHeight), visRect.size.width, rowHeight);
-        [tableView scrollRectToVisible:scrollRect];
-        }
-    else if (point.y > ((visRect.origin.y + visRect.size.height) - rowHeight / 4))
-        {
-        // we need to scroll at bottom
-        scrollRect = NSMakeRect(visRect.origin.x, visRect.origin.y + visRect.size.height, visRect.size.width, rowHeight);
-        [tableView scrollRectToVisible:scrollRect];
-        }
-
-    return [sender draggingSourceOperationMask] & NSDragOperationGeneric;
-}
-
-
-
-- (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender
-{
-    return YES;
-}
-
-
-- (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
-{
-    // Mike Ferris sez that you should do the drag operation in conclude!
-    // That way you don't have to wait for time-outs when debugging the
-    // drop code.
-    return YES;
-}
-
-
-- (void)concludeDragOperation:(id <NSDraggingInfo>)sender
-{
-    NSPoint			screenPoint;
-    int				targetRow;
-
-    screenPoint = [tableView convertPoint:[sender draggingLocation] fromView:nil];
-    targetRow = [tableView rowAtPoint:screenPoint];
-
-    [tableView _takePasteboardContents:[sender draggingPasteboard] atRow:targetRow];
-}
-
-
-//---------------------------------------------------------------------------------------
-//	DRAGGING DESTINATION HELPERS
-//---------------------------------------------------------------------------------------
-
-- (BOOL)_shouldAcceptPasteboardContents:(NSPasteboard *)pasteboard
-{
-    if([pasteboard changeCount] == cacheChangeCount)
-        return cachedAcceptResponse;
-
-    cachedAcceptResponse = [tableView _shouldAcceptPasteboardContents:pasteboard];
-    cacheChangeCount = [pasteboard changeCount];
-    NSLog(@"-[%@ %@]: %@ pasteboard contents (#%d)", NSStringFromClass(isa), NSStringFromSelector(_cmd), cachedAcceptResponse ? @"accepted" : @"rejected", cacheChangeCount);
-
-    return cachedAcceptResponse;
-}
+// This class handled some of the dragging functionality. Since this is not required 
+// anymore in OS X there's nothing much to do here but for compatibility reasons with
+// NIB files this class should stay around.
 
 
 //---------------------------------------------------------------------------------------

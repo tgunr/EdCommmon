@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------------------
 //  EDTableView.h created by erik on Mon 28-Jun-1999
-//  @(#)$Id: EDTableView.h,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: EDTableView.h,v 1.2 2001-02-19 21:42:48 erik Exp $
 //
-//  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -23,68 +23,25 @@
 
 typedef struct _EDTVFlags {
 #ifdef __BIG_ENDIAN__
-    unsigned delaysRequestingData : 1;
-    unsigned allowsRowReordering: 1;
-    unsigned allowsRowDragging : 1;
-    unsigned needsControlKeyForMove : 1;
-    unsigned delegateRespondsToShouldAccept : 1;
-    unsigned delegateRespondsToImageForRow:1;
-    unsigned delegateRespondsToShouldDepositRowAt: 1;
-    unsigned padding : 25;
+    unsigned isManagingClick : 1;
+    unsigned padding : 31;
 #else
-    unsigned padding : 25;
-    unsigned delegateRespondsToShouldDepositRowAt: 1;
-    unsigned delegateRespondsToImageForRow:1;
-    unsigned delegateRespondsToShouldAccept : 1;
-    unsigned needsControlKeyForMove : 1;
-    unsigned allowsRowDragging : 1;
-    unsigned allowsRowReordering: 1;
-    unsigned delaysRequestingData : 1;
+    unsigned padding : 31;
+    unsigned isManagingClick : 1;
 #endif
 } _EDTVFlags;
 
 
 @interface EDTableView : NSTableView
 {
-    _EDTVFlags	flags;
-     NSArray	*currentTypes;
-     NSArray	*acceptableTypes;
-     int 		draggedRow;
-     NSImage 	*rowCache;
-     NSImage 	*tableCache;
+    _EDTVFlags		flags;
+    NSMutableSet	*clickableColumns;
+    int				clickedRowIdx, clickedColumnIdx;
 }
 
-- (void)setDelaysRequestingData:(BOOL)flag;
-- (BOOL)delaysRequestingData;
-
-- (void)setAllowsRowReordering:(BOOL)flag;
-- (BOOL)allowsRowReordering;
-
-- (void)setAllowsRowDragging:(BOOL)flag;
-- (BOOL)allowsRowDragging;
-
-- (void)setNeedsControlKeyForMove:(BOOL)flag;
-- (BOOL)needsControlKeyForMove;
-
-- (void)setCurrentTypes:(NSArray *)types;
-- (NSArray *)currentTypes;
-
-- (void)setAcceptableTypes:(NSArray *)types;
-- (NSArray *)acceptableTypes;
+- (void)addToClickableColumns:(NSTableColumn *)aColumn;
+- (void)removeFromClickableColumns:(NSTableColumn *)aColumn;
+- (NSArray *)clickableColumns;
 
 @end
 
-
-
-@interface NSObject(NSTableViewDelegateEDExtensionsInformalProtocol)
-- (void)tableView:(EDTableView *)aTableView writeType:(NSString *)type ontoPasteboard:(NSPasteboard *)pboard;
-- (BOOL)tableView:(EDTableView *)aTableView shouldAcceptPasteboard:(NSPasteboard *)pboard;
-- (void)tableView:(EDTableView *)aTableView didAcceptPasteboard:(NSPasteboard *)pboard atRow:(int)row;
-
-- (NSImage *)tableView:(EDTableView *)tableView imageForRow:(int)aRow;
-- (BOOL)tableView:(EDTableView *)aTableView shouldDepositRow:(int)oldRow at:(int)newRow;
-- (void)tableViewRowDidMove:(NSNotification *)aNotification;
-@end
-
-
-EDCOMMON_EXTERN NSString *EDTableViewRowDidMoveNotification;

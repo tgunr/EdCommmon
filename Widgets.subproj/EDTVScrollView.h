@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------------------
 //  EDTVScrollView.h created by erik on Mon 28-Jun-1999
-//  @(#)$Id: EDTVScrollView.h,v 1.1.1.1 2000-05-29 00:09:40 erik Exp $
+//  @(#)$Id: EDTVScrollView.h,v 1.2 2001-02-19 21:42:48 erik Exp $
 //
-//  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1999-2001 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -20,14 +20,9 @@
 
 #import <AppKit/NSScrollView.h>
 
-@class EDTableView;
-
 
 @interface EDTVScrollView : NSScrollView
 {
-    EDTableView	*tableView;
-    int			cacheChangeCount;
-    BOOL		cachedAcceptResponse;
 }
 
 @end
