@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  osdep.h created by erik on Wed 28-Jan-1998
-//  @(#)$Id: osdep.h,v 2.2 2002-08-28 22:09:58 znek Exp $
+//  @(#)$Id: osdep.h,v 2.3 2003-05-07 11:06:16 znek Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -177,20 +177,20 @@ extern int gethostname(char *name, int namelen);
 
 #define ED_ERRNO errno
 
-#import <stddef.h>
-#import <netinet/in.h>
-#import <netinet/ip_compat.h>
-#import <netinet/tcp.h>
-#import <sys/socket.h>
-#import <sys/ioctl.h>
-#import <sys/types.h>
-#import <sys/dirent.h>
-#import <sys/errno.h>
-#import <sys/stat.h>
-#import <sys/uio.h>
-#import <sys/file.h>
-#import <sys/fcntl.h>
-#import <resolv.h>
+#include <stddef.h>
+#include <netinet/in.h>
+#include <netinet/ip_compat.h>
+#include <netinet/tcp.h>
+#include <sys/socket.h>
+#include <sys/ioctl.h>
+#include <sys/types.h>
+#include <sys/dirent.h>
+#include <sys/errno.h>
+#include <sys/stat.h>
+#include <sys/uio.h>
+#include <sys/file.h>
+#include <sys/fcntl.h>
+#include <resolv.h>
 
 
 #elif defined(linux)
@@ -201,18 +201,18 @@ extern int gethostname(char *name, int namelen);
 
 #define ED_ERRNO errno
 
-#import <stddef.h>
-#import <netinet/in.h>
-#import <netinet/tcp.h>
-#import <sys/socket.h>
-#import <sys/ioctl.h>
-#import <sys/types.h>
-#import <sys/errno.h>
-#import <sys/stat.h>
-#import <sys/uio.h>
-#import <sys/file.h>
-#import <sys/fcntl.h>
-#import <resolv.h>
+#include <stddef.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <sys/socket.h>
+#include <sys/ioctl.h>
+#include <sys/types.h>
+#include <sys/errno.h>
+#include <sys/stat.h>
+#include <sys/uio.h>
+#include <sys/file.h>
+#include <sys/fcntl.h>
+#include <resolv.h>
 
 #else
 
