@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 2.11 2003-04-22 18:25:50 znek Exp $
+//  @(#)$Id: EDMLParser.m,v 2.12 2003-05-20 12:42:47 znek Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -52,7 +52,10 @@ enum
 {
     EDMLPTextMode,
     EDMLPSpaceMode,
-    EDMLPTagMode
+    EDMLPTagMode,
+    EDMLPProcInstrMode,
+    EDMLPCommentMode,
+    EDMLPCDATAMode
 };
 
 enum
@@ -519,7 +522,7 @@ static NSString *readquotedstring(unichar *charp, NSDictionary *entityTable, int
     if(*charp == (unichar)0)
         return nil;
 
-    NSAssert((lexmode == EDMLPTextMode) || (lexmode == EDMLPSpaceMode) || (lexmode == EDMLPTagMode), @"Invalid lexicalizer mode");
+    NSAssert((lexmode == EDMLPTextMode) || (lexmode == EDMLPSpaceMode) || (lexmode == EDMLPTagMode) || (lexmode == EDMLPProcInstrMode) || (lexmode == EDMLPCommentMode) || (lexmode == EDMLPCDATAMode), @"Invalid lexicalizer mode");
 
     switch(lexmode)
         {
@@ -527,11 +530,14 @@ static NSString *readquotedstring(unichar *charp, NSDictionary *entityTable, int
             if(*charp == '<')
                 {
                 charp = nextchar(charp, YES);
-                if((*charp == '!') || (*charp == '?')) // ignore processing directives and comments
+                if(*charp == '!')
                     {
-                    while(*charp != '>')
-                        charp = nextchar(charp, YES);
-                    charp = nextchar(charp, NO);
+                    lexmode = EDMLPCommentMode;
+                    return [self _nextToken];
+                    }
+                else if(*charp == '?')
+                    {
+                    lexmode = EDMLPProcInstrMode;
                     return [self _nextToken];
                     }
                 token = [EDMLToken tokenWithType:EDMLPT_LT];
@@ -571,13 +577,13 @@ static NSString *readquotedstring(unichar *charp, NSDictionary *entityTable, int
             start = charp;
             while(EDBitmapCharsetContainsCharacter(spaceCharset, *charp))
                 charp = nextchar(charp, NO);
-                lexmode = EDMLPTextMode;
             NSAssert(charp != start, @"Entered space mode when not located at a sequence of spaces.");
             token = [EDMLToken tokenWithType:[tagProcessor spaceIsString] ? EDMLPT_STRING : EDMLPT_SPACE];
             if(preservesWhitespace == YES)
                 [token setValue:[NSString stringWithCharacters:start length:(charp - start)]];
             else
                 [token setValue:@" "];
+            lexmode = EDMLPTextMode;
             break;
 
         case EDMLPTagMode:
@@ -631,7 +637,42 @@ static NSString *readquotedstring(unichar *charp, NSDictionary *entityTable, int
                 [token setValue:tvalue];
                 }
             break;
-
+        
+        case EDMLPCommentMode:
+            start = charp;
+            while(*charp != '>')
+                {
+                // check for <![CDATA[ ... ]]>
+                if((charp == start + 7) && ([[NSString stringWithCharacters:start length:8] isEqualToString:@"![CDATA["]))
+                    {
+                    lexmode = EDMLPCDATAMode;
+                    return [self _nextToken];
+                    }
+                charp = nextchar(charp, YES);
+                }
+            charp = nextchar(charp, NO);
+            // ignore comment directives
+            lexmode = EDMLPTextMode;
+            return [self _nextToken];
+          
+        case EDMLPProcInstrMode:
+            while(*charp != '>')
+                charp = nextchar(charp, YES);
+            charp = nextchar(charp, NO);
+            // ignore processing directives
+            lexmode = EDMLPTextMode;
+            return [self _nextToken];
+                
+        case EDMLPCDATAMode:
+            start = charp;
+            while((*charp != '>') || (*(charp - 1) != ']') || (*(charp - 2) != ']'))
+                charp = nextchar(charp, YES);
+            token = [EDMLToken tokenWithType:EDMLPT_STRING];
+            [token setValue:[NSString stringWithCharacters:start length:charp - start - 3]];
+            charp = nextchar(charp, NO);
+            lexmode = EDMLPTextMode;
+            break;
+ 
         default: // keep compiler happy
             token = nil;
             break;
