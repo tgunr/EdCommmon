@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 2.13 2003-05-26 19:35:50 erik Exp $
+//  @(#)$Id: EDMLParser.m,v 2.14 2003-05-30 02:06:55 znek Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -56,6 +56,7 @@ enum
     EDMLPTagMode,
     EDMLPProcInstrMode,
     EDMLPCommentMode,
+    EDMLPCommentBracketMode,
     EDMLPCDATAMode
 };
 
@@ -549,7 +550,7 @@ static NSString *readquotedstring(unichar *charp, NSDictionary *entityTable, int
     if(*charp == (unichar)0)
         return nil;
 
-    NSAssert((lexmode == EDMLPTextMode) || (lexmode == EDMLPSpaceMode) || (lexmode == EDMLPTagMode) || (lexmode == EDMLPProcInstrMode) || (lexmode == EDMLPCommentMode) || (lexmode == EDMLPCDATAMode), @"Invalid lexicalizer mode");
+    NSAssert((lexmode == EDMLPTextMode) || (lexmode == EDMLPSpaceMode) || (lexmode == EDMLPTagMode) || (lexmode == EDMLPProcInstrMode) || (lexmode == EDMLPCommentMode) || (lexmode == EDMLPCDATAMode) || (lexmode == EDMLPCommentBracketMode), @"Invalid lexicalizer mode");
 
     switch(lexmode)
         {
@@ -666,15 +667,13 @@ static NSString *readquotedstring(unichar *charp, NSDictionary *entityTable, int
             break;
         
         case EDMLPCommentMode:
-            start = charp;
             while(*charp != '>')
                 {
-                // check for <![CDATA[ ... ]]>
-                if((charp == start + 7) && ([[NSString stringWithCharacters:start length:8] isEqualToString:@"![CDATA["]))
-                    {
-                    lexmode = EDMLPCDATAMode;
+                if(*charp == '[')
+                {
+                    lexmode = EDMLPCommentBracketMode;
                     return [self _nextToken];
-                    }
+                }
                 charp = nextchar(charp, YES);
                 }
             charp = nextchar(charp, NO);
@@ -699,7 +698,29 @@ static NSString *readquotedstring(unichar *charp, NSDictionary *entityTable, int
             charp = nextchar(charp, NO);
             lexmode = EDMLPTextMode;
             break;
- 
+
+        case EDMLPCommentBracketMode:
+            start = charp;
+            while(*charp != ']')
+            {
+                if(*charp == '[')
+                {
+                    // check for <![CDATA[ ... ]]>
+                    if((charp == start + 6) && ([[NSString stringWithCharacters:start length:7] isEqualToString:@"[CDATA["]))
+                    {
+                        lexmode = EDMLPCDATAMode;
+                        return [self _nextToken];
+                    }
+                }
+                charp = nextchar(charp, YES);
+            }
+
+                
+            charp = nextchar(charp, NO);
+            // ignore special processing directives
+            lexmode = EDMLPCommentMode;
+            return [self _nextToken];
+
         default: // keep compiler happy
             token = nil;
             break;
