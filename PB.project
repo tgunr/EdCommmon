@@ -1,0 +1,43 @@
+{
+    CURRENTLY_ACTIVE_VERSION = YES; 
+    DEPLOY_WITH_VERSION_NAME = A; 
+    DYNAMIC_CODE_GEN = YES; 
+    FILESTABLE = {
+        CLASSES = (); 
+        FRAMEWORKS = (AppKit.framework, Foundation.framework); 
+        FRAMEWORKSEARCH = (); 
+        H_FILES = (EDCommon.h, EDCommonDefines.h); 
+        OTHER_LINKED = (useful.m, framework.m); 
+        OTHER_SOURCES = (Makefile.preamble, Makefile, Makefile.postamble, h.template, m.template); 
+        PRECOMPILED_HEADERS = (); 
+        PROJECT_HEADERS = (EDCommonDefines.h); 
+        PUBLIC_HEADERS = (EDCommon.h, EDCommonDefines.h); 
+        SUBPROJECTS = (
+            FoundationExtensions.subproj, 
+            DataStructures.subproj, 
+            AppKitExtensions.subproj, 
+            Widgets.subproj, 
+            mvcompose.tproj
+        ); 
+    }; 
+    LANGUAGE = English; 
+    MAKEFILEDIR = "$(MAKEFILEPATH)/pb_makefiles"; 
+    NEXTSTEP_BUILDTOOL = /bin/gnumake; 
+    NEXTSTEP_INSTALLDIR = "$(LOCAL_LIBRARY_DIR)/Frameworks"; 
+    NEXTSTEP_JAVA_COMPILER = /usr/bin/javac; 
+    NEXTSTEP_LINKEROPTIONS = "-seg1addr 0x50000000"; 
+    NEXTSTEP_OBJCPLUS_COMPILER = /usr/bin/cc; 
+    PDO_UNIX_BUILDTOOL = $NEXT_ROOT/Developer/bin/make; 
+    PDO_UNIX_INSTALLDIR = "$(LOCAL_LIBRARY_DIR)/Frameworks"; 
+    PDO_UNIX_JAVA_COMPILER = "$(JDKBINDIR)/javac"; 
+    PDO_UNIX_OBJCPLUS_COMPILER = "$(NEXTDEV_BIN)/gcc"; 
+    PROJECTNAME = EDCommon; 
+    PROJECTTYPE = Framework; 
+    PROJECTVERSION = 2.8; 
+    TARGETS = (install_debug); 
+    WINDOWS_BUILDTOOL = $NEXT_ROOT/Developer/Executables/make; 
+    WINDOWS_COMPILEROPTIONS = "-D_BUILDING_EDCOMMON_DLL"; 
+    WINDOWS_INSTALLDIR = "$(LOCAL_LIBRARY_DIR)/Frameworks"; 
+    WINDOWS_JAVA_COMPILER = "$(JDKBINDIR)/javac.exe"; 
+    WINDOWS_OBJCPLUS_COMPILER = "$(DEVDIR)/gcc"; 
+}
