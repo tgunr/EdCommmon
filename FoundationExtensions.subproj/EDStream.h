@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDStream.h created by erik
-//  @(#)$Id: EDStream.h,v 2.0 2002-08-16 18:12:48 erik Exp $
+//  @(#)$Id: EDStream.h,v 2.1 2003-05-26 19:37:54 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -24,7 +24,7 @@
 
 
 #import <Foundation/Foundation.h>
-
+#import "EDWriter.h"
 
 struct _EDSFlags {
     unsigned int 	enforcesCanonicalLinebreaks:1;
@@ -33,7 +33,7 @@ struct _EDSFlags {
 };
 
 
-@interface EDStream : NSObject
+@interface EDStream : NSObject <EDTextWriter>
 {
     struct _EDSFlags	 flags;								/*" All instance variables are private. "*/
     NSFileHandle		*fileHandle;						/*" "*/
@@ -44,6 +44,9 @@ struct _EDSFlags {
 
 /*" Creating streams "*/
 + (id)streamWithFileHandle:(NSFileHandle *)aFileHandle;
++ (id)streamForReadingAtPath:(NSString *)path;
++ (id)streamForWritingAtPath:(NSString *)path;
++ (id)streamForUpdatingAtPath:(NSString *)path;
 + (id)streamConnectedToHost:(NSHost *)host port:(unsigned short)port;
 + (id)streamConnectedToHost:(NSHost *)host port:(unsigned short)port sendTimeout:(NSTimeInterval)sendTimeout receiveTimeout:(NSTimeInterval)receiveTimeout;
 + (id)streamConnectedToHostWithName:(NSString *)hostname port:(unsigned short)port;
