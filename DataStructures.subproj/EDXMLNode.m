@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDXMLNode.m created by erik on Sat Mar 29 2003
-//  @(#)$Id: EDXMLNode.m,v 1.3 2003-07-01 08:23:17 znek Exp $
+//  @(#)$Id: EDXMLNode.m,v 1.4 2005-09-25 11:06:29 erik Exp $
 //
 //  Copyright (c) 2002-2003 by Helge Hess, Erik Doernenburg. All rights reserved.
 //
@@ -96,28 +96,28 @@
 
 /* modification */
 
-- (id)insert:(id)_newNode before:(id)_refNode {
+- (EDXMLNode *)insert:(EDXMLNode *)_newNode before:(EDXMLNode *)_refNode {
   return nil;
 }
 
-- (id)replaceChild:(id)_oldNode with:(id)_newNode {
+- (EDXMLNode *)replaceChild:(EDXMLNode *)_oldNode with:(EDXMLNode *)_newNode {
   return nil;
 }
 
-- (id)removeChild:(id)_node {
+- (EDXMLNode *)removeChild:(EDXMLNode *)_node {
   return nil;
 }
-- (id)appendChild:(id)_node {
+- (EDXMLNode *)appendChild:(EDXMLNode *)_node {
   return nil;
 }
 
 /* navigation */
 
-- (id)parentNode {
+- (EDXMLNode *)parentNode {
     return (flags & EDXML_NF_HASPARENT) ? ownerNode : nil;
 }
 
-- (id)previousSibling {
+- (EDXMLNode *)previousSibling {
   EDXMLNode *parent;
   unsigned idx;
   
@@ -134,7 +134,7 @@
   return [[parent _childNodes] objectAtIndex:(idx - 1)];
 }
   
-- (id)nextSibling {
+- (EDXMLNode *)nextSibling {
   EDXMLNode *parent;
   NSArray	*siblings;
   unsigned idx, count;
@@ -156,16 +156,16 @@
   return [siblings objectAtIndex:(idx + 1)];
 }
 
-- (id)childNodes {
+- (EDXMLNodeList *)childNodes {
   return nil;
 }
 - (BOOL)hasChildNodes {
   return NO;
 }
-- (id)firstChild {
+- (EDXMLNode *)firstChild {
   return nil;
 }
-- (id)lastChild {
+- (EDXMLNode *)lastChild {
   return nil;
 }
 
@@ -234,6 +234,8 @@
     return [[self xmlStringValue] dataUsingEncoding:NSUTF8StringEncoding];
 }
 
+#endif
+
 - (NSString *)textValue {
     NSMutableString *s;
 
@@ -260,7 +262,7 @@
         case DOM_TEXT_NODE:
         case DOM_COMMENT_NODE:
         case DOM_CDATA_SECTION_NODE:
-            [s appendString:[(DOMCharacterData *)self data]];
+            [s appendString:[(EDXMLCharacterData *)self data]];
             break;
 
         default:
@@ -270,7 +272,6 @@
     return [[s copy] autorelease];
 }
 
-#endif
 
 //---------------------------------------------------------------------------------------
     @end
@@ -312,7 +313,7 @@
     [self _setIsOwned:NO];
 }
 
-- (BOOL)_isValidChildNode:(id)_node {
+- (BOOL)_isValidChildNode:(EDXMLNode *)_node {
     return NO;
 }
 

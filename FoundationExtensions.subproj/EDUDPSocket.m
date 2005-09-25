@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDUDPSocket.m created by erik
-//  @(#)$Id: EDUDPSocket.m,v 2.1 2003-04-08 16:51:35 znek Exp $
+//  @(#)$Id: EDUDPSocket.m,v 2.2 2005-09-25 11:06:35 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -102,7 +102,7 @@ For unconnected UDP sockets  #remoteHost returns the last host a package was rec
         }
     else
         {
-        int remoteAddressLength;
+        unsigned int remoteAddressLength;
 
         remoteAddressLength = sizeof(struct sockaddr_in);
         if(remoteAddress == NULL)

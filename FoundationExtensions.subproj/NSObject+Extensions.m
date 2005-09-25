@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSObject+Extensions.m created by erik on Sun 06-Sep-1998
-//  @(#)$Id: NSObject+Extensions.m,v 2.4 2003-04-08 16:51:35 znek Exp $
+//  @(#)$Id: NSObject+Extensions.m,v 2.5 2005-09-25 11:06:36 erik Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -280,7 +280,7 @@ Example: Assume you have an array !{a} which contains names and an object !{phon
 }
 
 
-/*" Removes %anObserver for the deallocation event of the receiving object. Registrations for specific instances are not affected. "*/
+/*" Removes %anObserver for the deallocation event of the receiving object. "*/
 
 - (void)removeDeallocObserver:(id)anObserver
 {

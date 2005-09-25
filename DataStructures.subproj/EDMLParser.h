@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.h created by erik
-//  @(#)$Id: EDMLParser.h,v 2.3 2003-04-08 16:51:33 znek Exp $
+//  @(#)$Id: EDMLParser.h,v 2.4 2005-09-25 11:06:27 erik Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -30,6 +30,8 @@
 @interface EDMLParser : NSObject
 {
     BOOL					preservesWhitespace;	/*" All instance variables are private. "*/
+	BOOL					convertsTagsToLowercase;/*" "*/
+	BOOL					ignoresEntities;		/*" "*/
     id <EDMLTagProcessor>	tagProcessor;			/*" "*/
     NSDictionary			*entityTable;			/*" "*/
     unichar		 			*source;				/*" "*/
@@ -53,6 +55,10 @@
 /*" Configuring the parser "*/
 - (void)setPreservesWhitespace:(BOOL)flag;
 - (BOOL)preservesWhitespace;
+- (void)setConvertsTagsToLowercase:(BOOL)flag;
+- (BOOL)convertsTagsToLowercase;
+- (void)setIgnoresEntities:(BOOL)flag;
+- (BOOL)ignoresEntities;
 - (void)setEntityTable:(NSDictionary *)aDictionary;
 - (NSDictionary *)entityTable;
 

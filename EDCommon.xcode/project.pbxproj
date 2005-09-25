@@ -6,8 +6,6 @@
 	objectVersion = 39;
 	objects = {
 		00F9505A0093182B7F000001 = {
-			buildRules = (
-			);
 			buildSettings = {
 				DEPLOYMENT_LOCATION = NO;
 				DEPLOYMENT_POSTPROCESSING = NO;
@@ -22,8 +20,6 @@
 			name = Development;
 		};
 		00F9505B0093182B7F000001 = {
-			buildRules = (
-			);
 			buildSettings = {
 				DEPLOYMENT_LOCATION = NO;
 				DEPLOYMENT_POSTPROCESSING = YES;
@@ -47,17 +43,17 @@
 //013
 //014
 		0128DC9D00C1A5FB7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSInvocation+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		0128DC9E00C1A5FB7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSInvocation+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
@@ -100,130 +96,130 @@
 			sourceTree = SOURCE_ROOT;
 		};
 		031B19B2047EBB5E00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = moremacros.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		033514AD047F15DA00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDXMLDocumentTests.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		033514AE047F15DA00A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDXMLDocumentTests.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		033514AF047F15DA00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDXMLNamedNodeMapTests.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		033514B0047F15DA00A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDXMLNamedNodeMapTests.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		033514B1047F15DA00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDXMLTextTests.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		033514B2047F15DA00A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDXMLTextTests.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		033514B3047F15DA00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDXMLTreeWalkerTests.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		033514B4047F15DA00A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDXMLTreeWalkerTests.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		033514BD047F160600A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDXMLAttributeTests.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		033514BE047F160600A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDXMLAttributeTests.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		033514C1047F162F00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDXMLElementTests.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		033514C2047F162F00A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDXMLElementTests.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		033BE8270438F99300A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDTextWriter.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		033BE82B0438F9A300A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			name = EDStringWriter.h;
 			path = FoundationExtensions.subproj/EDStringWriter.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		033BE82C0438F9A300A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			name = EDStringWriter.m;
 			path = FoundationExtensions.subproj/EDStringWriter.m;
 			refType = 4;
@@ -239,44 +235,44 @@
 			sourceTree = "<group>";
 		};
 		033BE83404390C0600A8C007 = {
-			expectedFileType = text;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = text;
 			path = EDTextWriter.mdoc;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		037F7472045479B800A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			name = EDXMLTreeWalker.h;
 			path = DataStructures.subproj/EDXMLTreeWalker.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		037F7473045479B800A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			name = EDXMLTreeWalker.m;
 			path = DataStructures.subproj/EDXMLTreeWalker.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		037F7478045489A900A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			name = EDXMLDocumentFragment.h;
 			path = DataStructures.subproj/EDXMLDocumentFragment.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		037F7479045489A900A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			name = EDXMLDocumentFragment.m;
 			path = DataStructures.subproj/EDXMLDocumentFragment.m;
 			refType = 4;
@@ -350,171 +346,179 @@
 			sourceTree = "<group>";
 		};
 		0388EC4D048181F000A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			name = EDXMLDOMTagProcessor.h;
 			path = DataStructures.subproj/EDXMLDOMTagProcessor.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		0388EC4E048181F000A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			name = EDXMLDOMTagProcessor.m;
 			path = DataStructures.subproj/EDXMLDOMTagProcessor.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
+		0389EFAB0692FAD60005249B = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			name = "Untitled-Info.plist";
+			path = "/Users/erik/Projects/EDFrameworks/Source/EDCommon/Untitled-Info.plist";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
 		03907E3F0435D7C600A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			name = EDXMLNode.h;
 			path = DataStructures.subproj/EDXMLNode.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03907E400435D7C600A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			name = EDXMLNode.m;
 			path = DataStructures.subproj/EDXMLNode.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03907E490435DABC00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			name = EDXMLDocument.h;
 			path = DataStructures.subproj/EDXMLDocument.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03907E4A0435DABC00A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			name = EDXMLDocument.m;
 			path = DataStructures.subproj/EDXMLDocument.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03907E4D0435DCAA00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			name = EDXMLElement.h;
 			path = DataStructures.subproj/EDXMLElement.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03907E4E0435DCAA00A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			name = EDXMLElement.m;
 			path = DataStructures.subproj/EDXMLElement.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03907E510435E4FF00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			name = EDXMLAttribute.h;
 			path = DataStructures.subproj/EDXMLAttribute.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03907E520435E4FF00A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			name = EDXMLAttribute.m;
 			path = DataStructures.subproj/EDXMLAttribute.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03907E550435E59600A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			name = EDXMLNodeList.h;
 			path = DataStructures.subproj/EDXMLNodeList.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03907E560435E59600A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			name = EDXMLNodeList.m;
 			path = DataStructures.subproj/EDXMLNodeList.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03907E590435E63200A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			name = EDXMLNamedNodeMap.h;
 			path = DataStructures.subproj/EDXMLNamedNodeMap.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03907E5A0435E63200A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			name = EDXMLNamedNodeMap.m;
 			path = DataStructures.subproj/EDXMLNamedNodeMap.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03907E5D0436074B00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			name = EDXMLCharacterData.h;
 			path = DataStructures.subproj/EDXMLCharacterData.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03907E5E0436074B00A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			name = EDXMLCharacterData.m;
 			path = DataStructures.subproj/EDXMLCharacterData.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03907E610436088600A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			name = EDXMLText.h;
 			path = DataStructures.subproj/EDXMLText.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03907E620436088600A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			name = EDXMLText.m;
 			path = DataStructures.subproj/EDXMLText.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03907E6704360D5E00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			name = "EDXMLNode+Private.h";
 			path = "DataStructures.subproj/EDXMLNode+Private.h";
 			refType = 4;
@@ -531,92 +535,82 @@
 			refType = 2;
 			sourceTree = SOURCE_ROOT;
 		};
-		039EAA90047AF00700A8C007 = {
-			expectedFileType = wrapper.framework;
-			fallbackIsa = PBXFileReference;
-			isa = PBXFrameworkReference;
-			name = SenFoundation.framework;
-			path = /Library/Frameworks/SenFoundation.framework;
-			refType = 0;
-			sourceTree = "<absolute>";
-		};
 		039EAA91047AF00700A8C007 = {
-			expectedFileType = wrapper.framework;
-			fallbackIsa = PBXFileReference;
-			isa = PBXFrameworkReference;
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
 			name = SenTestingKit.framework;
 			path = /Library/Frameworks/SenTestingKit.framework;
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
 		039EAB02047AF1D900A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = testmain.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03B04E7504817BEA00A8C007 = {
-			expectedFileType = text.plist.xml;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
 			path = Sample.xml;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03B04E7604817C5F00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDXMLDOMTagProcessorTests.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03B04E7704817C5F00A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDXMLDOMTagProcessorTests.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03C6862303F84B4900A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "deallocnotif-gnu.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03C6862403F84B4900A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "deallocnotif-next.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03C6862503F84B4900A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = deallocnotif.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03C6862603F84B4900A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = deallocnotif.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03DBF9F90482762F00A8C007 = {
-			expectedFileType = text.plist.xml;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
 			path = SampleWithNamespaces.xml;
 			refType = 4;
 			sourceTree = "<group>";
@@ -632,33 +626,33 @@
 			sourceTree = "<group>";
 		};
 		03FAC9CE03C74F2600A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSBundle+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03FAC9CF03C74F2600A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSBundle+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03FC5E8A0482973200A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDXMLDocumentFragmentTests.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		03FC5E8B0482973200A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 4;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDXMLDocumentFragmentTests.m;
 			refType = 4;
 			sourceTree = "<group>";
@@ -707,6 +701,7 @@
 				1AA34D420090839C7F000001,
 				1AA34D460090839C7F000001,
 				AD39F33805443F3D0086D411,
+				0389EFAB0692FAD60005249B,
 			);
 			isa = PBXGroup;
 			name = EDCommon;
@@ -726,17 +721,17 @@
 			sourceTree = "<group>";
 		};
 		1AA34CC70090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDCommon.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CC80090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDCommonDefines.h;
 			refType = 4;
 			sourceTree = "<group>";
@@ -752,17 +747,17 @@
 			sourceTree = "<group>";
 		};
 		1AA34CCA0090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = useful.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CCB0090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = framework.m;
 			refType = 4;
 			sourceTree = "<group>";
@@ -809,81 +804,81 @@
 			sourceTree = "<group>";
 		};
 		1AA34CD50090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSArray+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CD60090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSAttributedString+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CD70090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSData+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CD80090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSDate+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CD90090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSDictionary+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CDA0090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSObject+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CDB0090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSProcessInfo+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CDC0090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSSet+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CDD0090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSScanner+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CDE0090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSString+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
@@ -920,89 +915,89 @@
 			sourceTree = "<group>";
 		};
 		1AA34CE10090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSArray+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CE20090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSAttributedString+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CE30090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSData+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CE40090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSDate+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CE50090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSDictionary+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CE60090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSObject+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CE70090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSProcessInfo+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CE80090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSSet+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CE90090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSScanner+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CEA0090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSString+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CEB0090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = CollectionMapping.h;
 			refType = 4;
 			sourceTree = "<group>";
@@ -1038,99 +1033,99 @@
 			sourceTree = "<group>";
 		};
 		1AA34CF20090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDIRCObject.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CF30090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDLRUCache.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CF40090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			name = EDMLParser.m;
 			path = DataStructures.subproj/EDMLParser.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CF50090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			name = EDMLToken.m;
 			path = DataStructures.subproj/EDMLToken.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CF60090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDNumberSet.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CF70090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDObjectPair.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CF80090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDObjectReference.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CF90090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDRange.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CFA0090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDSortedArray.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CFB0090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDSparseClusterArray.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CFC0090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDStack.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34CFD0090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			name = EDStringScanner.m;
 			path = DataStructures.subproj/EDStringScanner.m;
 			refType = 4;
@@ -1158,124 +1153,124 @@
 			sourceTree = "<group>";
 		};
 		1AA34CFF0090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDBitmapCharset.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D000090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDIRCObject.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D010090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDLRUCache.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D020090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			name = EDMLParser.h;
 			path = DataStructures.subproj/EDMLParser.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D030090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			name = EDMLToken.h;
 			path = DataStructures.subproj/EDMLToken.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D040090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDNumberSet.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D050090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDObjectPair.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D060090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDObjectReference.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D070090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDRange.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D080090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDSortedArray.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D090090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "EDSortedArray+Private.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D0A0090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDSparseClusterArray.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D0B0090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDStack.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D0C0090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			name = EDStringScanner.h;
 			path = DataStructures.subproj/EDStringScanner.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D0D0090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDLightWeightLock.h;
 			refType = 4;
 			sourceTree = "<group>";
@@ -1290,9 +1285,9 @@
 			sourceTree = "<group>";
 		};
 		1AA34D0F0090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDBitmapCharset.m;
 			refType = 4;
 			sourceTree = "<group>";
@@ -1328,73 +1323,73 @@
 			sourceTree = "<group>";
 		};
 		1AA34D160090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSApplication+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D170090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSAttributedString+AppKitExtensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D180090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSMatrix+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D190090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSPasteboard+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D1A0090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSTableView+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D1B0090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSTableColumn+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D1C0090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSWindow+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D1D0090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSWorkspace+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D1E0090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDApplication.m;
 			refType = 4;
 			sourceTree = "<group>";
@@ -1419,73 +1414,73 @@
 			sourceTree = "<group>";
 		};
 		1AA34D200090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSApplication+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D210090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSAttributedString+AppKitExtensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D220090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSMatrix+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D230090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSPasteboard+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D240090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSTableView+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D250090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSTableColumn+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D260090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSWindow+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D270090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSWorkspace+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D280090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDApplication.h;
 			refType = 4;
 			sourceTree = "<group>";
@@ -1501,8 +1496,8 @@
 			sourceTree = SOURCE_ROOT;
 		};
 		1AA34D2A0090839C7F000001 = {
-			expectedFileType = image.tiff;
 			isa = PBXFileReference;
+			lastKnownFileType = image.tiff;
 			path = arrows.tiff;
 			refType = 4;
 			sourceTree = "<group>";
@@ -1534,49 +1529,49 @@
 			sourceTree = "<group>";
 		};
 		1AA34D310090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDActivityIndicator.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D320090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDCanvas.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D330090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDObjectWell.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D340090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDTableView.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D350090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDTVScrollView.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D360090839C7F000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDSwapView.m;
 			refType = 4;
 			sourceTree = "<group>";
@@ -1596,49 +1591,49 @@
 			sourceTree = "<group>";
 		};
 		1AA34D380090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDActivityIndicator.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D390090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDCanvas.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D3A0090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDObjectWell.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D3B0090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDTableView.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D3C0090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDTVScrollView.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		1AA34D3D0090839C7F000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDSwapView.h;
 			refType = 4;
 			sourceTree = "<group>";
@@ -1647,7 +1642,6 @@
 			children = (
 				1AA34D430090839C7F000001,
 				1AA34D440090839C7F000001,
-				039EAA90047AF00700A8C007,
 				039EAA91047AF00700A8C007,
 				AD39F33E054440EB0086D411,
 			);
@@ -1657,18 +1651,16 @@
 			sourceTree = "<group>";
 		};
 		1AA34D430090839C7F000001 = {
-			expectedFileType = wrapper.framework;
-			fallbackIsa = PBXFileReference;
-			isa = PBXFrameworkReference;
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
 			name = AppKit.framework;
 			path = /System/Library/Frameworks/AppKit.framework;
 			refType = 0;
 			sourceTree = "<absolute>";
 		};
 		1AA34D440090839C7F000001 = {
-			expectedFileType = wrapper.framework;
-			fallbackIsa = PBXFileReference;
-			isa = PBXFrameworkReference;
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
 			name = Foundation.framework;
 			path = /System/Library/Frameworks/Foundation.framework;
 			refType = 0;
@@ -1695,17 +1687,17 @@
 //673
 //674
 		67460EF40259A93C00A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDKeyControlWindow.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		67460EF50259A93C00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDKeyControlWindow.h;
 			refType = 4;
 			sourceTree = "<group>";
@@ -1751,42 +1743,42 @@
 			sourceTree = "<group>";
 		};
 		675AF6BA02DE26F800A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = osdep.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		67613C7C02ECCC0F00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDMutableObjectPair.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		67613C7D02ECCC0F00A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDMutableObjectPair.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		676FAAAC02B917CF00A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			name = EDAOMTagProcessor.m;
 			path = DataStructures.subproj/EDAOMTagProcessor.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		676FAAAD02B917CF00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			name = EDAOMTagProcessor.h;
 			path = DataStructures.subproj/EDAOMTagProcessor.h;
 			refType = 4;
@@ -1803,9 +1795,9 @@
 			sourceTree = "<group>";
 		};
 		6795396302D4EE8A00A8C007 = {
-			expectedFileType = text;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = text;
 			name = EDMLTagProcessorProtocol.mdoc;
 			path = DataStructures.subproj/EDMLTagProcessorProtocol.mdoc;
 			refType = 4;
@@ -1823,129 +1815,129 @@
 			sourceTree = "<group>";
 		};
 		6798737B02DC7DCD00A8C007 = {
-			expectedFileType = text.html;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = text.html;
 			path = EDCommonIntro.html;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		6798737C02DC7DCD00A8C007 = {
-			expectedFileType = text.html;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = text.html;
 			path = EDCommonTOC.html;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		6798784602DDFC7E00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDIPSocket.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		6798784702DDFC7E00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDSocket.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		6798784802DDFC7E00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDStream.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		6798784902DDFC7E00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDTCPSocket.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		6798784A02DDFC7E00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDUDPSocket.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		6798784C02DDFC7E00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSFileHandle+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		6798784D02DDFC7E00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = "NSHost+Extensions.h";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		6798785602DDFCB800A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSHost+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		6798785702DDFCB800A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDIPSocket.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		6798785802DDFCB800A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDSocket.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		6798785902DDFCB800A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDStream.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		6798785A02DDFCB800A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDTCPSocket.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		6798785B02DDFCB800A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDUDPSocket.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		6798785D02DDFCB800A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = "NSFileHandle+Extensions.m";
 			refType = 4;
 			sourceTree = "<group>";
@@ -1974,42 +1966,42 @@
 			sourceTree = "<group>";
 		};
 		6798787002DDFFB200A8C007 = {
-			expectedFileType = text.plist;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = text.plist;
 			path = MIME.plist;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		6798787202DDFFBC00A8C007 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = functions.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		6798787402DDFFC400A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = functions.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		6798924902BF68EE00A8C007 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			name = EDMLTagProcessorProtocol.h;
 			path = DataStructures.subproj/EDMLTagProcessorProtocol.h;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		67BCCE7B03A8175D00A8C007 = {
-			expectedFileType = text.plist;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = text.plist;
 			name = XMLEntities.plist;
 			path = DataStructures.subproj/XMLEntities.plist;
 			refType = 4;
@@ -2025,17 +2017,17 @@
 			sourceTree = "<group>";
 		};
 		67E3B5EC00D4406500000001 = {
-			expectedFileType = sourcecode.c.objc;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
 			path = EDToolbarDefinition.m;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		67E3B5ED00D4406500000001 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDToolbarDefinition.h;
 			refType = 4;
 			sourceTree = "<group>";
@@ -2064,8 +2056,8 @@
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				MACOSX_DEPLOYMENT_TARGET_XXX = 10.2;
-				OTHER_CFLAGS = "";
+				MACOSX_DEPLOYMENT_TARGET_XXX = 10.3;
+				OTHER_CFLAGS = "-fobjc-exceptions";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = EDCommonTests;
@@ -2073,6 +2065,7 @@
 				SECTORDER_FLAGS = "";
 				TEST_AFTER_BUILD = YES;
 				WARNING_CFLAGS = "-Wmost";
+				ZERO_LINK = NO;
 			};
 			dependencies = (
 			);
@@ -2228,7 +2221,6 @@
 			files = (
 				AD1FE64505593D6100A12487,
 				AD1FE64605593D6100A12487,
-				AD1FE64705593D6100A12487,
 				AD1FE64805593D6100A12487,
 			);
 			isa = PBXFrameworksBuildPhase;
@@ -2242,12 +2234,6 @@
 		};
 		AD1FE64605593D6100A12487 = {
 			fileRef = 1AA34D440090839C7F000001;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		AD1FE64705593D6100A12487 = {
-			fileRef = 039EAA90047AF00700A8C007;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -2272,10 +2258,10 @@
 			isa = PBXShellScriptBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = $SYSTEM_DEVELOPER_DIR/Makefiles/Resources/OCUnit/RunTargetUnitTests;
+			shellScript = $SYSTEM_DEVELOPER_DIR/Tools/RunTargetUnitTests;
 		};
 		AD1FE64C05593D6200A12487 = {
-			expectedFileType = "compiled.mach-o.executable";
+			explicitFileType = "compiled.mach-o.executable";
 			includeInIndex = 0;
 			isa = PBXFileReference;
 			path = EDCommonTests;
@@ -2318,6 +2304,7 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				WARNING_CFLAGS = "-Wmost";
 				WRAPPER_EXTENSION = framework;
+				ZERO_LINK = NO;
 			};
 			dependencies = (
 			);
@@ -3721,14 +3708,14 @@
 			shellScript = "exit 0\nAUTODOC=`which autodoc`\nDOC_DIR=$INSTALL_DIR/EDCommon.framework/Resources/English.lproj/Documentation/Reference/ObjC_classic\nif [ \"x$AUTODOC\" != \"x\" ]; then\n    SUBPROJECTS=`'ls' -f -d *.subproj .`\n    for projdir in $SUBPROJECTS; do\n        echo $AUTODOC -allclasses -typedirs -format html -destination $DOC_DIR -project $projdir -copyright \\\"Erik Doernenburg\\\"\n        $AUTODOC -allclasses -typedirs -format html -destination $DOC_DIR -project $projdir -copyright \"Erik Doernenburg\"\n    done    \nfi\necho cp ./EDCommonIntro.html $DOC_DIR/EDCommonIntro.html\ncp ./EDCommonIntro.html $DOC_DIR/EDCommonIntro.html\necho cp ./EDCommonTOC.html $DOC_DIR/EDCommonTOC.html\ncp ./EDCommonTOC.html $DOC_DIR/EDCommonTOC.html";
 		};
 		AD39F33805443F3D0086D411 = {
-			expectedFileType = text.plist;
 			isa = PBXFileReference;
+			lastKnownFileType = text.plist;
 			path = Info.plist;
 			refType = 4;
 			sourceTree = "<group>";
 		};
 		AD39F33905443F3E0086D411 = {
-			expectedFileType = wrapper.framework;
+			explicitFileType = wrapper.framework;
 			includeInIndex = 0;
 			isa = PBXFileReference;
 			path = EDCommon.framework;
@@ -3736,8 +3723,8 @@
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		AD39F33E054440EB0086D411 = {
-			expectedFileType = "compiled.mach-o.dylib";
 			isa = PBXFileReference;
+			lastKnownFileType = "compiled.mach-o.dylib";
 			name = libresolv.9.dylib;
 			path = /usr/lib/libresolv.9.dylib;
 			refType = 0;
@@ -3760,8 +3747,6 @@
 //EE3
 //EE4
 		EE4EDA6B027CBCCA00A80107 = {
-			buildRules = (
-			);
 			buildSettings = {
 				DEBUGGING_SYMBOLS = YES;
 				DEPLOYMENT_LOCATION = NO;
@@ -3778,8 +3763,6 @@
 			name = "Appwrapper Development";
 		};
 		EE4EDA6C027CBCCA00A80107 = {
-			buildRules = (
-			);
 			buildSettings = {
 				DEBUGGING_SYMBOLS = NO;
 				DEPLOYMENT_LOCATION = NO;
@@ -3796,9 +3779,9 @@
 			name = "Appwrapper Deployment";
 		};
 		EE6AABC9025313F000C21B98 = {
-			expectedFileType = sourcecode.c.h;
 			fileEncoding = 30;
 			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
 			path = EDObjcRuntime.h;
 			refType = 4;
 			sourceTree = "<group>";

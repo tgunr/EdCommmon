@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDXMLDocument.m created by erik on Sat Mar 29 2003
-//  @(#)$Id: EDXMLDocument.m,v 1.1 2003-05-26 19:52:35 erik Exp $
+//  @(#)$Id: EDXMLDocument.m,v 1.2 2005-09-25 11:06:28 erik Exp $
 //
 //  Copyright (c) 2002-2003 by Helge Hess, Erik Doernenburg. All rights reserved.
 //
@@ -103,7 +103,7 @@
 
 /* elements */
 
-- (id)documentElement
+- (EDXMLElement *)documentElement
 {
     unsigned i, count;
 
@@ -119,14 +119,14 @@
 }
 
 
-- (id)getElementsByTagName:(NSString *)_tagName
+- (EDXMLNodeList *)getElementsByTagName:(NSString *)_tagName
 {
     /* implementation in EDXMLNode */
     return [self _getElementsByTagName:_tagName namespaceURI:nil];
 }
 
 
-- (id)getElementsByTagName:(NSString *)_tagName namespaceURI:(NSString *)_uri
+- (EDXMLNodeList *)getElementsByTagName:(NSString *)_tagName namespaceURI:(NSString *)_uri
 {
     /* implementation in EDXMLNode */
     return [self _getElementsByTagName:_tagName namespaceURI:_uri];

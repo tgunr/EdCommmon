@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  deallocnotif-next.h created by erik on Mon Jul 15 2002
-//  @(#)$Id: deallocnotif-next.m,v 2.2 2003-04-08 16:51:35 znek Exp $
+//  @(#)$Id: deallocnotif-next.m,v 2.3 2005-09-25 11:06:38 erik Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -178,24 +178,6 @@ void EDEnsureDeallocHackIsInstalledForClass(Class cls)
     // finally apply patch
     patchClass(cls);
 }
-
-/*
-IMP EDDeallocImpForClass(Class cls)
-{
-    IMP deallocImp;
-    
-    // note that this method is not neccesarily patched onto the class that
-    // self->isa points to. so we locate our real class first...
-    deallocImp = NULL; // keep compiler happy
-    for(c = cls; c != NULL; c = c->super_class)
-        if((deallocImp = NSMapGet(EDDeallocImpTable, c)) != NULL)
-            break;
-    NSAssert1(deallocImp != NULL, @"%@: Cannot find original dealloc", NSStringFromClass(isa));
-    NSAssert1(deallocImp != edDeallocHackImp, @"%@: Dealloc patch loop", NSStringFromClass(isa));
-
-    return deallocImp;
-}
-*/
 
 
 #endif /* NeXT_RUNTIME */

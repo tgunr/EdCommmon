@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSFileHandle+NetExt.m created by erik
-//  @(#)$Id: NSFileHandle+Extensions.m,v 2.1 2003-04-08 16:51:35 znek Exp $
+//  @(#)$Id: NSFileHandle+Extensions.m,v 2.2 2005-09-25 11:06:35 erik Exp $
 //
 //  Copyright (c) 1997,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -44,8 +44,8 @@
 
 - (unsigned short)localPort
 {
-    int 			sockaddrLength;
-    struct sockaddr_in sockaddr;
+    unsigned int		sockaddrLength;
+    struct sockaddr_in	sockaddr;
     
     sockaddrLength = sizeof(struct sockaddr_in);
     if(getsockname(EDSOCKETHANDLE, (struct sockaddr *)&sockaddr, &sockaddrLength) == -1)
@@ -58,8 +58,8 @@
 
 - (NSString *)localAddress
 {
-    int 			sockaddrLength;
-    struct sockaddr_in sockaddr;
+    unsigned int		sockaddrLength;
+    struct sockaddr_in	sockaddr;
     
     sockaddrLength = sizeof(struct sockaddr_in);
     if(getsockname(EDSOCKETHANDLE, (struct sockaddr *)&sockaddr, &sockaddrLength) == -1)
@@ -72,8 +72,8 @@
 
 - (unsigned short)remotePort
 {
-    int 			sockaddrLength;
-    struct sockaddr_in sockaddr;
+    unsigned int		sockaddrLength;
+    struct sockaddr_in	sockaddr;
 
     sockaddrLength = sizeof(struct sockaddr_in);
     if(getpeername(EDSOCKETHANDLE, (struct sockaddr *)&sockaddr, &sockaddrLength) == -1)
@@ -86,8 +86,8 @@
 
 - (NSString *)remoteAddress
 {
-    int 			sockaddrLength;
-    struct sockaddr_in sockaddr;
+    unsigned int		sockaddrLength;
+    struct sockaddr_in	sockaddr;
 
     sockaddrLength = sizeof(struct sockaddr_in);
     if(getpeername(EDSOCKETHANDLE, (struct sockaddr *)&sockaddr, &sockaddrLength) == -1)

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDXMLNodeList.h created by erik on Sat Mar 29 2003
-//  @(#)$Id: EDXMLNodeList.h,v 1.1 2003-05-26 19:52:35 erik Exp $
+//  @(#)$Id: EDXMLNodeList.h,v 1.2 2005-09-25 11:06:30 erik Exp $
 //
 //  Copyright (c) 2003 by Erik Doernenburg. All rights reserved.
 //
@@ -33,6 +33,9 @@
 /*" Accessing contents "*/
 - (unsigned)length;
 - (id)objectAtIndex:(unsigned)_idx;
+
+/*" Additional methods not part of DOM "*/
+- (NSEnumerator *)objectEnumerator;
 
 @end
 

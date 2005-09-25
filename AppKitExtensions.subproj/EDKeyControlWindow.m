@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDKeyControlWindow.m created by erik on Sat 14-Aug-1999
-//  @(#)$Id: EDKeyControlWindow.m,v 2.1 2003-04-08 16:51:31 znek Exp $
+//  @(#)$Id: EDKeyControlWindow.m,v 2.2 2005-09-25 11:06:26 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -65,6 +65,7 @@ If the user presses !{n} the selector !{gotoNext:} is sent. If the user presses 
     [DNC removeObserver:self]; // just in case the ref view stays around...
     [promptField release];
     [toplevelKeyBindingDictionary release];
+	[super dealloc];
 }
 
 

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDXMLNodeList.m created by erik on Sat Mar 29 2003
-//  @(#)$Id: EDXMLNodeList.m,v 1.1 2003-05-26 19:52:35 erik Exp $
+//  @(#)$Id: EDXMLNodeList.m,v 1.2 2005-09-25 11:06:31 erik Exp $
 //
 //  Copyright (c) 2003 by Erik Doernenburg. All rights reserved.
 //
@@ -60,6 +60,16 @@
 - (id)objectAtIndex:(unsigned)_idx
 {
     return [array objectAtIndex:_idx];
+}
+
+
+//---------------------------------------------------------------------------------------
+//	Goodies
+//---------------------------------------------------------------------------------------
+
+- (NSEnumerator *)objectEnumerator
+{
+	return [array objectEnumerator];
 }
 
 

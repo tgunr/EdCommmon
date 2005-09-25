@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMLParser.m created by erik
-//  @(#)$Id: EDMLParser.m,v 2.14 2003-05-30 02:06:55 znek Exp $
+//  @(#)$Id: EDMLParser.m,v 2.15 2005-09-25 11:06:27 erik Exp $
 //
 //  Copyright (c) 1999-2002 by Erik Doernenburg. All rights reserved.
 //
@@ -274,6 +274,33 @@ Note that the tag processor can specify that whitespace within text, i.e. betwee
     return preservesWhitespace;
 }
 
+/*" Controls tag case handling. If set to YES, the parser will convert all tag names and attributes to lowercase. "*/
+
+- (void)setConvertsTagsToLowercase:(BOOL)flag
+{
+	convertsTagsToLowercase = flag;
+}
+
+/*" Returns the parser's tag case handling mode. See #{setConvertsTagNamesToLowercase:} for details. "*/
+
+- (BOOL)convertsTagsToLowercase
+{
+	return convertsTagsToLowercase;
+}
+
+/*" Controls entity handling. If set to YES, the parser will ignore all entities. This is against the standards but helps with bad HTML. "*/
+
+- (void)setIgnoresEntities:(BOOL)flag
+{
+	ignoresEntities = flag;
+}
+
+/*" Returns the parser's entity handling mode. See #{setIgnoresEntities:} for details. "*/
+
+- (BOOL)ignoresEntities;
+{
+	return ignoresEntities;
+}
 
 /*" Set the "entity table" for the parser. This table maps entities of the form !{&ename;} to another string, usually a single characters. Entities are only replaced within text, not within tags.
 
@@ -494,7 +521,7 @@ static NSString *readentity(unichar *charp, NSDictionary *entityTable, int *len)
 }
 
 
-static NSString *readquotedstring(unichar *charp, NSDictionary *entityTable, int *len)
+static NSString *readquotedstring(unichar *charp, NSDictionary *entityTable, BOOL ignoreEntities, int *len)
 {
     NSMutableString	*string;
     unichar			*start, *chunkstart, endchar;
@@ -506,7 +533,7 @@ static NSString *readquotedstring(unichar *charp, NSDictionary *entityTable, int
     string = nil;
     while(*charp != endchar)
         {
-        if(*charp == '&')
+        if((*charp == '&') && (ignoreEntities == NO))
             {
             if(string == nil)
                 string = [NSMutableString stringWithCharacters:chunkstart length:(charp - chunkstart)];
@@ -582,7 +609,7 @@ static NSString *readquotedstring(unichar *charp, NSDictionary *entityTable, int
                 lexmode = EDMLPSpaceMode;
                 return [self _nextToken];
                 }
-            else if(*charp == '&')
+            else if((*charp == '&') && (ignoresEntities == NO))
                 {
                 tvalue = readentity(charp, entityTable, &len);
                 charp += len;
@@ -592,7 +619,7 @@ static NSString *readquotedstring(unichar *charp, NSDictionary *entityTable, int
             else
                 {
                 start = charp;
-                while(EDBitmapCharsetContainsCharacter(textCharset, *charp))
+                while(EDBitmapCharsetContainsCharacter(textCharset, *charp) || (ignoresEntities && (*charp == '&')))
                     charp = nextchar(charp, NO);
                 if(start == charp) // not at end and neither a text nor a switch char
                     [NSException raise:EDMLParserException format:@"Found invalid character \\u%x at pos %d.", (int)*charp, (charp - source)];
@@ -642,12 +669,12 @@ static NSString *readquotedstring(unichar *charp, NSDictionary *entityTable, int
                 {
                 if(*charp == '"')
                     {
-                    tvalue = readquotedstring(charp, entityTable, &len);
+                    tvalue = readquotedstring(charp, entityTable, ignoresEntities, &len);
                     charp += len;
                     }
                 else if(*charp == '\'')
                     {
-                    tvalue = readquotedstring(charp, entityTable, &len);
+                    tvalue = readquotedstring(charp, entityTable, ignoresEntities, &len);
                     charp += len;
                     }
                 else
@@ -662,6 +689,8 @@ static NSString *readquotedstring(unichar *charp, NSDictionary *entityTable, int
                     tvalue = [NSString stringWithCharacters:start length:(charp - start)];
                     }
                 token = [EDMLToken tokenWithType:EDMLPT_TSTRING];
+				if(convertsTagsToLowercase)
+					tvalue = [tvalue lowercaseString];
                 [token setValue:tvalue];
                 }
             break;

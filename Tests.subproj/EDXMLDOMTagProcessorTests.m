@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDXMLDOMTagProcessorTests.m created by erik on Sun May 25 2003
-//  @(#)$Id: EDXMLDOMTagProcessorTests.m,v 1.2 2003-06-06 02:03:54 znek Exp $
+//  @(#)$Id: EDXMLDOMTagProcessorTests.m,v 1.3 2005-09-25 11:04:36 erik Exp $
 //
 //  Copyright (c) 2003 by Erik Doernenburg. All rights reserved.
 //
@@ -48,7 +48,7 @@
     childElement = (EDXMLElement *)[docElement firstChild];
     should([childElement nodeType] == EDXML_ELEMENT_NODE);
     shouldBeEqual(@"elementwithattr", [childElement tagName]);
-    shouldBeEqual(@"bar", [childElement attribute:@"foo"]);
+    shouldBeEqual(@"barx", [childElement attribute:@"foo"]);
 
     childElement = (EDXMLElement *)[childElement nextSibling];
     should([childElement nodeType] == EDXML_ELEMENT_NODE);

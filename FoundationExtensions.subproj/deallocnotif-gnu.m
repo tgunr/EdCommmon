@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------------------
 //  deallocnotif-next.h created by erik on Mon Jul 15 2002
-//  @(#)$Id: deallocnotif-gnu.m,v 2.2 2003-04-08 16:51:35 znek Exp $
+//  @(#)$Id: deallocnotif-gnu.m,v 2.3 2005-09-25 11:06:37 erik Exp $
 //
-//  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 2002 by Helge Hess. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
