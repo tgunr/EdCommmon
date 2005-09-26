@@ -1,7 +1,7 @@
 # EDCommon.framework
 # GNUmakefile
 #
-# $Id: GNUmakefile,v 2.3 2003-11-08 20:04:45 znek Exp $
+# $Id: GNUmakefile,v 2.4 2005-09-26 12:14:56 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -58,6 +58,10 @@ ifneq ($(findstring darwin, $(GNUSTEP_HOST_OS)),)
 
   # Mac OS X 10.3
   ifneq ($(findstring darwin7, $(GNUSTEP_HOST_OS)),)
+    EDCommon_LIBRARIES_DEPEND_UPON += -lresolv
+  endif
+  # Mac OS X 10.4
+  ifneq ($(findstring darwin8, $(GNUSTEP_HOST_OS)),)
     EDCommon_LIBRARIES_DEPEND_UPON += -lresolv
   endif
 endif
