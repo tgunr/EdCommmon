@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCommon.h created by erik on Sat 05-Sep-1998
-//  @(#)$Id: EDCommon.h,v 2.6 2003-10-21 16:26:38 znek Exp $
+//  @(#)$Id: EDCommon.h,v 2.7 2005-09-26 12:24:08 znek Exp $
 //
 //  Copyright (c) 1998-2003 by Erik Doernenburg. All rights reserved.
 //
@@ -29,6 +29,12 @@
 #endif
 
 #ifdef MAC_OS_X_VERSION_10_3
+#ifndef EDCOMMON_OSXBUILD
+#define EDCOMMON_OSXBUILD
+#endif
+#endif
+
+#ifdef MAC_OS_X_VERSION_10_4
 #ifndef EDCOMMON_OSXBUILD
 #define EDCOMMON_OSXBUILD
 #endif
