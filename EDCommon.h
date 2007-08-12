@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCommon.h created by erik on Sat 05-Sep-1998
-//  @(#)$Id: EDCommon.h,v 2.7 2005-09-26 12:24:08 znek Exp $
+//  @(#)$Id: EDCommon.h,v 2.8 2007-08-12 14:04:37 erik Exp $
 //
 //  Copyright (c) 1998-2003 by Erik Doernenburg. All rights reserved.
 //
@@ -64,7 +64,6 @@
 #include "EDUDPSocket.h"
 #include "EDStream.h"
 #include "EDTextWriter.h"
-//#include "functions.h"
 
 #include "EDBitmapCharset.h"
 #include "EDIRCObject.h"
@@ -84,19 +83,6 @@
 #include "EDMLParser.h"
 #include "EDMLTagProcessorProtocol.h"
 #include "EDAOMTagProcessor.h"
-
-#include "EDXMLAttribute.h"
-#include "EDXMLCharacterData.h"
-#include "EDXMLDocument.h"
-#include "EDXMLDocumentFragment.h"
-#include "EDXMLElement.h"
-#include "EDXMLNode.h"
-#include "EDXMLText.h"
-
-#include "EDXMLDOMTagProcessor.h"
-#include "EDXMLNamedNodeMap.h"
-#include "EDXMLNodeList.h"
-#include "EDXMLTreeWalker.h"
 
 #ifndef EDCOMMON_WOBUILD
 
