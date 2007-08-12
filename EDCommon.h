@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCommon.h created by erik on Sat 05-Sep-1998
-//  @(#)$Id: EDCommon.h,v 2.8 2007-08-12 14:04:37 erik Exp $
+//  @(#)$Id: EDCommon.h,v 2.9 2007-08-12 18:47:20 erik Exp $
 //
 //  Copyright (c) 1998-2003 by Erik Doernenburg. All rights reserved.
 //
@@ -104,6 +104,7 @@
 #include "EDTableView.h"
 #include "EDTVScrollView.h"
 #include "EDSwapView.h"
+#include "EDToolbarDefinition.h"
 
 #endif // EDCOMMON_WOBUILD
 
