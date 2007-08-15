@@ -143,7 +143,6 @@
 		033BE82B0438F9A300A8C007 /* EDStringWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDStringWriter.h; path = FoundationExtensions.subproj/EDStringWriter.h; sourceTree = "<group>"; };
 		033BE82C0438F9A300A8C007 /* EDStringWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDStringWriter.m; path = FoundationExtensions.subproj/EDStringWriter.m; sourceTree = "<group>"; };
 		033BE83404390C0600A8C007 /* EDTextWriter.mdoc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EDTextWriter.mdoc; sourceTree = "<group>"; };
-		0389EFAB0692FAD60005249B /* Untitled-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Untitled-Info.plist"; path = "/Users/erik/Projects/EDFrameworks/Source/EDCommon/Untitled-Info.plist"; sourceTree = "<absolute>"; };
 		03C6862303F84B4900A8C007 /* deallocnotif-gnu.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = "deallocnotif-gnu.m"; sourceTree = "<group>"; };
 		03C6862403F84B4900A8C007 /* deallocnotif-next.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = "deallocnotif-next.m"; sourceTree = "<group>"; };
 		03C6862503F84B4900A8C007 /* deallocnotif.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = deallocnotif.h; sourceTree = "<group>"; };
@@ -309,7 +308,6 @@
 				1AA34D420090839C7F000001 /* External Frameworks and Libraries */,
 				1AA34D460090839C7F000001 /* Products */,
 				AD39F33805443F3D0086D411 /* Info.plist */,
-				0389EFAB0692FAD60005249B /* Untitled-Info.plist */,
 			);
 			name = EDCommon;
 			sourceTree = "<group>";
@@ -892,6 +890,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_MODE_FLAG = "u+w,go-w,o+rX";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				OTHER_CFLAGS = "-Winline";
 				OTHER_LDFLAGS = (
 					"-seg1addr",
@@ -935,6 +934,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_MODE_FLAG = "u+w,go-w,o+rX";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				OTHER_CFLAGS = "-Winline";
 				OTHER_LDFLAGS = (
 					"-seg1addr",
@@ -977,6 +977,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_MODE_FLAG = "u+w,go-w,o+rX";
 				INSTALL_PATH = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "-Winline";
 				OTHER_LDFLAGS = (
@@ -1002,6 +1003,10 @@
 		0389981908E6B74900CE2E52 /* Appwrapper Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
 				CURRENT_PROJECT_VERSION = 33;
 				DEBUGGING_SYMBOLS = NO;
 				DEPLOYMENT_LOCATION = NO;
@@ -1023,6 +1028,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_MODE_FLAG = "u+w,go-w,o+rX";
 				INSTALL_PATH = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				OPTIMIZATION_CFLAGS = "-O3";
 				OTHER_CFLAGS = "-Winline";
 				OTHER_LDFLAGS = (
@@ -1045,72 +1051,50 @@
 			};
 			name = "Appwrapper Deployment";
 		};
-		0389981A08E6B74900CE2E52 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CURRENT_PROJECT_VERSION = 32;
-				DYLIB_COMPATIBILITY_VERSION = 32;
-				DYLIB_CURRENT_VERSION = 32;
-				FRAMEWORK_SEARCH_PATHS = "";
-				FRAMEWORK_VERSION = A;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = EDCommon.h;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					EDCOMMON_OSXBUILD,
-					HAVE_FORWARD_PROTOCOLS,
-				);
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_MODE_FLAG = "u+w,go-w,o+rX";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				OTHER_CFLAGS = "-Winline";
-				OTHER_LDFLAGS = (
-					"-seg1addr",
-					0x35000000,
-				);
-				OTHER_LIBTOOL_FLAGS = "";
-				OTHER_REZFLAGS = "";
-				PREBINDING = YES;
-				PRINCIPAL_CLASS = "";
-				PRODUCT_NAME = EDCommon;
-				SECTORDER_FLAGS = "";
-				VERSIONING_SYSTEM = "apple-generic";
-				WARNING_CFLAGS = "-Wmost";
-				WRAPPER_EXTENSION = framework;
-				ZERO_LINK = NO;
-			};
-			name = Default;
-		};
 		0389982208E6B74900CE2E52 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 			};
 			name = Development;
 		};
 		0389982308E6B74900CE2E52 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 			};
 			name = Deployment;
 		};
 		0389982408E6B74900CE2E52 /* Appwrapper Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 			};
 			name = "Appwrapper Development";
 		};
 		0389982508E6B74900CE2E52 /* Appwrapper Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				PREBINDING = NO;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 			};
 			name = "Appwrapper Deployment";
-		};
-		0389982608E6B74900CE2E52 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Default;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1122,10 +1106,9 @@
 				0389981708E6B74900CE2E52 /* Deployment */,
 				0389981808E6B74900CE2E52 /* Appwrapper Development */,
 				0389981908E6B74900CE2E52 /* Appwrapper Deployment */,
-				0389981A08E6B74900CE2E52 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = Development;
 		};
 		0389982108E6B74900CE2E52 /* Build configuration list for PBXProject "EDCommon" */ = {
 			isa = XCConfigurationList;
@@ -1134,10 +1117,9 @@
 				0389982308E6B74900CE2E52 /* Deployment */,
 				0389982408E6B74900CE2E52 /* Appwrapper Development */,
 				0389982508E6B74900CE2E52 /* Appwrapper Deployment */,
-				0389982608E6B74900CE2E52 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = Development;
 		};
 /* End XCConfigurationList section */
 	};
