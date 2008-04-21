@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDIRCObject.m created by erik
-//  @(#)$Id: EDIRCObject.m,v 2.1 2003-04-08 16:51:33 znek Exp $
+//  @(#)$Id: EDIRCObject.m,v 2.2 2008-04-21 05:42:07 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -65,7 +65,11 @@ static EDLightWeightLock *retainLock;
 
 #ifndef GNUSTEP
     if(NSKeepAllocationStatistics)
+#if MAC_OS_X_VERSION_MAX_ALLOWED <= MAC_OS_X_VERSION_10_4
         NSRecordAllocationEvent(NSObjectInternalRefIncrementedEvent, self, NULL, NULL, NULL);
+#else
+  NSRecordAllocationEvent(NSObjectInternalRefIncrementedEvent, self);
+#endif
 #endif
 
     retainCount += 1;
@@ -80,8 +84,12 @@ static EDLightWeightLock *retainLock;
     EDLWLLock(retainLock);
 
 #ifndef GNUSTEP
-    if(NSKeepAllocationStatistics) 
+    if(NSKeepAllocationStatistics)
+#if MAC_OS_X_VERSION_MAX_ALLOWED <= MAC_OS_X_VERSION_10_4
         NSRecordAllocationEvent(NSObjectInternalRefDecrementedEvent, self, NULL, NULL, NULL);
+#else
+  NSRecordAllocationEvent(NSObjectInternalRefDecrementedEvent, self);
+#endif
 #endif
 
     if(retainCount == 0)

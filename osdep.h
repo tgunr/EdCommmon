@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  osdep.h created by erik on Wed 28-Jan-1998
-//  @(#)$Id: osdep.h,v 2.3 2003-05-07 11:06:16 znek Exp $
+//  @(#)$Id: osdep.h,v 2.4 2008-04-21 05:42:07 znek Exp $
 //
 //  Copyright (c) 1998-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -134,6 +134,9 @@ extern int gethostname(char *name, int namelen);
 #import <netinet/in.h>
 #ifndef MAC_OS_X_VERSION_10_2
 #import <netinet/ip_compat.h>
+#endif
+#if MAC_OS_X_VERSION_MAX_ALLOWED <= MAC_OS_X_VERSION_10_5
+#include <netinet/tcp.h>
 #endif
 #import <sys/socket.h>
 #import <sys/ioctl.h>
