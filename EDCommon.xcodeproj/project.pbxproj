@@ -750,10 +750,12 @@
 		1AA34CC40090839C7F000001 /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 0389982108E6B74900CE2E52 /* Build configuration list for PBXProject "EDCommon" */;
+			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
 			mainGroup = 1AA34CC50090839C7F000001 /* EDCommon */;
 			productRefGroup = 1AA34D460090839C7F000001 /* Products */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				AD39F29B05443F3D0086D411 /* EDCommon (Framework) */,
 			);

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSArray+Extensions.m created by erik on Thu 28-Mar-1996
-//  @(#)$Id: NSArray+Extensions.m,v 2.3 2003-04-08 16:51:35 znek Exp $
+//  @(#)$Id: NSArray+Extensions.m,v 2.4 2008-04-21 05:54:19 znek Exp $
 //
 //  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
 //
@@ -24,7 +24,7 @@
 #include "EDObjcRuntime.h"
 
 #if (!defined(EDCOMMON_OSXBUILD) && !defined(GNUSTEP))
-#import <EOControl/EOKeyValueCoding.h>
+//#import <EOControl/EOKeyValueCoding.h>
 #endif
 
 #ifdef WIN32
