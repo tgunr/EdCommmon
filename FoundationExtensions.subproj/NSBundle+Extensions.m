@@ -36,6 +36,8 @@
     NSEnumerator 	*pathEnum;
     NSArray			*searchPaths;
 
+	bundle = nil;
+	
     // add .framework extension if it is missing
     if([[frameworkName pathExtension] isEqualToString:@"framework"] == NO)
         frameworkName = [frameworkName stringByAppendingPathExtension:@"framework"];

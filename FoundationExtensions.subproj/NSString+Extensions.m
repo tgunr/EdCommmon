@@ -589,11 +589,11 @@ Note: This method is not available on Windows NT platforms. "*/
 
 - (BOOL)isValidEncryptionOfString:(NSString *)aString
 {
-  char salt[3];
+	char salt[3];
 
-  [self getCString:salt maxLength:2];
-  salt[2] = '\0';
-  return [self isEqualToString:[aString encryptedStringWithSalt:salt]];
+	[self getCString:salt maxLength:2 encoding:NSASCIIStringEncoding];
+	salt[2] = '\0';
+	return [self isEqualToString:[aString encryptedStringWithSalt:salt]];
 }
 #endif // !defined(WIN32)
 

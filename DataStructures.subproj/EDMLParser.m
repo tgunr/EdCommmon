@@ -799,6 +799,7 @@ static __inline__ int match(NSArray *stack, int t0, int t1, int t2, int t3, int 
     EDMLToken 		*rToken;
     int			   	mc, sc;
 
+	rToken = nil;
     sc = [stack count];
 
     // LIST, ELEMENT --> LIST : add an element to an existing list
