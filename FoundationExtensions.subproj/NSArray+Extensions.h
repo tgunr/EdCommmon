@@ -39,11 +39,11 @@
 #endif
 
 /*" Handling subarrays "*/
-- (NSArray *)subarrayToIndex:(unsigned int)index;
-- (NSArray *)subarrayFromIndex:(unsigned int)index;
+- (NSArray *)subarrayToIndex:(NSUInteger)index;
+- (NSArray *)subarrayFromIndex:(NSUInteger)index;
 
 - (BOOL)isSubarrayOfArray:(NSArray *)other atOffset:(int)offset;
-- (unsigned int)indexOfSubarray:(NSArray *)other;
+- (NSUInteger)indexOfSubarray:(NSArray *)other;
 
 /*" Rearranging the array "*/
 - (NSArray *)reversedArray;

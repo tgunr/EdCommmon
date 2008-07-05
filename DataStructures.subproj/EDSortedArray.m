@@ -638,7 +638,7 @@ This datastructure does not implement the copying and coding protocols as binary
 
 /*" Returns the number of objects in the receiver. "*/
 
-- (unsigned int)count
+- (NSUInteger)count
 {
     return ((EDRedBlackTreeNode *)rootNode)->f.size;
 }
@@ -646,7 +646,7 @@ This datastructure does not implement the copying and coding protocols as binary
 
 /*" Returns the object located at index. If index is too large, i.e. if index is greater than or equal to the value returned by count, an NSInvalidArgumentException is raised. "*/
 
-- (id)objectAtIndex:(unsigned int)index
+- (id)objectAtIndex:(NSUInteger)index
 {
     if((NIL(rootNode) == YES) || (index >= ((EDRedBlackTreeNode *)rootNode)->f.size))
         [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Index (%d) is greater than number of objects in tree (%d)", NSStringFromClass(isa), NSStringFromSelector(_cmd), index, ((EDRedBlackTreeNode *)rootNode)->f.size];
@@ -657,7 +657,7 @@ This datastructure does not implement the copying and coding protocols as binary
 
 /*" Returns the lowest index whose corresponding object is equal to %anObject. Objects are considered equal if invoking the comparison method in one with the other as parameter returns !{NSOrderedSame}. If none of the objects in the receiver are equal to anObject, #{indexOfObject:} returns !{NSNotFound}. "*/
 
-- (unsigned int)indexOfObject:(id)anObject
+- (NSUInteger)indexOfObject:(id)anObject
 {
     EDRedBlackTreeNode *x;
 
@@ -746,7 +746,7 @@ Note that it is possible to have several objects that compare as equal in the tr
 
 /*" Removes the object at index. The removed object receives a #release message. If index is too large, i.e. if index is greater than or equal to the value returned by count, an NSInvalidArgumentException is raised. "*/
 
-- (void)removeObjectAtIndex:(unsigned int)index
+- (void)removeObjectAtIndex:(NSUInteger)index
 {
     EDRedBlackTreeNode *x;
     

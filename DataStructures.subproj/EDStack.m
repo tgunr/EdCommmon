@@ -133,7 +133,7 @@ This datastructure does not implement the copying and coding protocols as stacks
 
 /*" Returns the number of objects on the stack."*/
 
-- (unsigned int)count
+- (NSUInteger)count
 {
     return [storage count];
 }

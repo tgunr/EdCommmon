@@ -22,23 +22,13 @@
 #ifndef	__EDCommon_h_INCLUDE
 #define	__EDCommon_h_INCLUDE
 
-#ifdef MAC_OS_X_VERSION_10_2
+#ifdef MAC_OS_X_VERSION_10_5
+#define MAC_OS_X_VERSION_MIN_REQUIRED MAC_OS_X_VERSION_10_5
 #ifndef EDCOMMON_OSXBUILD
 #define EDCOMMON_OSXBUILD
 #endif
 #endif
 
-#ifdef MAC_OS_X_VERSION_10_3
-#ifndef EDCOMMON_OSXBUILD
-#define EDCOMMON_OSXBUILD
-#endif
-#endif
-
-#ifdef MAC_OS_X_VERSION_10_4
-#ifndef EDCOMMON_OSXBUILD
-#define EDCOMMON_OSXBUILD
-#endif
-#endif
 
 #import <Foundation/Foundation.h>
 

@@ -493,7 +493,7 @@ static NSMutableDictionary *teTable = nil;
         }
     if((p == pmax) || (*(p - 1) != '?'))
         [NSException raise:NSGenericException format:@"Malformed processing directive in XML doc."];
-    pdRange = NSMakeRange((int)pdStart - (int)[xmlData bytes], (int)p - 1 - (int)pdStart);
+    pdRange = NSMakeRange((NSUInteger)pdStart - (NSUInteger)[xmlData bytes], (NSUInteger)p - 1 - (NSUInteger)pdStart);
     pd = [NSString stringWithData:[xmlData subdataWithRange:pdRange] encoding:NSASCIIStringEncoding];
 
     // analyse and find encoding value

@@ -153,7 +153,7 @@
 }
 
 
-- (unsigned int)hash
+- (NSUInteger)hash
 {
     return [firstObject hash] ^ [secondObject hash];
 }

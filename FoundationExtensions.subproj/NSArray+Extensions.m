@@ -139,7 +139,7 @@ static EDObjcMethodInfo myFirstObjectMethod;
 {
     NSMutableArray	*flattenedArray;
     id				object;
-    unsigned int	i, n = [self count];
+    NSUInteger		i, n = [self count];
 
     flattenedArray = [[[NSMutableArray allocWithZone:[self zone]] init] autorelease];
     for(i = 0; i < n; i++)
@@ -162,7 +162,7 @@ static EDObjcMethodInfo myFirstObjectMethod;
 - (NSArray *)arrayByMappingWithDictionary:(NSDictionary *)mapping
 {
     NSMutableArray	*mappedArray;
-    unsigned int	i, n = [self count];
+    NSUInteger		i, n = [self count];
 
     mappedArray = [[[NSMutableArray allocWithZone:[self zone]] initWithCapacity:n] autorelease];
     for(i = 0; i < n; i++)
@@ -177,7 +177,7 @@ static EDObjcMethodInfo myFirstObjectMethod;
 - (NSArray *)arrayByMappingWithSelector:(SEL)selector
 {
     NSMutableArray	*mappedArray;
-    unsigned int	i, n = [self count];
+    NSUInteger		i, n = [self count];
 
     mappedArray = [[[NSMutableArray allocWithZone:[self zone]] initWithCapacity:n] autorelease];
     for(i = 0; i < n; i++)
@@ -192,7 +192,7 @@ static EDObjcMethodInfo myFirstObjectMethod;
 - (NSArray *)arrayByMappingWithSelector:(SEL)selector withObject:(id)object
 {
     NSMutableArray	*mappedArray;
-    unsigned int	i, n = [self count];
+    NSUInteger		i, n = [self count];
 
     mappedArray = [[[NSMutableArray allocWithZone:[self zone]] initWithCapacity:n] autorelease];
     for(i = 0; i < n; i++)
@@ -206,7 +206,7 @@ static EDObjcMethodInfo myFirstObjectMethod;
 
 /*" Returns an array containing all objects from the receiver up to (not including) the object at %index. "*/
 
-- (NSArray *)subarrayToIndex:(unsigned int)index
+- (NSArray *)subarrayToIndex:(NSUInteger)index
 {
     return [self subarrayWithRange:NSMakeRange(0, index)];
 }
@@ -214,7 +214,7 @@ static EDObjcMethodInfo myFirstObjectMethod;
 
 /*" Returns an array containing all objects from the receiver starting with the object at %index. "*/
 
-- (NSArray *)subarrayFromIndex:(unsigned int)index
+- (NSArray *)subarrayFromIndex:(NSUInteger)index
 {
     return [self subarrayWithRange:NSMakeRange(index, [self count] - index)];
 }
@@ -240,9 +240,9 @@ static EDObjcMethodInfo myFirstObjectMethod;
 
 /*" Returns the first index at which %otherArray is contained in the receiver; or !{NSNotFound} otherwise. "*/
 
-- (unsigned int)indexOfSubarray:(NSArray *)other
+- (NSUInteger)indexOfSubarray:(NSArray *)other
 {
-    int		i, n = [self count], length, location = 0;
+    NSUInteger	i, n = [self count], length, location = 0;
 
     do
         {
@@ -263,9 +263,9 @@ static EDObjcMethodInfo myFirstObjectMethod;
 
 + (NSArray *)arrayWithFilesOfType:(NSString *)type inPath:(NSString *)aPath
 {
-    NSString		*firstName;
-    NSArray    	   	*allNames = nil;
-    unsigned int	count;
+    NSString	*firstName;
+    NSArray    	*allNames = nil;
+    NSUInteger	count;
 
     if(![aPath hasSuffix:@"/"])
         aPath = [aPath stringByAppendingString:@"/"];

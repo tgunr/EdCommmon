@@ -32,22 +32,22 @@
 }
 
 /*" Creating new range objects "*/
-+ (id)rangeWithLocation:(unsigned int)loc length:(unsigned int)len;
-+ (id)rangeWithLocations:(unsigned int)startLoc:(unsigned int)endLoc;
++ (id)rangeWithLocation:(NSUInteger)loc length:(NSUInteger)len;
++ (id)rangeWithLocations:(NSUInteger)startLoc:(NSUInteger)endLoc;
 + (id)rangeWithRangeValue:(NSRange)aRangeValue;
 
 - (id)initWithRangeValue:(NSRange)aRangeValue; // designated initializer
-- (id)initWithLocation:(unsigned int)loc length:(unsigned int)len;
-- (id)initWithLocations:(unsigned int)startLoc:(unsigned int)endLoc;
+- (id)initWithLocation:(NSUInteger)loc length:(NSUInteger)len;
+- (id)initWithLocations:(NSUInteger)startLoc:(NSUInteger)endLoc;
 
 /*" Retrieving elements "*/
-- (unsigned int)location;
-- (unsigned int)length;
-- (unsigned int)endLocation;
+- (NSUInteger)location;
+- (NSUInteger)length;
+- (NSUInteger)endLocation;
 - (NSRange)rangeValue;
 
 /*" "Contains" tests "*/
-- (BOOL)isLocationInRange:(unsigned int)index;
+- (BOOL)isLocationInRange:(NSUInteger)index;
 - (BOOL)containsRange:(EDRange *)otherRange;
 
 /*" Comparing ranges "*/

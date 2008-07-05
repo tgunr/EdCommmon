@@ -42,18 +42,18 @@
 - (void)addObject:(id)anObject;
 - (void)addObjectsFromArray:(NSArray *)someObjects;
 - (void)removeObject:(id)anObject;
-- (void)removeObjectAtIndex:(unsigned int)index;
+- (void)removeObjectAtIndex:(NSUInteger)index;
 
 /*" Querying the array "*/
-- (unsigned int)count;
+- (NSUInteger)count;
 - (id)minimumObject;
 - (id)maximumObject;
 - (BOOL)containsObject:(id)anObject;
 - (id)member:(id)anObject;
 - (id)smallerOrEqualMember:(id)anObject;
 - (id)successorForObject:(id)anObject;
-- (id)objectAtIndex:(unsigned int)index;
-- (unsigned int)indexOfObject:(id)anObject;
+- (id)objectAtIndex:(NSUInteger)index;
+- (NSUInteger)indexOfObject:(id)anObject;
 - (NSEnumerator *)objectEnumerator;
 - (NSArray *)allObjects;
 

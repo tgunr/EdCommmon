@@ -148,7 +148,7 @@
     static unsigned int   maxServLength = 6;
     NSString			  *string, *url;
     NSRange				  r, remainingRange, possSchemeRange, schemeRange, urlRange;
-    unsigned int		  nextLocation, endLocation, i;
+    NSUInteger			  nextLocation, endLocation, i;
 
     if(colon == nil)
         {

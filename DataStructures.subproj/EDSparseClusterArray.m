@@ -70,7 +70,7 @@ typedef struct
 {
     [super init];
 
-    pageTable = NSCreateMapTableWithZone(NSIntMapKeyCallBacks, (NSMapTableValueCallBacks) { EDSCARetain, EDSCARelease, EDSCADescribe }, 0, [self zone]);
+    pageTable = NSCreateMapTableWithZone(NSNonOwnedPointerOrNullMapKeyCallBacks, (NSMapTableValueCallBacks) { EDSCARetain, EDSCARelease, EDSCADescribe }, 0, [self zone]);
     pageSize = (NSPageSize() - sizeof(EDSCAPage)) / sizeof(id);
     
     return self;
@@ -120,11 +120,11 @@ If the slot is already occupied, the object at the index is removed and receives
 
 This method raises an NSInvalidArgumentException if anObject is !{nil}."*/
 
-- (void)setObject:(id)anObject atIndex:(unsigned int)index
+- (void)setObject:(id)anObject atIndex:(NSUInteger)index
 {
-    unsigned int	pnum, eidx;
-    EDSCAPage		*page;
-    id				previousObject;
+    NSUInteger	pnum, eidx;
+    EDSCAPage	*page;
+    id			previousObject;
 
     if(anObject == nil)
         [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Attempt to insert *nil* at index %d.", NSStringFromClass(isa), NSStringFromSelector(_cmd), index];
@@ -151,10 +151,10 @@ This method raises an NSInvalidArgumentException if anObject is !{nil}."*/
 
 This method raises an NSInvalidArgumentException if the slot was empty."*/
 
-- (void)removeObjectAtIndex:(unsigned int)index
+- (void)removeObjectAtIndex:(NSUInteger)index
 {
-    unsigned int	pnum, eidx;
-    EDSCAPage		*page;
+    NSUInteger	pnum, eidx;
+    EDSCAPage	*page;
 
     pnum = index / pageSize;
     eidx = index % pageSize;
@@ -173,10 +173,10 @@ This method raises an NSInvalidArgumentException if the slot was empty."*/
 
 /*" Returns the object located at index, or !{nil} if the slot was empty. "*/
 
-- (id)objectAtIndex:(unsigned int)index
+- (id)objectAtIndex:(NSUInteger)index
 {
-    unsigned int	pnum, eidx;
-    EDSCAPage		*page;
+    NSUInteger	pnum, eidx;
+    EDSCAPage	*page;
 
     pnum = index / pageSize;
     eidx = index % pageSize;
@@ -194,7 +194,7 @@ This method raises an NSInvalidArgumentException if the slot was empty."*/
 
 /*" Returns the number of objects in the receiver. "*/
 
-- (unsigned int)count
+- (NSUInteger)count
 {
     NSMapEnumerator	mapEnum;
     unsigned int	count, pnum;
@@ -226,7 +226,7 @@ This method raises an NSInvalidArgumentException if the slot was empty."*/
     EDSCAPage		*page;
     NSMapEnumerator	mapEnum;
     id				entry;
-    unsigned int	*pnumList, pnlCount, pnum, pnlidx, eidx;
+    NSUInteger		*pnumList, pnlCount, pnum, pnlidx, eidx;
     
     pnlCount = NSCountMapTable(pageTable);
     pnumList = NSZoneMalloc([self zone], pnlCount * sizeof(int));
@@ -308,7 +308,7 @@ This method raises an NSInvalidArgumentException if the slot was empty."*/
 {
     EDSCAPage	 *page;
     id 			 entry;
-    unsigned int index;
+    NSUInteger	 index;
 
     entry = nil; index = 0;
     while((entry == nil) && (pnlidx < pnlCount))

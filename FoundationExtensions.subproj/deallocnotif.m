@@ -47,8 +47,8 @@ static void initializeTables()
 
 void EDAddObserverForObject(id observer, id object)
 {
-    id				*observerList;
-    unsigned int	i, emptySlotIdx, oldSize, newSize;
+    id			*observerList;
+    NSUInteger	i, emptySlotIdx, oldSize, newSize;
 
     if(observerTable == nil)
         initializeTables();

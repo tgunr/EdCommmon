@@ -18,6 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+#if 0
 #ifndef GNU_RUNTIME /* NeXT RUNTIME */
 
 #import <Foundation/Foundation.h>
@@ -181,3 +182,4 @@ void EDEnsureDeallocHackIsInstalledForClass(Class cls)
 
 
 #endif /* NeXT_RUNTIME */
+#endif

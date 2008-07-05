@@ -91,7 +91,7 @@
 //---------------------------------------------------------------------------------------
 //	EXTENDED INTROSPECTION 
 //---------------------------------------------------------------------------------------
-
+#if 0
 IMP EDGetFirstUnusedIMPForSelector(Class aClass, SEL aSelector, BOOL isClassMethod)
 {
 #ifndef GNU_RUNTIME
@@ -118,18 +118,18 @@ IMP EDGetFirstUnusedIMPForSelector(Class aClass, SEL aSelector, BOOL isClassMeth
     return NULL;
 #endif
 }
-
+#endif
 
 BOOL EDClassIsSuperclassOfClass(Class aClass, Class subClass)
 {
     Class class;
 
-    class = subClass->super_class;
+    class = class_getSuperclass(subClass);
     while(class != nil)
         {
         if(class == aClass)
             return YES;
-        class = class->super_class;
+		class = class_getSuperclass(subClass);
         }
     return NO;
 }
@@ -250,7 +250,7 @@ Example: Assume you have an array !{a} which contains names and an object !{phon
 //---------------------------------------------------------------------------------------
 //  DEALLOC NOTIFICATIONS
 //---------------------------------------------------------------------------------------
-
+#if 0
 /*" Registers %anObserver for deallocation events. Whenever an object of the receiving class or any of its subclasses is deallocated the observer's #{objectDeallocated:} method will be called. Note that multiple registrations will not result in multiple notifications and do not need to be balanced by the same number of de-registrations.
 
   In #{objectDeallocated:} the receiver should not send messages to the object or otherwise depend on its state because the object will have been partially deallocated.
@@ -298,7 +298,7 @@ Example: Assume you have an array !{a} which contains names and an object !{phon
     // note that this method is not neccesarily patched onto the class that
     // self->isa points to. so we locate our real class first...
     deallocImp = NULL; // keep compiler happy
-    for(c = self->isa; c != NULL; c = c->super_class)
+    for(c = self->isa; c != NULL; c = class_getSuperclass(c))
         {
         if((deallocImp = NSMapGet(EDDeallocImpTable, c)) != NULL)
             break;
@@ -312,6 +312,7 @@ Example: Assume you have an array !{a} which contains names and an object !{phon
     deallocImp(self, @selector(dealloc));
 }
 
+#endif
 
 //---------------------------------------------------------------------------------------
     @end

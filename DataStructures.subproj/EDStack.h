@@ -43,7 +43,7 @@
 /*" Querying the stack "*/
 - (id)topObject;
 - (NSArray *)topObjects:(int)count;
-- (unsigned int)count;
+- (NSUInteger)count;
 
 
 @end

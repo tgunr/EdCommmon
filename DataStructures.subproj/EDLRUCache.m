@@ -40,7 +40,7 @@ This datastructure does not implement the copying and coding protocols as caches
 
 /*" Initialises a newly allocated LRU cache to store count items. "*/
 
-- (id)initWithCacheSize:(unsigned int)count
+- (id)initWithCacheSize:(NSUInteger)count
 {
     [super init];
     NSParameterAssert(count > 0);

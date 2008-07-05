@@ -43,7 +43,7 @@
 
 - (void)appendString:(NSString *)string withAttributes:(NSDictionary *)attributes
 {
-    unsigned int location;
+    NSUInteger location;
 
     location = [self length];
     [self appendString:string];

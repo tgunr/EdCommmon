@@ -53,7 +53,7 @@ Note that some socket related functionality is implemented in a category on NSFi
 + (int)protocolFamily
 {
     [self methodIsAbstract:_cmd];
-    return NSNotFound; // keep compiler happy
+    return -1; // keep compiler happy
 }
 
 
@@ -62,7 +62,7 @@ Note that some socket related functionality is implemented in a category on NSFi
 + (int)socketProtocol
 {
     [self methodIsAbstract:_cmd];
-    return NSNotFound; // keep compiler happy
+    return -1; // keep compiler happy
 }
 
 
@@ -71,7 +71,7 @@ Note that some socket related functionality is implemented in a category on NSFi
 + (int)socketType
 {
     [self methodIsAbstract:_cmd];
-    return NSNotFound; // keep compiler happy
+    return -1; // keep compiler happy
 }
 
 
@@ -181,7 +181,7 @@ Note that some socket related functionality is implemented in a category on NSFi
 }
 
 
-- (NSData *)readDataOfLength:(unsigned int)length
+- (NSData *)readDataOfLength:(NSUInteger)length
 {
     return [realHandle readDataOfLength:length];
 }

@@ -31,7 +31,7 @@
 }
 
 /*" Creating caches "*/
-- (id)initWithCacheSize:(unsigned int)count;
+- (id)initWithCacheSize:(NSUInteger)count;
 
 /*" Adding/removing objects "*/
 - (void)addObject:(id)newObject withKey:(id)newKey;

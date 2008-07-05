@@ -79,7 +79,7 @@
 //	EQUALITY
 //---------------------------------------------------------------------------------------
 
-- (unsigned int)hash
+- (NSUInteger)hash
 {
     return [referencedObject hash];
 }

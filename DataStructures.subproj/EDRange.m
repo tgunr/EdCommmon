@@ -44,7 +44,7 @@
 
 /*" Creates and returns a range object with starting at loc and ranging len indices. "*/
 
-+ (id)rangeWithLocation:(unsigned int)loc length:(unsigned int)len
++ (id)rangeWithLocation:(NSUInteger)loc length:(NSUInteger)len
 {
     return [[[self alloc] initWithLocation:loc length:len] autorelease];
 }
@@ -52,7 +52,7 @@
 
 /*" Creates and returns a range object with starting at startLoc and ending at endLoc. "*/
 
-+ (id)rangeWithLocations:(unsigned int)startLoc:(unsigned int)endLoc
++ (id)rangeWithLocations:(NSUInteger)startLoc:(NSUInteger)endLoc
 {
     return [[[self alloc] initWithLocations:startLoc:endLoc] autorelease];
 }
@@ -82,7 +82,7 @@
 
 /*" Initialises a newly allocated range by setting its starting location to loc and its range to len. "*/
 
-- (id)initWithLocation:(unsigned int)loc length:(unsigned int)len
+- (id)initWithLocation:(NSUInteger)loc length:(NSUInteger)len
 {
     return [self initWithRangeValue:NSMakeRange(loc, len)];
 }
@@ -90,7 +90,7 @@
 
 /*" Initialises a newly allocated range by setting its starting location to startLoc and its end location to endLoc. "*/
 
-- (id)initWithLocations:(unsigned int)startLoc:(unsigned int)endLoc
+- (id)initWithLocations:(NSUInteger)startLoc:(NSUInteger)endLoc
 {
     return [self initWithRangeValue:NSMakeRange(startLoc, endLoc - startLoc + 1)];
 }
@@ -143,7 +143,7 @@
 }
 
 
-- (unsigned int)hash
+- (NSUInteger)hash
 {
     return range.location + NSSwapInt(range.length);
 }
@@ -185,7 +185,7 @@
 
 /*" Returns the (start) location of the range. "*/
 
-- (unsigned int)location
+- (NSUInteger)location
 {
     return range.location;
 }
@@ -193,7 +193,7 @@
 
 /*" Returns the length of the range. "*/
 
-- (unsigned int)length
+- (NSUInteger)length
 {
     return range.length;
 }
@@ -201,7 +201,7 @@
 
 /*" Returns YES if %index is in the range, i.e. startLocation <= index <= endLocation. "*/
 
-- (BOOL)isLocationInRange:(unsigned int)index
+- (BOOL)isLocationInRange:(NSUInteger)index
 {
     return NSLocationInRange(index, range);
 }
@@ -209,7 +209,7 @@
 
 /*" Returns the end location of the range, i.e. startLocation + length - 1. "*/
 
-- (unsigned int)endLocation
+- (NSUInteger)endLocation
 {
     return NSMaxRange(range) - 1;
 }

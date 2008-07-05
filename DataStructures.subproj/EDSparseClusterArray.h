@@ -36,12 +36,12 @@
 - (id)init;
 
 /*" Adding and removing objects "*/
-- (void)setObject:(id)anObject atIndex:(unsigned int)index;
-- (void)removeObjectAtIndex:(unsigned int)index;
-- (id)objectAtIndex:(unsigned int)index;
+- (void)setObject:(id)anObject atIndex:(NSUInteger)index;
+- (void)removeObjectAtIndex:(NSUInteger)index;
+- (id)objectAtIndex:(NSUInteger)index;
 
 /*" Querying the array "*/
-- (unsigned int)count;
+- (NSUInteger)count;
 - (NSEnumerator *)indexEnumerator;
 - (NSArray *)allObjects;
 
