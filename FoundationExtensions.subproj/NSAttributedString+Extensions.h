@@ -19,10 +19,6 @@
 //---------------------------------------------------------------------------------------
 
 
-#ifndef	__NSAttributedString_Extensions_h_INCLUDE
-#define	__NSAttributedString_Extensions_h_INCLUDE
-
-
 /*" Various common extensions to #NSMutableAttributedString. "*/
 
 @interface NSMutableAttributedString(EDExtensions)
@@ -32,5 +28,3 @@
 - (void)appendString:(NSString *)string withAttributes:(NSDictionary *)attributes;
 
 @end
-
-#endif	/* __NSAttributedString_Extensions_h_INCLUDE */

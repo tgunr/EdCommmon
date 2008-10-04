@@ -2,7 +2,7 @@
 //  NSFileHandle+NetExt.m created by erik
 //  @(#)$Id: NSFileHandle+Extensions.m,v 2.2 2005-09-25 11:06:35 erik Exp $
 //
-//  Copyright (c) 1997,1999 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1997,1999,2008 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -19,19 +19,10 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "osdep.h"
-#include "functions.h"
-#include "NSFileHandle+Extensions.h"
+#import "osdep.h"
+#import "functions.h"
+#import "NSFileHandle+Extensions.h"
 
-#ifdef WIN32
-#import <System/windows.h>  // move this to osdep.h?
-#endif
-
-#ifdef WIN32
-#define EDSOCKETHANDLE ((int)[self nativeHandle])
-#else
-#define EDSOCKETHANDLE [self fileDescriptor]
-#endif
 
 //---------------------------------------------------------------------------------------
     @implementation NSFileHandle(EDExtensions)
@@ -48,7 +39,7 @@
     struct sockaddr_in	sockaddr;
     
     sockaddrLength = sizeof(struct sockaddr_in);
-    if(getsockname(EDSOCKETHANDLE, (struct sockaddr *)&sockaddr, &sockaddrLength) == -1)
+    if(getsockname([self fileDescriptor], (struct sockaddr *)&sockaddr, &sockaddrLength) == -1)
         [NSException raise:NSFileHandleOperationException format:@"Cannot get local port number for socket: %s", strerror(ED_ERRNO)];
     return sockaddr.sin_port;
 }
@@ -62,7 +53,7 @@
     struct sockaddr_in	sockaddr;
     
     sockaddrLength = sizeof(struct sockaddr_in);
-    if(getsockname(EDSOCKETHANDLE, (struct sockaddr *)&sockaddr, &sockaddrLength) == -1)
+    if(getsockname([self fileDescriptor], (struct sockaddr *)&sockaddr, &sockaddrLength) == -1)
         [NSException raise:NSFileHandleOperationException format:@"Cannot get local port number for socket: %s", strerror(ED_ERRNO)];
     return EDStringFromInAddr(sockaddr.sin_addr);
 }
@@ -76,7 +67,7 @@
     struct sockaddr_in	sockaddr;
 
     sockaddrLength = sizeof(struct sockaddr_in);
-    if(getpeername(EDSOCKETHANDLE, (struct sockaddr *)&sockaddr, &sockaddrLength) == -1)
+    if(getpeername([self fileDescriptor], (struct sockaddr *)&sockaddr, &sockaddrLength) == -1)
         [NSException raise:NSFileHandleOperationException format:@"Failed to get peer: %s", strerror(ED_ERRNO)];
     return sockaddr.sin_port;
 }
@@ -90,7 +81,7 @@
     struct sockaddr_in	sockaddr;
 
     sockaddrLength = sizeof(struct sockaddr_in);
-    if(getpeername(EDSOCKETHANDLE, (struct sockaddr *)&sockaddr, &sockaddrLength) == -1)
+    if(getpeername([self fileDescriptor], (struct sockaddr *)&sockaddr, &sockaddrLength) == -1)
         [NSException raise:NSFileHandleOperationException format:@"Failed to get peer: %s", strerror(ED_ERRNO)];
     return EDStringFromInAddr(sockaddr.sin_addr);
 }
@@ -108,7 +99,7 @@
 
 - (void)shutdown
 {
-    if(shutdown(EDSOCKETHANDLE, 2) == -1)
+    if(shutdown([self fileDescriptor], 2) == -1)
         [NSException raise:NSFileHandleOperationException format:@"Failed to shutdown socket: %s", strerror(ED_ERRNO)];
 }
 
@@ -117,7 +108,7 @@
 
 - (void)shutdownInput
 {
-    if(shutdown(EDSOCKETHANDLE, 0) == -1)
+    if(shutdown([self fileDescriptor], 0) == -1)
         [NSException raise:NSFileHandleOperationException format:@"Failed to shutdown input of socket: %s", strerror(ED_ERRNO)];
 }
 
@@ -126,37 +117,18 @@
 
 - (void)shutdownOutput
 {
-    if(shutdown(EDSOCKETHANDLE, 1) == -1)
+    if(shutdown([self fileDescriptor], 1) == -1)
         [NSException raise:NSFileHandleOperationException format:@"Failed to shutdown output of socket: %s", strerror(ED_ERRNO)];
 }
 
 
 - (unsigned int)_availableByteCountNonBlocking
 {
-#ifdef WIN32
-    DWORD lpTotalBytesAvail;
-    BOOL peekSuccess;
-
-    peekSuccess = PeekNamedPipe(EDSOCKETHANDLE, NULL, 0L, NULL, &lpTotalBytesAvail, NULL);
-
-    if (peekSuccess == NO)
-        [NSException raise: NSFileHandleOperationException
-                    format: @"PeekNamedPipe() NT Error # %d", GetLastError()];
-
-    return lpTotalBytesAvail;
-#elif defined(__APPLE__) || defined(__FreeBSD__) || defined(linux)
     int numBytes;
 
-    if(ioctl(EDSOCKETHANDLE, FIONREAD, (char *) &numBytes) == -1)
-        [NSException raise: NSFileHandleOperationException
-                    format: @"ioctl() error # %d", errno];
-
+    if(ioctl([self fileDescriptor], FIONREAD, (char *) &numBytes) == -1)
+        [NSException raise: NSFileHandleOperationException format: @"ioctl() error # %d", errno];
     return numBytes;
-#else
-#warning Non-blocking I/O not supported on this platform....
-    abort();
-    return 0;
-#endif
 }
 
 

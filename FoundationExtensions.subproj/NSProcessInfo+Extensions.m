@@ -19,16 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "NSProcessInfo+Extensions.h"
-
-#ifndef WIN32
-#	include <sys/types.h>
-#	include <unistd.h>
-#else
-// need this for GetCurrentProcessId()
-// hard to believe, but true ...
-#	import <winsock.h>
-#endif
+#import "osdep.h"
+#import "NSProcessInfo+Extensions.h"
 
 
 //---------------------------------------------------------------------------------------
@@ -41,12 +33,9 @@
 
 - (int)pid
 {
-#ifndef WIN32
     return getpid();
-#else
-    return (int)GetCurrentProcessId();
-#endif
 }
+
 
 //---------------------------------------------------------------------------------------
   @end

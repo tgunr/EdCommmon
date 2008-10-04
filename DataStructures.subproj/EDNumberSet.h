@@ -18,13 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDNumberSet_h_INCLUDE
-#define	__EDNumberSet_h_INCLUDE
-
-
 #import <Foundation/Foundation.h>
-
 
 @class EDSortedArray, EDRange;
 
@@ -58,4 +52,3 @@
 
 @end
 
-#endif	/* __EDNumberSet_h_INCLUDE */

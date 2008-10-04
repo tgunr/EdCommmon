@@ -18,18 +18,13 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDLightWeightLock_h_INCLUDE
-#define	__EDLightWeightLock_h_INCLUDE
-
-
-// On Mac OS X and PDO Solaris we use pthreads.
-
-#if ((defined(__APPLE__) && !defined(ppc)) || (defined(__SVR4) && defined(sun)))
-
 #import <pthread.h>
 
+/*" Datatype for a light-weight lock. We use pthreads. "*/
+
 typedef pthread_mutex_t EDLightWeightLock;
+
+/*" Under certain circumstances even the low overhead of NSLocks is too much and direct access to the platform's locks is required. These four functions allocate, initialise and return a lock, dispose of it and allow to lock and unlock it. "*/
 
 static __inline__ EDLightWeightLock *EDLWLCreate()
 {
@@ -54,70 +49,3 @@ static __inline__ void EDLWLUnlock(EDLightWeightLock *mutex)
     pthread_mutex_unlock(mutex);
 }
 
-
-#elif defined(GNU_RUNTIME)
-
-
-typedef struct objc_mutex EDLightWeightLock;
-
-static __inline__ EDLightWeightLock *EDLWLCreate()
-{
-    return objc_mutex_allocate();
-}
-
-static __inline__ void EDLWLDispose(EDLightWeightLock *mutex)
-{
-    objc_mutex_deallocate(mutex);
-}
-
-static __inline__ void EDLWLLock(EDLightWeightLock *mutex)
-{
-    objc_mutex_lock(mutex);
-}
-
-static __inline__ void EDLWLUnlock(EDLightWeightLock *mutex)
-{
-    objc_mutex_unlock(mutex);
-}
-
-
-#else
-
-
-#import <mach/cthreads.h>
-
-/*" Datatype for a light-weight lock, different implementations are used on the supported platforms. In GNUStep builds we use the runtime lock wrapper, on Mac OS X and Solaris pthreads, and mach mutexes on the rest. %{<<What about Windows?!>>}"*/
-
-typedef struct mutex EDLightWeightLock;
-
-
-/*" Under certain circumstances even the low overhead of NSLocks is too much and direct access to the platform's locks is required. These four functions allocate, initialise and return a lock, dispose of it and allow to lock and unlock it. "*/
-
-static __inline__ EDLightWeightLock *EDLWLCreate()
-{
-    EDLightWeightLock *mutex = malloc(sizeof(EDLightWeightLock));
-    mutex_init(mutex);
-    return mutex;
-}
-
-static __inline__ void EDLWLDispose(EDLightWeightLock *mutex)
-{
-    mutex_clear(mutex);
-    free(mutex);
-}
-
-static __inline__ void EDLWLLock(EDLightWeightLock *mutex)
-{
-    mutex_lock(mutex);
-}
-
-static __inline__ void EDLWLUnlock(EDLightWeightLock *mutex)
-{
-    mutex_unlock(mutex);
-}
-
-
-
-#endif
-
-#endif	/* __EDLightWeightLock_h_INCLUDE */

@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDObjcRuntime_h_INCLUDE
-#define	__EDObjcRuntime_h_INCLUDE
-
-
 #ifndef GNU_RUNTIME /* NeXT RUNTIME */
 
 #import <objc/objc.h>
@@ -43,7 +38,6 @@
 
 #else /* GNU_RUNTIME */
 
-
 #import <objc/objc.h>
 #import <objc/objc-api.h>
 
@@ -57,5 +51,3 @@
 #define EDObjcSelectorsAreEqual(sel1, sel2) sel_eq(((sel1)),((sel2)))
 
 #endif
-
-#endif	/* __EDObjcRuntime_h_INCLUDE */

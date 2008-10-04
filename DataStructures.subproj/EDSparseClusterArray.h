@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDSparseClusterArray_h_INCLUDE
-#define	__EDSparseClusterArray_h_INCLUDE
-
-
 #import <Foundation/Foundation.h>
 
 
@@ -46,5 +41,3 @@
 - (NSArray *)allObjects;
 
 @end
-
-#endif	/* __EDSparseClusterArray_h_INCLUDE */

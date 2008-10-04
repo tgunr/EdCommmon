@@ -18,12 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDRange_h_INCLUDE
-#define	__EDRange_h_INCLUDE
-
-
-#include "EDIRCObject.h"
+#import "EDIRCObject.h"
 
 
 @interface EDRange : EDIRCObject <NSCoding, NSCopying>
@@ -59,5 +54,3 @@
 - (EDRange *)unionRange:(EDRange *)otherRange;
 
 @end
-
-#endif	/* __EDRange_h_INCLUDE */

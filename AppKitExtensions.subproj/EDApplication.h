@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDApplication_h_INCLUDE
-#define	__EDApplication_h_INCLUDE
-
-
 #import <AppKit/AppKit.h>
 
 @interface EDApplication : NSApplication
@@ -34,5 +29,3 @@
 /*" Calls #NSBeep and returns from the current method; which should have a !{void} return type. "*/
 
 #define ED_BEEPRETURN do { NSBeep(); return; } while (0)
-
-#endif	/* __EDApplication_h_INCLUDE */

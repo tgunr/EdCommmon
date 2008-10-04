@@ -18,14 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSFileHandle_NetExt_h_INCLUDE
-#define	__NSFileHandle_NetExt_h_INCLUDE
-
-
 #import <Foundation/Foundation.h>
-
-// documentation in .m file
 
 @interface NSFileHandle(EDExtensions)
 
@@ -51,5 +44,3 @@
 - (NSData *)readDataOfLengthNonBlocking:(unsigned int)length;
 
 @end
-
-#endif	/* __NSFileHandle_NetExt_h_INCLUDE */

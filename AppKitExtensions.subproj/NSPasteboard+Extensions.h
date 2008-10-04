@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSPasteboard_Extensions_h_INCLUDE
-#define	__NSPasteboard_Extensions_h_INCLUDE
-
-
 #import <AppKit/NSPasteboard.h>
 
 /*" Various useful extensions to #NSPasteboard. "*/
@@ -41,6 +36,4 @@
 - (id)objectByReferenceForType:(NSString *)pboardType;
 
 @end
-
-#endif	/* __NSPasteboard_Extensions_h_INCLUDE */
 

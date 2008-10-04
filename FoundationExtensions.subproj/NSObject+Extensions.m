@@ -2,7 +2,7 @@
 //  NSObject+Extensions.m created by erik on Sun 06-Sep-1998
 //  @(#)$Id: NSObject+Extensions.m,v 2.5 2005-09-25 11:06:36 erik Exp $
 //
-//  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1998-2000,2008 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -19,15 +19,9 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "NSObject+Extensions.h"
-#include "EDObjcRuntime.h"
-
-#ifndef GNU_RUNTIME /* NeXT RUNTIME */
 #import <objc/objc-class.h>
-#else
-#include <objc/objc.h>
-#endif
-#include "deallocnotif.h"
+#import "EDObjcRuntime.h"
+#import "NSObject+Extensions.h"
 
 
 //---------------------------------------------------------------------------------------
@@ -137,8 +131,6 @@ BOOL EDClassIsSuperclassOfClass(Class aClass, Class subClass)
 
 NSArray *EDSubclassesOfClass(Class aClass)
 {
-#ifndef GNU_RUNTIME
-#ifdef EDCOMMON_OSXBUILD
     NSMutableArray *subclasses;
     Class          *classes;
     int            numClasses, newNumClasses, i;
@@ -162,34 +154,6 @@ NSArray *EDSubclassesOfClass(Class aClass)
     free(classes);
 
     return subclasses;
-#else /* OSXS_BUILD */
-    NSMutableArray	*subclasses;
-    NXHashTable		*subClasses;
-    NXHashState 	subIterator;
-    Class			subClass;
-    
-    subClasses = objc_getClasses();
-    subIterator = NXInitHashState(subClasses);
-    subclasses = [NSMutableArray array];
-    while(NXNextHashState(subClasses, &subIterator, (void **)&subClass))
-        {
-        if(EDClassIsSuperclassOfClass(aClass, subClass) == YES)
-            [subclasses addObject:subClass];
-        }
-    return subclasses;
-#endif
-#else /* GNU_RUNTIME */
-    NSMutableArray *subclasses;
-    Class subClass;
-    void *es = NULL;
-
-    subclasses = [NSMutableArray array];
-    while((subClass = objc_next_class(&es)) != Nil)
-        if(EDClassIsSuperclassOfClass(aClass, subClass) == YES)
-            [subclasses addObject:subClass];
-
-    return subclasses;
-#endif
 }
 
 /*" Returns all subclasses of the receiving class "*/
@@ -246,73 +210,6 @@ Example: Assume you have an array !{a} which contains names and an object !{phon
         EDObjcMsgSend1(self, selector, object);
 }
 
-
-//---------------------------------------------------------------------------------------
-//  DEALLOC NOTIFICATIONS
-//---------------------------------------------------------------------------------------
-#if 0
-/*" Registers %anObserver for deallocation events. Whenever an object of the receiving class or any of its subclasses is deallocated the observer's #{objectDeallocated:} method will be called. Note that multiple registrations will not result in multiple notifications and do not need to be balanced by the same number of de-registrations.
-
-  In #{objectDeallocated:} the receiver should not send messages to the object or otherwise depend on its state because the object will have been partially deallocated.
-"*/
-
-+ (void)addDeallocObserver:(id <EDDeallocNotification>)anObserver
-{
-    EDEnsureDeallocHackIsInstalledForClass(self);
-    EDAddObserverForObject(anObserver, self);
-}
-
-
-/*" Registers %anObserver for the deallocation event of the receiving object. For performance reasons you should use this method sparingly as it requires additional bookeeping. Instead, use the class methods and check in your #{objectDeallocated:} implementation whether it was one of the objects you were interested in. (You will most likely know whether it was one of these objects, and your specialised test will, in general, be faster than the test used by this category.) "*/
-
-- (void)addDeallocObserver:(id <EDDeallocNotification>)anObserver
-{
-    EDEnsureDeallocHackIsInstalledForClass(isa);
-    EDAddObserverForObject(anObserver, self);
-}
-
-
-/*" Removes %anObserver for deallocation events of the receiving class and it's subclasses. Registrations for specific instances are not affected. "*/
-
-+ (void)removeDeallocObserver:(id)anObserver
-{
-    EDRemoveObserverForObject(anObserver, self);
-}
-
-
-/*" Removes %anObserver for the deallocation event of the receiving object. "*/
-
-- (void)removeDeallocObserver:(id)anObserver
-{
-    EDRemoveObserverForObject(anObserver, self);
-}
-
-
-//---------------------------------------------------------------------------------------
-
-- (void)_edDeallocNotificationHack
-{
-    Class c;
-    void (*deallocImp)(id, SEL);
-
-    // note that this method is not neccesarily patched onto the class that
-    // self->isa points to. so we locate our real class first...
-    deallocImp = NULL; // keep compiler happy
-    for(c = self->isa; c != NULL; c = class_getSuperclass(c))
-        {
-        if((deallocImp = NSMapGet(EDDeallocImpTable, c)) != NULL)
-            break;
-        }
-    NSAssert1(deallocImp != NULL, @"%@: Cannot find original dealloc", NSStringFromClass(isa));
-
-    // notify our observers
-    EDNotifyObservers(c, self);
-
-    // call the original implementation
-    deallocImp(self, @selector(dealloc));
-}
-
-#endif
 
 //---------------------------------------------------------------------------------------
     @end

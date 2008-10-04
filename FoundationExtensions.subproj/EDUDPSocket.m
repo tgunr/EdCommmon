@@ -2,7 +2,7 @@
 //  EDUDPSocket.m created by erik
 //  @(#)$Id: EDUDPSocket.m,v 2.2 2005-09-25 11:06:35 erik Exp $
 //
-//  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1997-2000,2008 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -19,16 +19,9 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "osdep.h"
-#include "functions.h"
-#include "EDUDPSocket.h"
-
-
-#ifdef WIN32
-#define EDSOCKETHANDLE ((int)[self nativeHandle])
-#else
-#define EDSOCKETHANDLE [self fileDescriptor]
-#endif
+#import "osdep.h"
+#import "functions.h"
+#import "EDUDPSocket.h"
 
 #define EDUDPSOCK_BUFFERSIZE 4096
 
@@ -98,7 +91,7 @@ For unconnected UDP sockets  #remoteHost returns the last host a package was rec
 
     if(flags.connectState > 0)
         {
-        bytesRead = recv(EDSOCKETHANDLE, buffer, EDUDPSOCK_BUFFERSIZE, 0);
+        bytesRead = recv([self fileDescriptor], buffer, EDUDPSOCK_BUFFERSIZE, 0);
         }
     else
         {
@@ -107,7 +100,7 @@ For unconnected UDP sockets  #remoteHost returns the last host a package was rec
         remoteAddressLength = sizeof(struct sockaddr_in);
         if(remoteAddress == NULL)
             remoteAddress = NSZoneMalloc([self zone], remoteAddressLength);
-        bytesRead = recvfrom(EDSOCKETHANDLE, buffer, EDUDPSOCK_BUFFERSIZE, 0, (struct sockaddr *)remoteAddress, &remoteAddressLength);
+        bytesRead = recvfrom([self fileDescriptor], buffer, EDUDPSOCK_BUFFERSIZE, 0, (struct sockaddr *)remoteAddress, &remoteAddressLength);
         }
     if(bytesRead == -1)
         [NSException raise:NSFileHandleOperationException format:@"Unable to read from socket: %s", strerror(ED_ERRNO)];

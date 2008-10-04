@@ -18,13 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSSet_Extensions_h_INCLUDE
-#define	__NSSet_Extensions_h_INCLUDE
-
-
 #import <Foundation/NSScanner.h>
-
 
 /*" Various common extensions to #NSSet. "*/
 
@@ -40,5 +34,3 @@
 - (NSSet *)setByMappingWithSelector:(SEL)selector withObject:(id)object;
 
 @end
-
-#endif	/* __NSSet_Extensions_h_INCLUDE */

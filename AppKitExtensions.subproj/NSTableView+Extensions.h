@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSTableView_Extensions_h_INCLUDE
-#define	__NSTableView_Extensions_h_INCLUDE
-
-
 #import <AppKit/NSTableView.h>
 
 /*" Various useful extensions to #NSTableView. "*/
@@ -32,5 +27,3 @@
 - (void)scrollRowToTop:(int)rowIndex;
 
 @end
-
-#endif	/* __NSTableView_Extensions_h_INCLUDE */

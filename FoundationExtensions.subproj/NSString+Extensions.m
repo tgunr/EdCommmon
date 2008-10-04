@@ -2,7 +2,7 @@
 //  NSString+printf.m created by erik on Sat 27-Sep-1997
 //  @(#)$Id: NSString+Extensions.m,v 2.1 2003-04-08 16:51:35 znek Exp $
 //
-//  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1997-2000,2008 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -18,21 +18,9 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#ifndef EDCOMMON_WOBUILD
-#import <AppKit/AppKit.h>
-#endif
-#ifdef EDCOMMON_OSXBUILD
-#import <CoreFoundation/CoreFoundation.h>
-#endif
-#import <Foundation/Foundation.h>
-#include "NSString+Extensions.h"
-#include "EDObjectPair.h"
+#import "NSString+Extensions.h"
+#import "EDObjectPair.h"
 
-#ifndef WIN32
-#import <unistd.h>
-#else
-#define random() rand()
-#endif
 
 @interface NSString(EDExtensionsPrivateAPI)
 + (NSDictionary *)_contentTypeExtensionMapping;
@@ -149,8 +137,6 @@ static NSCharacterSet *iwsSet = nil;
 }
 
 
-#ifndef EDCOMMON_WOBUILD
-
 /*" Returns a string that is not wider than %maxWidths pixels. "*/
 
 - (NSString *)stringByAbbreviatingPathToWidth:(float)maxWidth forFont:(NSFont *)font
@@ -190,8 +176,6 @@ static NSCharacterSet *iwsSet = nil;
 
     return nil;
 }
-
-#endif
 
 
 /*" Returns YES if the receiver's prefix is equal to %string, comparing case insensitive. "*/
@@ -284,8 +268,6 @@ static NSCharacterSet *iwsSet = nil;
 //	NSStringEncoding vs. MIME Encoding
 //---------------------------------------------------------------------------------------
 
-#ifdef EDCOMMON_OSXBUILD
-
 + (NSStringEncoding)stringEncodingForMIMEEncoding:(NSString *)charsetName
 {
     CFStringEncoding cfEncoding;
@@ -328,69 +310,6 @@ static NSCharacterSet *iwsSet = nil;
 
     return [NSString MIMEEncodingForStringEncoding:[self smallestEncoding]];
 }
-
-#else
-
-/*" Returns the NSStringEncoding corresponding to the MIME character set %charsetName or 0 if no such encoding exists. On Mac OS X this wraps #CFStringConvertIANACharSetNameToEncoding and on other platforms hardcoded tables are used. "*/
-
-+ (NSStringEncoding)stringEncodingForMIMEEncoding:(NSString *)encoding
-{
-    static NSMutableDictionary	*table = nil;
-
-    if(table == nil)
-        {
-        table = [NSMutableDictionary dictionary];
-        [table setObject:[NSNumber numberWithUnsignedInt:NSASCIIStringEncoding] forKey:MIMEAsciiStringEncoding];
-        [table setObject:[NSNumber numberWithUnsignedInt:NSISOLatin1StringEncoding] forKey:MIMELatin1StringEncoding];
-        [table setObject:[NSNumber numberWithUnsignedInt:NSISOLatin2StringEncoding] forKey:MIMELatin2StringEncoding];
-        [table setObject:[NSNumber numberWithUnsignedInt:NSISO2022JPStringEncoding] forKey:MIME2022JPStringEncoding];
-        [table setObject:[NSNumber numberWithUnsignedInt:NSUTF8StringEncoding] forKey:MIMEUTF8StringEncoding];
-        [table setObject:[NSNumber numberWithUnsignedInt:NSWindowsCP1252StringEncoding] forKey:@"windows-1252"];
-        table = [table copy];
-        }
-    return [[table objectForKey:[encoding lowercaseString]] unsignedIntValue];
-}
-
-
-/*" Returns the MIME character set corresponding to the NSStringEncoding or !{nil} if no such encoding exists. On Mac OS X this wraps #CFStringConvertEncodingToIANACharSetName and on other platforms hardcoded tables are used. "*/
-
-+ (NSString *)MIMEEncodingForStringEncoding:(NSStringEncoding)encoding
-{
-    static NSMutableDictionary	*table = nil;
-
-    if(table == nil)
-        {
-        table = [NSMutableDictionary dictionary];
-        [table setObject:MIMEAsciiStringEncoding forKey:[NSNumber numberWithUnsignedInt:NSASCIIStringEncoding]];
-        [table setObject:MIMELatin1StringEncoding forKey:[NSNumber numberWithUnsignedInt:NSISOLatin1StringEncoding]];
-        [table setObject:MIMELatin2StringEncoding forKey:[NSNumber numberWithUnsignedInt:NSISOLatin2StringEncoding]];
-        [table setObject:MIME2022JPStringEncoding forKey:[NSNumber numberWithUnsignedInt:NSISO2022JPStringEncoding]];
-        [table setObject:MIMEUTF8StringEncoding forKey:[NSNumber numberWithUnsignedInt:NSUTF8StringEncoding]];
-        [table setObject:@"windows-1252" forKey:[NSNumber numberWithUnsignedInt:NSWindowsCP1252StringEncoding]];
-        table = [table copy];
-        }
-    return [table objectForKey:[NSNumber numberWithUnsignedInt:encoding]];
-}
-
-
-/*" Returns the encoding, specified as a MIME character set, that the receiver should be converted to when being transferred on the Internet. This method prefers ASCII over ISO-Latin over the smallest encoding. "*/
-
-- (NSString *)recommendedMIMEEncoding
-{
-    if([self canBeConvertedToEncoding:NSASCIIStringEncoding])
-        return MIMEAsciiStringEncoding;
-    if([self canBeConvertedToEncoding:NSISOLatin1StringEncoding])
-        return MIMELatin1StringEncoding;
-    if([self canBeConvertedToEncoding:NSISOLatin2StringEncoding])
-        return MIMELatin2StringEncoding;
-    if([self canBeConvertedToEncoding:NSISO2022JPStringEncoding])
-        return MIME2022JPStringEncoding;
-    if([self canBeConvertedToEncoding:NSUTF8StringEncoding])
-        return MIMEUTF8StringEncoding;
-    return nil;
-}
-
-#endif
 
 
 //---------------------------------------------------------------------------------------
@@ -524,17 +443,13 @@ static NSMutableDictionary *teTable = nil;
 }
 
 
-
-#ifndef WIN32 // [TRH 2001/01/18] quick hack: disabled since Windows does not have crypt()
 //---------------------------------------------------------------------------------------
 //	CRYPTING
 //---------------------------------------------------------------------------------------
 
 /*" Returns an encrypted version of the receiver using a random "salt."
 
-This method is thread-safe.
-
-Note: This method is not available on Windows NT platforms. "*/
+This method is thread-safe. "*/
 
 - (NSString *)encryptedString
 {
@@ -550,9 +465,7 @@ Note: This method is not available on Windows NT platforms. "*/
 
 /*" Returns an encrypted version of the receiver using %salt as randomizer. %Salt must be a C String containing excatly two characters.
 
-This method is thread-safe.
-
-Note: This method is not available on Windows NT platforms. "*/
+This method is thread-safe. "*/
 
 - (NSString *)encryptedStringWithSalt:(const char *)salt
 {
@@ -583,9 +496,7 @@ Note: This method is not available on Windows NT platforms. "*/
 
 /*" Returns YES if the receiver is a encryption of %aString. Assume you have the encrypted password in !{pwd} and the user's input in !{input}. Call !{[pwd isValidEncryptionOfString:input]} to verify the passwrd.
 
-This method is thread-safe.
-
-Note: This method is not available on Windows NT platforms. "*/
+This method is thread-safe. "*/
 
 - (BOOL)isValidEncryptionOfString:(NSString *)aString
 {
@@ -595,7 +506,6 @@ Note: This method is not available on Windows NT platforms. "*/
 	salt[2] = '\0';
 	return [self isEqualToString:[aString encryptedStringWithSalt:salt]];
 }
-#endif // !defined(WIN32)
 
 
 //---------------------------------------------------------------------------------------

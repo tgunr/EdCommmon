@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "osdep.h"
-#include "NSData+Extensions.h"
+#import "osdep.h"
+#import "NSData+Extensions.h"
 
 
 //---------------------------------------------------------------------------------------
@@ -318,9 +318,6 @@ If %lineLength is greater than 0, linebreaks are inserted after every %lineLengt
 
     return encodedData;
 }
-
-
-
 
 
 //---------------------------------------------------------------------------------------

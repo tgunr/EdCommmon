@@ -19,16 +19,16 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "EDTCPSocket.h"
-#include "EDStream.h"
+#import "EDTCPSocket.h"
+#import "EDStream.h"
+
+#define LF ((char)'\x0A')
+#define CR ((char)'\x0D')
+
 
 @interface EDStream(PrivateAPI)
 - (void)_writeRawData:(NSData *)data;
 @end
-
-
-#define LF ((char)'\x0A')
-#define CR ((char)'\x0D')
 
 
 //---------------------------------------------------------------------------------------

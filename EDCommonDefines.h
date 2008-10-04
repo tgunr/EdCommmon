@@ -2,7 +2,7 @@
 //  EDCommonDefines.h created by erik on Fri 28-Mar-1997
 //  @(#)$Id: EDCommonDefines.h,v 2.0 2002-08-16 18:12:43 erik Exp $
 //
-//  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1997-2000,2008 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -18,51 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDCommonDefines_h_INCLUDE
-#define	__EDCommonDefines_h_INCLUDE
-
-// Defines to handle extern declarations on different platforms
-
-/*" Ignore this stuff. It is needed thanks to Microsoft's great DLL implementation. "*/
-
-#if defined(__MACH__)
-
-#ifdef __cplusplus
-   // This isnt extern "C" because the compiler will not allow this if it has
-   // seen an extern "Objective-C"
-#  define EDCOMMON_EXTERN		extern
-#else
-#  define EDCOMMON_EXTERN		extern
-#endif
-
-
-#elif defined(WIN32)
-
-#ifdef _BUILDING_EDCOMMON_DLL
-#  define EDCOMMON_DLL_GOOP		__declspec(dllexport)
-#else
-#  define EDCOMMON_DLL_GOOP		__declspec(dllimport)
-#endif
-
-#ifdef __cplusplus
-#  define EDCOMMON_EXTERN		extern "C" EDCOMMON_DLL_GOOP
-#else
-#  define EDCOMMON_EXTERN		EDCOMMON_DLL_GOOP extern
-#endif
-
-
-#else
-
-#ifdef __cplusplus
-#  define EDCOMMON_EXTERN		extern "C"
-#else
-#  define EDCOMMON_EXTERN		extern
-#endif
-
-
-#endif
-
+# define EDCOMMON_EXTERN extern
 
 /*" Use this if you want to say neither YES nor NO... "*/
 
@@ -139,4 +95,3 @@ EDCOMMON_EXTERN void (*_EDLogFunction)(NSString *);
 #define EDLog3(l, f, arg1, arg2, arg3)			EDLogBody((l), (f), arg1, arg2, arg3, 0)
 #define EDLog4(l, f, arg1, arg2, arg3, arg4)	EDLogBody((l), (f), arg1, arg2, arg3, arg4)
 
-#endif	/* __EDCommonDefines_h_INCLUDE */

@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSWindow_Extensions_h_INCLUDE
-#define	__NSWindow_Extensions_h_INCLUDE
-
-
 #import <AppKit/NSWindow.h>
 
 /*" Various useful extensions to #NSWindow. "*/
@@ -32,5 +27,3 @@
 - (void)endModalSessionWithCodeFromSender:(id)sender;
 
 @end
-
-#endif	/* __NSWindow_Extensions_h_INCLUDE */

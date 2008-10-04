@@ -2,7 +2,7 @@
 //  NSApplication+Extensions.m created by erik on Sat 09-Oct-1999
 //  @(#)$Id: NSApplication+Extensions.m,v 2.1 2003-04-08 16:51:32 znek Exp $
 //
-//  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1999-2000,2008 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -19,16 +19,13 @@
 //---------------------------------------------------------------------------------------
 
 #import <AppKit/AppKit.h>
-#include "EDCommonDefines.h"
-#include "NSApplication+Extensions.h"
-#include "EDObjcRuntime.h"
+#import "EDCommonDefines.h"
+#import "NSApplication+Extensions.h"
+#import "EDObjcRuntime.h"
 
 
 #define LS_CANNOT_CREATE_LIBRARY_FOLDER \
 NSLocalizedString(@"Failed to create a folder in your library folder.", "Error message for exception which is thrown when the creation of a folder in the library folder fails.")
-
-#define LS_CANNOT_CREATE_LIBRARY_FOLDER_WIN(LIBFOLDER) \
-[NSString stringWithFormat:NSLocalizedString(@"Failed to create a folder in your library folder (%@).", "Error message for exception which is thrown when the creation of a folder in the library folder fails under Windows."), LIBFOLDER]
 
 
 //---------------------------------------------------------------------------------------
@@ -90,11 +87,7 @@ NSLocalizedString(@"Failed to create a folder in your library folder.", "Error m
        {
        if([fileManager createDirectoryAtPath:libraryDirectory attributes:nil] == NO)
            {
-#ifndef WIN32           
            [NSException raise:NSGenericException format:LS_CANNOT_CREATE_LIBRARY_FOLDER];
-#else
-           [NSException raise:NSGenericException format:LS_CANNOT_CREATE_LIBRARY_FOLDER_WIN([pathList objectAtIndex:0])];
-#endif
            }
        }
    else

@@ -2,7 +2,7 @@
 //  NSArray+Extensions.h created by erik on Thu 28-Mar-1996
 //  @(#)$Id: NSArray+Extensions.h,v 2.2 2003-01-25 22:33:49 erik Exp $
 //
-//  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1996, 1999, 2008 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSArray_Extensions_h_INCLUDE
-#define	__NSArray_Extensions_h_INCLUDE
-
-
 #import <Foundation/NSArray.h>
 
 /*" Various common extensions to #NSArray. "*/
@@ -32,11 +27,6 @@
 /*" Retrieving individual objects "*/
 - (id)singleObject;
 - (id)firstObject;
-#ifndef EDCOMMON_OSXBUILD
-#ifdef __MACH__
-+ (void)applyFirstObjectPatch;
-#endif
-#endif
 
 /*" Handling subarrays "*/
 - (NSArray *)subarrayToIndex:(NSUInteger)index;
@@ -73,5 +63,3 @@
 - (void)sort;
 - (void)sortByComparingAttribute:(NSString *)attributeName;
 @end
-
-#endif	/* __NSArray_Extensions_h_INCLUDE */

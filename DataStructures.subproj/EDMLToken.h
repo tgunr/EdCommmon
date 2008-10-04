@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDMLToken_h_INCLUDE
-#define	__EDMLToken_h_INCLUDE
-
-
 /*" Private helper class for EDMLParser. Do not use directly. "*/
 
 @interface EDMLToken : NSObject
@@ -38,6 +33,4 @@
 - (id)value;
 
 @end
-
-#endif	/* __EDMLToken_h_INCLUDE */
 

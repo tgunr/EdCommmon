@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "EDObjcRuntime.h"
-#include "NSSet+Extensions.h"
+#import "EDObjcRuntime.h"
+#import "NSSet+Extensions.h"
 
 
 //---------------------------------------------------------------------------------------

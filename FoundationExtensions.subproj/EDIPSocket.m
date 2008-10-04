@@ -2,7 +2,7 @@
 //  EDIPSocket.m created by erik
 //  @(#)$Id: EDIPSocket.m,v 2.2 2003-04-08 16:51:34 znek Exp $
 //
-//  Copyright (c) 1997-2001 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1997-2001,2008 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -19,20 +19,11 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "osdep.h"
-#include "functions.h"
-#include "NSFileHandle+Extensions.h"
-#include "EDIPSocket.h"
+#import "osdep.h"
+#import "functions.h"
+#import "NSFileHandle+Extensions.h"
+#import "EDIPSocket.h"
 
-@interface EDIPSocket(PrivateAPI)
-- (void)_connectToAddress:(NSString *)hostAddress port:(unsigned short)port hostDescription:(NSString *)hostDesc;
-@end
-
-#ifdef WIN32
-#define EDSOCKETHANDLE ((int)[self nativeHandle])
-#else
-#define EDSOCKETHANDLE [self fileDescriptor]
-#endif
 
 #define EDSOCK_HOSTDESCFORADDR NSLocalizedString(@"with the address %@", "Description for a host in error messages when the connection was attempted to a specific IP address. Hope this is localisable because it assumes a specific context, e.g. 'the computer _with_the_address_127.0.0.1_ refused...'")
 
@@ -49,6 +40,11 @@
 #define EDSOCK_EHOSTUNREACH NSLocalizedString(@"Attempt to connect to the computer %@ failed because no route to it is avaiable.", "Message for EHOSTUNREACH returned from connect.")
 
 #define EDSOCK_EOTHER NSLocalizedString(@"Attempt to connect to %@ on port %d failed due to an unexpected error: %s", "Generic message for errors returned from connect.")
+
+
+@interface EDIPSocket(PrivateAPI)
+- (void)_connectToAddress:(NSString *)hostAddress port:(unsigned short)port hostDescription:(NSString *)hostDesc;
+@end
 
 
 //---------------------------------------------------------------------------------------
@@ -106,12 +102,10 @@ NSString *EDSocketConnectionRefusedException = @"EDSocketConnectionRefusedExcept
 
 /*" Controls whether the address/port combination can be shared by multiple sockets. Note that all sockets sharing the address/port must have this option set for it to work. This corresponds !{SO_REUSEPORT} and is currently only implemented on Apple platforms even though other BSD and BSD-derived systems should support it. Note that for multicast addresses this is considered synonymous to !{SO_REUSEADDR} ("TCP/IP Illustrated, Volume 2", p. 731.) So, for portability of multicasting applications you should use #{setAllowsAddressReuse:} instead. "*/
 
-#ifdef __APPLE__
 - (void)setAllowsPortReuse:(BOOL)flag
 {
     [self setSocketOption:SO_REUSEPORT level:SOL_SOCKET value:flag];
 }
-#endif
 
 
 /*" Sets the timeout for send (write) operations to aTimeoutVal. This corresponds to !{SO_SNDTIMEO}. "*/
@@ -167,7 +161,7 @@ NSString *EDSocketConnectionRefusedException = @"EDSocketConnectionRefusedExcept
     socketAddress.sin_addr = EDInAddrFromString(addressString);
     socketAddress.sin_port = htons(aPort);
 
-    if(bind(EDSOCKETHANDLE, (struct sockaddr *)&socketAddress, sizeof(socketAddress)) == -1)
+    if(bind([self fileDescriptor], (struct sockaddr *)&socketAddress, sizeof(socketAddress)) == -1)
         [NSException raise:NSFileHandleOperationException format:@"Binding of socket to port %d failed: %s", (int)aPort, strerror(ED_ERRNO)];
 }
 
@@ -233,7 +227,7 @@ NSString *EDSocketConnectionRefusedException = @"EDSocketConnectionRefusedExcept
     socketAddress.sin_addr = EDInAddrFromString(hostAddress);
     socketAddress.sin_port = htons(port);
 
-    if(connect(EDSOCKETHANDLE, (struct sockaddr *)&socketAddress, sizeof(socketAddress)) < 0)
+    if(connect([self fileDescriptor], (struct sockaddr *)&socketAddress, sizeof(socketAddress)) < 0)
         {
         switch(ED_ERRNO)
             {
@@ -310,7 +304,7 @@ NSString *EDSocketConnectionRefusedException = @"EDSocketConnectionRefusedExcept
 {
     if(flags.connectState > 0)
         {
-        shutdown(EDSOCKETHANDLE, flags.connectState - 1);
+        shutdown([self fileDescriptor], flags.connectState - 1);
         flags.connectState = 0;
         }
     [super closeFile];

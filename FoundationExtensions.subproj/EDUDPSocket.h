@@ -18,13 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDUDPSocket_h_INCLUDE
-#define	__EDUDPSocket_h_INCLUDE
-
-
-#include "EDIPSocket.h"
-
+#import "EDIPSocket.h"
 
 @interface EDUDPSocket : EDIPSocket
 {
@@ -32,5 +26,3 @@
 }
 
 @end
-
-#endif	/* __EDUDPSocket_h_INCLUDE */

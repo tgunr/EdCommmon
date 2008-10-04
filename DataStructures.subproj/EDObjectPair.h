@@ -19,10 +19,6 @@
 //---------------------------------------------------------------------------------------
 
 
-#ifndef	__EDObjectPair_h_INCLUDE
-#define	__EDObjectPair_h_INCLUDE
-
-
 @interface EDObjectPair : NSObject <NSCopying, NSMutableCopying, NSCoding>
 {
     id 	firstObject;	/*" First object of the pair. "*/
@@ -44,5 +40,3 @@
 - (NSArray *)allObjects;
 
 @end
-
-#endif	/* __EDObjectPair_h_INCLUDE */

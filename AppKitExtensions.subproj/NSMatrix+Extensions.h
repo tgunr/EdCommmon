@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSMatrix_Extensions_h_INCLUDE
-#define	__NSMatrix_Extensions_h_INCLUDE
-
-
 #import <AppKit/NSMatrix.h>
 
 /*" Various common extensions to #NSMatrix. "*/
@@ -34,5 +29,3 @@
 - (NSCell *)cellForObject:(id)object;
 
 @end
-
-#endif	/* __NSMatrix_Extensions_h_INCLUDE */

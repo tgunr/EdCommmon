@@ -2,7 +2,7 @@
 //  NSArray+Extensions.m created by erik on Thu 28-Mar-1996
 //  @(#)$Id: NSArray+Extensions.m,v 2.4 2008-04-21 05:54:19 znek Exp $
 //
-//  Copyright (c) 1996,1999 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1996,1999,2008 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -19,17 +19,9 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "NSArray+Extensions.h"
-#include "NSObject+Extensions.h"
-#include "EDObjcRuntime.h"
-
-#if (!defined(EDCOMMON_OSXBUILD) && !defined(GNUSTEP))
-//#import <EOControl/EOKeyValueCoding.h>
-#endif
-
-#ifdef WIN32
-#define random() rand()
-#endif
+#import "NSArray+Extensions.h"
+#import "NSObject+Extensions.h"
+#import "EDObjcRuntime.h"
 
 
 static NSComparisonResult compareAttributes(id object1, id object2, void *context)
@@ -59,7 +51,7 @@ static NSComparisonResult compareAttributes(id object1, id object2, void *contex
 
 //---------------------------------------------------------------------------------------
 
-/*" Return the object at index 0 or !{nil} if the array is empty. #Note: The method #firstObject is also implemented in the HTML framework which is sometimes loaded in AppKit applications. Unfortunately, its implemenation differs in that it raises an exception if the array is empty. (Don't ask why they did that!) So, you either live with this or call #applyFirstObjectPatch before the HTML framework is loaded. "*/
+/*" Return the object at index 0 or !{nil} if the array is empty. "*/
 
 - (id)firstObject
 {
@@ -67,35 +59,6 @@ static NSComparisonResult compareAttributes(id object1, id object2, void *contex
         return nil;
     return [self objectAtIndex:0];
 }
-
-
-#ifndef EDCOMMON_OSXBUILD
-#ifdef __MACH__
-
-static EDObjcMethodInfo myFirstObjectMethod;
-
-/*" See description of #{firstObject}. "*/
-
-+ (void)applyFirstObjectPatch
-{
-    myFirstObjectMethod = EDObjcClassGetInstanceMethod([NSArray class], @selector(firstObject));
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_bundleWasLoaded:) name:NSBundleDidLoadNotification object:nil];
-}
-
-+ (void)_bundleWasLoaded:(NSNotification *)n
-{
-    EDObjcMethodInfo evilFirstObjectMethod;
-
-    if([[[n object] bundlePath] hasSuffix:@"Library/PrivateFrameworks/HTML.framework"] == NO)
-        return;
-
-    evilFirstObjectMethod = EDObjcClassGetInstanceMethod([NSArray class], @selector(firstObject));
-    evilFirstObjectMethod->method_imp = myFirstObjectMethod->method_imp;
-    NSLog(@"Applied 'firstObject' patch to HTML framework");
-}
-
-#endif
-#endif
 
 //---------------------------------------------------------------------------------------
 

@@ -18,12 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDAOMTagProcessor_h_INCLUDE
-#define	__EDAOMTagProcessor_h_INCLUDE
-
-
-#include "EDMLTagProcessorProtocol.h"
+#import "EDMLTagProcessorProtocol.h"
 
 @class EDMLParser;
 
@@ -103,6 +98,3 @@ struct _EDATPFlags
 - (void)setText:(NSString *)text;
 @end
 
-
-
-#endif	/* __EDAOMTagProcessor_h_INCLUDE */

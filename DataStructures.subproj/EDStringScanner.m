@@ -19,16 +19,15 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "EDStringScanner.h"
-
-@interface EDStringScanner(PrivateAPI)
-- (void)_getNextChunk;
-@end
-
+#import "EDStringScanner.h"
 
 #define EDSBufferSize 1024
 
 unichar EDStringScannerEndOfDataCharacter = '\0';
+
+@interface EDStringScanner(PrivateAPI)
+- (void)_getNextChunk;
+@end
 
 
 //---------------------------------------------------------------------------------------

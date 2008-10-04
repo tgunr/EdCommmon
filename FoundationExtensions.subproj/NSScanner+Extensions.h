@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSScanner_Extensions_h_INCLUDE
-#define	__NSScanner_Extensions_h_INCLUDE
-
-
 #import <Foundation/NSScanner.h>
 
 /*" Various common extensions to #NSScanner. "*/
@@ -33,5 +28,3 @@
 - (BOOL)scanUpToClosingBracketIntoString:(NSString **)stringRef;
 
 @end
-
-#endif	/* __NSScanner_Extensions_h_INCLUDE */

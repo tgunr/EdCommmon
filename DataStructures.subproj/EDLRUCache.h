@@ -19,10 +19,6 @@
 //---------------------------------------------------------------------------------------
 
 
-#ifndef	__EDLRUCache_h_INCLUDE
-#define	__EDLRUCache_h_INCLUDE
-
-
 @interface EDLRUCache : NSObject
 {
     unsigned int	size;				/*" All instance variables are private. "*/
@@ -38,5 +34,3 @@
 - (id)objectWithKey:(id)aKey;
 
 @end
-
-#endif	/* __EDLRUCache_h_INCLUDE */

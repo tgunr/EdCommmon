@@ -2,7 +2,7 @@
 //  NSHost+Extensions.m created by erik on Fri 15-Oct-1999
 //  @(#)$Id: NSHost+Extensions.m,v 2.2 2003-04-21 23:23:56 erik Exp $
 //
-//  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1999,2008 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -19,9 +19,9 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "osdep.h"
-#include "functions.h"
-#include "NSHost+Extensions.h"
+#import "osdep.h"
+#import "functions.h"
+#import "NSHost+Extensions.h"
 
 
 //---------------------------------------------------------------------------------------
@@ -79,13 +79,9 @@
 {
     NSString *domain;
     
-#ifdef WIN32
-    domain = [[NSHost currentHost] domain];
-#else
     if(!(_res.options & RES_INIT))
         res_init();
     domain = [[[NSString alloc] initWithCString:_res.defdname] autorelease];
-#endif
 
     return domain;
 }

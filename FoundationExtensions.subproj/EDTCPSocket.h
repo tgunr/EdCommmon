@@ -18,13 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDTCPSocket_h_INCLUDE
-#define	__EDTCPSocket_h_INCLUDE
-
-
-#include "EDIPSocket.h"
-
+#import "EDIPSocket.h"
 
 @interface EDTCPSocket : EDIPSocket
 {
@@ -39,5 +33,3 @@
 - (void)startListeningOnLocalPort:(unsigned short)aPort andAddress:(NSString *)addressString;
 
 @end
-
-#endif	/* __EDTCPSocket_h_INCLUDE */

@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSHost_Extensions_h_INCLUDE
-#define	__NSHost_Extensions_h_INCLUDE
-
-
 /*" Various common extensions to #NSHost. "*/
 
 @interface NSHost(EDExtensions)
@@ -37,5 +32,3 @@
 - (NSString *)domain;
 
 @end
-
-#endif	/* __NSHost_Extensions_h_INCLUDE */

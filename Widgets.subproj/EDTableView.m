@@ -19,8 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <AppKit/AppKit.h>
-#include "EDTVScrollView.h"
-#include "EDTableView.h"
+#import "EDTableView.h"
 
 //---------------------------------------------------------------------------------------
     @implementation EDTableView
@@ -148,11 +147,7 @@
         column = [_tableColumns objectAtIndex:clickedColumnIdx];
         cell = [column dataCell];
         cellFrame = [self frameOfCellAtColumn:clickedColumnIdx row:clickedRowIdx];
-#ifndef GNUSTEP
         if(_tvFlags.delegateWillDisplayCell)
-#else
-        if(_del_responds)
-#endif
             [_delegate tableView:self willDisplayCell:cell forTableColumn:column row:clickedRowIdx];
         while([theEvent type] != NSLeftMouseUp)
             {

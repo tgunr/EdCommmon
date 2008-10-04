@@ -19,10 +19,6 @@
 //---------------------------------------------------------------------------------------
 
 
-#ifndef	__EDTextWriter_h_INCLUDE
-#define	__EDTextWriter_h_INCLUDE
-
-
 @protocol EDTextWriter
 
 - (void)flush;
@@ -31,5 +27,3 @@
 - (void)writeFormat:(NSString *)format, ...;
 
 @end
-
-#endif	/* __EDTextWriter_h_INCLUDE */

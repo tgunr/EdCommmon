@@ -2,7 +2,7 @@
 //  NSObject+Extensions.h created by erik on Sun 06-Sep-1998
 //  @(#)$Id: NSObject+Extensions.h,v 2.3 2003-02-10 21:23:15 erik Exp $
 //
-//  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1998-2000,2008 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -18,19 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSObject_Extensions_h_INCLUDE
-#define	__NSObject_Extensions_h_INCLUDE
-
-
 #import <Foundation/NSObject.h>
-
-/*" Protocol used by the Deallocation Notification mechanism. See #{addDeallocObserver:} and related methods in #NSObject Extensions for more information. "*/
-
-@protocol EDDeallocNotification
-- (void)objectDeallocated:(id)object;
-@end
-
 
 /*" Various common extensions to #NSObject. "*/
 
@@ -51,18 +39,8 @@
 - (void)performSelector:(SEL)selector withObjects:(NSArray *)objectList;
 - (void)performSelector:(SEL)selector withObjectsEnumeratedBy:(NSEnumerator *)enumerator;
 
-/*" Managing deallocation observers "*/
-+ (void)addDeallocObserver:(id <EDDeallocNotification>)anObserver;
-+ (void)removeDeallocObserver:(id)anObserver;
-- (void)addDeallocObserver:(id <EDDeallocNotification>)anObserver;
-- (void)removeDeallocObserver:(id)anObserver;
-
 @end
 
 
-IMP EDGetFirstUnusedIMPForSelector(Class aClass, SEL aSelector, BOOL isClassMethod);
 BOOL EDClassIsSuperclassOfClass(Class aClass, Class subClass);
 NSArray *EDSubclassesOfClass(Class aClass);
-
-
-#endif	/* __NSObject_Extensions_h_INCLUDE */

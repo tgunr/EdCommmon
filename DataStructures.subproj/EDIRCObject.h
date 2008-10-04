@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDIRCObject_h_INCLUDE
-#define	__EDIRCObject_h_INCLUDE
-
-
 #import <Foundation/NSObject.h>
 
 
@@ -32,5 +27,3 @@
 }
 
 @end
-
-#endif	/* __EDIRCObject_h_INCLUDE */

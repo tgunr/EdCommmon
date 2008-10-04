@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "NSAttributedString+Extensions.h"
+#import "NSAttributedString+Extensions.h"
 
 
 //---------------------------------------------------------------------------------------
@@ -32,11 +32,7 @@
 
 - (void)appendString:(NSString *)string
 {
-#if 0
-    [self appendAttributedString:[[[NSAttributedString alloc] initWithString:string] autorelease]];
-#else
     [self replaceCharactersInRange:NSMakeRange([self length], 0) withString:string];
-#endif
 }
 
 /*" Appends  %string to the receiver using the %attributes passed in. "*/

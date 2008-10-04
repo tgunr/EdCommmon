@@ -18,19 +18,10 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSString_Extensions_h_INCLUDE
-#define	__NSString_Extensions_h_INCLUDE
-
-
 #import <Foundation/NSString.h>
-#include "EDCommonDefines.h"
+#import "EDCommonDefines.h"
 
-@class NSFileHandle, EDObjectPair;
-
-#ifndef EDCOMMON_WOBUILD
-@class NSFont;
-#endif
+@class NSFileHandle, NSFont, EDObjectPair;
 
 /*" Various common extensions to #NSString. "*/
 
@@ -73,18 +64,14 @@
 + (NSString *)MIMEEncodingOfXMLDocument:(NSData *)xmlData;
 + (NSStringEncoding)encodingOfXMLDocument:(NSData *)xmlData;
 
-#ifndef WIN32
 /*" Encryptions "*/
 - (NSString *)encryptedString;
 - (NSString *)encryptedStringWithSalt:(const char *)salt;
 - (BOOL)isValidEncryptionOfString:(NSString *)aString;
-#endif
 
-#ifndef EDCOMMON_WOBUILD
 /*" Abbreviating paths "*/
 - (NSString *)stringByAbbreviatingPathToWidth:(float)maxWidth forFont:(NSFont *)font;
 - (NSString *)stringByAbbreviatingPathToWidth:(float)maxWidth forAttributes:(NSDictionary *)attributes;
-#endif
 
 /*" Sharing instances "*/
 - (NSString *)sharedInstance;
@@ -132,8 +119,3 @@ EDCOMMON_EXTERN NSString *MIMEAttachmentContentDisposition;
 - (void)removeCharactersInSet:(NSCharacterSet *)set;
 
 @end
-
-
-
-#endif	/* __NSString_Extensions_h_INCLUDE */
-

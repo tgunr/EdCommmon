@@ -19,7 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "NSDictionary+Extensions.h"
+#import "NSDictionary+Extensions.h"
+
 
 //---------------------------------------------------------------------------------------
     @implementation NSDictionary(EDExtensions)

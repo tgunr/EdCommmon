@@ -2,7 +2,7 @@
 //  EDTCPSocket.m created by erik
 //  @(#)$Id: EDTCPSocket.m,v 2.1 2003-04-08 16:51:35 znek Exp $
 //
-//  Copyright (c) 1997-2001 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1997-2001,2008 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -19,15 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "osdep.h"
-#include "EDTCPSocket.h"
-
-
-#ifdef WIN32
-#define EDSOCKETHANDLE ((int)[self nativeHandle])
-#else
-#define EDSOCKETHANDLE [self fileDescriptor]
-#endif
+#import "osdep.h"
+#import "EDTCPSocket.h"
 
 
 //---------------------------------------------------------------------------------------
@@ -101,7 +94,7 @@ Note that, generally, working with #EDStreams is a better choice than working di
 
 - (void)startListening
 {
-    if(listen(EDSOCKETHANDLE, 5) == -1)   // backlog length of 5 is maximum
+    if(listen([self fileDescriptor], 5) == -1)   // backlog length of 5 is maximum
         [NSException raise:NSFileHandleOperationException format:@"Unable start listening on local port: %s", strerror(ED_ERRNO)];
     flags.listening = YES;
 }

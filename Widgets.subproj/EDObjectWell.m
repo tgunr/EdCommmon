@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <AppKit/AppKit.h>
-#include "EDObjectWell.h"
+#import "EDObjectWell.h"
 
 @interface EDObjectWell(PrivateAPI)
 - (void)_setDefaultValues;

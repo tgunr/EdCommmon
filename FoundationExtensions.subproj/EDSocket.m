@@ -2,7 +2,7 @@
 //  EDSocket.m created by erik
 //  @(#)$Id: EDSocket.m,v 2.3 2003-10-20 16:55:08 znek Exp $
 //
-//  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 1997-2000,2008 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -19,20 +19,13 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "NSObject+Extensions.h"
-#include "osdep.h"
-#include "EDSocket.h"
+#import "NSObject+Extensions.h"
+#import "osdep.h"
+#import "EDSocket.h"
 
 @interface EDSocket(PrivateAPI)
 - (void)_realHandleNotification:(NSNotification *)notification;
 @end
-
-
-#ifdef WIN32
-#define EDSOCKETHANDLE ((int)[self nativeHandle])
-#else
-#define EDSOCKETHANDLE [self fileDescriptor]
-#endif
 
 
 //---------------------------------------------------------------------------------------
@@ -103,11 +96,7 @@ Note that some socket related functionality is implemented in a category on NSFi
         [self release];
         [NSException raise:NSFileHandleOperationException format:@"Failed to create a socket: %s", strerror(ED_ERRNO)];
         }
-#ifdef WIN32
-    realHandle = [[NSFileHandle allocWithZone:[self zone]] initWithNativeHandle:(HANDLE)socketDesc closeOnDealloc:YES];
-#else
     realHandle = [[NSFileHandle allocWithZone:[self zone]] initWithFileDescriptor:socketDesc closeOnDealloc:YES];
-#endif    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_realHandleNotification:) name:nil object:realHandle];
 
     return self;
@@ -141,7 +130,7 @@ Note that some socket related functionality is implemented in a category on NSFi
 
 - (void)setSocketOption:(int)anOption level:(int)aLevel value:(int)value
 {
-    if(setsockopt(EDSOCKETHANDLE, aLevel, anOption, (char *)&value, sizeof(value)) == -1)
+    if(setsockopt([self fileDescriptor], aLevel, anOption, (char *)&value, sizeof(value)) == -1)
         [NSException raise:NSFileHandleOperationException format:@"Failed to set option %d on socket: %s", anOption, strerror(ED_ERRNO)];
 }
 
@@ -151,16 +140,10 @@ Note that some socket related functionality is implemented in a category on NSFi
 {
     struct timeval _timeout;
 
-#ifndef __FreeBSD__
-#define T_TIMEVAL int
-#else
-#define T_TIMEVAL long
-#endif
+    _timeout.tv_sec  = (int)timeout;
+    _timeout.tv_usec = (int)((timeout - (int)timeout) * (NSTimeInterval)1000000);
 
-    _timeout.tv_sec  = (T_TIMEVAL)timeout;
-    _timeout.tv_usec = (T_TIMEVAL)((timeout - (T_TIMEVAL)timeout) * (NSTimeInterval)1000000);
-
-    if(setsockopt(EDSOCKETHANDLE, aLevel, anOption, (struct timeval *)&_timeout, sizeof(_timeout)) == -1)
+    if(setsockopt([self fileDescriptor], aLevel, anOption, (struct timeval *)&_timeout, sizeof(_timeout)) == -1)
         [NSException raise:NSFileHandleOperationException format:@"Failed to set option %d on socket: %s", anOption, strerror(ED_ERRNO)];
 }
 
@@ -234,68 +217,6 @@ Note that some socket related functionality is implemented in a category on NSFi
 {
     return [realHandle fileDescriptor];
 }
-
-
-#ifdef WIN32
-
-- (void *)nativeHandle
-{
-    return [realHandle nativeHandle];
-}
-
-#endif
-
-
-#ifdef GNUSTEP
-
-// The GNUstep implementation differs from Apple's implementation in several respects.
-// Most notably the NSFileHandle class in GNUstep is an abstract class as opposed to Apple's
-// implementation which contains most of the code. The following methods are known to
-// be implemented in Apple's NSFileHandle but NOT in GNUstep's NSFileHandle. We
-// thus have to forward these methods to GNUstep's realHandle.
-
-
-- (void)acceptConnectionInBackgroundAndNotifyForModes:(NSArray *)modes
-{
-    [realHandle acceptConnectionInBackgroundAndNotifyForModes:(NSArray *)modes];
-}
-
-- (void)acceptConnectionInBackgroundAndNotify
-{
-    [realHandle acceptConnectionInBackgroundAndNotify];
-}
-
-- (void)readInBackgroundAndNotifyForModes:(NSArray *)modes
-{
-    [realHandle readInBackgroundAndNotifyForModes:(NSArray *)modes];
-}
-
-- (void)readInBackgroundAndNotify
-{
-    [realHandle readInBackgroundAndNotify];
-}
-
-- (void)readToEndOfFileInBackgroundAndNotifyForModes:(NSArray *)modes
-{
-    [realHandle readToEndOfFileInBackgroundAndNotifyForModes:(NSArray *)modes];
-}
-
-- (void)readToEndOfFileInBackgroundAndNotify
-{
-    [realHandle readToEndOfFileInBackgroundAndNotify];
-}
-
-- (void)waitForDataInBackgroundAndNotifyForModes:(NSArray *)modes
-{
-    [realHandle waitForDataInBackgroundAndNotifyForModes:(NSArray *)modes];
-}
-
-- (void)waitForDataInBackgroundAndNotify
-{
-    [realHandle waitForDataInBackgroundAndNotify];
-}
-
-#endif
 
 
 //---------------------------------------------------------------------------------------

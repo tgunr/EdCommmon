@@ -18,13 +18,8 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDStringWriter_h_INCLUDE
-#define	__EDStringWriter_h_INCLUDE
-
 #import <Foundation/NSObject.h>
 #import "EDTextWriter.h"
-
 
 @interface EDStringWriter : NSObject <EDTextWriter>
 {
@@ -39,5 +34,3 @@
 - (NSString *)string;
 
 @end
-
-#endif	/* __EDStringWriter_h_INCLUDE */

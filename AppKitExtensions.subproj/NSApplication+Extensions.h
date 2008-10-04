@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSApplication_Extensions_h_INCLUDE
-#define	__NSApplication_Extensions_h_INCLUDE
-
-
 #import <AppKit/NSApplication.h>
 
 /*" Various useful extensions to #NSApplication. "*/
@@ -38,4 +33,3 @@
 
 @end
 
-#endif	/* __NSApplication_Extensions_h_INCLUDE */

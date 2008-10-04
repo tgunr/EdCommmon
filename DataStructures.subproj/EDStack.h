@@ -19,10 +19,6 @@
 //---------------------------------------------------------------------------------------
 
 
-#ifndef	__EDStack_h_INCLUDE
-#define	__EDStack_h_INCLUDE
-
-
 @interface EDStack : NSObject
 {
     NSMutableArray	*storage; /*" All instance variables are private. "*/
@@ -47,5 +43,3 @@
 
 
 @end
-
-#endif	/* __EDStack_h_INCLUDE */

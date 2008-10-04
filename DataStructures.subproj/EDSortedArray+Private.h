@@ -18,12 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDSortedArray_Private_h_INCLUDE
-#define	__EDSortedArray_Private_h_INCLUDE
-
-
-#include "EDSortedArray.h"
+#import "EDSortedArray.h"
 
 
 /*" This structure is used to represent nodes. It's a struct and not an object because latter would use yet another 4 bytes for the isa pointer. "*/
@@ -84,8 +79,4 @@ typedef struct _EDRedBlackTreeNode
 #define IS_SMALLER(A, B) (((NSComparisonResult)[((EDRedBlackTreeNode *)A)->object performSelector:comparator withObject:((EDRedBlackTreeNode *)B)->object]) == NSOrderedAscending)
 #define IS_EQUAL(A, B) (((NSComparisonResult)[((EDRedBlackTreeNode *)A)->object performSelector:comparator withObject:((EDRedBlackTreeNode *)B)->object]) == NSOrderedSame)
 #define NIL(X) (((EDRedBlackTreeNode *)X) == sentinel)
-
-
-#endif	/* __EDSortedArray_Private_h_INCLUDE */
-
 

@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "EDMutableObjectPair.h" // need to know subclass for mutable copying
-#include "EDObjectPair.h"
+#import "EDMutableObjectPair.h" // need to know subclass for mutable copying
+#import "EDObjectPair.h"
 
 
 //---------------------------------------------------------------------------------------

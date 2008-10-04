@@ -19,11 +19,11 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "NSSet+Extensions.h"
-#include "EDCommonDefines.h"
-#include "EDObjectPair.h"
-#include "EDMLParser.h"
-#include "EDAOMTagProcessor.h"
+#import "NSSet+Extensions.h"
+#import "EDCommonDefines.h"
+#import "EDObjectPair.h"
+#import "EDMLParser.h"
+#import "EDAOMTagProcessor.h"
 
 
 @interface EDObjectPair(EDAOMTagProcessorHelper)

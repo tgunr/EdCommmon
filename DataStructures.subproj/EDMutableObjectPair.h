@@ -18,12 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDMutableObjectPair_h_INCLUDE
-#define	__EDMutableObjectPair_h_INCLUDE
-
-#include <EDCommon/EDObjectPair.h>
-
+#import <EDCommon/EDObjectPair.h>
 
 @interface EDMutableObjectPair : EDObjectPair
 
@@ -31,6 +26,4 @@
 - (void)setSecondObject:(id)anObject;
 
 @end
-
-#endif	/* __EDMutableObjectPair_h_INCLUDE */
 

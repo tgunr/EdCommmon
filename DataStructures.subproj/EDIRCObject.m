@@ -20,8 +20,8 @@
 
 #import <Foundation/Foundation.h>
 #import <Foundation/NSDebug.h>
-#include "EDLightWeightLock.h"
-#include "EDIRCObject.h"
+#import "EDLightWeightLock.h"
+#import "EDIRCObject.h"
 
 
 //---------------------------------------------------------------------------------------
@@ -63,15 +63,8 @@ static EDLightWeightLock *retainLock;
 {
     EDLWLLock(retainLock);
 
-#ifndef GNUSTEP
     if(NSKeepAllocationStatistics)
-#if MAC_OS_X_VERSION_MAX_ALLOWED <= MAC_OS_X_VERSION_10_4
-        NSRecordAllocationEvent(NSObjectInternalRefIncrementedEvent, self, NULL, NULL, NULL);
-#else
-  NSRecordAllocationEvent(NSObjectInternalRefIncrementedEvent, self);
-#endif
-#endif
-
+		NSRecordAllocationEvent(NSObjectInternalRefIncrementedEvent, self);
     retainCount += 1;
 
     EDLWLUnlock(retainLock);
@@ -83,14 +76,8 @@ static EDLightWeightLock *retainLock;
 {
     EDLWLLock(retainLock);
 
-#ifndef GNUSTEP
     if(NSKeepAllocationStatistics)
-#if MAC_OS_X_VERSION_MAX_ALLOWED <= MAC_OS_X_VERSION_10_4
-        NSRecordAllocationEvent(NSObjectInternalRefDecrementedEvent, self, NULL, NULL, NULL);
-#else
-  NSRecordAllocationEvent(NSObjectInternalRefDecrementedEvent, self);
-#endif
-#endif
+		NSRecordAllocationEvent(NSObjectInternalRefDecrementedEvent, self);
 
     if(retainCount == 0)
         {

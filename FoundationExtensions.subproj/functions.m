@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "osdep.h"
-#include "functions.h"
+#import "osdep.h"
+#import "functions.h"
 
 
 NSString *EDStringFromInAddr(struct in_addr address)

@@ -18,12 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSData_Extensions_h_INCLUDE
-#define	__NSData_Extensions_h_INCLUDE
-
-
-#include "EDCommonDefines.h"
+#import "EDCommonDefines.h"
 
 /*" Various common extensions to #NSData. "*/
 
@@ -35,11 +30,8 @@
 
 
 /*" Base64 encoding "*/
-
 - (NSData *)decodeBase64;
 - (NSData *)encodeBase64;
 - (NSData *)encodeBase64WithLineLength:(unsigned int)lineLength andNewlineAtEnd:(BOOL)endWithNL;
 
 @end
-
-#endif	/* __NSData_Extensions_h_INCLUDE */

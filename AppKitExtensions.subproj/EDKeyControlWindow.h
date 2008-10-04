@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDKeyControlWindow_h_INCLUDE
-#define	__EDKeyControlWindow_h_INCLUDE
-
-
 #import <AppKit/NSWindow.h>
 
 @interface EDKeyControlWindow : NSWindow
@@ -41,5 +36,3 @@
 - (NSView *)referenceView;
 
 @end
-
-#endif	/* __EDKeyControlWindow_h_INCLUDE */

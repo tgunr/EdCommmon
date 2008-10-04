@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <AppKit/AppKit.h>
-#include "NSAttributedString+Extensions.h"
-#include "NSAttributedString+AppKitExtensions.h"
+#import "NSAttributedString+Extensions.h"
+#import "NSAttributedString+AppKitExtensions.h"
 
 
 //=======================================================================================

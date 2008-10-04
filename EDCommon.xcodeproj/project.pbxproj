@@ -33,8 +33,6 @@
 		AD39F2B405443F3D0086D411 /* NSFileHandle+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6798784C02DDFC7E00A8C007 /* NSFileHandle+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD39F2B505443F3D0086D411 /* NSHost+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6798784D02DDFC7E00A8C007 /* NSHost+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD39F2B605443F3D0086D411 /* functions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6798787402DDFFC400A8C007 /* functions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AD39F2B705443F3D0086D411 /* deallocnotif.h in Headers */ = {isa = PBXBuildFile; fileRef = 03C6862503F84B4900A8C007 /* deallocnotif.h */; };
-		AD39F2B805443F3D0086D411 /* CollectionMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA34CEB0090839C7F000001 /* CollectionMapping.h */; settings = {ATTRIBUTES = (Public, Project, ); }; };
 		AD39F2B905443F3D0086D411 /* EDBitmapCharset.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA34CFF0090839C7F000001 /* EDBitmapCharset.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD39F2BA05443F3D0086D411 /* EDIRCObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA34D000090839C7F000001 /* EDIRCObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD39F2BB05443F3D0086D411 /* EDLRUCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA34D010090839C7F000001 /* EDLRUCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -60,19 +58,15 @@
 		AD39F2DB05443F3D0086D411 /* NSTableView+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA34D240090839C7F000001 /* NSTableView+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD39F2DC05443F3D0086D411 /* NSTableColumn+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA34D250090839C7F000001 /* NSTableColumn+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD39F2DD05443F3D0086D411 /* NSWindow+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA34D260090839C7F000001 /* NSWindow+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AD39F2DE05443F3D0086D411 /* NSWorkspace+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA34D270090839C7F000001 /* NSWorkspace+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD39F2DF05443F3D0086D411 /* EDApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA34D280090839C7F000001 /* EDApplication.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD39F2E005443F3D0086D411 /* EDKeyControlWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 67460EF50259A93C00A8C007 /* EDKeyControlWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD39F2E105443F3D0086D411 /* EDToolbarDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 67E3B5ED00D4406500000001 /* EDToolbarDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AD39F2E205443F3D0086D411 /* EDActivityIndicator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA34D380090839C7F000001 /* EDActivityIndicator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD39F2E305443F3D0086D411 /* EDCanvas.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA34D390090839C7F000001 /* EDCanvas.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD39F2E405443F3D0086D411 /* EDObjectWell.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA34D3A0090839C7F000001 /* EDObjectWell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD39F2E505443F3D0086D411 /* EDTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA34D3B0090839C7F000001 /* EDTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AD39F2E605443F3D0086D411 /* EDTVScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA34D3C0090839C7F000001 /* EDTVScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD39F2E705443F3D0086D411 /* EDSwapView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA34D3D0090839C7F000001 /* EDSwapView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD39F2E905443F3D0086D411 /* MIME.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6798787002DDFFB200A8C007 /* MIME.plist */; };
 		AD39F2EA05443F3D0086D411 /* XMLEntities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67BCCE7B03A8175D00A8C007 /* XMLEntities.plist */; };
-		AD39F2EB05443F3D0086D411 /* arrows.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 1AA34D2A0090839C7F000001 /* arrows.tiff */; };
 		AD39F2EC05443F3D0086D411 /* EDTextWriter.mdoc in Resources */ = {isa = PBXBuildFile; fileRef = 033BE83404390C0600A8C007 /* EDTextWriter.mdoc */; };
 		AD39F2EE05443F3D0086D411 /* useful.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA34CCA0090839C7F000001 /* useful.m */; settings = {ATTRIBUTES = (); }; };
 		AD39F2EF05443F3D0086D411 /* framework.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA34CCB0090839C7F000001 /* framework.m */; settings = {ATTRIBUTES = (); }; };
@@ -108,15 +102,12 @@
 		AD39F30D05443F3D0086D411 /* NSTableView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA34D1A0090839C7F000001 /* NSTableView+Extensions.m */; settings = {ATTRIBUTES = (); }; };
 		AD39F30E05443F3D0086D411 /* NSTableColumn+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA34D1B0090839C7F000001 /* NSTableColumn+Extensions.m */; settings = {ATTRIBUTES = (); }; };
 		AD39F30F05443F3D0086D411 /* NSWindow+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA34D1C0090839C7F000001 /* NSWindow+Extensions.m */; settings = {ATTRIBUTES = (); }; };
-		AD39F31005443F3D0086D411 /* NSWorkspace+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA34D1D0090839C7F000001 /* NSWorkspace+Extensions.m */; settings = {ATTRIBUTES = (); }; };
 		AD39F31105443F3D0086D411 /* EDApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA34D1E0090839C7F000001 /* EDApplication.m */; settings = {ATTRIBUTES = (); }; };
 		AD39F31205443F3D0086D411 /* EDKeyControlWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 67460EF40259A93C00A8C007 /* EDKeyControlWindow.m */; };
 		AD39F31305443F3D0086D411 /* EDToolbarDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E3B5EC00D4406500000001 /* EDToolbarDefinition.m */; };
-		AD39F31405443F3D0086D411 /* EDActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA34D310090839C7F000001 /* EDActivityIndicator.m */; settings = {ATTRIBUTES = (); }; };
 		AD39F31505443F3D0086D411 /* EDCanvas.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA34D320090839C7F000001 /* EDCanvas.m */; settings = {ATTRIBUTES = (); }; };
 		AD39F31605443F3D0086D411 /* EDObjectWell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA34D330090839C7F000001 /* EDObjectWell.m */; settings = {ATTRIBUTES = (); }; };
 		AD39F31705443F3D0086D411 /* EDTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA34D340090839C7F000001 /* EDTableView.m */; settings = {ATTRIBUTES = (); }; };
-		AD39F31805443F3D0086D411 /* EDTVScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA34D350090839C7F000001 /* EDTVScrollView.m */; settings = {ATTRIBUTES = (); }; };
 		AD39F31905443F3D0086D411 /* EDSwapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA34D360090839C7F000001 /* EDSwapView.m */; settings = {ATTRIBUTES = (); }; };
 		AD39F31A05443F3D0086D411 /* NSHost+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6798785602DDFCB800A8C007 /* NSHost+Extensions.m */; };
 		AD39F31B05443F3D0086D411 /* EDIPSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6798785702DDFCB800A8C007 /* EDIPSocket.m */; };
@@ -128,8 +119,6 @@
 		AD39F32105443F3D0086D411 /* functions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6798787202DDFFBC00A8C007 /* functions.m */; };
 		AD39F32205443F3D0086D411 /* EDMutableObjectPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 67613C7D02ECCC0F00A8C007 /* EDMutableObjectPair.m */; };
 		AD39F32305443F3D0086D411 /* NSBundle+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FAC9CF03C74F2600A8C007 /* NSBundle+Extensions.m */; };
-		AD39F32405443F3D0086D411 /* deallocnotif-next.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C6862403F84B4900A8C007 /* deallocnotif-next.m */; };
-		AD39F32505443F3D0086D411 /* deallocnotif.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C6862603F84B4900A8C007 /* deallocnotif.m */; };
 		AD39F32805443F3D0086D411 /* EDStringWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 033BE82C0438F9A300A8C007 /* EDStringWriter.m */; };
 		AD39F33305443F3D0086D411 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA34D430090839C7F000001 /* AppKit.framework */; };
 		AD39F33405443F3D0086D411 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA34D440090839C7F000001 /* Foundation.framework */; };
@@ -143,10 +132,6 @@
 		033BE82B0438F9A300A8C007 /* EDStringWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDStringWriter.h; path = FoundationExtensions.subproj/EDStringWriter.h; sourceTree = "<group>"; };
 		033BE82C0438F9A300A8C007 /* EDStringWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDStringWriter.m; path = FoundationExtensions.subproj/EDStringWriter.m; sourceTree = "<group>"; };
 		033BE83404390C0600A8C007 /* EDTextWriter.mdoc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EDTextWriter.mdoc; sourceTree = "<group>"; };
-		03C6862303F84B4900A8C007 /* deallocnotif-gnu.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = "deallocnotif-gnu.m"; sourceTree = "<group>"; };
-		03C6862403F84B4900A8C007 /* deallocnotif-next.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = "deallocnotif-next.m"; sourceTree = "<group>"; };
-		03C6862503F84B4900A8C007 /* deallocnotif.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = deallocnotif.h; sourceTree = "<group>"; };
-		03C6862603F84B4900A8C007 /* deallocnotif.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = deallocnotif.m; sourceTree = "<group>"; };
 		03FAC9CE03C74F2600A8C007 /* NSBundle+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Extensions.h"; sourceTree = "<group>"; };
 		03FAC9CF03C74F2600A8C007 /* NSBundle+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Extensions.m"; sourceTree = "<group>"; };
 		1AA34CC70090839C7F000001 /* EDCommon.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = EDCommon.h; sourceTree = "<group>"; };
@@ -173,7 +158,6 @@
 		1AA34CE80090839C7F000001 /* NSSet+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "NSSet+Extensions.h"; sourceTree = "<group>"; };
 		1AA34CE90090839C7F000001 /* NSScanner+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "NSScanner+Extensions.h"; sourceTree = "<group>"; };
 		1AA34CEA0090839C7F000001 /* NSString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "NSString+Extensions.h"; sourceTree = "<group>"; };
-		1AA34CEB0090839C7F000001 /* CollectionMapping.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CollectionMapping.h; sourceTree = "<group>"; };
 		1AA34CF20090839C7F000001 /* EDIRCObject.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = EDIRCObject.m; sourceTree = "<group>"; };
 		1AA34CF30090839C7F000001 /* EDLRUCache.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = EDLRUCache.m; sourceTree = "<group>"; };
 		1AA34CF40090839C7F000001 /* EDMLParser.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = EDMLParser.m; path = DataStructures.subproj/EDMLParser.m; sourceTree = "<group>"; };
@@ -209,7 +193,6 @@
 		1AA34D1A0090839C7F000001 /* NSTableView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = "NSTableView+Extensions.m"; sourceTree = "<group>"; };
 		1AA34D1B0090839C7F000001 /* NSTableColumn+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = "NSTableColumn+Extensions.m"; sourceTree = "<group>"; };
 		1AA34D1C0090839C7F000001 /* NSWindow+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+Extensions.m"; sourceTree = "<group>"; };
-		1AA34D1D0090839C7F000001 /* NSWorkspace+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = "NSWorkspace+Extensions.m"; sourceTree = "<group>"; };
 		1AA34D1E0090839C7F000001 /* EDApplication.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = EDApplication.m; sourceTree = "<group>"; };
 		1AA34D200090839C7F000001 /* NSApplication+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "NSApplication+Extensions.h"; sourceTree = "<group>"; };
 		1AA34D210090839C7F000001 /* NSAttributedString+AppKitExtensions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+AppKitExtensions.h"; sourceTree = "<group>"; };
@@ -218,20 +201,14 @@
 		1AA34D240090839C7F000001 /* NSTableView+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "NSTableView+Extensions.h"; sourceTree = "<group>"; };
 		1AA34D250090839C7F000001 /* NSTableColumn+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "NSTableColumn+Extensions.h"; sourceTree = "<group>"; };
 		1AA34D260090839C7F000001 /* NSWindow+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "NSWindow+Extensions.h"; sourceTree = "<group>"; };
-		1AA34D270090839C7F000001 /* NSWorkspace+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "NSWorkspace+Extensions.h"; sourceTree = "<group>"; };
 		1AA34D280090839C7F000001 /* EDApplication.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = EDApplication.h; sourceTree = "<group>"; };
-		1AA34D2A0090839C7F000001 /* arrows.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = arrows.tiff; sourceTree = "<group>"; };
-		1AA34D310090839C7F000001 /* EDActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = EDActivityIndicator.m; sourceTree = "<group>"; };
 		1AA34D320090839C7F000001 /* EDCanvas.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = EDCanvas.m; sourceTree = "<group>"; };
 		1AA34D330090839C7F000001 /* EDObjectWell.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = EDObjectWell.m; sourceTree = "<group>"; };
 		1AA34D340090839C7F000001 /* EDTableView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = EDTableView.m; sourceTree = "<group>"; };
-		1AA34D350090839C7F000001 /* EDTVScrollView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = EDTVScrollView.m; sourceTree = "<group>"; };
 		1AA34D360090839C7F000001 /* EDSwapView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = EDSwapView.m; sourceTree = "<group>"; };
-		1AA34D380090839C7F000001 /* EDActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = EDActivityIndicator.h; sourceTree = "<group>"; };
 		1AA34D390090839C7F000001 /* EDCanvas.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = EDCanvas.h; sourceTree = "<group>"; };
 		1AA34D3A0090839C7F000001 /* EDObjectWell.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = EDObjectWell.h; sourceTree = "<group>"; };
 		1AA34D3B0090839C7F000001 /* EDTableView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = EDTableView.h; sourceTree = "<group>"; };
-		1AA34D3C0090839C7F000001 /* EDTVScrollView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = EDTVScrollView.h; sourceTree = "<group>"; };
 		1AA34D3D0090839C7F000001 /* EDSwapView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = EDSwapView.h; sourceTree = "<group>"; };
 		1AA34D430090839C7F000001 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1AA34D440090839C7F000001 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -395,8 +372,6 @@
 				6798784802DDFC7E00A8C007 /* EDStream.h */,
 				033BE8270438F99300A8C007 /* EDTextWriter.h */,
 				6798787402DDFFC400A8C007 /* functions.h */,
-				03C6862503F84B4900A8C007 /* deallocnotif.h */,
-				1AA34CEB0090839C7F000001 /* CollectionMapping.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -477,7 +452,6 @@
 				1AA34D1A0090839C7F000001 /* NSTableView+Extensions.m */,
 				1AA34D1B0090839C7F000001 /* NSTableColumn+Extensions.m */,
 				1AA34D1C0090839C7F000001 /* NSWindow+Extensions.m */,
-				1AA34D1D0090839C7F000001 /* NSWorkspace+Extensions.m */,
 				1AA34D1E0090839C7F000001 /* EDApplication.m */,
 				67460EF40259A93C00A8C007 /* EDKeyControlWindow.m */,
 				67E3B5EC00D4406500000001 /* EDToolbarDefinition.m */,
@@ -495,7 +469,6 @@
 				1AA34D240090839C7F000001 /* NSTableView+Extensions.h */,
 				1AA34D250090839C7F000001 /* NSTableColumn+Extensions.h */,
 				1AA34D260090839C7F000001 /* NSWindow+Extensions.h */,
-				1AA34D270090839C7F000001 /* NSWorkspace+Extensions.h */,
 				1AA34D280090839C7F000001 /* EDApplication.h */,
 				67460EF50259A93C00A8C007 /* EDKeyControlWindow.h */,
 				67E3B5ED00D4406500000001 /* EDToolbarDefinition.h */,
@@ -503,21 +476,11 @@
 			name = Headers;
 			sourceTree = "<group>";
 		};
-		1AA34D290090839C7F000001 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				1AA34D2A0090839C7F000001 /* arrows.tiff */,
-			);
-			name = Images;
-			path = AppKitExtensions.subproj;
-			sourceTree = SOURCE_ROOT;
-		};
 		1AA34D2F0090839C7F000001 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
 				1AA34D370090839C7F000001 /* Headers */,
 				1AA34D300090839C7F000001 /* Classes */,
-				1AA34D290090839C7F000001 /* Images */,
 			);
 			name = Widgets;
 			path = Widgets.subproj;
@@ -526,11 +489,9 @@
 		1AA34D300090839C7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1AA34D310090839C7F000001 /* EDActivityIndicator.m */,
 				1AA34D320090839C7F000001 /* EDCanvas.m */,
 				1AA34D330090839C7F000001 /* EDObjectWell.m */,
 				1AA34D340090839C7F000001 /* EDTableView.m */,
-				1AA34D350090839C7F000001 /* EDTVScrollView.m */,
 				1AA34D360090839C7F000001 /* EDSwapView.m */,
 			);
 			name = Classes;
@@ -539,11 +500,9 @@
 		1AA34D370090839C7F000001 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				1AA34D380090839C7F000001 /* EDActivityIndicator.h */,
 				1AA34D390090839C7F000001 /* EDCanvas.h */,
 				1AA34D3A0090839C7F000001 /* EDObjectWell.h */,
 				1AA34D3B0090839C7F000001 /* EDTableView.h */,
-				1AA34D3C0090839C7F000001 /* EDTVScrollView.h */,
 				1AA34D3D0090839C7F000001 /* EDSwapView.h */,
 			);
 			name = Headers;
@@ -624,9 +583,6 @@
 			isa = PBXGroup;
 			children = (
 				6798787202DDFFBC00A8C007 /* functions.m */,
-				03C6862603F84B4900A8C007 /* deallocnotif.m */,
-				03C6862303F84B4900A8C007 /* deallocnotif-gnu.m */,
-				03C6862403F84B4900A8C007 /* deallocnotif-next.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -680,8 +636,6 @@
 				AD39F2B405443F3D0086D411 /* NSFileHandle+Extensions.h in Headers */,
 				AD39F2B505443F3D0086D411 /* NSHost+Extensions.h in Headers */,
 				AD39F2B605443F3D0086D411 /* functions.h in Headers */,
-				AD39F2B705443F3D0086D411 /* deallocnotif.h in Headers */,
-				AD39F2B805443F3D0086D411 /* CollectionMapping.h in Headers */,
 				AD39F2B905443F3D0086D411 /* EDBitmapCharset.h in Headers */,
 				AD39F2BA05443F3D0086D411 /* EDIRCObject.h in Headers */,
 				AD39F2BB05443F3D0086D411 /* EDLRUCache.h in Headers */,
@@ -707,15 +661,12 @@
 				AD39F2DB05443F3D0086D411 /* NSTableView+Extensions.h in Headers */,
 				AD39F2DC05443F3D0086D411 /* NSTableColumn+Extensions.h in Headers */,
 				AD39F2DD05443F3D0086D411 /* NSWindow+Extensions.h in Headers */,
-				AD39F2DE05443F3D0086D411 /* NSWorkspace+Extensions.h in Headers */,
 				AD39F2DF05443F3D0086D411 /* EDApplication.h in Headers */,
 				AD39F2E005443F3D0086D411 /* EDKeyControlWindow.h in Headers */,
 				AD39F2E105443F3D0086D411 /* EDToolbarDefinition.h in Headers */,
-				AD39F2E205443F3D0086D411 /* EDActivityIndicator.h in Headers */,
 				AD39F2E305443F3D0086D411 /* EDCanvas.h in Headers */,
 				AD39F2E405443F3D0086D411 /* EDObjectWell.h in Headers */,
 				AD39F2E505443F3D0086D411 /* EDTableView.h in Headers */,
-				AD39F2E605443F3D0086D411 /* EDTVScrollView.h in Headers */,
 				AD39F2E705443F3D0086D411 /* EDSwapView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -769,7 +720,6 @@
 			files = (
 				AD39F2E905443F3D0086D411 /* MIME.plist in Resources */,
 				AD39F2EA05443F3D0086D411 /* XMLEntities.plist in Resources */,
-				AD39F2EB05443F3D0086D411 /* arrows.tiff in Resources */,
 				AD39F2EC05443F3D0086D411 /* EDTextWriter.mdoc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -837,15 +787,12 @@
 				AD39F30D05443F3D0086D411 /* NSTableView+Extensions.m in Sources */,
 				AD39F30E05443F3D0086D411 /* NSTableColumn+Extensions.m in Sources */,
 				AD39F30F05443F3D0086D411 /* NSWindow+Extensions.m in Sources */,
-				AD39F31005443F3D0086D411 /* NSWorkspace+Extensions.m in Sources */,
 				AD39F31105443F3D0086D411 /* EDApplication.m in Sources */,
 				AD39F31205443F3D0086D411 /* EDKeyControlWindow.m in Sources */,
 				AD39F31305443F3D0086D411 /* EDToolbarDefinition.m in Sources */,
-				AD39F31405443F3D0086D411 /* EDActivityIndicator.m in Sources */,
 				AD39F31505443F3D0086D411 /* EDCanvas.m in Sources */,
 				AD39F31605443F3D0086D411 /* EDObjectWell.m in Sources */,
 				AD39F31705443F3D0086D411 /* EDTableView.m in Sources */,
-				AD39F31805443F3D0086D411 /* EDTVScrollView.m in Sources */,
 				AD39F31905443F3D0086D411 /* EDSwapView.m in Sources */,
 				AD39F31A05443F3D0086D411 /* NSHost+Extensions.m in Sources */,
 				AD39F31B05443F3D0086D411 /* EDIPSocket.m in Sources */,
@@ -857,8 +804,6 @@
 				AD39F32105443F3D0086D411 /* functions.m in Sources */,
 				AD39F32205443F3D0086D411 /* EDMutableObjectPair.m in Sources */,
 				AD39F32305443F3D0086D411 /* NSBundle+Extensions.m in Sources */,
-				AD39F32405443F3D0086D411 /* deallocnotif-next.m in Sources */,
-				AD39F32505443F3D0086D411 /* deallocnotif.m in Sources */,
 				AD39F32805443F3D0086D411 /* EDStringWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -866,20 +811,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		0389981608E6B74900CE2E52 /* Development */ = {
+		0389981608E6B74900CE2E52 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 32;
+				CURRENT_PROJECT_VERSION = 34;
 				DEPLOYMENT_LOCATION = NO;
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DSTROOT = /;
-				DYLIB_COMPATIBILITY_VERSION = 32;
-				DYLIB_CURRENT_VERSION = 32;
+				DYLIB_COMPATIBILITY_VERSION = 34;
+				DYLIB_CURRENT_VERSION = 34;
 				FRAMEWORK_SEARCH_PATHS = "";
 				FRAMEWORK_VERSION = A;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = EDCommon.h;
@@ -887,43 +833,37 @@
 					EDCOMMON_OSXBUILD,
 					HAVE_FORWARD_PROTOCOLS,
 				);
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_MODE_FLAG = "u+w,go-w,o+rX";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				OTHER_CFLAGS = "-Winline";
 				OTHER_LDFLAGS = (
 					"-seg1addr",
 					0x35000000,
 				);
-				OTHER_LIBTOOL_FLAGS = "";
-				OTHER_REZFLAGS = "";
 				PREBINDING = YES;
-				PRINCIPAL_CLASS = "";
 				PRODUCT_NAME = EDCommon;
-				SECTORDER_FLAGS = "";
 				VERSIONING_SYSTEM = "apple-generic";
 				WARNING_CFLAGS = "-Wmost";
 				WRAPPER_EXTENSION = framework;
-				ZERO_LINK = YES;
 			};
-			name = Development;
+			name = Debug;
 		};
-		0389981708E6B74900CE2E52 /* Deployment */ = {
+		0389981708E6B74900CE2E52 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 32;
+				CURRENT_PROJECT_VERSION = 34;
 				DEPLOYMENT_LOCATION = NO;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DSTROOT = /;
-				DYLIB_COMPATIBILITY_VERSION = 32;
-				DYLIB_CURRENT_VERSION = 32;
+				DYLIB_COMPATIBILITY_VERSION = 34;
+				DYLIB_CURRENT_VERSION = 34;
 				FRAMEWORK_SEARCH_PATHS = "";
 				FRAMEWORK_VERSION = A;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = EDCommon.h;
@@ -931,8 +871,6 @@
 					EDCOMMON_OSXBUILD,
 					HAVE_FORWARD_PROTOCOLS,
 				);
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_MODE_FLAG = "u+w,go-w,o+rX";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -941,181 +879,91 @@
 					"-seg1addr",
 					0x35000000,
 				);
-				OTHER_LIBTOOL_FLAGS = "";
-				OTHER_REZFLAGS = "";
 				PREBINDING = YES;
-				PRINCIPAL_CLASS = "";
 				PRODUCT_NAME = EDCommon;
-				SECTORDER_FLAGS = "";
 				VERSIONING_SYSTEM = "apple-generic";
 				WARNING_CFLAGS = "-Wmost";
 				WRAPPER_EXTENSION = framework;
-				ZERO_LINK = NO;
 			};
-			name = Deployment;
+			name = Release;
 		};
-		0389981808E6B74900CE2E52 /* Appwrapper Development */ = {
+		0389981908E6B74900CE2E52 /* Release (embedded) */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 32;
-				DEBUGGING_SYMBOLS = YES;
-				DEPLOYMENT_LOCATION = NO;
-				DEPLOYMENT_POSTPROCESSING = NO;
-				DSTROOT = /;
-				DYLIB_COMPATIBILITY_VERSION = 32;
-				DYLIB_CURRENT_VERSION = 32;
-				DYLIB_INSTALL_NAME_BASE = "@executable_path/../Frameworks";
-				FRAMEWORK_SEARCH_PATHS = "";
-				FRAMEWORK_VERSION = A;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = EDCommon.h;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					EDCOMMON_OSXBUILD,
-					HAVE_FORWARD_PROTOCOLS,
-				);
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_MODE_FLAG = "u+w,go-w,o+rX";
-				INSTALL_PATH = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
-				OPTIMIZATION_CFLAGS = "-O0";
-				OTHER_CFLAGS = "-Winline";
-				OTHER_LDFLAGS = (
-					"-seg1addr",
-					0x35000000,
-				);
-				OTHER_LIBTOOL_FLAGS = "";
-				OTHER_REZFLAGS = "";
-				PREBINDING = YES;
-				PRINCIPAL_CLASS = "";
-				PRODUCT_NAME = EDCommon;
-				SECTORDER_FLAGS = "";
-				SKIP_INSTALL = YES;
-				SYMROOT = "";
-				TEMP_DIR = "$(SYMROOT)/$(PROJECT_NAME).build";
-				VERSIONING_SYSTEM = "apple-generic";
-				WARNING_CFLAGS = "-Wmost";
-				WRAPPER_EXTENSION = framework;
-				ZERO_LINK = NO;
-			};
-			name = "Appwrapper Development";
-		};
-		0389981908E6B74900CE2E52 /* Appwrapper Deployment */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				CURRENT_PROJECT_VERSION = 33;
-				DEBUGGING_SYMBOLS = NO;
+				CURRENT_PROJECT_VERSION = 34;
 				DEPLOYMENT_LOCATION = NO;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DSTROOT = /;
-				DYLIB_COMPATIBILITY_VERSION = 32;
-				DYLIB_CURRENT_VERSION = 32;
+				DYLIB_COMPATIBILITY_VERSION = 34;
+				DYLIB_CURRENT_VERSION = 34;
 				DYLIB_INSTALL_NAME_BASE = "@executable_path/../Frameworks";
-				FRAMEWORK_SEARCH_PATHS = "";
 				FRAMEWORK_VERSION = A;
+				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = EDCommon.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					EDCOMMON_OSXBUILD,
 					HAVE_FORWARD_PROTOCOLS,
 				);
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_MODE_FLAG = "u+w,go-w,o+rX";
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
-				OPTIMIZATION_CFLAGS = "-O3";
 				OTHER_CFLAGS = "-Winline";
 				OTHER_LDFLAGS = (
 					"-seg1addr",
 					0x35000000,
 				);
-				OTHER_LIBTOOL_FLAGS = "";
-				OTHER_REZFLAGS = "";
 				PREBINDING = YES;
-				PRINCIPAL_CLASS = "";
 				PRODUCT_NAME = EDCommon;
-				SECTORDER_FLAGS = "";
 				SKIP_INSTALL = YES;
-				SYMROOT = "$(SYMROOT)";
-				TEMP_DIR = "$(SYMROOT)/$(PROJECT_NAME).build";
 				VERSIONING_SYSTEM = "apple-generic";
 				WARNING_CFLAGS = "-Wmost";
 				WRAPPER_EXTENSION = framework;
-				ZERO_LINK = NO;
 			};
-			name = "Appwrapper Deployment";
+			name = "Release (embedded)";
 		};
-		0389982208E6B74900CE2E52 /* Development */ = {
+		0389982208E6B74900CE2E52 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					i386,
-					ppc,
-					ppc64,
-					x86_64,
-				);
-				GCC_C_LANGUAGE_STANDARD = c99;
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = supported;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
 			};
-			name = Development;
+			name = Debug;
 		};
-		0389982308E6B74900CE2E52 /* Deployment */ = {
+		0389982308E6B74900CE2E52 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = (
-					i386,
 					ppc,
 					ppc64,
+					i386,
 					x86_64,
 				);
-				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = supported;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
 			};
-			name = Deployment;
+			name = Release;
 		};
-		0389982408E6B74900CE2E52 /* Appwrapper Development */ = {
+		0389982508E6B74900CE2E52 /* Release (embedded) */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = (
-					i386,
 					ppc,
 					ppc64,
+					i386,
 					x86_64,
 				);
-				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = supported;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
 			};
-			name = "Appwrapper Development";
-		};
-		0389982508E6B74900CE2E52 /* Appwrapper Deployment */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = (
-					i386,
-					ppc,
-					ppc64,
-					x86_64,
-				);
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_ENABLE_OBJC_GC = supported;
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
-			};
-			name = "Appwrapper Deployment";
+			name = "Release (embedded)";
 		};
 /* End XCBuildConfiguration section */
 
@@ -1123,24 +971,22 @@
 		0389981508E6B74900CE2E52 /* Build configuration list for PBXNativeTarget "EDCommon (Framework)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0389981608E6B74900CE2E52 /* Development */,
-				0389981708E6B74900CE2E52 /* Deployment */,
-				0389981808E6B74900CE2E52 /* Appwrapper Development */,
-				0389981908E6B74900CE2E52 /* Appwrapper Deployment */,
+				0389981608E6B74900CE2E52 /* Debug */,
+				0389981708E6B74900CE2E52 /* Release */,
+				0389981908E6B74900CE2E52 /* Release (embedded) */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Development;
+			defaultConfigurationName = "Release (embedded)";
 		};
 		0389982108E6B74900CE2E52 /* Build configuration list for PBXProject "EDCommon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0389982208E6B74900CE2E52 /* Development */,
-				0389982308E6B74900CE2E52 /* Deployment */,
-				0389982408E6B74900CE2E52 /* Appwrapper Development */,
-				0389982508E6B74900CE2E52 /* Appwrapper Deployment */,
+				0389982208E6B74900CE2E52 /* Debug */,
+				0389982308E6B74900CE2E52 /* Release */,
+				0389982508E6B74900CE2E52 /* Release (embedded) */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Development;
+			defaultConfigurationName = "Release (embedded)";
 		};
 /* End XCConfigurationList section */
 	};

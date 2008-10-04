@@ -19,10 +19,6 @@
 //---------------------------------------------------------------------------------------
 
 
-#ifndef	__NSAttributedString_AppKitExtensions_h_INCLUDE
-#define	__NSAttributedString_AppKitExtensions_h_INCLUDE
-
-
 /*" Various common extensions to #NSAttributedString. "*/
 
 @interface NSAttributedString(EDAppKitExtensions)
@@ -49,4 +45,3 @@
 
 @end
 
-#endif	/* __NSAttributedString_AppKitExtensions_h_INCLUDE */

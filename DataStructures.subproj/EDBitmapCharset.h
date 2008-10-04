@@ -18,12 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDBitmapCharset_h_INCLUDE
-#define	__EDBitmapCharset_h_INCLUDE
-
-
-#include "EDCommonDefines.h"
+#import "EDCommonDefines.h"
 
 /*" The datastructure behind EDBitmapCharsets. Use these instead of NSCharacterSet objects when you need a lot of contains tests; and you want them to be as fast as possible. "*/
 
@@ -46,6 +41,4 @@ static __inline__ BOOL EDBitmapCharsetContainsCharacter(EDBitmapCharset *charset
 
 EDCOMMON_EXTERN EDBitmapCharset *EDBitmapCharsetFromCharacterSet(NSCharacterSet *charset);
 EDCOMMON_EXTERN void EDReleaseBitmapCharset(EDBitmapCharset *charset);
-
-#endif	/* __EDBitmapCharset_h_INCLUDE */
 

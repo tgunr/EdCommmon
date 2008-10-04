@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSTableColumn_Extensions_h_INCLUDE
-#define	__NSTableColumn_Extensions_h_INCLUDE
-
-
 #import <AppKit/NSTableColumn.h>
 
 /*" Various useful extensions to #NSTableColumn. "*/
@@ -32,5 +27,3 @@
 - (NSString *)stringValueAtRow:(int)row;
 
 @end
-
-#endif	/* __NSTableColumn_Extensions_h_INCLUDE */

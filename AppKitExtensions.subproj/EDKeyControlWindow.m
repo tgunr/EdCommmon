@@ -19,9 +19,9 @@
 //---------------------------------------------------------------------------------------
 
 #import <AppKit/AppKit.h>
-#include "EDCommonDefines.h"
-#include "NSApplication+Extensions.h"
-#include "EDKeyControlWindow.h"
+#import "EDCommonDefines.h"
+#import "NSApplication+Extensions.h"
+#import "EDKeyControlWindow.h"
 
 @interface EDKeyControlWindow(PrivateAPI)
 - (void)_adjustPromptFieldOrigin;

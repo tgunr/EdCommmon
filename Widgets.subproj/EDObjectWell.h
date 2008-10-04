@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDObjectWell_h_INCLUDE
-#define	__EDObjectWell_h_INCLUDE
-
-
 #import <AppKit/AppKit.h>
 
 
@@ -87,5 +82,3 @@ struct _EDOWFlags {
 - (BOOL)objectWell:(EDObjectWell *)anObjectWell shouldAcceptPasteboard:(NSPasteboard *)pboard;
 - (void)objectWell:(EDObjectWell *)anObjectWell didAcceptPasteboard:(NSPasteboard *)pboard;
 @end
-
-#endif	/* __EDObjectWell_h_INCLUDE */

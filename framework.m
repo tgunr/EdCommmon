@@ -30,10 +30,6 @@
 
 + (void)load
 {
-#if defined(WIN32)
-    extern void (*_EDLogFunction)(NSString *);
-    _EDLogFunction = (void *)NSLog;
-#endif
 }
 
 //---------------------------------------------------------------------------------------

@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "EDRange.h"
+#import "EDRange.h"
 
 
 //---------------------------------------------------------------------------------------
@@ -138,7 +138,6 @@
 
 - (NSString *)description
 {
-//    return [NSString stringWithFormat: @"<%@ 0x%x: %@>", NSStringFromClass(isa), (void *)self, NSStringFromRange(range)];
     return [NSString stringWithFormat: @"<%@ 0x%x: (%d..%d)>", NSStringFromClass(isa), (void *)self, range.location, range.location + range.length - 1];
 }
 

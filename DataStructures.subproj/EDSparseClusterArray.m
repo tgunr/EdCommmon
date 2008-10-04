@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "EDSparseClusterArray.h"
+#import "EDSparseClusterArray.h"
 
 
 @interface EDSparseClusterArray(PrivateAPI)

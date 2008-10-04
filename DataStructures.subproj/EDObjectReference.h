@@ -18,13 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDObjectReference_h_INCLUDE
-#define	__EDObjectReference_h_INCLUDE
-
-
 #import <Foundation/NSObject.h>
-
 
 @interface EDObjectReference : NSObject <NSCoding, NSCopying>
 {
@@ -38,5 +32,3 @@
 - (id)referencedObject;
 
 @end
-
-#endif	/* __EDObjectReference_h_INCLUDE */

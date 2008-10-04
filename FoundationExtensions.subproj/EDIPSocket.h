@@ -18,13 +18,8 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDIPSocket_h_INCLUDE
-#define	__EDIPSocket_h_INCLUDE
-
-
-#include "EDCommonDefines.h"
-#include "EDSocket.h"
+#import "EDCommonDefines.h"
+#import "EDSocket.h"
 
 
 struct _EDIPSFlags {
@@ -42,9 +37,7 @@ struct _EDIPSFlags {
 /*" Setting socket options "*/
 - (void)setAllowsTransmittingBroadcastMessages:(BOOL)flag;
 - (void)setAllowsAddressReuse:(BOOL)flag;
-#ifdef __APPLE__
 - (void)setAllowsPortReuse:(BOOL)flag;
-#endif
 - (void)setSendTimeout:(NSTimeInterval)aTimeoutVal;
 - (void)setReceiveTimeout:(NSTimeInterval)aTimeoutVal;
 
@@ -67,6 +60,4 @@ struct _EDIPSFlags {
 EDCOMMON_EXTERN NSString *EDSocketTemporaryConnectionFailureException;
 /*" Name of an exception which occurs when the connection to a remote port is refused. "*/
 EDCOMMON_EXTERN NSString *EDSocketConnectionRefusedException;
-
-#endif	/* __EDIPSocket_h_INCLUDE */
 

@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <AppKit/AppKit.h>
-#include "NSApplication+Extensions.h"
-#include "EDApplication.h"
+#import "NSApplication+Extensions.h"
+#import "EDApplication.h"
 
 @interface EDApplication(PrivateAPI)
 + (void)reportException:(NSException *)theException;

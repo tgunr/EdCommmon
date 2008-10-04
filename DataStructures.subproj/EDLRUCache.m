@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "NSDate+Extensions.h"
-#include "EDLRUCache.h"
+#import "NSDate+Extensions.h"
+#import "EDLRUCache.h"
 
 
 //---------------------------------------------------------------------------------------

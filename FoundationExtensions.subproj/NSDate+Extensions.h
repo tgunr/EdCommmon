@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSDate_Extensions_h_INCLUDE
-#define	__NSDate_Extensions_h_INCLUDE
-
-
 /*" Various common extensions to #NSDate. "*/
 
 @interface NSDate(EDExtensions)
@@ -30,5 +25,3 @@
 - (BOOL)precedesDate:(NSDate *)other;
 
 @end
-
-#endif	/* __NSDate_Extensions_h_INCLUDE */

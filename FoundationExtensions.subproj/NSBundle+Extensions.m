@@ -2,7 +2,7 @@
 //  NSBundle+Extensions.m created by erik on Sat Jan 04 2003
 //  @(#)$Id: NSBundle+Extensions.m,v 1.4 2003-04-08 16:51:35 znek Exp $
 //
-//  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 2003 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "NSBundle+Extensions.h"
-#include "NSArray+Extensions.h"
+#import "NSBundle+Extensions.h"
+#import "NSArray+Extensions.h"
 
 
 //---------------------------------------------------------------------------------------

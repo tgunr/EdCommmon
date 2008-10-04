@@ -19,10 +19,9 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "CollectionMapping.h"
-#include "EDSortedArray.h"
-#include "EDRange.h"
-#include "EDNumberSet.h"
+#import "EDSortedArray.h"
+#import "EDRange.h"
+#import "EDNumberSet.h"
 
 #define RWL(LOC1, LOC2) [[[EDRange allocWithZone:[self zone]] initWithLocations:(LOC1):(LOC2)] autorelease]
 

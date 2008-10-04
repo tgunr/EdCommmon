@@ -18,13 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDSocket_h_INCLUDE
-#define	__EDSocket_h_INCLUDE
-
-
 #import <Foundation/Foundation.h>
-
 
 @interface EDSocket : NSFileHandle
 {
@@ -48,5 +42,3 @@
 - (void)setSocketOption:(int)anOption level:(int)aLevel timeValue:(NSTimeInterval)timeout;
 
 @end
-
-#endif	/* __EDSocket_h_INCLUDE */

@@ -18,11 +18,8 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#ifdef EDCOMMON_OSXBUILD
-
 #import <AppKit/AppKit.h>
-#include "CollectionMapping.h"
-#include "EDToolbarDefinition.h"
+#import "EDToolbarDefinition.h"
 
 
 //---------------------------------------------------------------------------------------
@@ -205,5 +202,3 @@ Toolbars request their items lazily from their delegate, the toolbar definition 
 //---------------------------------------------------------------------------------------
     @end
 //---------------------------------------------------------------------------------------
-
-#endif

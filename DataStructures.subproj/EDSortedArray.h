@@ -18,13 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDSortedArray_h_INCLUDE
-#define	__EDSortedArray_h_INCLUDE
-
-
 #import <Foundation/Foundation.h>
-
 
 @interface EDSortedArray : NSObject
 {
@@ -62,5 +56,3 @@
 
 
 @end
-
-#endif	/* __EDSortedArray_h_INCLUDE */

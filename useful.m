@@ -26,9 +26,4 @@ unsigned int EDLogMask = 0x0ffff;
 unsigned int EDLogMask = 1;
 #endif
 
-#if WIN32
-// will do assignment in framework's +load method
-void (*_EDLogFunction)(NSString *);
-#else
 void (*_EDLogFunction)(NSString *) = (void *)NSLog;
-#endif

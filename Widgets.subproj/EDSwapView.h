@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDSwapView_h_INCLUDE
-#define	__EDSwapView_h_INCLUDE
-
-
 #import <AppKit/NSView.h>
 
 
@@ -94,5 +89,3 @@ struct EDSVFlags
 - (void)swapView:(EDSwapView *)swapView didSwapinView:(NSView *)view;
 - (void)swapView:(EDSwapView *)swapView willSwapoutView:(NSView *)view;
 @end
-
-#endif	/* __EDSwapView_h_INCLUDE */

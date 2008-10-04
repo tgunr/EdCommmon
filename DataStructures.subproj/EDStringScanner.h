@@ -18,12 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDStringScanner_h_INCLUDE
-#define	__EDStringScanner_h_INCLUDE
-
-
-#include "EDCommonDefines.h"
+#import "EDCommonDefines.h"
 
 @interface EDStringScanner : NSObject
 {
@@ -51,4 +46,3 @@
 /*" Returned by #getCharacter and #peekCharacter when the scanner has reached the end of the string. "*/
 EDCOMMON_EXTERN unichar EDStringScannerEndOfDataCharacter;
 
-#endif	/* __EDStringScanner_h_INCLUDE */

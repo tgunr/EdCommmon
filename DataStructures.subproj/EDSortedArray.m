@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "EDSortedArray.h"
-#include "EDSortedArray+Private.h"
+#import "EDSortedArray.h"
+#import "EDSortedArray+Private.h"
 
 #define RED 1
 #define BLACK 0

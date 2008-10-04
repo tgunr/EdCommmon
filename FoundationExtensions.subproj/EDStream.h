@@ -18,13 +18,9 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDStream_h_INCLUDE
-#define	__EDStream_h_INCLUDE
-
-
 #import <Foundation/Foundation.h>
-#include "EDTextWriter.h"
+#import "EDTextWriter.h"
+
 
 struct _EDSFlags {
     unsigned int 	enforcesCanonicalLinebreaks:1;
@@ -97,4 +93,3 @@ enum
     EDMacintoshLinebreakStyle = 2
 };
 
-#endif	/* __EDStream_h_INCLUDE */

@@ -18,12 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDMLTagProcessorProtocol_h_INCLUDE
-#define	__EDMLTagProcessorProtocol_h_INCLUDE
-
-
-#include "EDCommonDefines.h"
+#import "EDCommonDefines.h"
 
 @class EDObjectPair, EDMLParser;
 
@@ -52,8 +47,3 @@ typedef enum
 - (void)parserWillBeginParsing:(EDMLParser *)aParser;
 - (void)parserDidFinishParsing:(EDMLParser *)aParser;
 @end
-
-
-#endif	/* __EDMLTagProcessorProtocol_h_INCLUDE */
-
-

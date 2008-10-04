@@ -19,10 +19,6 @@
 //---------------------------------------------------------------------------------------
 
 
-#ifndef	__NSInvocation_Extensions_h_INCLUDE
-#define	__NSInvocation_Extensions_h_INCLUDE
-
-
 /*" Various common extensions to #NSInvocation. "*/
 
 @interface NSInvocation(EDExtensions)
@@ -32,5 +28,3 @@
 + (NSInvocation *)invocationWithTarget:(id)object method:(SEL)selector argument:(void *)argument;
 
 @end
-
-#endif	/* __NSInvocation_Extensions_h_INCLUDE */

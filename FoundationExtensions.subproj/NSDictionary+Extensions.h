@@ -19,10 +19,6 @@
 //---------------------------------------------------------------------------------------
 
 
-#ifndef	__NSDictionary_Extensions_h_INCLUDE
-#define	__NSDictionary_Extensions_h_INCLUDE
-
-
 /*" Various common extensions to #NSDictionary. "*/
 
 @interface NSDictionary(EDExtensions)
@@ -40,5 +36,3 @@
 - (void)addObject:(id)object toArrayForKey:(id)key;
 
 @end
-
-#endif	/* __NSDictionary_Extensions_h_INCLUDE */

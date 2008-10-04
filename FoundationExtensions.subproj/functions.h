@@ -18,15 +18,10 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__functions_h_INCLUDE
-#define	__functions_h_INCLUDE
-
-#include "osdep.h"
+#import "osdep.h"
 
 /*" Takes an IP address in the POSIX structure and returns an #NSString with the address in the typical dotted number representation. "*/
 NSString *EDStringFromInAddr(struct in_addr address);
+
 /*" Takes an #NSString with an IP address in the typical dotted number representation and returns the address in the POSIX structure. "*/
 struct in_addr EDInAddrFromString(NSString *string);
-
-#endif	/* __functions_h_INCLUDE */

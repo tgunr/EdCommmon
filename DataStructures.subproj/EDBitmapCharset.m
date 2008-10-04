@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "EDBitmapCharset.h"
+#import "EDBitmapCharset.h"
 
 
 EDBitmapCharset *EDBitmapCharsetFromCharacterSet(NSCharacterSet *charset)

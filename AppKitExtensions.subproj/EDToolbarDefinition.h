@@ -18,13 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDToolbarDefinition_h_INCLUDE
-#define	__EDToolbarDefinition_h_INCLUDE
-
-
-#ifdef EDCOMMON_OSXBUILD
-
 #import <AppKit/AppKit.h>
 
 @interface EDToolbarDefinition : NSObject
@@ -60,8 +53,4 @@
  willBeInsertedIntoToolbar:(BOOL)flag;
 
 @end
-
-#endif
-
-#endif	/* __EDToolbarDefinition_h_INCLUDE */
 

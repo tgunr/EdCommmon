@@ -18,14 +18,8 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDMLParser_h_INCLUDE
-#define	__EDMLParser_h_INCLUDE
-
-
-#include "EDCommonDefines.h"
-#include "EDMLTagProcessorProtocol.h"
-
+#import "EDCommonDefines.h"
+#import "EDMLTagProcessorProtocol.h"
 
 @interface EDMLParser : NSObject
 {
@@ -81,5 +75,3 @@
 /*" Exception thrown when the parser encounters an error; generally a syntax error. "*/
 
 EDCOMMON_EXTERN NSString *EDMLParserException;
-
-#endif	/* __EDMLParser_h_INCLUDE */

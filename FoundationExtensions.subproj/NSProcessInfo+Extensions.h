@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSProcessInfo_Extensions_h_INCLUDE
-#define	__NSProcessInfo_Extensions_h_INCLUDE
-
-
 #import <Foundation/NSProcessInfo.h>
 
 /*" Various common extensions to #NSProcessInfo. "*/
@@ -32,5 +27,3 @@
 - (int)pid;
 
 @end
-
-#endif	/* __NSProcessInfo_Extensions_h_INCLUDE */

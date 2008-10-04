@@ -18,10 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#ifndef	__NSBundle_Extensions_h_INCLUDE
-#define	__NSBundle_Extensions_h_INCLUDE
-
-
 #import <Foundation/NSBundle.h>
 
 /*" Various common extensions to #NSBundle. "*/
@@ -31,5 +27,3 @@
 - (NSBundle *)bundleForFramework:(NSString *)frameworkName;
     
 @end
-
-#endif	/* __NSBundle_Extensions_h_INCLUDE */

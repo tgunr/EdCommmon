@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "EDObjectReference.h"
+#import "EDObjectReference.h"
 
 
 //---------------------------------------------------------------------------------------
@@ -89,9 +89,9 @@
 {
     if(otherObject == nil)
         return NO;
-else if((isa != ((EDObjectReference *)otherObject)->isa) && ([otherObject isKindOfClass:[EDObjectReference class]] == NO))
+	else if((isa != ((EDObjectReference *)otherObject)->isa) && ([otherObject isKindOfClass:[EDObjectReference class]] == NO))
         return NO;
-return (self->referencedObject == ((EDObjectReference *)otherObject)->referencedObject);
+	return (self->referencedObject == ((EDObjectReference *)otherObject)->referencedObject);
 }
 
 

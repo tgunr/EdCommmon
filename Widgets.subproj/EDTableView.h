@@ -18,13 +18,8 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDTableView_h_INCLUDE
-#define	__EDTableView_h_INCLUDE
-
-
 #import <AppKit/NSTableView.h>
-#include "EDCommonDefines.h"
+#import "EDCommonDefines.h"
 
 
 struct _EDTVFlags {
@@ -51,5 +46,3 @@ struct _EDTVFlags {
 - (NSArray *)clickThroughColumns;
 
 @end
-
-#endif	/* __EDTableView_h_INCLUDE */
