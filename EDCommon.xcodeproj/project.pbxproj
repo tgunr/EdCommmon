@@ -674,9 +674,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		AD39F29B05443F3D0086D411 /* EDCommon (Framework) */ = {
+		AD39F29B05443F3D0086D411 /* EDCommon */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0389981508E6B74900CE2E52 /* Build configuration list for PBXNativeTarget "EDCommon (Framework)" */;
+			buildConfigurationList = 0389981508E6B74900CE2E52 /* Build configuration list for PBXNativeTarget "EDCommon" */;
 			buildPhases = (
 				AD39F29C05443F3D0086D411 /* Headers */,
 				AD39F2E805443F3D0086D411 /* Resources */,
@@ -689,7 +689,7 @@
 			);
 			dependencies = (
 			);
-			name = "EDCommon (Framework)";
+			name = EDCommon;
 			productInstallPath = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 			productName = "EDCommon (Framework)";
 			productReference = AD39F33905443F3E0086D411 /* EDCommon.framework */;
@@ -708,7 +708,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AD39F29B05443F3D0086D411 /* EDCommon (Framework) */,
+				AD39F29B05443F3D0086D411 /* EDCommon */,
 			);
 		};
 /* End PBXProject section */
@@ -968,7 +968,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0389981508E6B74900CE2E52 /* Build configuration list for PBXNativeTarget "EDCommon (Framework)" */ = {
+		0389981508E6B74900CE2E52 /* Build configuration list for PBXNativeTarget "EDCommon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0389981608E6B74900CE2E52 /* Debug */,
