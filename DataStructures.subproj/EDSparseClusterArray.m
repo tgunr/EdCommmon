@@ -31,7 +31,7 @@
 @interface _EDSCAEnumerator : NSEnumerator
 {
     EDSparseClusterArray *array;
-    unsigned int		 *pnumList;
+    uintptr_t			 *pnumList;
     unsigned int		 pnlCount, pageSize;
     unsigned int		 pnlidx, eidx;
 }
