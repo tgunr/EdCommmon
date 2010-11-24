@@ -44,7 +44,8 @@ NSLocalizedString(@"Failed to create a folder in your library folder.", "Error m
    resourcePath = [[NSBundle mainBundle] pathForResource:@"FactoryDefaults" ofType:@"plist"];
    NSAssert(resourcePath != nil, @"missing resource; cannot find FactoryDefaults");
    NS_DURING
-       factorySettings = [[NSString stringWithContentsOfFile:resourcePath] propertyList];
+	NSError *resultErr = nil;
+       factorySettings = [[NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:&resultErr] propertyList];
    NS_HANDLER
        factorySettings = nil;
    NS_ENDHANDLER

@@ -80,10 +80,11 @@ If the user presses !{n} the selector !{gotoNext:} is sent. If the user presses 
     [promptField retain];
     
     path = [[[[NSApplication sharedApplication] libraryDirectory] stringByAppendingPathComponent:@"KeyBindings"] stringByAppendingPathExtension:@"dict"];
-    if((fileContents = [NSString stringWithContentsOfFile:path]) == nil)
+	NSError *resultErr = nil;
+    if((fileContents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&resultErr]) == nil)
         {
         path = [[NSBundle mainBundle] pathForResource:@"KeyBindings" ofType:@"dict"];
-        if((fileContents = [NSString stringWithContentsOfFile:path]) == nil)
+        if((fileContents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&resultErr]) == nil)
             [NSException raise:NSGenericException format:@"Cannot read KeyBindings"];
         }
 

@@ -289,7 +289,7 @@
 }
 
 
-- (unsigned int)draggingSourceOperationMaskForLocal:(BOOL)flag
+- (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)flag
 {
     return NSDragOperationGeneric;
 }
@@ -312,7 +312,7 @@
 //	DRAGGING DESTINATION PROTOCOL IMPLEMENTATION
 //---------------------------------------------------------------------------------------
 
-- (unsigned int)draggingEntered:(id <NSDraggingInfo>)sender
+- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender
 {
     NSPasteboard 	*pboard;
     unsigned int 	retMask;

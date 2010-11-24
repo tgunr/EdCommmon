@@ -702,7 +702,14 @@
 			isa = PBXProject;
 			buildConfigurationList = 0389982108E6B74900CE2E52 /* Build configuration list for PBXProject "EDCommon" */;
 			compatibilityVersion = "Xcode 3.0";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 1AA34CC50090839C7F000001 /* EDCommon */;
 			productRefGroup = 1AA34D460090839C7F000001 /* Products */;
 			projectDirPath = "";
