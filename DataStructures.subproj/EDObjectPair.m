@@ -27,7 +27,13 @@
     @implementation EDObjectPair
 //---------------------------------------------------------------------------------------
 
-/*" From a purely functional point EDObjectPair does not add anything to NSArray. However, EDObjectPair can be used when a design explicitly deals with a relationship between two objects, typically an association of a value or an object with another object. An array of EDObjectPairs can be used instead of an NSDictionary when the order of key/value pairs is relevant and lookups of values by key do not need to be fast. EDObjectPairs also use less memory than NSArray and have a better hash function. (If you know LISP you probably use pairs for all sorts of other structures.) "*/
+/*" From a purely functional point EDObjectPair does not add anything to NSArray. 
+ However, EDObjectPair can be used when a design explicitly deals with a relationship between two objects, 
+ typically an association of a value or an object with another object. 
+ An array of EDObjectPairs can be used instead of an NSDictionary when the order of key/value pairs 
+ is relevant and lookups of values by key do not need to be fast. 
+ EDObjectPairs also use less memory than NSArray and have a better hash function. 
+ (If you know LISP you probably use pairs for all sorts of other structures.) "*/
 
 
 //---------------------------------------------------------------------------------------
